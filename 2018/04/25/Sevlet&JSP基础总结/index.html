@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaWeb," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Servlet与JSP基础总结">
+<meta name="keywords" content="JavaWeb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet与JSP基础总结">
+<meta property="og:url" content="http://abelchao.com/2018/04/25/Sevlet&JSP基础总结/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="Servlet与JSP基础总结">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/527250571103345529.jpg">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180427154143.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/24114945-4774512d1247438fa58c37399d3999ae.jpg">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/20161217184327553.png">
+<meta property="og:updated_time" content="2018-04-27T13:21:58.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Servlet与JSP基础总结">
+<meta name="twitter:description" content="Servlet与JSP基础总结">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/527250571103345529.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2018/04/25/Sevlet&JSP基础总结/"/>
+
+
+
+
+
+  <title>Servlet与JSP基础总结 | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2018/04/25/Sevlet&JSP基础总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Servlet与JSP基础总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T09:00:00+08:00">
+                2018-04-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-04-27T21:21:58+08:00">
+                2018-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaWeb/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaWeb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/527250571103345529.jpg" alt=""></p>
+<p><strong>Servlet与JSP基础总结</strong><br><a id="more"></a></p>
+<h1 id="什么是Servlet"><a href="#什么是Servlet" class="headerlink" title="什么是Servlet"></a>什么是Servlet</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180427154143.png" alt=""></p>
+<pre><code>1. 其实这就是个接口，里面就5个方法。但是我们约定俗成把实现了这个接口的类也叫做了Servlet
+
+2. 这个接口本身和网络协议，Http什么根本没关系，这东西就是为了规范一套处理网络请求，所有实现了Servlet的类都要实现它的那5个方法，最重要的就三个init/destory/service，也就是所有实现了这个接口的类，都必须回答三个问题:
+    1. 初始化要干嘛
+    2. 销毁要干嘛
+    3. 接收到请求又要干嘛
+
+3. Servlet就是一个规范，但是并不是实现了Servlet的类都能处理请求。这里面绝对不会又什么监听8080端口的东西之类的，因为Servlet根本就不是直接和客户端打交道的。
+那么请求怎么到这个类里面的，就是我们说的Servlet容器，也就是Tomcat，我们的Servlet实现类永远都是在容器中才能起作用的。Tomcat才是真正和客户端直接打交道的东西，它监听了端口，情趣过来，由Tomcat也确定这个请求要给哪个Servlet去处理。然后调用这个Servlet的service方法。service方法返回一个response，tomcat再把这个response返回客户端。
+</code></pre><h1 id="Servlet与CGI的区别"><a href="#Servlet与CGI的区别" class="headerlink" title="Servlet与CGI的区别"></a>Servlet与CGI的区别</h1><pre><code>CGI（Common GateWay Interface 公共网管接口）是用Perl脚本编写的程序，可以用来生成动态页面。
+
+1. Servlet在服务器进程中，多线程的方式运行service()，一个实例可以服务多个请求。并且实例一般不会销毁。
+2. CGI对每个请求都产生新的进程。服务完就销毁了。
+</code></pre><h1 id="Servlet生命周期和工作原理"><a href="#Servlet生命周期和工作原理" class="headerlink" title="Servlet生命周期和工作原理"></a>Servlet生命周期和工作原理</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/24114945-4774512d1247438fa58c37399d3999ae.jpg" alt=""></p>
+<pre><code>1. 加载：Tomcat通过类加载器使用Servlet类对应的文件来加载Servlet。
+2. 创建：调用Servlet的构造器生成一个Servlet实例。
+3. init()：在Servlet的生命周期中，仅执行一次，在Tomcat装入Servlet时执行的，这个方法在Servlet创建但是向客户端提供请求前被调用。
+4. service()：Tomcat接收到请求，发现这是对Servlet发起的请求，Tomcat这个时候会创建两个对象HttpServletRequest，HttpServletResponse。容器根据请求的URL找到对应的Servlet，然后针对这个请求创建一个线程，同时把之前创建的两个对象以参数的像是传递给这个线程。然后容器调用这个Servlet的service()，service()方法根据请求的method属性值来确定调用doGet还是doPost，然后把生成响应数据（动态页面）返回给容器，容器把响应消息组装成HTTP格式返回给客户端。
+5. destory：容器在卸载Servlet之前调用destory，让servlet释放了自己占用的系统资源。
+</code></pre><h1 id="Get和Post的区别"><a href="#Get和Post的区别" class="headerlink" title="Get和Post的区别"></a>Get和Post的区别</h1><pre><code>1. get不安全，同时页面提交数据时，get的数据大小由限制4k。
+2. post安全，同时没有数据大小限制。
+</code></pre><h1 id="JSP与Servlet的区别"><a href="#JSP与Servlet的区别" class="headerlink" title="JSP与Servlet的区别"></a>JSP与Servlet的区别</h1><pre><code>1. JSP可以被看作是一个特殊的Servlet，只不过是Servlet的扩展，只要是JSP能实现的，Servlet也都可以实现。因为JSP页面最后还是要被转换成Servlet来运行，因此处理请求实际上是编译后的Servlet。
+2. Servlet的实现方式是在Java中嵌入了HTML，JSP是在HTML中嵌入了Java
+3. Servlet中可没有内置对象，JSP里面有9个，但是都是通过HttpServletRequest，HttpServletResponse，HttpServlet对象得到的。
+</code></pre><h1 id="Servlet、Genericervlet、HttpServlet"><a href="#Servlet、Genericervlet、HttpServlet" class="headerlink" title="Servlet、Genericervlet、HttpServlet"></a>Servlet、Genericervlet、HttpServlet</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/20161217184327553.png" alt=""></p>
+<p><a href="https://www.cnblogs.com/libingbin/p/5960456.html" target="_blank" rel="noopener">https://www.cnblogs.com/libingbin/p/5960456.html</a></p>
+<pre><code>1. Servlet是个接口，
+2. GenericServlet是个抽象类，实现了Servlet和ServletConfig，这个Servlet是个和协议没有半毛钱关系的Servlet。
+3. HttpServletRequest和HttpServletResponse是两个接口
+4. HttpServlet继承了GenericServlet，但是这也是个抽象类。
+
+5. GenericServlet做的事情：
+    1. init方法，保存了config对象，并实现了getServletInfo和getServletConfig。
+    2. 增加了一个空参数的init()，防止开发人员重写重生的init
+    3. service方法空实现--&gt;写成了抽象方法，强制开发人员实现。
+    4. destory空实现。
+    5. 实现了servletConfig接口，接口中的方法直接调用config实现类实现。
+
+6. HttpServlet做的事情：
+    1. servlet中强转参数
+        ServletRequest和ServletResponse--&gt;HttpServletRequest和HttpServletResponse。
+    2. 根据不同请求调用不同的方法。
+</code></pre><h1 id="Servlet、ServletContext、ServletConfig"><a href="#Servlet、ServletContext、ServletConfig" class="headerlink" title="Servlet、ServletContext、ServletConfig"></a>Servlet、ServletContext、ServletConfig</h1><p><a href="https://blog.csdn.net/u012077981/article/details/17137705" target="_blank" rel="noopener">https://blog.csdn.net/u012077981/article/details/17137705</a><br><a href="https://blog.csdn.net/gavin_john/article/details/51399425" target="_blank" rel="noopener">https://blog.csdn.net/gavin_john/article/details/51399425</a></p>
+<pre><code>1. ServletContext是Servlet和Servlet容器（Tomcat）之间的直接通信接口。Servlet容器在启动一个Webapp时，会为它创建一个ServletContext，也就是Servlet上下文环境。
+每一个webapp都有唯一的ServletContext对象。同一个webapp下的所有servlet对象共享一个ServletContext。
+
+servlet的初始化参数，就是在这个ServletConfig中。
+
+    1. 获取web上下文路径（context.getContextPath()）
+    2. 获取全局参数(context.getInitParameter(paramName))
+    3. 和域相关    
+
+2. ServletConfig是当Servlet容器（Tomcat）初始化一个Servlet类型的对象时，会为这个Servlet对象创建一个ServletConfig对象。在这个ServletConfig对象中包含了Servlet的初始化参数信息。
+
+3. ServeltConfig和ServletContext关联。Tomcat在调用Servlet对象的init(ServletConfig config)方法时，会把ServletConfig类型的对象当作参数传递给servlet对象。
+
+4. ServletContext是对于Webapp而言的，其实就是四大域中的Application，在Tomcat启动的时候就加载了。而ServletConfig是对于某一个Servlet而言的。
+</code></pre><h1 id="forward和redirect"><a href="#forward和redirect" class="headerlink" title="forward和redirect"></a>forward和redirect</h1><pre><code>1. forward：请求转发，服务器端行为，然后目标地址的URL，但是服务器内部转发了。（只有一次请求）
+2. redirect：重定向,客户端行为，目的地址的URL改变了，两次请求！！！
+3. 重定向会导致request对象信息丢失，而请求转发不会。
+</code></pre><h1 id="JSP执行原理"><a href="#JSP执行原理" class="headerlink" title="JSP执行原理"></a>JSP执行原理</h1><pre><code>客户端发出请求---&gt;JSP引擎将jsp页面翻译成Servlet的java源文件--&gt;Tomcat中将源文件编程成class并加载到内存中执行。
+</code></pre><h1 id="JavaWeb四大域"><a href="#JavaWeb四大域" class="headerlink" title="JavaWeb四大域"></a>JavaWeb四大域</h1><h2 id="Application-ServletContext"><a href="#Application-ServletContext" class="headerlink" title="Application(ServletContext)"></a>Application(ServletContext)</h2><pre><code>1. 作用域：整个Webapp，所有Servlet共用一个serveltContext。
+2. 生命周期：当Web应用被加载到Tomcat中时就创建了。
+</code></pre><h2 id="Session（HttpSession）"><a href="#Session（HttpSession）" class="headerlink" title="Session（HttpSession）"></a>Session（HttpSession）</h2><pre><code>1. 作用域：一次会话。
+2. 生命周期：当第一次调用request.getSession()的时候，服务器会检查是否已经有了对应的Session，如果没有就在内存中创建一个Session并返回。但是当一段时间以后，Session没有被使用（默认30min），Session就会被销毁了。
+如果服务器非正常关闭，没有到期的session也会跟着销毁。如果调用session提供的invalidate()，可以立即销毁session。
+</code></pre><h2 id="Request（ServletRequest）"><a href="#Request（ServletRequest）" class="headerlink" title="Request（ServletRequest）"></a>Request（ServletRequest）</h2><pre><code>1. 作用域：整个请求链，在Servlet处理好的数据给JSP显示，整个时候参数就可以放在ServletRequest域中
+2. 生命周期：整个请求链
+</code></pre><h2 id="Page（PageContext）"><a href="#Page（PageContext）" class="headerlink" title="Page（PageContext）"></a>Page（PageContext）</h2><pre><code>1. 作用域：当对JSP请求开始，当响应的结束时销毁。
+2. 作用范围：整个JSP页面，是四大域中最小的一个。
+</code></pre><h1 id="HttpServletRequest和HttpServletResponse"><a href="#HttpServletRequest和HttpServletResponse" class="headerlink" title="HttpServletRequest和HttpServletResponse"></a>HttpServletRequest和HttpServletResponse</h1><pre><code>1. HttpServletRequest
+    1. 请求地址(读取信息路径)
+    2. 请求头
+    3. 实体数据
+
+2. HttpServletResponse
+    1. 响应头
+    2. 状态码
+    3. 实体数据
+    4. 客户端写入Cookie（设置Cookie）
+    5. 重写URL
+</code></pre><h2 id="HttpServletRequest中的getParamter-Attribute"><a href="#HttpServletRequest中的getParamter-Attribute" class="headerlink" title="HttpServletRequest中的getParamter/Attribute"></a>HttpServletRequest中的getParamter/Attribute</h2><pre><code>1. getAttribute表示从Request域中获取数据，必须在request域中进行设置（setAttribute）后才能拿到，设置和获取的都是Object
+2. getParameter表示接收参数，参数为页面提交的参数（表单提交的参数，URL重写）因此整个方法并没有参数设置（没有setParameter），而且返回的参数String
+</code></pre><h1 id="JSP中的九大内置对象"><a href="#JSP中的九大内置对象" class="headerlink" title="JSP中的九大内置对象"></a>JSP中的九大内置对象</h1><p><a href="https://blog.csdn.net/icarus_wang/article/details/51107470" target="_blank" rel="noopener">https://blog.csdn.net/icarus_wang/article/details/51107470</a></p>
+<pre><code>out对象：用于向客户端、浏览器输出数据。
+request对象：封装了来自客户端、浏览器的各种信息。
+response对象：封装了服务器的响应信息。
+exception对象：封装了jsp程序执行过程中发生的异常和错误信息。
+config对象：封装了应用程序的配置信息。
+page对象：指向了当前jsp程序本身。
+session对象：用来保存会话信息。也就是说，可以实现在同一用户的不同请求之间共享数
+application对象：代表了当前应用程序的上下文。可以在不同的用户之间共享信息。
+pageContext对象：提供了对jsp页面所有对象以及命名空间的访问。
+</code></pre><h1 id="JSP动作（6个）"><a href="#JSP动作（6个）" class="headerlink" title="JSP动作（6个）"></a>JSP动作（6个）</h1><pre><code>1. jsp：include，用来在页面被请求时引入一个文件。
+2. jsp：useBean，用来寻找或者实例化一个JavaBean
+3. jsp：setProperty，用来设置已经实例化的Bean对象。
+4. jsp：getProperty，用来获取某个JavaBean的属性。
+5. jsp：forward，用来把请求转到一个新页面
+6. jsp:plugin，用来在浏览器中显示一个对象。
+</code></pre><h1 id="include的静态，动态引入（include指令和include动作）"><a href="#include的静态，动态引入（include指令和include动作）" class="headerlink" title="include的静态，动态引入（include指令和include动作）"></a>include的静态，动态引入（include指令和include动作）</h1><pre><code>1. include指令：&lt;%@ include file=&quot;text.jsp&quot;%&gt;
+2. include动作：
+    &lt;jsp:include page=&quot;text.jsp&quot; flush=&quot;true&quot;&gt;
+        &lt;jsp:param name=&quot;name&quot;,value=&quot;value&quot;/&gt;
+    &lt;/jsp:include&gt;
+
+
+区别：
+    1. 根本区别：两者调用的时间。include指令是在编译阶段的指令，在编译时，编译器会把指令所指向的目标文件内容复制到指令所在的位置，替换指令本身，最终生成的一个文件，在运行时只有一个文件；include动作是在运行时的语法，在主页面被请求时，才将用到的页面包含进来，涉及到两个文件，类似于方法调用。
+</code></pre><h1 id="Session与Cookie"><a href="#Session与Cookie" class="headerlink" title="Session与Cookie"></a>Session与Cookie</h1><pre><code>1. Session在服务器端，Cookie在客户端
+2. Session的运行依赖Session id，而Session id是存在Cookie中的，也就说如果浏览器禁用了Cookie，同时Session也就无效了。
+3. Session可以放在文件，数据库，内存中
+4. 用户验证一般使用Session
+5. Cookie不安全，因为在本地，可能被被人用来进行Cookie欺骗
+6. Session会在一定时间内保存在服务器上，当访问太多的时候，并不好
+7. 单个Cookie保存的数据不能超过4k，很多浏览器都限制一个站点最多保存20个Cookie
+</code></pre><h1 id="保存会话状态，有哪些方法"><a href="#保存会话状态，有哪些方法" class="headerlink" title="保存会话状态，有哪些方法"></a>保存会话状态，有哪些方法</h1><pre><code>HTTP协议本身无状态，服务器为了区别不同的用户，需要对用户会话进行跟踪，也就说用户登录的时候，为用户分配唯一的ID，下一次用户在请求中包含此ID，服务器就知道这是哪个用户了。
+
+1. URL重写：在URL中添加用户会话的信息作为请求的参数，或者将唯一的会话ID添加到URL结尾以标识一个会话。
+2. 设置表单隐藏域：将会话跟踪相关的字段添加到隐式表单域中。
+3. Session共享：Session的运行依赖Session id，而Session id是存在Cookie中的，也就说如果浏览器禁用了Cookie，同时Session也就无效了。
+4. 会话Cookie：Cookie是Web服务器发送给客户端的一小段信息，客户端请求时可以读取该信息发送到服务器端，进而进行用户的识别。对于客户端的每次请求，服务器都会将Cookie发送到客户端,在客户端可以进行保存,以便下次使用
+</code></pre>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2018/04/25/Sevlet&JSP基础总结/" title="Servlet与JSP基础总结">http://abelchao.com/2018/04/25/Sevlet&JSP基础总结/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaWeb/" rel="tag"><i class="fa fa-tag"></i> JavaWeb</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/25/数据库基础总结/" rel="next" title="数据库基本总结">
+                <i class="fa fa-chevron-left"></i> 数据库基本总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/25/建造者模式/" rel="prev" title="建造者模式">
+                建造者模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">101</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Servlet"><span class="nav-number">1.</span> <span class="nav-text">什么是Servlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet与CGI的区别"><span class="nav-number">2.</span> <span class="nav-text">Servlet与CGI的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet生命周期和工作原理"><span class="nav-number">3.</span> <span class="nav-text">Servlet生命周期和工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Get和Post的区别"><span class="nav-number">4.</span> <span class="nav-text">Get和Post的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP与Servlet的区别"><span class="nav-number">5.</span> <span class="nav-text">JSP与Servlet的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet、Genericervlet、HttpServlet"><span class="nav-number">6.</span> <span class="nav-text">Servlet、Genericervlet、HttpServlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet、ServletContext、ServletConfig"><span class="nav-number">7.</span> <span class="nav-text">Servlet、ServletContext、ServletConfig</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forward和redirect"><span class="nav-number">8.</span> <span class="nav-text">forward和redirect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP执行原理"><span class="nav-number">9.</span> <span class="nav-text">JSP执行原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaWeb四大域"><span class="nav-number">10.</span> <span class="nav-text">JavaWeb四大域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-ServletContext"><span class="nav-number">10.1.</span> <span class="nav-text">Application(ServletContext)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session（HttpSession）"><span class="nav-number">10.2.</span> <span class="nav-text">Session（HttpSession）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request（ServletRequest）"><span class="nav-number">10.3.</span> <span class="nav-text">Request（ServletRequest）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Page（PageContext）"><span class="nav-number">10.4.</span> <span class="nav-text">Page（PageContext）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HttpServletRequest和HttpServletResponse"><span class="nav-number">11.</span> <span class="nav-text">HttpServletRequest和HttpServletResponse</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HttpServletRequest中的getParamter-Attribute"><span class="nav-number">11.1.</span> <span class="nav-text">HttpServletRequest中的getParamter/Attribute</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP中的九大内置对象"><span class="nav-number">12.</span> <span class="nav-text">JSP中的九大内置对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP动作（6个）"><span class="nav-number">13.</span> <span class="nav-text">JSP动作（6个）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include的静态，动态引入（include指令和include动作）"><span class="nav-number">14.</span> <span class="nav-text">include的静态，动态引入（include指令和include动作）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Session与Cookie"><span class="nav-number">15.</span> <span class="nav-text">Session与Cookie</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保存会话状态，有哪些方法"><span class="nav-number">16.</span> <span class="nav-text">保存会话状态，有哪些方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

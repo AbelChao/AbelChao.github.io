@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="DataStructure," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="这一节我们再去复习一下递归的东西：汉诺塔、斐波那契数列">
+<meta name="keywords" content="DataStructure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Structure（递归）">
+<meta property="og:url" content="http://abelchao.com/2017/10/26/Data-Structure（递归）/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="这一节我们再去复习一下递归的东西：汉诺塔、斐波那契数列">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion00.jpg">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion01.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion02.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion03.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion04.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion05.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion06.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion07.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion08.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion09.png">
+<meta property="og:updated_time" content="2017-10-26T07:11:28.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Structure（递归）">
+<meta name="twitter:description" content="这一节我们再去复习一下递归的东西：汉诺塔、斐波那契数列">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/Recursion00.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2017/10/26/Data-Structure（递归）/"/>
+
+
+
+
+
+  <title>Data Structure（递归） | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2017/10/26/Data-Structure（递归）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Data Structure（递归）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-26T10:47:52+08:00">
+                2017-10-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-10-26T15:11:28+08:00">
+                2017-10-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">DataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/Recursion00.jpg" alt="Recursion"></p>
+<p><strong>这一节我们再去复习一下递归的东西：汉诺塔、斐波那契数列</strong></p>
+<a id="more"></a>
+<h1 id="汉诺塔的问题-recursion"><a href="#汉诺塔的问题-recursion" class="headerlink" title="汉诺塔的问题(recursion)"></a>汉诺塔的问题(recursion)</h1><p>现在我们先不需要知道递归是什么，也没必要，我们先来看一个非常经典的游戏—汉诺塔，该游戏是数学家爱德华卢卡斯于1883年发明的，游戏的规则如下，有三根细柱（A、B、C），A柱上套着6个圆盘，圆盘的大小都不一样，它们按照从大到小的顺序自下而上地摆放，现在我们需要把A柱上的圆盘全部移动到B柱上去，并且在移动时有如下约定：</p>
+<p>一次只能移动柱子最上端的一个圆盘。<br>小圆盘上不能放大圆盘<br>此时约定将一个圆盘从一根柱子移动另一根柱子算移动“1”次，那么将6个圆盘全部从A移动到B至少需要移动多少次呢？模型如下图： </p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Recursion01.png" alt="Recursion"></p>
+<p>图虽然很清晰，但我们依然无法立即找到特别清晰的解法，既然如此，我们就尝试先把问题的规模缩小点，把6个圆盘改为3个圆盘，先找出3层汉诺塔的解法，模型变为下图: </p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Recursion02.png" alt="Recursion"></p>
+<p>3层汉诺塔的解法就相对来说简单多了，我们要把3个圆盘全部从A移动到B，只需要先将最小的圆盘从A移动到B，然后将次小的圆盘从A移动到C，接着再把最小的圆盘从B移动到C，然后把最大的圆盘从A移动到B，接着把最小盘从C移动到A，在把次小盘从C移动到B，最后把最小盘从A移动到B即可，这样我们就完成了3此汉诺塔的解法了。这里我们把3个圆盘从小到大分别设为a,b,c，那么其移动过程如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   元素   过程   </span><br><span class="line">    a    A-&gt;B   </span><br><span class="line">    b    A-&gt;C   </span><br><span class="line">    a    B-&gt;C   </span><br><span class="line">    c    A-&gt;B   </span><br><span class="line">    a    C-&gt;A   </span><br><span class="line">    b    C-&gt;B   </span><br><span class="line">    a    A-&gt;B</span><br><span class="line">    移动7次完结..</span><br><span class="line"> **/</span><br></pre></td></tr></table></figure>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Recursion03.png" alt="Recursion"></p>
+<p>从上图中，我们很容易理解3层汉诺塔的解法，但是细想一下会发现这7次动中我们好像在做重复的事情：移动圆盘，只不过方向时而不同罢了。重新回顾一下①②③④⑤⑥⑦的移动过程，然后把它们分为如下3种情况：</p>
+<ul>
+<li>在①②③中，移动了3次将2个圆盘从A柱移动到了C柱</li>
+<li>在④中，将最大的圆盘从A柱移动到了B柱</li>
+<li>在⑤⑥⑦中，移动了3次将2个圆盘从C柱移动到了B柱</li>
+</ul>
+<p>我们发现这个过程移动的操作是几乎一样的，只不过是移动的方向不同了，A-&gt;C和C-&gt;B两种，其过程如下图： </p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Recursion04.png" alt="Recursion"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Recursion05.png" alt="Recursion"></p>
+<p>从图确实可以看出虽然两次移动的目的地不相同，但是两次移动的操作却是非常相似的，而且我们发现如果把3次移动看成是“移动2个圆盘”的操作就是“2层汉诺塔的解法”，也就是说在解决3层汉诺塔的过程中，我们使用了“2层汉诺塔的解法“。既然如此，那是不是意味着解决”4层汉诺塔“的过程中可以使用解决”3层汉诺塔的解法“呢？嗯，确实是如此的，这就是汉诺塔的解法规律，没错，我们已经发现这种规律！这样的话，我们解决前面的6层汉诺塔的问题时，只需要先解决5层汉诺塔的问题，然后利用5层汉诺塔的解法来解决6层汉诺塔的问题即可！我们来看看利用5层汉诺塔解出6层汉诺塔的过程，如下： </p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Recursion06.png" alt="Recursion"></p>
+<p>从图中我们可以看出（a）和（c）就是5层汉诺塔的解法，为了解出6层汉诺塔需要使用到5层汉诺塔的解法，因此只要5层汉诺塔被解出，6层汉诺塔也就迎刃而解了。而5层汉诺塔的解法呢？没错利用我们前面发现的规律，用4层汉诺塔的解法去解出5层汉诺塔，如下过程：</p>
+<ul>
+<li>①.先将4个圆盘从A柱移动到C柱，即解出4层汉诺塔</li>
+<li>②.然后再将最大的圆盘(5个中最大的圆盘)从A柱移动到B柱</li>
+<li>③.最后将4个圆盘从C柱移动到B柱，即再次利用解出的4层汉诺塔</li>
+</ul>
+<p>这样5层汉诺塔就被解出了，而4层汉诺塔则可以利用同样的解法即使用3层汉诺塔的解法，3层汉诺塔再利用2层汉诺塔的解法……..依次类推即可，到此便已解出6层汉诺塔，实际上我们知道有了6层汉诺塔的解法自然就可以很轻松地解出7层汉诺塔，8层汉诺塔…….N层汉诺塔，也很容易发现这种利用已知的N-1层的解法来解决N层的问题的解题方式，它们每一层的解法结构都是相同即利用前一个已解决的问题结果来解决后一个问题。通过这种思考的方式，我们来总结一下N层汉诺塔的解法，不再使用具体的ABC三根柱子，而是将它们设为x、y、z。这样的话，x、y、z在不同的情况下会不固定对应ABC中的某一根。这里以x为起点柱，y为目标柱，z为中转柱，然后给出解出N层汉诺塔的过程。利用z柱将n个圆盘从x柱转移到y柱的解法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">当 n=0时，无需任何移动</span><br><span class="line">当 n&gt;0时，</span><br><span class="line">    ①将n-1个圆盘从x柱，经y柱中转，移动到z柱(即解出n-1层汉诺塔)</span><br><span class="line">    ②然后将1个圆盘从x柱移动到y柱(最大的圆盘)</span><br><span class="line">    ③最后将n-1个圆盘从z柱，经x中转移动到y柱(即解出n-1层汉诺塔) </span><br><span class="line">**/</span><br></pre></td></tr></table></figure>
+<p>从上述过程可知为了解出n层汉诺塔，我们同样需要先解出n-1层汉诺塔，为更通用地表示解出n层汉诺塔的移动次数，将其设为H(n)。利用上述步骤，则有如下关系： </p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Recursion07.png" alt="Recursion"></p>
+<p>在数学上我们将这种H(n)和H(n-1)的关系式取了个名称，叫做递推公式，即已知H(0),由H(n-1)构成H(n)的方法也必然是已知的，只要依次计算便可以得出，如6层汉诺塔的递推过程如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">    H(0)=0                     = 1-1</span><br><span class="line">    H(1)=H(0)+1+H(0) = 1       = 2-1</span><br><span class="line">    H(2)=H(1)+1+H(1) = 3       = 4-1</span><br><span class="line">    H(3)=H(2)+1+H(2) = 7       = 8-1</span><br><span class="line">    H(4)=H(3)+1+H(3) = 15      = 16-1</span><br><span class="line">    H(5)=H(4)+1+H(4) = 31      = 32-1</span><br><span class="line">    H(6)=H(5)+1+H(5) = 63      = 64-1</span><br><span class="line">    .......                    = .........</span><br><span class="line">    H(n)=H(n-1)+1+H(n-1)       = 2^n -1</span><br><span class="line">**/</span><br></pre></td></tr></table></figure>
+<p>这样我们也就知道了6层次汉诺塔的最少移动次数为63次（关于2^n-1的公式只是总结出更为简单的计算方式摆了）。到此我们来重新梳理一下汉诺塔的整个解题过程，在解出6层汉诺塔前，我们由于一时找不到解决的方法，因此先尝试解出更为简单3层汉诺塔的，而在这个过程中，我们慢慢发现了解决汉诺塔问题的通用规律，即使用n-1层的解法来解决n层汉诺塔的思考方式,通过这种思考方式最终成功地解决了6层汉诺塔的问题。而实际上我们利用的这种思考方式的本质就是将复杂的问题转换为较为简单的同类问题(回忆一下汉诺塔的问题解法)然后再找出解决方法最终利用简单同类问题解出复杂问题的过程，而这种思维的方式就是递归！！是的，没错！递归不是算法而是一种思考的思维方式，只不过我们将这种递归思维方式采用程序来解决时，该程序被称为递归算法罢了，而递归本身是一种思考问题的思维方式！到此我们对递归是否有些焕然大悟的感觉呢？或对递归有些许的理解了吧？</p>
+<h1 id="递归的思维方式"><a href="#递归的思维方式" class="headerlink" title="递归的思维方式"></a>递归的思维方式</h1><p>有了上述的分析，我们就可以这样去理解和使用递归，假设现在碰到了一个很复杂的难题，我们也明白‘简单问题易解’的道理，那么此时就可以利用类似于汉诺塔的解题的思考方式，即判断能否将目前复杂的问题转换为较为简单的同类问题呢？可以的话，就先转换为简单同类的问题来解决，然后再利用简单的同类问题解法来解决复杂的同类问题，这就恰恰就是递归思维方式的精髓所在，嗯，这就是递归！大家现在是不是已开始理解递归了呢？我们在回顾一下汉诺塔问题的解法，以便加深对递归的理解，如下图：</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Recursion08.png" alt="Recursion"></p>
+<p>上图很清晰表现出n层汉诺塔的解法过程，通过复杂问题化为同类简单问题来求解，上述的图形还有一个名称叫做递归结构，根据该结构我们就可以建立起之前H(n)递推公式了，很显然发现递归结构并建立递推公式的过程十分重要，这样有助于我们把握本质问题即通过n-1层汉诺塔的解法来解决n层汉诺塔的问题，这样的发现能力需要我们有比较敏锐的洞察力和思维能力，这就需要我们再遇到复杂问题时，多采用递归的思维（复杂问题简单化）方式去思考，去挖掘规律。ok~，到此相信我们对递归已有比较清晰的了解了吧。接下来我们看看如何使用程序来实现递归算法并解决汉诺塔的问题。</p>
+<h1 id="汉诺塔的递归算法"><a href="#汉诺塔的递归算法" class="headerlink" title="汉诺塔的递归算法"></a>汉诺塔的递归算法</h1><p>通过前面的分析，我们明白所谓的递归不过就是把复杂问题简单化的思维方式，而这种思维方式从程序语言的角度出发则称为递归算法，它通过程序的函数方法直接或者间接调用函数自身的过程，回忆一下前面分析汉诺塔的递推公式：H(n)=H(n-1)+1+H(n+1)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zejian.structures.recursion;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Created by zejian on 2016/12/11.</span></span><br><span class="line"><span class="comment">* Blog : http://blog.csdn.net/javazejian [原文地址,请尊重原创]</span></span><br><span class="line"><span class="comment">* 汉诺塔的递归算法实现</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HanoiRecursion</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> n 汉诺塔的层数</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> x x柱 起点柱(A)</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> y y柱 目标柱(B)</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> z z柱 中转柱(C)</span></span><br><span class="line"><span class="comment">  * 其中 A B C 只是作为辅助思考</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hanoi</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> x ,<span class="keyword">char</span> y ,<span class="keyword">char</span> z)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="comment">//H(0)=0</span></span><br><span class="line">     <span class="keyword">if</span> (n==<span class="number">0</span>)&#123;</span><br><span class="line">         <span class="comment">//什么也不做</span></span><br><span class="line">     &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">         <span class="comment">//递推公式：H(n)=H(n-1) + 1 + H(n-1)</span></span><br><span class="line">         <span class="comment">//将n-1个圆盘从x移动到z,y为中转柱</span></span><br><span class="line">         hanoi(n-<span class="number">1</span>,x,z,y); <span class="comment">//-----------------------&gt;解出n-1层汉诺塔:H(n-1)</span></span><br><span class="line"></span><br><span class="line">         <span class="comment">//移动最大圆盘到目的柱</span></span><br><span class="line">         System.out.println(x+<span class="string">"-&gt;"</span>+y);<span class="comment">//------------&gt; 1</span></span><br><span class="line"></span><br><span class="line">         <span class="comment">//将n-1个圆盘从z移动到y,x为中转柱</span></span><br><span class="line">         hanoi(n-<span class="number">1</span>,z,y,x);<span class="comment">//------------------------&gt;解出n-1层汉诺塔:H(n-1)</span></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> n 汉诺塔的层数</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> x x柱 起点柱(A)</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> y y柱 目标柱(B)</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> z z柱 中转柱(C)</span></span><br><span class="line"><span class="comment">  * 其中 A B C 只是作为辅助思考</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hanoiCount</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> x ,<span class="keyword">char</span> y ,<span class="keyword">char</span> z)</span></span>&#123;</span><br><span class="line">     <span class="keyword">int</span> moveCount=<span class="number">0</span>;</span><br><span class="line">     <span class="comment">//H(0)=0</span></span><br><span class="line">     <span class="keyword">if</span> (n==<span class="number">0</span>)&#123;</span><br><span class="line">         <span class="comment">//什么也不做</span></span><br><span class="line">         <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">     &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">         <span class="comment">//递推公式：H(n)=H(n-1) + 1 + H(n-1)</span></span><br><span class="line">         <span class="comment">//将n-1个圆盘从x移动到z,y为中转柱</span></span><br><span class="line">         moveCount += hanoiCount(n-<span class="number">1</span>,x,z,y); <span class="comment">//-------------&gt;解出n-1层汉诺塔:H(n-1)</span></span><br><span class="line"></span><br><span class="line">         <span class="comment">//移动最大圆盘到目的柱</span></span><br><span class="line">         moveCount += <span class="number">1</span>; <span class="comment">//---------------------------------&gt; 1</span></span><br><span class="line"></span><br><span class="line">         <span class="comment">//将n-1个圆盘从z移动到y,x为中转柱</span></span><br><span class="line">         moveCount +=hanoiCount(n-<span class="number">1</span>,z,y,x);<span class="comment">//---------------&gt;解出n-1层汉诺塔:H(n-1)</span></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">return</span> moveCount;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">//测试</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">     HanoiRecursion hanoi=<span class="keyword">new</span> HanoiRecursion();</span><br><span class="line">     System.out.println(<span class="string">"moveCount="</span>+hanoi.hanoiCount(<span class="number">6</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>));</span><br><span class="line"></span><br><span class="line">     hanoi.hanoi(<span class="number">3</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此到此我们也就明白了，递归思维在程序中的体现即为递归算法，而递归算法本身在程序内部的实现就是函数调用自身函数，这样大家总该理解递归算法了吧。这里有点要提醒大家的是，不要陷入程序递归的内部去思考递归算法，记住要从递归思维的本质(复杂问题简单化)出发去理解递归算法，千万不要去通过试图解析程序执行的每一个步骤来理解递归（解析程序的执行是指给函数一个真实值，然后自己一步步去推出结果，这样的思考方式是错误的！），那样只会让自己得到伪理解(没有真正理解)的结果。记住！递归并不是算法，是一种复杂问题简单化的思维方式，而这种思维方式在程序中的体现就递归算法！递归算法在实现上就是函数不断调用自身的过程！</p>
+<h1 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h1><h2 id="斐波那契数列公式"><a href="#斐波那契数列公式" class="headerlink" title="斐波那契数列公式"></a>斐波那契数列公式</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/Recursion09.png" alt="Recursion"></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Recursion</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">FbiRecursion</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(num == <span class="number">0</span> || num == <span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> num;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> FbiRecursion(num-<span class="number">1</span>)+FbiRecursion(num-<span class="number">2</span>);	</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			sb.append(FbiRecursion(i)+<span class="string">","</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"["</span>+sb.substring(<span class="number">0</span>,sb.length()-<span class="number">1</span>)+<span class="string">"]"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2017/10/26/Data-Structure（递归）/" title="Data Structure（递归）">http://abelchao.com/2017/10/26/Data-Structure（递归）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DataStructure/" rel="tag"><i class="fa fa-tag"></i> DataStructure</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/23/Data-Structure（树）/" rel="next" title="Data Structure（树）">
+                <i class="fa fa-chevron-left"></i> Data Structure（树）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/27/Algorithm（排序）/" rel="prev" title="Algorithm（排序）">
+                Algorithm（排序） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#汉诺塔的问题-recursion"><span class="nav-number">1.</span> <span class="nav-text">汉诺塔的问题(recursion)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#递归的思维方式"><span class="nav-number">2.</span> <span class="nav-text">递归的思维方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汉诺塔的递归算法"><span class="nav-number">3.</span> <span class="nav-text">汉诺塔的递归算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">4.</span> <span class="nav-text">斐波那契数列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契数列公式"><span class="nav-number">4.1.</span> <span class="nav-text">斐波那契数列公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">4.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

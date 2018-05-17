@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Interview," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="这一节复习了基本概念的比较：接口和抽象类、多态的两种方式（重载和重写）、值传递和引用传递、基本数据类型和包装类的转换、修饰符问题">
+<meta name="keywords" content="Interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试（几个比较）">
+<meta property="og:url" content="http://abelchao.com/2017/12/04/Java面试（几个比较）/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="这一节复习了基本概念的比较：接口和抽象类、多态的两种方式（重载和重写）、值传递和引用传递、基本数据类型和包装类的转换、修饰符问题">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/JSE01.jpg">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Abstract%20Class%20&%20Interface.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Show.png">
+<meta property="og:updated_time" content="2017-12-11T03:47:03.266Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java面试（几个比较）">
+<meta name="twitter:description" content="这一节复习了基本概念的比较：接口和抽象类、多态的两种方式（重载和重写）、值传递和引用传递、基本数据类型和包装类的转换、修饰符问题">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/JSE01.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2017/12/04/Java面试（几个比较）/"/>
+
+
+
+
+
+  <title>Java面试（几个比较） | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2017/12/04/Java面试（几个比较）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java面试（几个比较）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-04T20:08:43+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-12-11T11:47:03+08:00">
+                2017-12-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/JSE01.jpg" alt="Compare"></p>
+<p><strong>这一节复习了基本概念的比较：接口和抽象类、多态的两种方式（重载和重写）、值传递和引用传递、基本数据类型和包装类的转换、修饰符问题</strong></p>
+<a id="more"></a>
+<h1 id="接口-amp-抽象类"><a href="#接口-amp-抽象类" class="headerlink" title="接口 &amp; 抽象类"></a>接口 &amp; 抽象类</h1><p>抽象类是对某一个事务特性的描述，主要用来抽象类别。</p>
+<p>接口是某一个行为的描述，主要用来抽象功能。</p>
+<h2 id="区别和联系"><a href="#区别和联系" class="headerlink" title="区别和联系"></a>区别和联系</h2><p>抽象类和接口的区别：</p>
+<pre><code>1. 抽象类和接口都不能被实例化。
+2. 抽象类要被子类继承，接口要被类实现。抽象类的子类如果没有重写所有父类中方法，那么这个子类也是一个抽象类。
+3. 接口中只能有方法的声明，不能有方法的实现。abstract修饰的方法都是只用；结尾，没有{}.
+4. 接口中定义的变量只能是公共的静态常量，但是抽象类中的变量可以是普通变量。
+5. 接口中的方法默认是public abstract，变量默认的public final static，并且，接口中的方法只能用public，但是抽象类中的抽象方法可以用public，protected、default修饰。（抽象类的成员函数可以用private、protected、public修饰）
+6. 抽象类里可以没有抽象方法。
+7. 抽象方法要被实现，不能被private和static修饰。
+8. 接口内的方法必须用public修饰。同时不能有static的东西。
+9. 抽象类可以实现接口，同时不用实现完所有的接口方法，因为它本身就是Abstract的。
+    抽象类中是可以有Main方法的，同时可以运行起来，而接口中不可能。
+</code></pre><p><img src="http://oxk1vrcj4.bkt.clouddn.com/Abstract%20Class%20&amp;%20Interface.png" alt="AbstractClass&amp;Interface"></p>
+<h2 id="面试常见问题"><a href="#面试常见问题" class="headerlink" title="面试常见问题"></a>面试常见问题</h2><p><strong>1. Java抽象类可以有构造函数？</strong></p>
+<pre><code>可以有，抽象类和普通类的一个区别就是不能实例化，其他区别并不大，所有抽象类中可以声明并定义构造函数，如果不写，那么也会默认有一个无参的。
+</code></pre><p><strong>2. Java抽象类可以实现接口吗？需要实现此接口的所有的方法吗？</strong></p>
+<pre><code>可以实现接口，同时不需要实现所有接口中的方法，甚至一个都不实现，比如说，AbstractList抽象类和List接口，AbstractList实现了List中所有通用方法。
+</code></pre><p><strong>3. Java抽象类可以final的吗？</strong></p>
+<pre><code>不可以，抽象类作为一个基类，需要被子类继承后实现其内部所有的抽象方法，既然需要继承，那么抽象类肯定不是final的，因为被final修饰的类不能被继承，修饰的变量成了常量，修饰的方法不能被重写。
+
+也就是说被abstract修饰的类的方法，都不能再被final修饰。而abstract和static也不能共用,因为被static修饰的方法可以不用进行类的实例化，直接调用，但是抽象类和接口都不能被实例化。但是接口的静态常量是public final static。
+</code></pre><p><strong>4. Java抽象类可以有static方法吗？</strong></p>
+<pre><code>可以，抽象类中可以有抽象和非抽象方法，非抽象方法当然可以用static修饰，但是这么写了因为抽象类不能实例化，所有也就只能在本类中用。
+</code></pre><p><strong>5. 可以创建抽象类的实例吗？</strong></p>
+<pre><code>不可以
+</code></pre><p><strong>6. 抽象类必须要有抽象方法吗？</strong></p>
+<pre><code>不需要
+</code></pre><p><strong>7. Java抽象类中可以包含main方法吗？</strong></p>
+<pre><code>可以，抽象类可以包含main方法，它只是一个静态方法，你可以会用main方法执行抽象类，但是不能创建任何实例。
+</code></pre><p><strong>8. Java中抽象类和接口有什么区别？</strong></p>
+<pre><code>首先，抽象类强调的是事务特性的描述，而接口强调的是行为的描述。抽象类和接口主要的区别就在于：
+1. 首先，抽象类中可以有普通方法和方法实现，但是在接口中只有抽象方法的声明，public abstract，
+2. 其次，抽象类中可以存在普通的变量，但是在接口中只能有静态常量 public static final。
+3. 同时，抽象类和接口都不能被实例化，但是抽象类中可以有Main方法，但是接口中不能有，同时抽象类一旦继承接口，我们的抽象类不需要实现这个接口中的方法，也是成立的。
+</code></pre><h1 id="重载、重写、多态"><a href="#重载、重写、多态" class="headerlink" title="重载、重写、多态"></a>重载、重写、多态</h1><p>面向对象编程的三大特性：封装，继承，多态。</p>
+<p>重载（Overloading）和重写(Overriding)是多态的不同表现。</p>
+<p>重载是多态在一个类中的表现。<br>重写是多态在子父类中的表现。</p>
+<h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><p>重载是OverLoading，一般用于一个类中实现若干同名函数。</p>
+<pre><code>1. 重载只能通过，相同的函数名和不同的形参列表进行确定。
+2. 重载不能通过返回值类型，访问权限，抛出异常进行确定。
+3. 方法的异常类型和数目不会对重载造成影响。
+</code></pre><h2 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h2><p>重写是Overriding，一般用于子类重写父类的方法。</p>
+<pre><code>1. 重写方法的参数列表、方法返回值需要和被重写的方法完全相同。
+2. 重写方法的访问修饰符一定要大于等于被重写的方法。
+3. 重写方法抛出的异常必须和被重写的方法抛出的异常必须一致或是其子类。
+4. 被重写方法不能被修饰为Private
+5. 静态方法不能被重写成非静态。
+</code></pre><h1 id="值传递-amp-引用传递"><a href="#值传递-amp-引用传递" class="headerlink" title="值传递&amp;引用传递"></a>值传递&amp;引用传递</h1><p>Java中数据类型分为基本数类型和引用数据类型。</p>
+<p>基本数据类型：</p>
+<pre><code>整型：byte、short、int、long（默认int）
+浮点型：float、double（默认double）
+字符型：char
+布尔型：boolean
+</code></pre><p>引用数据类型：</p>
+<pre><code>数组、接口、类
+</code></pre><h2 id="值传递"><a href="#值传递" class="headerlink" title="值传递"></a>值传递</h2><p>进行值传递的是基本数据类型和基本数据类型的包装类！！！还有String！！！因为他们都是（immutable）。</p>
+<p>参数经过函数后，并不会改变原始的数据！！包括在类中的静态数据，只要是基本数据类型和包装类，还有String。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> javasee;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsTest</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String n = <span class="string">"0"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> m=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">fun2</span><span class="params">(String c)</span></span>&#123;</span><br><span class="line">		c=<span class="string">"000"</span>;</span><br><span class="line">		<span class="keyword">return</span> c;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">fun1</span><span class="params">(Integer a)</span></span>&#123;</span><br><span class="line">		a=<span class="number">100</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		fun2(AbsTest.n);</span><br><span class="line">		System.out.println(AbsTest.n);</span><br><span class="line">		</span><br><span class="line">		fun1(AbsTest.m);</span><br><span class="line">		System.out.println(AbsTest.m);</span><br><span class="line">		</span><br><span class="line">		AbsTest.m++;</span><br><span class="line">		System.out.println(AbsTest.m);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//System.out.println("Main:"+c+",fun1:"+fun2(c));</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">Output:</span></span><br><span class="line"><span class="comment">	0</span></span><br><span class="line"><span class="comment">	0</span></span><br><span class="line"><span class="comment">	1</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h2><p>引用传递，尤其针对数组和对象（不包含基本数据类型的包装类和String），经过函数后，会改变数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(A a)</span></span>&#123;</span><br><span class="line">		a.age = <span class="number">100</span>;</span><br><span class="line">		System.out.println(<span class="string">"test中数据"</span>+a.age);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		AbsTest at = <span class="keyword">new</span> AbsTest();</span><br><span class="line">		A a = <span class="keyword">new</span> A();</span><br><span class="line">		a.age = <span class="number">10</span>;</span><br><span class="line">		at.test(a);</span><br><span class="line">		System.out.println(<span class="string">"main中数据"</span>+a.age);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">int</span> age = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">Output:</span></span><br><span class="line"><span class="comment">	test中数据100</span></span><br><span class="line"><span class="comment">	main中数据100</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h1 id="基本数据类型的转换（自转-amp-强转）"><a href="#基本数据类型的转换（自转-amp-强转）" class="headerlink" title="基本数据类型的转换（自转&amp;强转）"></a>基本数据类型的转换（自转&amp;强转）</h1><p>byte–&gt;short(char)–&gt;int–&gt;long–&gt;float–&gt;double</p>
+<pre><code>* byte：-128 ~ 127（-2^7 ~ 2^7-1）  一个字节
+* short(char)：-32768 ~ 32767（-2^15 ~ 2^15-1） 两个字节
+（ java采用Unicode编码,不论汉字、字母、数字,每个字符都占用2字节。 ）
+* int：-2^31 ~ 2^31-1（默认类型） 四个字节
+* long： -2^63 ~ 2^63-1（末尾要用L来表示） 八个字节
+* float：单精度，四个字节，必须以f作为结尾
+* double：双精度，八个字节（默认类型）
+* char：两个字节，0 ~ 65535
+* boolean：true、false
+</code></pre><p>boolean不是数字型，所以boolean不能和其他的六种进行相互转换。</p>
+<p>在说数据类型的转换之前，我们先简单看一个Java中的编码</p>
+<h2 id="Java编码"><a href="#Java编码" class="headerlink" title="Java编码"></a>Java编码</h2><p>计算机中存储信息的最小单元是一个字节即 8 个 bit，所以能表示的字符范围是 0~255 个。<br>人们要表示的符号太多，无法用一个字节来完全表示，要解决这个矛盾必须需要一个新的数据结构 char，从 char 到 byte 必须编码。</p>
+<p><strong>只有 字符到字节 或者 字节到字符 的转换才存在编码转码;</strong>    </p>
+<p>Java的字符串（String）是Unicode码，class文件是UFT-8编码，JVM运行时采用UTF-16。</p>
+<p>注意了Unicode和ASCII一样都是一种编码！！，而GBK，UTF这种都是编码的方式。UFT-8考虑了很多种不同国家的字符，涵盖了整个Unicode码表，所有在存储一个字符的编码的时候，使用的字节长度也从1个字节到4个字节不等。</p>
+<p><strong>ASCII码规定了128个字符的编码，0-31位是控制字符（如回车，删除）32-126是打印字符，可以用过键盘输如并且能够显示出来。</strong></p>
+<p>对于字符串的编码：</p>
+<pre><code>1. 重新对字符串进行编码：Byte[] bytes=str.getBytes(&quot;UFT-8&quot;)
+2. 重新对bytes进行解码，创建新的字符串对象：String str=new String(&quot;Demo&quot;.getBytes(&quot;ISO-8859-1&quot;),&quot;GBK&quot;);
+</code></pre><p><strong>java采用Unicode编码,不论汉字、字母、数字,每个字符都占用2字节。但是在UTD-8的编码条件下，汉字占3个字节 </strong></p>
+<h2 id="基本数据类型的自转和强转"><a href="#基本数据类型的自转和强转" class="headerlink" title="基本数据类型的自转和强转"></a>基本数据类型的自转和强转</h2><p><strong>自动转型就是向上转型！！！</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">		Byte b = <span class="number">100</span>;</span><br><span class="line">		<span class="keyword">byte</span> b2 = <span class="number">100</span>;</span><br><span class="line">		</span><br><span class="line">		Character c = <span class="string">'r'</span>;</span><br><span class="line">		<span class="keyword">char</span> c2 = <span class="string">'c'</span>;</span><br><span class="line">		</span><br><span class="line">		Short s = <span class="number">77</span>;</span><br><span class="line">		<span class="keyword">short</span> s2 = <span class="number">20</span>;</span><br><span class="line">		</span><br><span class="line">		Long l = <span class="number">1L</span>;</span><br><span class="line">		<span class="keyword">long</span> l2 = <span class="number">1L</span>;<span class="comment">//long l2 = 1;</span></span><br><span class="line">		</span><br><span class="line">		Float f = <span class="number">2.0F</span>;</span><br><span class="line">		<span class="keyword">float</span> f2 = <span class="number">3f</span>;<span class="comment">//float f = 2.0f</span></span><br><span class="line">		</span><br><span class="line">		Double d = <span class="number">3.0</span>;<span class="comment">//Double d = 3d,3.0d,3.0D</span></span><br><span class="line">		<span class="keyword">double</span> d2 = <span class="number">3</span>;</span><br><span class="line">		</span><br><span class="line">		System.out.println(s+<span class="string">","</span>+s2+<span class="string">","</span>+b+<span class="string">","</span>+b2+<span class="string">","</span>+c+<span class="string">","</span>+c2+<span class="string">","</span>+s+<span class="string">","</span>+s2</span><br><span class="line">						+<span class="string">","</span>+l+<span class="string">","</span>+l2+<span class="string">","</span>+f+<span class="string">","</span>+f2+<span class="string">","</span>+d+<span class="string">","</span>+d2);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">Output:</span></span><br><span class="line"><span class="comment">	77,20,100,100,r,c,77,20,1,1,2.0,3.0,3.0,3.0</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>下面开始看转换：（强制转换只能写基本数据类型，装箱不是我们做的）</p>
+<pre><code>1. 如果左、右边是基本数据类型：
+
+    左边大：直接右边的数据向上转型。
+    左边小：右边的数据需要强制转换。
+
+    char和short不能转换，char可以强转成byte，但是byte无法向上转成char
+
+2. 如果左、右两边都是包装类：
+
+    左边和右边只要类型不一样，都需要强转，这可是类啊！！！
+
+3. 左边是包装类，右边是基本数据类型：
+
+    基本数据类型必须强转，然后JVM自动完成装箱！！！
+
+4. 左边是基本数据类型，右边是包装类：
+
+    包装类可以先由JVM自动拆箱，向上转，但是不能向下转，强转也不行。
+
+    int x = 1; Integer x2 = 0;
+    double d = 7; Double d2 = 7.0;
+
+    d = x2;但是x=d2是错的。
+</code></pre><h2 id="基本数据类型的运算"><a href="#基本数据类型的运算" class="headerlink" title="基本数据类型的运算"></a>基本数据类型的运算</h2><pre><code>1. 整数（int、long）除以0，编译通过，运行报错(0/0也是这一类)
+2. 小数除以0，结果是Infinity
+3. 0/0.0、0.0/0结果是NaN，非数字
+4. byte和short运算的时候，会自动转成int
+5. 取余运算，不管是整数还是负数，都按照正数计算，计算完之后，%左边的数字时正数，余数就是正数，反之也成立。
+6. 2+4+&quot;s&quot; --&gt; &quot;6s&quot;  &quot;s&quot;+2+4 --&gt; &quot;s24&quot;
+7. 一旦超过了长度限制，从就得到负数。
+    byte b = 127;
+    b+1--&gt;128; (byte)(b+1)--&gt;-1;
+    byte b = -128;
+    b-1--&gt;-129 (byte)(b-1)--&gt;127
+8. instance of 只能用于引用数据类型。d instanceof Double这么写是错的！！！
+9. 只要有基本数据类型参与的==号比较，比较的都是值，基本数据类型包装类的equals比较的都是值。
+        Integer x = 0;
+        int y = 0;
+        Integer m = new Integer(0);
+        Integer n = new Integer(0);
+        Integer ss = Integer.valueOf(0);
+
+        System.out.println(ss==y);  --&gt;true
+        System.out.println(ss==x);  --&gt;true（重要）
+        System.out.println(x==y);   --&gt;true
+        System.out.println(m==y);   --&gt;true
+        System.out.println(x==m);   --&gt;false
+        System.out.println(m==n);   --&gt;false
+        System.out.println(m.equals(n)); --&gt;true
+</code></pre><h2 id="String和基本数据类型的转换"><a href="#String和基本数据类型的转换" class="headerlink" title="String和基本数据类型的转换"></a>String和基本数据类型的转换</h2><p><strong>基本数据类型到String</strong></p>
+<pre><code>1. String str = String.valueOf(int i)
+2. String str = Integer.toString(int i)
+</code></pre><p><strong>String到基本数据类型</strong></p>
+<pre><code>1. int i = Integer.parseInt(String str)
+   byte b = Byte.parseByte( s );
+   short t = Short.parseShort( s );
+   int i = Integer.parseInt( s );
+   long l = Long.parseLong( s );
+   float f = Float.parseFloat( s );
+   double d = Double.parseDouble( s );
+2. int i = Integer.valueOf(String str).intValue();
+</code></pre><h1 id="Java中几个修饰符的比较"><a href="#Java中几个修饰符的比较" class="headerlink" title="Java中几个修饰符的比较"></a>Java中几个修饰符的比较</h1><h2 id="类修饰符"><a href="#类修饰符" class="headerlink" title="类修饰符"></a>类修饰符</h2><pre><code>1. public（访问控制符），将一个类声明为公共类，他可以被任何对象访问，一个程序的主类必须是公共类。
+
+2. abstract，将一个类声明为抽象类，没有实现的方法，需要子类提供方法实现。
+
+3. final，将一个类生命为最终（即非继承类），表示他不能被其他类继承。
+
+4. friendly，默认的修饰符，只有在相同包中的对象才能使用这样的类。
+</code></pre><h2 id="成员修饰符"><a href="#成员修饰符" class="headerlink" title="成员修饰符"></a>成员修饰符</h2><pre><code>1. public（公共访问控制符），指定该变量为公共的，他可以被任何对象的方法访问。
+
+2. private（私有访问控制符）指定该变量只允许自己的类的方法访问，其他任何类（包括子类）中的方法均不能访问。
+
+3. protected（保护访问控制符）指定该变量可以别被自己的类和子类访问。在子类中可以覆盖此变量。
+
+4. friendly ，在同一个包中的类可以访问，其他包中的类不能访问。
+
+5. final，最终修饰符，指定此变量的值不能变。
+
+6. static（静态修饰符）指定变量被所有对象共享，即所有实例都可以使用该变量。变量属于这个类。
+
+7. transient（过度修饰符）指定该变量是系统保留，暂无特别作用的临时性变量。
+
+8. volatile（易失修饰符）指定该变量可以同时被几个线程控制和修改。
+</code></pre><h2 id="方法修饰符："><a href="#方法修饰符：" class="headerlink" title="方法修饰符："></a>方法修饰符：</h2><pre><code>1. public（公共控制符）
+
+2. private（私有控制符）指定此方法只能有自己类等方法访问，其他的类不能访问（包括子类）
+
+3. protected（保护访问控制符）指定该方法可以被它的类和子类进行访问。
+
+4. final，指定该方法不能被重写。
+
+5. static，指定不需要实例化就可以激活的一个方法。
+
+6. synchronize，同步修饰符，在多个线程中，该修饰符用于在运行前，对他所属的方法加锁，以防止其他线程的访问，运行结束后解锁。
+
+7. native，本地修饰符。指定此方法的方法体是用其他语言在程序外部编写的。
+</code></pre><p><img src="http://oxk1vrcj4.bkt.clouddn.com/Show.png" alt="Show"></p>
+
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2017/12/04/Java面试（几个比较）/" title="Java面试（几个比较）">http://abelchao.com/2017/12/04/Java面试（几个比较）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Interview/" rel="tag"><i class="fa fa-tag"></i> Interview</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/01/Java面试（集合框架）/" rel="next" title="Java面试（集合框架）">
+                <i class="fa fa-chevron-left"></i> Java面试（集合框架）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/04/Java面试（异常框架）/" rel="prev" title="Java面试（异常框架）">
+                Java面试（异常框架） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#接口-amp-抽象类"><span class="nav-number">1.</span> <span class="nav-text">接口 &amp; 抽象类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别和联系"><span class="nav-number">1.1.</span> <span class="nav-text">区别和联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试常见问题"><span class="nav-number">1.2.</span> <span class="nav-text">面试常见问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重载、重写、多态"><span class="nav-number">2.</span> <span class="nav-text">重载、重写、多态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重载"><span class="nav-number">2.1.</span> <span class="nav-text">重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重写"><span class="nav-number">2.2.</span> <span class="nav-text">重写</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#值传递-amp-引用传递"><span class="nav-number">3.</span> <span class="nav-text">值传递&amp;引用传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值传递"><span class="nav-number">3.1.</span> <span class="nav-text">值传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用传递"><span class="nav-number">3.2.</span> <span class="nav-text">引用传递</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本数据类型的转换（自转-amp-强转）"><span class="nav-number">4.</span> <span class="nav-text">基本数据类型的转换（自转&amp;强转）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java编码"><span class="nav-number">4.1.</span> <span class="nav-text">Java编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型的自转和强转"><span class="nav-number">4.2.</span> <span class="nav-text">基本数据类型的自转和强转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型的运算"><span class="nav-number">4.3.</span> <span class="nav-text">基本数据类型的运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String和基本数据类型的转换"><span class="nav-number">4.4.</span> <span class="nav-text">String和基本数据类型的转换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中几个修饰符的比较"><span class="nav-number">5.</span> <span class="nav-text">Java中几个修饰符的比较</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类修饰符"><span class="nav-number">5.1.</span> <span class="nav-text">类修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员修饰符"><span class="nav-number">5.2.</span> <span class="nav-text">成员修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法修饰符："><span class="nav-number">5.3.</span> <span class="nav-text">方法修饰符：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

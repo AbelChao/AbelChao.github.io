@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1. 磁盘管理； 2. 设备管理">
+<meta name="keywords" content="OS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System（磁盘管理&amp;IO设备管理）">
+<meta property="og:url" content="http://abelchao.com/2018/01/09/Operating System（磁盘管理&IO设备管理）/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="1. 磁盘管理； 2. 设备管理">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/915241615873227834.jpg">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6FCFS.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6SSTF.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6SCAN.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6C-SCAN.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E6%AF%94%E8%BE%83.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/IO%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E8%AE%BE%E5%A4%87%E6%8E%A7%E5%88%B6%E5%99%A8.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E7%A8%8B%E5%BA%8F%E7%9B%B4%E6%8E%A5%E6%8E%A7%E5%88%B6.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E4%B8%AD%E6%96%AD%E9%A9%B1%E5%8A%A8.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/DMA.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/DMA%E6%8E%A7%E5%88%B6%E5%99%A8.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/SPOOLing.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E7%BC%93%E5%86%B2.png">
+<meta property="og:updated_time" content="2018-01-09T05:52:09.603Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Operating System（磁盘管理&amp;IO设备管理）">
+<meta name="twitter:description" content="1. 磁盘管理； 2. 设备管理">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/915241615873227834.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2018/01/09/Operating System（磁盘管理&IO设备管理）/"/>
+
+
+
+
+
+  <title>Operating System（磁盘管理&IO设备管理） | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2018/01/09/Operating System（磁盘管理&IO设备管理）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Operating System（磁盘管理&IO设备管理）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-09T09:10:23+08:00">
+                2018-01-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-01-09T13:52:09+08:00">
+                2018-01-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OS/" itemprop="url" rel="index">
+                    <span itemprop="name">OS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/915241615873227834.jpg" alt=""></p>
+<p><strong>1. 磁盘管理； 2. 设备管理</strong></p>
+<a id="more"></a>
+<h1 id="磁盘存储器管理"><a href="#磁盘存储器管理" class="headerlink" title="磁盘存储器管理"></a>磁盘存储器管理</h1><h2 id="磁盘结构"><a href="#磁盘结构" class="headerlink" title="磁盘结构"></a>磁盘结构</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98.png" alt=""></p>
+<pre><code>磁盘(Disk)是由表面涂有磁性物质的金属或塑料构成的圆形盘片，通过一个称为磁头的导体线圈从磁盘中存取数据。
+
+磁盘的盘面上的数据存储在一组同心圆中，称为磁道。
+
+磁道又划分为几百个扇区，每个扇区固定存储大小（通常为512B), 一个扇区称为一个盘块。
+
+由于扇区按固定圆心角度划分，所以密度从最外最内道的最大记录密度。道向里道增加，磁盘的存储能力受限于
+
+扇区就是磁盘可寻址的最小存储单位，磁盘地址 用&quot;柱面号 • 盘面号 • 扇区号（或块号）&quot;表示。
+</code></pre><h2 id="磁盘访问时间"><a href="#磁盘访问时间" class="headerlink" title="磁盘访问时间"></a>磁盘访问时间</h2><pre><code>1. 寻道时间，把磁头移动到指定磁道上所经历的时间。该时间是启动磁臂的时间s与磁头移动n条磁道所花费的时间之和。
+
+2. 旋转延迟时间，指定扇区移动到磁头下面所经历的时间
+
+3. 传输时间，把数据从磁盘读出或者向磁盘写入数据所经历的时间。
+
+注意：这个磁盘访问时间比重最大的就是寻道时间。
+</code></pre><h2 id="磁盘调度算法"><a href="#磁盘调度算法" class="headerlink" title="磁盘调度算法"></a>磁盘调度算法</h2><pre><code>调度算法直接决定寻找时间，从而决定了总的存取时间。
+</code></pre><h3 id="先来先服务-First-Come-First-Served-FCFS-算法"><a href="#先来先服务-First-Come-First-Served-FCFS-算法" class="headerlink" title="先来先服务(First Come First Served, FCFS)算法"></a>先来先服务(First Come First Served, FCFS)算法</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6FCFS.png" alt=""></p>
+<pre><code>FCFS算法根据进程请求访问磁盘的先后顺序进行调度。
+例如，磁盘请求队列中的请求顺序分别为55、58、39、18、90、160、150、38、184，磁头初始位置是100磁道，釆用FCFS算法磁头的运动过程如图所示。磁头共移动了 (45+3+19+21+72+70+10+112+146)=498 个磁道，平均寻找长度=498/9=55.3。
+</code></pre><h3 id="最短寻找时间优先-Shortest-Seek-Time-First-SSTF-算法"><a href="#最短寻找时间优先-Shortest-Seek-Time-First-SSTF-算法" class="headerlink" title="最短寻找时间优先(Shortest  Seek  Time  First, SSTF)算法"></a>最短寻找时间优先(Shortest  Seek  Time  First, SSTF)算法</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6SSTF.png" alt=""></p>
+<pre><code>SSTF算法选择调度处理的磁道是与当前磁头所在磁道距离最近的磁道，以使每次的寻找时间最短。当然，总是选择最小寻找时间并不能保证平均寻找时间最小，但是能提供比 FCFS算法更好的性能。这种算法会产生“饥饿”现象。
+
+若某时刻磁头正在 18号磁道，而在18号磁道附近频繁地增加新的请求，那么SSTF算法使得磁头长时间在18 号磁道附近工作，将使184号磁道的访问被无限期地延迟，即被“饿死”。
+
+例如，磁盘请求队列中的请求顺序分别为55、58、39、18、90、160、150、38、184，磁头初始位置是100磁道，釆用SSTF算法磁头的运动过程如图4-26所示。磁头共移动了 (10+32+3+16+1+20+132+10+24)=248 个磁道，平均寻找长度=248/9=27.5。
+</code></pre><h3 id="扫描-SCAN-算法（又称电梯算法）"><a href="#扫描-SCAN-算法（又称电梯算法）" class="headerlink" title="扫描(SCAN)算法（又称电梯算法）"></a>扫描(SCAN)算法（又称电梯算法）</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6SCAN.png" alt=""></p>
+<pre><code>SCAN算法在磁头当前移动方向上选择与当前磁头所在磁道距离最近的请求作为下一次服务的对象，如图4-27所示。由于磁头移动规律与电梯运行相似，故又称为电梯调度算法。SCAN算法对最近扫描过的区域不公平，因此，它在访问局部性方面不如FCFS算法和 SSTF算法好。
+
+例如，磁盘请求队列中的请求顺序分别为55、58、39、18、90、160、150、38、184，磁头初始位置是100 磁道。釆用SCAN算法时，不但要知道磁头的当前位置，还要知道磁头的移动方向，假设磁头沿磁道号增大的顺序移动，则磁头的运动过程如图4-27所示。磁头共移动了(50+10+24+94+32+3+16+1+20)=250 个磁道，平均寻找长度=250/9=27.8。
+</code></pre><h3 id="循环扫描-Circulair-SCAN-C-SCAN-算法"><a href="#循环扫描-Circulair-SCAN-C-SCAN-算法" class="headerlink" title="循环扫描(Circulair SCAN, C-SCAN)算法"></a>循环扫描(Circulair SCAN, C-SCAN)算法</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6C-SCAN.png" alt=""></p>
+<pre><code>在扫描算法的基础上规定磁头单向移动来提供服务，回返时直接快速移动至起始端而不服务任何请求。由于SCAN算法偏向于处理那些接近最里或最外的磁道的访问请求，所以使用改进型的C-SCAN算法来避免这个问题。
+
+釆用SCAN算法和C-SCAN算法时磁头总是严格地遵循从盘面的一端到另一端，显然，在实际使用时还可以改进，即磁头移动只需要到达最远端的一个请求即可返回，不需要到达磁盘端点。这种形式的SCAN算法和C-SCAN算法称为LOOK和C-LOOK调度。这是因为它们在朝一个给定方向移动前会查看是否有请求。注意，若无特别说明，也可以默认SCAN 算法和C-SCAN算法为LOOK和C-LOOK调度。
+</code></pre><h3 id="四种调度算法的比较"><a href="#四种调度算法的比较" class="headerlink" title="四种调度算法的比较"></a>四种调度算法的比较</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E6%AF%94%E8%BE%83.png" alt=""></p>
+<h2 id="外存组织方式"><a href="#外存组织方式" class="headerlink" title="外存组织方式"></a>外存组织方式</h2><pre><code>外存的组织方式有连续、链接、索引。
+感觉这个组织方式就这么三种，很多都是这三种！！！文件的是顺序、索引、索引顺序
+</code></pre><h3 id="连续组织方式"><a href="#连续组织方式" class="headerlink" title="连续组织方式"></a>连续组织方式</h3><pre><code>文件的连续组织方式，为每个文件分配了一片连续的磁盘空间，由此所形成的文件物理结构也就是顺序式的文件结构。
+</code></pre><h3 id="链接组织方式"><a href="#链接组织方式" class="headerlink" title="链接组织方式"></a>链接组织方式</h3><pre><code>为文件分配多个不连续的盘块，再通过每个盘块上的链接指针，将同属于一个文件的多个离散的盘块链接成一个链表。
+</code></pre><h4 id="隐式链接"><a href="#隐式链接" class="headerlink" title="隐式链接"></a>隐式链接</h4><pre><code>这个链接方式用的就是两个指针，但是只能用于顺序访问，随机访问的效率特别低！！！
+</code></pre><h4 id="显式链接"><a href="#显式链接" class="headerlink" title="显式链接"></a>显式链接</h4><pre><code>把文件物理块的指针显式的存放在内存的一张链接表中，这个表一个磁盘中只有一个。
+
+分配给文件的所有盘块号都放在该表中，故把这个表叫做文件分配表（FAT--File Allocation Table）
+</code></pre><h5 id="FAT和NTFS"><a href="#FAT和NTFS" class="headerlink" title="FAT和NTFS"></a>FAT和NTFS</h5><pre><code>FAT中引入了卷的概念，一个物理磁盘分成四个逻辑磁盘，每个逻辑磁盘就是一个卷！！！每个卷都专门划出一个单独的区域来存放自己的目录和FAT。（FAT12，FAT16，FAT32）
+
+FAT一开始是用盘块为分配单位的，后来变成了簇。
+
+簇是一组相邻的扇区，在FAT中它是作为一个虚拟扇区。在进行盘块分配时，是用簇来进行分配的。簇的大小一般是2n个盘块。
+
+NTFS（New Technology File System），使用的是64位磁盘地址。
+
+NTFS用簇来作为磁盘空间分配和回收的基本单位。一个文件占用若干个簇，一个簇只属于一个文件。NTFS具有与磁盘物理块无关的独立性。
+
+NTFS以卷为单位进行文件存储，存储在MFT（Master File Table）主控文件表。
+</code></pre><h3 id="索引组织方式"><a href="#索引组织方式" class="headerlink" title="索引组织方式"></a>索引组织方式</h3><pre><code>单级、多级、增量式
+</code></pre><h2 id="文件存储空间的管理"><a href="#文件存储空间的管理" class="headerlink" title="文件存储空间的管理"></a>文件存储空间的管理</h2><pre><code>不管是哪一种文件组织方式，都需要磁盘为文件分配盘块，所以必须要知道磁盘上哪些盘块是可用于分配的。故在文件分配磁盘的时候，除了FAT，还需要DAT，用于记录可供分配的存储空间的情况。
+
+注意，存储空间的基本分配单位都是盘块，不是字节。
+</code></pre><h3 id="空闲表法和空闲链表法"><a href="#空闲表法和空闲链表法" class="headerlink" title="空闲表法和空闲链表法"></a>空闲表法和空闲链表法</h3><h3 id="位示图法"><a href="#位示图法" class="headerlink" title="位示图法"></a>位示图法</h3><pre><code>位示图是利用二进制的一位来表示磁盘中一个盘块的使用情况，0表示盘块空闲，1表示盘块已被分配。磁盘上所有的盘块都有一个二进制与之对应。这样，所有盘块的位构成的一个集合，称为位示图。
+</code></pre><h3 id="成组链接法"><a href="#成组链接法" class="headerlink" title="成组链接法"></a>成组链接法</h3><h2 id="提高IO速度的途径"><a href="#提高IO速度的途径" class="headerlink" title="提高IO速度的途径"></a>提高IO速度的途径</h2><pre><code>1. Disk Cache
+
+    高速缓存，说的是CPU和内存之间的小容量高速存储器
+    磁盘高速缓存，说的是内存中为磁盘盘块设置的一个缓冲区，在缓冲区保存了一些盘块的副本。
+
+2. 提前读
+3. 延迟写
+4. 优化物理块布局
+5. 虚拟盘
+</code></pre><h1 id="IO设备管理"><a href="#IO设备管理" class="headerlink" title="IO设备管理"></a>IO设备管理</h1><pre><code>I/O管理概述（I/O控制方式、I/O软件层次结构）和I/O核心子系统（I/O调度概念、局速缓存与缓冲区、设备分配与回收、假脱机技术(SPOOLing)）。
+</code></pre><h2 id="I-O设备的层级结构"><a href="#I-O设备的层级结构" class="headerlink" title="I/O设备的层级结构"></a>I/O设备的层级结构</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/IO%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.png" alt=""></p>
+<pre><code>四个层次
+1. 用户I/O软件，实现与用户交互的接口。产生I/O请求，格式化I/O，SPOOLing
+2. 设备独立性软件，映射、保护、分块、缓冲、分配
+3. 设备驱动程序，设置设备寄存器
+4. 中断处理程序
+5. 硬件，执行I/O操作
+</code></pre><h2 id="I-O系统中个模块层次视图"><a href="#I-O系统中个模块层次视图" class="headerlink" title="I/O系统中个模块层次视图"></a>I/O系统中个模块层次视图</h2><pre><code>OS p181
+
+1. I/O系统的上下接口
+
+（1）I/O系统接口，I/O系统和上层软件的接口。
+    * 块设备接口，数据的存取和传递都是以数据块为单位，磁盘和光盘。传输速率高，可寻址。磁盘设备的I/O基本就用DMA方式
+    * 流设备接口，数据的存取和传递都是以字符为单位，键盘、打印机。速率低，不可寻址。流设备I/O基本使用中断驱动方式。字符设备不可寻址，get和put只能使用顺序存取方式。
+    * 网络通信接口，
+
+（2）软件/硬件接口，这个接口上面是各种中断处理程序和设备驱动程序，下面就是各种设备的控制器。
+
+2. I/O系统
+
+（1）底层是中断处理程序，直接与硬件交互
+（2）中间层是设备驱动程序，是进程和设备控制器的通信程序，把上层发来的抽象I/O请求转换成对I/O设备的具体命令和参数，并把它们装到设备控制器中的命令和参数寄存器中。
+（3）设备独立性软件，I/O软件独立于具体的物理设备（有编号）
+</code></pre><h2 id="I-O设备和设备控制器"><a href="#I-O设备和设备控制器" class="headerlink" title="I/O设备和设备控制器"></a>I/O设备和设备控制器</h2><pre><code>执行I/O操作的机械部分就是一般的I/O设备，执行控制I/O的电子部件则是设备控制器。
+</code></pre><h3 id="I-O设备"><a href="#I-O设备" class="headerlink" title="I/O设备"></a>I/O设备</h3><pre><code>1. 分类
+
+2. 设备和设备控制器的接口
+
+注意，设备本身也不会和CPU直接通信，而是设备去找设备控制器。
+</code></pre><h3 id="设备控制器"><a href="#设备控制器" class="headerlink" title="设备控制器"></a>设备控制器</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E8%AE%BE%E5%A4%87%E6%8E%A7%E5%88%B6%E5%99%A8.png" alt=""></p>
+<pre><code>设备控制器的主要功能是控制一个或多个I/O设备，实现I/O设备和计算机的数据交换。
+
+设备控制器是CPU和I/O设备的接口。
+
+设备控制器既需要和CPU通信，还要和设备通信。组成：
+
+    1. 设备控制器和处理机的接口。三个信号线：数据线，地址线，控制线
+    2. 设备控制器和I/O设备的接口。
+    3. I/O逻辑。用于实现对设备的控制。
+</code></pre><h2 id="I-O通道"><a href="#I-O通道" class="headerlink" title="I/O通道"></a>I/O通道</h2><pre><code>虽然CPU和I/O设备之间已经有了设备控制器，但是CPU的负担还是很大，所以在CPU和设备控制器之间又加了I/O通道，简称通道。
+
+其实就是把一些原来CPU处理的I/O任务转由I/O通道来执行。
+在设置了通道后，CPU只需要向通道发送一条I/O指令。通道在收到该指令后，便从内存中取出本次要执行的通道程序，然后执行该通道程序，仅当通道完成了I/O任务后，才向CPU发出中断请求。
+
+实际上，I/O通道就是一种特殊的处理机。它具有执行I/O指令的能力，并通过执行通道程序来控制I/O操作。
+
+    1. 通道指令类型单一，这是由于通道硬件比较简单，其所能执行的命令，主要局限于与I/O操作有关的指令。
+    2. 通道没有自己的内存，通道执行的通道程序是放在主机的内存中的，通道和CPU共享内存。
+</code></pre><h2 id="中断机构和中断处理程序"><a href="#中断机构和中断处理程序" class="headerlink" title="中断机构和中断处理程序"></a>中断机构和中断处理程序</h2><pre><code>中断是多道程序实现的基础，也是设备管理的基础。也是整个I/O系统的基础。
+</code></pre><h3 id="中断简介"><a href="#中断简介" class="headerlink" title="中断简介"></a>中断简介</h3><h4 id="中断和陷入"><a href="#中断和陷入" class="headerlink" title="中断和陷入"></a>中断和陷入</h4><pre><code>中断是指CPU对I/O设备发来的中断信号的一种响应。CPU暂停正在执行的程序，保留CPU环境后，自动地转去执行该I/O设备的中断处理程序，执行完成后，再回到断点，继续执行原来的程序。
+由于中断是外部设备引起的，所以叫做外中断。
+
+还有一种中断是由CPU内部事件所引起的中断，这类中断叫做内中断或者陷入。
+
+中断和陷入的区别主要就是这个信号的原来，一个来自外部设备，一个来自CPU内部。
+</code></pre><h4 id="中断向量表和中断优先级"><a href="#中断向量表和中断优先级" class="headerlink" title="中断向量表和中断优先级"></a>中断向量表和中断优先级</h4><pre><code>通常为每种设备配备对应的中断处理程序，并把程序的入口地址放在中断向量表的一个表项中，并为每一个设备的请求中断规定一个中断号，直接连接中断表。
+
+中断也是分优先级去执行中断处理程序的。
+</code></pre><h4 id="对多中断的处理"><a href="#对多中断的处理" class="headerlink" title="对多中断的处理"></a>对多中断的处理</h4><pre><code>1. 中断屏蔽：处理机执行一个中断处理程序的时候，屏蔽到所有的中断。
+2. 嵌套中断：CPU优先响应优先级高的中断，高优先级中断可以抢断低优先级的中断。
+</code></pre><h3 id="中断处理程序"><a href="#中断处理程序" class="headerlink" title="中断处理程序"></a>中断处理程序</h3><pre><code>1. 测定是否有未响应的中断信号。
+
+2. 保护被中断进程的CPU环境。
+
+3. 转入响应的设备处理程序。
+
+4. 中断处理
+
+5. 恢复CPU线程并退出中断
+</code></pre><h2 id="设备驱动程序"><a href="#设备驱动程序" class="headerlink" title="设备驱动程序"></a>设备驱动程序</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><pre><code>设备驱动程序属于低级的系统进程，它和一般的应用程序以及系统程序有明显的差异：
+    1. 驱动程序是实现与设备无关软件和设备控制器之间通信和转换的程序，具体说，它将抽象的I/O请求转成了具体的I/O操作后传入了控制器。又把设备控制器中所记录的设备状态和I/O操作完成情况，及时的反映给请求I/O的进程。
+
+    2. 驱动程序与设备控制器以及I/O设备的硬件特性紧密相关。
+
+    3. 驱动程序与I/O设备使用的I/O控制方式有关。常用的I/O控制方式有中断驱动和DMA方式。
+
+    4. 驱动程序的一部分是用汇编语言写的。
+
+    5. 驱动程序可重入。也就是一个驱动程序在一次调用完成前可以被再次调用、
+</code></pre><h3 id="设备驱动程序的处理过程"><a href="#设备驱动程序的处理过程" class="headerlink" title="设备驱动程序的处理过程"></a>设备驱动程序的处理过程</h3><pre><code>1. 将抽象要求转成具体指令
+
+2. 对请求服务进行校验，这个请求是不是能够被执行。
+
+3. 检查设备的状态
+
+4. 传送必要的参数
+
+5. 启动I/O设备
+</code></pre><h2 id="I-O设备控制方式"><a href="#I-O设备控制方式" class="headerlink" title="I/O设备控制方式"></a>I/O设备控制方式</h2><h3 id="程序直接控制方式"><a href="#程序直接控制方式" class="headerlink" title="程序直接控制方式"></a>程序直接控制方式</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E7%A8%8B%E5%BA%8F%E7%9B%B4%E6%8E%A5%E6%8E%A7%E5%88%B6.png" alt=""></p>
+<pre><code>计算机从外部设备读取数据到存储器，每次读一个字的数据。对读入的每个字，CPU需要对外设状态进行循环检查，直到确定该字已经在I/O控制器的数据寄存器中。在程序直接控制方式中，由于CPU的高速性和I/O设备的低速性，致使CPU的绝大部分时间都处于等待I/O设备完成数据I/O的循环测试中，造成了 CPU资源的极大浪费。在该方式中，CPU之所以要不断地测试I/O设备的状态，就是因为在CPU中没有釆用中断机构，使I/O设备无法向CPU报告它已完成了一个字符的输入操作。
+</code></pre><h3 id="中断驱动方式"><a href="#中断驱动方式" class="headerlink" title="中断驱动方式"></a>中断驱动方式</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E4%B8%AD%E6%96%AD%E9%A9%B1%E5%8A%A8.png" alt=""></p>
+<pre><code>从I/O控制器的角度来看，I/O控制器从CPU接收一个读命令，然后从外围设备读数据。一旦数据读入到该I/O控制器的数据寄存器，便通过控制线给CPU发出一个中断信号，表示数据已准备好，然后等待CPU请求该数据。I/O控制器收到CPU发出的取数据请求后，将数据放到数据总线上，传到CPU的寄存器中。至此，本次I/O操作完成，I/O控制器又可幵始下一次I/O操作。
+
+从CPU的角度来看，CPU发出读命令，然后保存当前运行程序的上下文（现场，包括程序计数器及处理机寄存器），转去执行其他程序。在每个指令周期的末尾，CPU检查中断。当有来自I/O控制器的中断时，CPU保存当前正在运行程序的上下文，转去执行中断处理程序处理该中断。这时，CPU从I/O控制器读一个字的数据传送到寄存器，并存入主存。接着， CPU恢复发出I/O命令的程序（或其他程序）的上下文，然后继续运行。
+
+中断驱动方式比程序直接控制方式有效，但由于数据中的每个字在存储器与I/O控制器之间的传输都必须经过CPU,这就导致了中断驱动方式仍然会消耗较多的CPU时间。
+
+因为中断驱动I/O比程序I/O方式更有效。但它仍是以字节为单位进行I/O的。每当完成一个字节的I/O时，控制器便要向CPU请求一次中断。
+</code></pre><h3 id="DMA方式-直接内存存取，Direct-Memory-Access"><a href="#DMA方式-直接内存存取，Direct-Memory-Access" class="headerlink" title="DMA方式(直接内存存取，Direct Memory Access)"></a>DMA方式(直接内存存取，Direct Memory Access)</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/DMA.png" alt=""></p>
+<pre><code>在中断驱动方式中，I/O设备与内存之间的数据交换必须要经过CPU中的寄存器，所以速度还是受限，而DMA（直接存储器存取）方式的基本思想是在I/O设备和内存之间开辟直接的数据交换通路，彻底“解放” CPU。DMA方式的特点是：
+
+* 基本单位是数据块。
+* 所传送的数据，是从设备直接送入内存的，或者相反。
+* 仅在传送一个或多个数据块的开始和结束时，才需CPU干预，整块数据的传送是在DMA控制器的控制下完成的。
+</code></pre><h4 id="DMA控制器"><a href="#DMA控制器" class="headerlink" title="DMA控制器"></a>DMA控制器</h4><p><img src="http://oxk1vrcj4.bkt.clouddn.com/DMA%E6%8E%A7%E5%88%B6%E5%99%A8.png" alt=""></p>
+<pre><code>CPU读写数据时，它给I/O控制器发出一条命令，启动DMA控制器，然后继续其他工作。之后CPU就把控制操作委托给DMA控制器，由该控制器负责处理。DMA控制器直接与存储器交互，传送整个数据块，每次传送一个字，这个过程不需要CPU参与。当传送完成后，DMA控制器发送一个中断信号给处理器。因此只有在传送开始和结束时才需要CPU的参与。
+
+DMA控制方式与中断驱动方式的主要区别是中断驱动方式在每个数据需要传输时中断CPU，而DMA控制方式则是在所要求传送的一批数据全部传送结束时才中断CPU；此外，中断驱动方式数据传送是在中断处理时由CPU控制完成的，而DMA控制方式则是在DMA 控制器的控制下完成的。
+</code></pre><h3 id="I-O通道控制方式"><a href="#I-O通道控制方式" class="headerlink" title="I/O通道控制方式"></a>I/O通道控制方式</h3><pre><code>DMA是把由字节单位的干预减少到了以数据块为单位的干预。
+I/O通道控制方式是把一个数据块的干预减少到了一组数据块的干预。
+
+通道是通过执行通道程序并与设备控制器共同实现对I/O设备的控制的。通道程序是由一系列通道指令所构成的。
+</code></pre><h2 id="与设备无关的I-O软件"><a href="#与设备无关的I-O软件" class="headerlink" title="与设备无关的I/O软件"></a>与设备无关的I/O软件</h2><pre><code>与I/O设备无关的软件是I/O系统的最高层软件。
+</code></pre><h2 id="用户层I-O软件"><a href="#用户层I-O软件" class="headerlink" title="用户层I/O软件"></a>用户层I/O软件</h2><h3 id="SPOOLing技术-假脱机技术"><a href="#SPOOLing技术-假脱机技术" class="headerlink" title="SPOOLing技术(假脱机技术)"></a>SPOOLing技术(假脱机技术)</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/SPOOLing.png" alt=""></p>
+<pre><code>为了缓和CPU的高速性与I/O设备低速性之间的矛盾而引入了脱机输入/输出技术。该技术是利用专门的外围控制机，将低速I/O设备上的数据传送到高速磁盘上；或者相反。 SPOOLing的意思是外部设备同时联机操作，又称为假脱机输入/输出操作，是操作系统中釆用的一项将独占设备改造成共享设备的技术。
+
+SPOOLing系统的主要特点有：提高了 I/O的速度；将独占设备改造为共享设备；实现 了虚拟设备功能。
+</code></pre><h2 id="缓冲区管理"><a href="#缓冲区管理" class="headerlink" title="缓冲区管理"></a>缓冲区管理</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E7%BC%93%E5%86%B2.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2018/01/09/Operating System（磁盘管理&IO设备管理）/" title="Operating System（磁盘管理&IO设备管理）">http://abelchao.com/2018/01/09/Operating System（磁盘管理&IO设备管理）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OS/" rel="tag"><i class="fa fa-tag"></i> OS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/08/Operating System（存储器管理&文件管理）/" rel="next" title="Operating System（存储器管理&文件管理）">
+                <i class="fa fa-chevron-left"></i> Operating System（存储器管理&文件管理）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/09/Operating System（杂一）/" rel="prev" title="Operating System（杂一）">
+                Operating System（杂一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#磁盘存储器管理"><span class="nav-number">1.</span> <span class="nav-text">磁盘存储器管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘结构"><span class="nav-number">1.1.</span> <span class="nav-text">磁盘结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘访问时间"><span class="nav-number">1.2.</span> <span class="nav-text">磁盘访问时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘调度算法"><span class="nav-number">1.3.</span> <span class="nav-text">磁盘调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先来先服务-First-Come-First-Served-FCFS-算法"><span class="nav-number">1.3.1.</span> <span class="nav-text">先来先服务(First Come First Served, FCFS)算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最短寻找时间优先-Shortest-Seek-Time-First-SSTF-算法"><span class="nav-number">1.3.2.</span> <span class="nav-text">最短寻找时间优先(Shortest  Seek  Time  First, SSTF)算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扫描-SCAN-算法（又称电梯算法）"><span class="nav-number">1.3.3.</span> <span class="nav-text">扫描(SCAN)算法（又称电梯算法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环扫描-Circulair-SCAN-C-SCAN-算法"><span class="nav-number">1.3.4.</span> <span class="nav-text">循环扫描(Circulair SCAN, C-SCAN)算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四种调度算法的比较"><span class="nav-number">1.3.5.</span> <span class="nav-text">四种调度算法的比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外存组织方式"><span class="nav-number">1.4.</span> <span class="nav-text">外存组织方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连续组织方式"><span class="nav-number">1.4.1.</span> <span class="nav-text">连续组织方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接组织方式"><span class="nav-number">1.4.2.</span> <span class="nav-text">链接组织方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#隐式链接"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">隐式链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显式链接"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">显式链接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#FAT和NTFS"><span class="nav-number">1.4.2.2.1.</span> <span class="nav-text">FAT和NTFS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引组织方式"><span class="nav-number">1.4.3.</span> <span class="nav-text">索引组织方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件存储空间的管理"><span class="nav-number">1.5.</span> <span class="nav-text">文件存储空间的管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#空闲表法和空闲链表法"><span class="nav-number">1.5.1.</span> <span class="nav-text">空闲表法和空闲链表法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位示图法"><span class="nav-number">1.5.2.</span> <span class="nav-text">位示图法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成组链接法"><span class="nav-number">1.5.3.</span> <span class="nav-text">成组链接法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提高IO速度的途径"><span class="nav-number">1.6.</span> <span class="nav-text">提高IO速度的途径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO设备管理"><span class="nav-number">2.</span> <span class="nav-text">IO设备管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O设备的层级结构"><span class="nav-number">2.1.</span> <span class="nav-text">I/O设备的层级结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O系统中个模块层次视图"><span class="nav-number">2.2.</span> <span class="nav-text">I/O系统中个模块层次视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O设备和设备控制器"><span class="nav-number">2.3.</span> <span class="nav-text">I/O设备和设备控制器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#I-O设备"><span class="nav-number">2.3.1.</span> <span class="nav-text">I/O设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备控制器"><span class="nav-number">2.3.2.</span> <span class="nav-text">设备控制器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O通道"><span class="nav-number">2.4.</span> <span class="nav-text">I/O通道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中断机构和中断处理程序"><span class="nav-number">2.5.</span> <span class="nav-text">中断机构和中断处理程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中断简介"><span class="nav-number">2.5.1.</span> <span class="nav-text">中断简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中断和陷入"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">中断和陷入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中断向量表和中断优先级"><span class="nav-number">2.5.1.2.</span> <span class="nav-text">中断向量表和中断优先级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对多中断的处理"><span class="nav-number">2.5.1.3.</span> <span class="nav-text">对多中断的处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断处理程序"><span class="nav-number">2.5.2.</span> <span class="nav-text">中断处理程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设备驱动程序"><span class="nav-number">2.6.</span> <span class="nav-text">设备驱动程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">2.6.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备驱动程序的处理过程"><span class="nav-number">2.6.2.</span> <span class="nav-text">设备驱动程序的处理过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O设备控制方式"><span class="nav-number">2.7.</span> <span class="nav-text">I/O设备控制方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序直接控制方式"><span class="nav-number">2.7.1.</span> <span class="nav-text">程序直接控制方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断驱动方式"><span class="nav-number">2.7.2.</span> <span class="nav-text">中断驱动方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DMA方式-直接内存存取，Direct-Memory-Access"><span class="nav-number">2.7.3.</span> <span class="nav-text">DMA方式(直接内存存取，Direct Memory Access)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DMA控制器"><span class="nav-number">2.7.3.1.</span> <span class="nav-text">DMA控制器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I-O通道控制方式"><span class="nav-number">2.7.4.</span> <span class="nav-text">I/O通道控制方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与设备无关的I-O软件"><span class="nav-number">2.8.</span> <span class="nav-text">与设备无关的I/O软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户层I-O软件"><span class="nav-number">2.9.</span> <span class="nav-text">用户层I/O软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SPOOLing技术-假脱机技术"><span class="nav-number">2.9.1.</span> <span class="nav-text">SPOOLing技术(假脱机技术)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓冲区管理"><span class="nav-number">2.10.</span> <span class="nav-text">缓冲区管理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

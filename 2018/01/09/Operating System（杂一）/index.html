@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="操作系统的概念有关">
+<meta name="keywords" content="OS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System（杂一）">
+<meta property="og:url" content="http://abelchao.com/2018/01/09/Operating System（杂一）/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="操作系统的概念有关">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/182671207361238975.png">
+<meta property="og:updated_time" content="2018-01-23T12:55:37.072Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Operating System（杂一）">
+<meta name="twitter:description" content="操作系统的概念有关">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/182671207361238975.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2018/01/09/Operating System（杂一）/"/>
+
+
+
+
+
+  <title>Operating System（杂一） | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2018/01/09/Operating System（杂一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Operating System（杂一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-09T14:10:23+08:00">
+                2018-01-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-01-23T20:55:37+08:00">
+                2018-01-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OS/" itemprop="url" rel="index">
+                    <span itemprop="name">OS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/182671207361238975.png" alt=""></p>
+<p><strong>操作系统的概念有关</strong></p>
+<a id="more"></a>
+<h1 id="杂"><a href="#杂" class="headerlink" title="杂"></a>杂</h1><pre><code>1. 文件系统的主要目的是实现对文件的按名存取
+
+2. 临界区并不是方法，而是进程访问临界资源的那部分代码。
+
+3. 自动变量外部不可见，不需要互斥量保护。
+
+4. 多线程并不能提高内存利用率，但是可以提高程序响应和CPU利用率。
+
+5. 执行系统调用可以被中断。
+
+6. 操作系统在计算机系统中位于硬件和用户软件之间。
+
+7. 分页的东西都会产生内部碎片。在内存的连续分配中，动态分配产生外部碎片、固定分区产生内部碎片。
+
+8. 一条指令的功能通过执行一个微程序来实现
+
+9. SPOOLing技术可以实现设备的虚拟分配。
+
+10. 模块并不是一个独立程序，因此进行单元测试之前，需要开发驱动软件或者存根软件。在软件结构中，底层模块无需编写存根软件。
+
+11. 进程调度的关键问题是调度算法的选择。
+
+12. 能直接与 CPU 交换信息的存储器是内存储器
+
+13. LRU 算法的实现需要很高的时间消耗，这是因为需要对所有页面的移位寄存器进行比较。
+
+14. 动态分区分配算法：首次适应、循环首次适应、最佳适应、最坏适应、快速适应、伙伴系统、哈希算法。
+
+15. 本地用户通过键盘登录系统时，首先获得键盘输入信息的程序是中断处理程序。
+
+16. 对于记录型信号量，当 s&lt;0 的时候，请求进程会阻塞。
+    对于整型信号量，当s&lt;=0的时候，请求进程不会阻塞，而是进入盲等状态
+
+17. 多级反馈队列的调度中就绪队列的设置不是像多级队列调度一样按作业性质划分，而是按时间片的大小划分
+
+18. 对于多关键字而言，倒排文件组织方便而又高效
+
+19. 磁盘和主存可以用来存储页表
+
+20. 信箱通信的最大好处是，发送方和接受方不必直接建立联系，没有处理时间上的限制。
+    发送方可以在任何时间发送信息，接收方也可以在任何时间收信。
+    信箱通信是一种间接通信。
+
+21. 命名空间大多数有一个顶级的命名空间System.net。
+
+22. 进程间的基本关系为同步与互斥（相互独立和相互制约）
+
+23. 文件系统中的最小存储逻辑单元就是Block，Block越大，inode越小，越适合大文件存储，反之成立。一个Block最多存放一个文件，一个Block放不下一个文件，就会占用另一个Block。
+
+24. 无论是中断程序还是子程序调用都不需要保存通用数据寄存器和通用地址寄存器的内容。在中断的时候程序计数器（PC）和程序状态字（PSW）需要保存，而子程度调动的时候，只需要保存程序计数器的内容。
+
+25. 单缓冲，在这里系统缓冲区是单工操作。 即，读写不能同时进行。
+
+26. 主存地址寄存器MAR和程序计数器PC的位数都取决于主存储器的容量，二者位数相等
+
+27. UNIX 的一个目录项包含了两个域，文件名（ 14 个字节）和节点的编号（ 2 个字节），这些参数决定了每个文件系统的文件数目为 64K
+
+28. 33MHz*32b=1056Mb/s=132MB/s
+
+29. 编译后形成的目标文件可以理解为一个小块一个小块的程序碎片，这样的小块一般都是具有从0开始的逻辑地址。 在和相应的库函数链接以后形成一个可执行的文件，需要修改这些小块的逻辑地址，使之统一有序。 所以在链接的过程中又把每个小段的逻辑地址按照一定的顺序组装成一个统一的逻辑地址范围，用来标识出此程序。 虽然编辑后的目标文件形成的小块内的也叫逻辑地址，但是和链接后形成的逻辑地址是截然不同的。
+
+30. |页号|物理块号|状态位P|访问字段A|修改位M|外存地址|
+
+   1）状态位P:用于指示该页是否已调入内存，供程序访问时参考；
+   2）访问字段A:用于记录本页在一段时间内被访问次数，供选择换出页面时参考；
+   3）修改位M：表示该页在调入内存后是否被修改过，供置换页面时参考；
+   4）外存地址：用于指出该页在外存上的地址，通常是物理块号，供调入该页时参考；
+
+31. 廉价磁盘冗余队列（RAID），用一台磁盘阵列控制器来同一管理和控制一组磁盘驱动器，从而组成一个大的磁盘系统（OS p266）
+
+RAID分级：
+    1) RAID0，必须要有两个以上的硬盘驱动器。在所有的级别中，RAID 0的速度是最快的。但是RAID 0没有冗余功能的，如果一个磁盘(物理)损坏，则所有的数据都无法使用。RAID0实现了带区组，数据并不是保存在一个硬盘上，而是分成数据块保存在不同驱动器上。
+    2) RAID1，当主硬盘损坏时，镜像硬盘就可以代替主硬盘工作。镜像硬盘相当于一个备份盘，可想而知，这种硬盘模式的安全性是非常高的，RAID 1的数据安全性在所有的RAID级别上来说是最好的。但是其磁盘的利用率却只有50%，是所有RAID级别中最低的。把用户写入硬盘的数据百分之百地自动复制到另外一个硬盘上。
+    3）RAID3，具有并行传输功能的磁盘阵列，只利用一台奇偶校验盘来完成数据的校验功能。例如，当阵列中只有7个盘的时候，可利用6个盘作为数据盘，一个盘作为校验盘，利用率6/7
+    4)RAID5，分布式奇偶校验的独立磁盘结构，把数据和相对应的奇偶校验信息存储到组成RAID5的各个磁盘上。
+
+32. 文件系统在内存中维护唯一的一张文件分区表，其中保存了系统所有已打开文件的FCB。
+
+33. CPU不直接访问的存储器是硬盘存储器
+
+34. 虚存管理和实存管理的主要区别是实存要求一程序全部装入内存才开始运行，虚存允许程序在执行的过程中逐步装入
+
+35. 读写锁在写加锁状态时，其他进行写操作线程会阻塞. 写锁就是防止其他进程读或写. 读锁就是防止在读的时候有写进程进入
+
+36. 分段：不定长，连续;分页：定长，可能连续可能不连续
+
+37. 动态分区的内存回收，只有上下都相邻空闲区的时候，才会使空闲区数减少，而上下都不是的话，空闲区数增加，如果一个是一个不是，那么并不会改变空闲区数。
+
+38. 符号链接就是快捷方式啊，删除文件，快捷方式不会被删除，但是会失效
+
+39. 虚存是充分利用了地址空间
+
+40. 顺序文件也可以用随机存储的方式；链接文件只能根据链去找下一个，依次访问。
+
+41. 线程共享的内容：进程代码块、进程公有数据、进程打开的文件描述符、信号的处理器、进程的当前目录、进程用户ID和进程组ID、地址空间。
+
+42. 线程独有的内容：线程ID、寄存器组的值、线程的堆栈、错误返回码、线程的信号屏蔽量。
+
+43. 分页式存储管理中，地址转换工作是由硬件完成的。
+
+44. CSCAN并不能避免磁臂粘着现象。在SSTF、SCAN及CSCAN几种调度算法中，都有可能出现磁臂停留在某个位置不动的情况。
+
+有一个或几个进程对某一磁道有着较高的访问频率，即他们反复地请求对一个磁道进行了I/O请求，从而垄断了整个磁盘设备，这一现象称为磁臂粘着。 
+
+45. 位示图是用来磁盘空间管理的，分配磁盘空间给文件。
+
+46. 进程通信没有全局变量，别看错了。共享内存才能传递信息。
+
+47. 数据总线位数对应相同的部件就是CPU。
+
+48. 虚拟存储器的物质基础就是大容量的辅存，一定容量的主存，和地址变换机构。
+
+49. 不管是分页，分区，分段，都是将一部分程序先调到内存中运行，对并发性并没有影响。但是内存的利用率和系统的吞吐量肯定是提高了。
+
+50. 操作系统对进程的管理和控制主要是通过控制原语言实现的。
+
+51. 文件的物理结构不仅与外存的分配方式相关，还与存储介质的特性相关，通常在磁带上只适合使用顺序结构。采用顺序结构的文件既适合进行顺序访问，也适合进行随机访问。
+
+52. 进程主要组成部分包括：程序、数据、PCB
+
+53. 动态重定位过程依赖于，重定位寄存器，地址变换机构，目标程序。
+
+54. Unix是一个分时OS
+
+55. 资源静态分配法破坏了死锁产生的请求-保持条件来预防死锁的发生。
+
+56. 文件的保密是防止文件被窃取。
+
+57. 主线程改变会影响到其他线程；线程之间可以直接通信，但是进程之间必须通过IPC。
+
+58. I/O交通管制程序的主要功能是管理设备、控制器和通道。
+
+59. 在段页式存储管理系统中,当访问主存中的一条指令或数据时最多访问三次主存。
+
+60. 文件操作的唯一依据是文件句柄。
+
+61. fork生成的进程是当前进程的一个相同副本，fork系统调用与clone系统调用的工作原理基本相同
+
+62. 引入缓冲的原因：缓冲CPU和I/O设备间速度不匹配的矛盾、减少对CPU的中断频率，放宽对蓄洪大响应时间的限制、提高CPU和I/O设备之间的并行性
+
+63. 解决死锁问题通常意味着牺牲资源的效率
+
+64. 总线位宽是指总线能够同时传送的二进制数据的位数。
+
+65. 在采用请求分页存储管理的系统中，如果页面不在内存则发生缺页中断，它属于程序中断。
+
+66. 管道是指用于连接一个读进程和一个写进程以实现进程之间通信的一种共享文件。向管道提供输入的是发送进程，也称为 写进程，负责向管道输入数据，数据的格式是字符流。接受管道 数据的接受进程为读进程。
+
+67. mrb用于win平台，gpt主要用于mac（苹果）
+
+68. 高优先级的抢占CPU，使得原来处于运行状态的进程转变为就绪状态。
+
+69. 获得spinlock未果，进程会进入等待状态。
+
+70. 当前微机上运行的Windows属于多任务操作系统
+
+71. 进程上下文实际上是进程执行活动全过程的静态描述。
+
+72. 用P,V操作管理临界区的时候，信号量的初值一般应定义为1.
+
+73. 进程从CPU退下时，进程会将“现场&quot;信息保存在自己的栈空间里，不是系统栈，系统栈用作它用。
+
+74. 磁盘簇个数：10*1024*1024KB/4KB=2621440bit，一个簇能容纳的bit数：4*1024*8= 32768bit 。则存放该位图所需簇的个数 2621440/ 32768=80个簇
+
+75. 外部中断处理过程， PC 值由中断隐指令自动保存，而通用寄存器内容由操作系统保存。
+
+76. 导致进程灌浆的典型操作只有四个：用户登录、作业调度、提供服务、应用请求。
+
+77. FCFS置换算法中可能会产生&quot;分配给进程的内存块增加后，反而可能导致缺页次数增加&quot;的现象。
+
+78. FCFS调度算法不利于短作业
+
+79. CPU发出的访问存储器的地址是物理地址
+
+80. 操作系统中采用缓冲技术，能够减少CPU的中断次数，从而提高资源的利用率。
+
+81. 在UNIX中，文件系统和设备驱动程序之间的接口是设备开关表
+
+82. 顺序文件不可随机存取。而随机存取的文件都是可以顺序存取的。
+
+83. PC的硬盘接口大多采用SATA接口
+
+84. 系统调用，指的是运行在使用者空间的程序向操作系统内核请求需要更高权限运行的服务。
+
+85. 处理越界，只有已经加载到内存的数组或其他单元才可能出现访问越界的情况，而发生缺页中断，说明还没有把数据装载到内存。
+
+86. 一旦缺页，就会置换页和分配内存。
+
+87. 单缓冲系统，从磁盘到缓冲区的时间，缓冲区到用户区，CPU处理总的时长等于，max(磁盘到缓冲区，CPU处理)+缓冲区到用户区
+
+88. 文件的逻辑结构：连续、多重、转置、顺序；物理存储结构：顺序（连续，串联）、链接、索引；目录结构：一级、二级、树形、无环图
+
+89. 操作系统就只是核心系统软件。
+
+90. 文件管理系统管理的对象有文件、目录和磁盘存储空间。一切皆文件。
+
+91. 虚拟存储的实现是基于程序局部性原理，其实质是借助外存将内存较小的物理地址空间转化为较大的逻辑地址空间
+
+92. 在硬件和环境相同的条件下，一个作业在分页存储管理系统中运行的时间最长。
+
+93. 位示图用于管理&quot;页式存储管理&quot;中的主存空间，磁盘空间的分配和回收。
+
+94. 响应时间，从发出请求到系统做出反应的时间。请求--&gt;处理--&gt;回显
+
+95. 在哪个硬盘逻辑盘上设置虚拟内存以及虚拟内存的容量都可以由用户来设定
+
+96. 进程之间的通讯还有文件和记录锁定。
+
+97. 分页或者分段每要访问一个数据，都须访问两次内存。而在段页式系统中，为了获得一条指令或数据，须三次访问内存。
+
+98. 进程调度并不需要硬件的支持。而中断系统、地址映射、时钟管理都是需要硬件支持的。
+
+99. 在Linux文件系统中，是以块为单位存储信息的，为了找到某一个文件在存储空间中存放的位置，用I结点对一个文件进行索引。I节点包含了描述一个文件所必须的全部信息。所以I结点是文件系统管理的一个数据结构。
+
+100. 上下切换，也就是进程切换，就是指CPU从一个进程或线程切换到另一个进程或线程。
+同时进程切换只能发生在内核态。
+上下文切换的内容有，CPU寄存器，进程状态，内存管理信息。
+进程调度并不属于上下文切换的内容。
+
+101. 进程间通讯的方式中共享内存的访问速度最快。
+
+102. CPU可以直接访问内存，通道在内存和设备管理器中间的一级。
+
+103. Client-Server模式的进程间通信方式：远程方法调用、远程过程调用、套接字编程。而共享内存是进程间通信速度最快的，但必须是一个主机，比如共享内存中的消息传递系统。
+
+104. 在Window操作系统中，剪贴板就是内存中的一块区域。
+
+105. 文件系统中分配存储空间的基本但是就是块。
+
+106. 顺序文件适合建立在顺序存储的设备上，而不适合建立在磁盘上。
+
+107. 计数定时查询方式下，若每次技术都从0开始，则设备号小的设备优先级高
+
+108. 伙伴系统中，一个内存块大小是8KB，起始地址是224KB，则其伙伴的地址是224+8=232
+
+109. 银行家算法中的数据结构包括有可利用资源向量Avaliable、最大需求矩阵Max、分配矩阵Allocation、需求矩阵Need，则Need[i,j]=Max[i,j]-Allocation[i,j]；
+
+110. 死锁预防：静态资源分配法（破坏&quot;请求保持&quot;），资源顺序分配（破坏&quot;循环等待&quot;），剥夺控制法（破坏&quot;不可抢占&quot;）
+
+111. 避免死锁：银行家算法，避免从进去不安全区域
+
+112. 预防死锁：资源分配图、资源分配图简化
+
+113. 解除死锁：抢占资源（从一个或多个进程中抢占足够多的资源）、终止进程（终止所有进程、逐个终止进程）
+
+114. 请求页式存储管理中，采用动态重定位和内存动态分配。
+
+115. 在X86上x=y可不是一个原子操作。
+
+116. 即时是就绪队列为空，唤醒的线程也不一定能马上执行，因为可能还有进程就在运行态。而对于抢占式调度方式，唤醒进程优先级比执行进程高，可以直接抢占。
+
+117. 虚存的基础是局部性原理
+
+118. 线程的粒度小于进程，通常多线程比多进程并发性更高
+
+119. 在MS-DOS中采用的是显式链接文件结构。
+
+120. 隐式链接分配，每个文件对应一个磁盘块的链表，磁盘块分布在磁盘的任何地方，除了最后一个盘块外，每一个盘块都有指向下一个盘块的指针，这些指针对用户是透明的。
+
+121. 显式链接分配：是指把用于链接文件各物理块的指针，显式地存放在内存的一张链接表中。 该表在整个磁盘仅设置一张，每个表项中存放链接指针，即下一个盘块号。
+
+122. yield（）暂时交出 cpu 控制权，从 running 状态转为 runnalbe 状态，但是仍有 可能被调度，sleep（）线程指定休眠一段时间。
+
+123. 计算机开机后，操作系统最终被加载到RAM
+
+124. 硬盘的存取访问时间分为三个部分： 寻道时间Ts，旋转延迟时间Tr和传送时间Tt。注意，没有定位时间！！！
+
+125. 死锁的四个条件那可是必要条件，不是充分条件，也就是说不满足一定不死锁，满足了也不一定死锁。
+
+126. 时间片轮转法和高响应比优先调度算法对时间短的进程有利。
+
+127. 指令一般由两部分组成。操作码：该指令完成操作的类型或性质；地址码：操作对象的地址。
+
+128. 连续文件不利于文件的动态增长。
+
+129. 进程的执行过程是从CPU开始，然后I/O，然后两个交替执行，最后在CPU区间停止。
+
+130. 总线的主要技术指标有3个，其中的总线带宽是指单位时间内总线上传送的数据量，反映了总线数据传输速率。
+
+131. 碎片整理的目的是优化次磁盘文件存储。
+
+132. 每按键一次，或者鼠标点击一次，都产生一个中断，称为按键中断，执行中断响应程序，
+
+133. 周转时间=等待时间+运行时间
+
+134. 在存储管理中，采用覆盖与交换技术的目的是减少程序占用的主存空间，使用的方式是利用虚存在逻辑上扩充主存容量。
+
+135. 临界资源是定义在共享资源上的，临界资源一定是共享资源。
+而定义是，每次仅允许一个进程访问的资源。
+属于临界资源的硬件有打印机、磁带机等，软件有消息缓冲队列、变量、数组、缓冲区等。诸进程间应采取互斥方式，实现对这种资源的共享。
+
+136. UNIX中的文件系统采用的是索引文件结构，在索引节点中建立有13个地址项。
+
+137. 在Window中，快速格式化只能对曾经格式化过的磁盘。
+
+138. 在Linux系统中，硬链接不可以跨文件系统，链接文件的i节点与被链接文件的i节点相同。
+
+139. 请求分页的时候，物理内存指的是实际的内存，而虚拟内存是指磁盘交换区，并不是真正的虚拟内存的意思。
+对于页面置换算法而言，当发生缺页中断时，都是要从内存中找到一个不需要的块换出去（物理内存的释放），然后将需要的页面从磁盘的交换区中换进来（虚拟内存的分配）。
+
+140. 当所分配的物理块数增大而页故障数不减反增,这就是Belady异常。
+只有FIFO算法可能出现Belady 异常，而LRU和OPT算法永远不会出现Belady异常。
+
+141. 进程之间存在直接制约关系（同步问题）和间接制约关系（互斥问题）；同步问题是存在逻辑关系的进程之间相互等待所产生的制约关系，互斥问题是存在逻辑关系的进程竞争使用资源所发生的制约关系。
+
+142. 短作业优先调度，平均周转时间最短，等待时间最短
+
+143. Dos是磁盘操作系统，就是人与机器之前的沟通的桥梁，并不具有线程管理的特性。
+
+144. 计算机的资源只有硬件资源和软件资源的区别
+
+145. 抖动的根本原因就是因为系统中运行的进程太多了，所以分配给每一个进程的物理块太少，不能满足进程正常运行的基本要求，致使每个进程在运行时，频繁的出现缺页，必须请求系统将所缺的页调度内存。
+
+146. 程序是没有状态的，只有进程才有状态。
+
+147. I/O通道控制方式是CPU干预最少的方式
+
+148. PCB中并不存在程序的完整代码
+
+149. 特权指令是只允许OS使用的，而不允许用户使用。系统调用这个时候就不是特权指令了。
+
+150. 页式-内零头，段式-外零头
+
+151. UNIX系统中，磁盘空闲空间管理所采用的方法是成组链接法！！！
+
+152. 当所读文件的数据不在内存时，产生中断（缺页中断），原进程进入阻塞状态，直到所需数据从外存调入内存后，才将进程唤醒。
+
+153. read系统调用通过陷入（内中断）将CPU从用户态转到核心态，从而获取OS提供的服务。
+
+154. 读一个文件，首先用Open系统调用打开文件。Open中的参数包括文件的路径名和文件名。但是read只需要使用Open返回的文件描述符，并不使用文件名作为参数。
+
+155. Linux进程间通信：管道、信号、消息队列、共享内存、信号量、套接字(socket)
+Linux线程间通信：互斥量（mutex），信号量，条件变量
+Windows进程间通信：管道、消息队列、共享内存、信号量 （semaphore） 、套接字(socket)
+Windows线程间通信：互斥量（mutex），信号量（semaphore）、临界区（critical section）、事件（event）
+
+156. 并发性：指多个进程实体同存于内存中，且在一段时间内同时运行。并发性是进程的重要特征，同时也成为操作系统的重要特征。
+     动态性：进程的实质是进程实体的一次执行过程，因此，动态性是进程最基本的特征。
+     独立性：进程实体是一个独立运行、独立分配资源和独立接受调度的基本单位。
+     异步性：指进程按各自独立的、不可预知的速度向前推进，或者说实体按异步方式运行。
+
+157. 单缓冲区总时间=(磁盘写入缓冲区时间+缓冲区读出时间)*磁盘块数+CPU处理最后一块数据的时间=(80+60)*10+40=1440us
+
+158. 双缓冲总时间=磁盘写入缓冲区时间*磁盘块数+读出最后一块数据时间+CPU分析最后一块数据时间=80*10+60+40=900us
+
+159. 访问局部性（locality of reference）满足进程要求时可以减少换页错误。
+
+160. 虚拟存储器的目的就是为了扩充内存容量。
+
+161. 多线程没有内存隔离，单个线程崩溃会导致整个应用程序的退出。
+
+162. PCB只有OS可以修改
+
+163. 页表的长度=2^n,n为页表长度
+
+164. 进程的特点：动态性、并发性、独立性、异步性（即不确定性）
+
+165. 系统调用：调用程序是运行在用户态，而被调用的程序是运行在系统态
+
+166. 批处理系统不允许用户随时干涉自己程序的运行。
+
+167. 磁带、磁盘都是顺序存取存储器
+
+168. 
+</code></pre>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2018/01/09/Operating System（杂一）/" title="Operating System（杂一）">http://abelchao.com/2018/01/09/Operating System（杂一）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OS/" rel="tag"><i class="fa fa-tag"></i> OS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/09/Operating System（磁盘管理&IO设备管理）/" rel="next" title="Operating System（磁盘管理&IO设备管理）">
+                <i class="fa fa-chevron-left"></i> Operating System（磁盘管理&IO设备管理）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/11/Java刷题-链表/" rel="prev" title="Java刷题(链表)">
+                Java刷题(链表) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#杂"><span class="nav-number">1.</span> <span class="nav-text">杂</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

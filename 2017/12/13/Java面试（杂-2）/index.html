@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Interview," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="这一节复习了：1. JDK中的工具；2. JDK &amp;amp; JRE；3. Struts1 &amp;amp; Struts2； 4. Servlet生命周； 5. 跟踪会话技术的实现手段； 6. Object类的方法； 7. 字节流和字符流的基础； 8. 杂的知识点；9.Java修饰符； 10. 基本数据类型的默认值； 11. 内部类的区别； 12. Java中的关键字； 13. floor &amp;amp">
+<meta name="keywords" content="Interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试（杂-2）">
+<meta property="og:url" content="http://abelchao.com/2017/12/13/Java面试（杂-2）/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="这一节复习了：1. JDK中的工具；2. JDK &amp;amp; JRE；3. Struts1 &amp;amp; Struts2； 4. Servlet生命周； 5. 跟踪会话技术的实现手段； 6. Object类的方法； 7. 字节流和字符流的基础； 8. 杂的知识点；9.Java修饰符； 10. 基本数据类型的默认值； 11. 内部类的区别； 12. Java中的关键字； 13. floor &amp;amp">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/JSEEE.jpg">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/JDK_JRE.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Servlet.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/keys.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/basicNums.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/thread.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/operate.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Transcation_1.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Iso_1.png">
+<meta property="og:updated_time" content="2018-01-18T08:54:22.525Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java面试（杂-2）">
+<meta name="twitter:description" content="这一节复习了：1. JDK中的工具；2. JDK &amp;amp; JRE；3. Struts1 &amp;amp; Struts2； 4. Servlet生命周； 5. 跟踪会话技术的实现手段； 6. Object类的方法； 7. 字节流和字符流的基础； 8. 杂的知识点；9.Java修饰符； 10. 基本数据类型的默认值； 11. 内部类的区别； 12. Java中的关键字； 13. floor &amp;amp">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/JSEEE.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2017/12/13/Java面试（杂-2）/"/>
+
+
+
+
+
+  <title>Java面试（杂-2） | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2017/12/13/Java面试（杂-2）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java面试（杂-2）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-13T11:44:00+08:00">
+                2017-12-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-01-18T16:54:22+08:00">
+                2018-01-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/JSEEE.jpg" alt=""></p>
+<p><strong>这一节复习了：1. JDK中的工具；2. JDK &amp; JRE；3. Struts1 &amp; Struts2； 4. Servlet生命周； 5. 跟踪会话技术的实现手段； 6. Object类的方法； 7. 字节流和字符流的基础； 8. 杂的知识点；9.Java修饰符； 10. 基本数据类型的默认值； 11. 内部类的区别； 12. Java中的关键字； 13. floor &amp; ceil &amp; round； 14. for &amp; switch； 15. 关于子父类中重写方法的区别，静态方法和非静态方法; 16. 事务的属性的种类； 17. 运算符优先级 18. 子父类静态块、Main方法、构造块、构造方法执行顺序； 19. 静态与非静态调用</strong></p>
+<a id="more"></a>
+<h1 id="java工具"><a href="#java工具" class="headerlink" title="java工具"></a>java工具</h1><pre><code>1. jar 将许多文件组合成一个jar文件
+
+2. javac 编译器
+
+3. javadoc 从程序源码中抽取类、方法、成员等注释形成一个和源代码配套的API帮助文档。
+
+4. javah 把java代码声明的JNI(Java Native Interface)方法转换成C/C++头文件。
+
+5. java.exe 执行编号好的.class文件
+
+6. jdb.exe Java调试器
+
+7. javaprof.exe 剖析工具
+</code></pre><h1 id="JDK-amp-JRE"><a href="#JDK-amp-JRE" class="headerlink" title="JDK &amp; JRE"></a>JDK &amp; JRE</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/JDK_JRE.png" alt="JDK"></p>
+<p><strong>JRE（Java Runtime Environment），Java程序的运行环境</strong></p>
+<p><strong>JDK（Java Development Kit），Java的开发工具包，包含了JRE，各种类库和工具</strong></p>
+<p><strong>JDK是Java开发工具，不仅包含了Java程序运行的JRE，还提供了一系列编译，运行等工具，如javac,java,javaw等，JRE只是Java程序的运行环境，它最核心的就是JVM和Java的核心类库。</strong></p>
+<p><strong>如果只是想运行Java程序，有JRE就可以了，但是要编写，就要有JDK</strong></p>
+<h1 id="Struts1-amp-Struts2"><a href="#Struts1-amp-Struts2" class="headerlink" title="Struts1 &amp; Struts2"></a>Struts1 &amp; Struts2</h1><p><strong>Action类</strong></p>
+<pre><code>1. Struts1中Action类要求继承一个抽象基类。
+2. Struts2中Action类可以实现一个Action接口，但是不是必须的。（ActionSupport）
+</code></pre><p><strong>线程模式</strong></p>
+<pre><code>1. Struts1 Action是单例模式，要求线程安全。（Action资源必须是线程安全的或同步的）
+2. Struts2 Action为每一个请求产生一个实例，因此没有线程安全问题。
+</code></pre><p><strong>Servlet依赖</strong></p>
+<pre><code>1. Struts1 Action依赖Servlet API，
+2. Struts2 Action不依赖容器
+</code></pre><p><strong>表达式语言</strong></p>
+<pre><code>1. Struts1 整合了JSTL（JavaServer Pages Standard Tag Library - JSP标准标签库）
+2. Struts2 不但有JSTL，还有OGNL（Object Graph Navigation Language - 对象图导航语言）
+</code></pre><h1 id="synchronized-amp-volatile"><a href="#synchronized-amp-volatile" class="headerlink" title="synchronized &amp; volatile"></a>synchronized &amp; volatile</h1><p><strong>synchronized支持可见性和原子性，volatile只支持可见性。</strong></p>
+<h1 id="JDK1-8以上支持的锁"><a href="#JDK1-8以上支持的锁" class="headerlink" title="JDK1.8以上支持的锁"></a>JDK1.8以上支持的锁</h1><pre><code>1. 自旋锁
+2. 自旋锁的其他种类
+3. 阻塞锁
+4. 可重入锁 一个线程可以多次进入同一个锁。ReentrantLock
+5. 读写锁 多个读可以并行，但是写是互斥的，写优先于读
+6. 互斥锁 一次只能有一个线程拥有锁
+7. 悲观锁 修改数据时加锁，认为只要修改就有别的线程来打扰
+8. 乐观锁 修改数据时不加锁，认为修改的时候不会有线程来打扰
+9. 公平锁 哪个线程先运行，就先得到锁
+10. 非公平锁 和线程运行顺序无关，都是随机获得锁
+11. 对象锁
+12. 线程锁
+13. 偏向锁
+14. 锁粗话
+15. 锁消除
+16. 锁膨胀
+17. 信号量
+18. 轻量级锁
+</code></pre><h1 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/Servlet.png" alt="Servlet"></p>
+<p><strong>每一次请求来到容器时，会产生HttpServletRequest与HttpServlceResponse对象，并在调用service()方法时当做参数传入。</strong></p>
+<h1 id="实现会话跟踪"><a href="#实现会话跟踪" class="headerlink" title="实现会话跟踪"></a>实现会话跟踪</h1><pre><code>1. 隐藏表单域：&lt;input type=&quot;hidden&quot;&gt;，非常适合不需要大量数据存储的会话引用。
+
+2. URL重写：URL可以在后面附加参数，和服务器的请求一起发送
+
+3. Cookie
+
+4. Session    
+</code></pre><h1 id="Object类中的方法"><a href="#Object类中的方法" class="headerlink" title="Object类中的方法"></a>Object类中的方法</h1><pre><code>1. clone：实现对象的浅复制，只有这个类实现了Cloneable接口才能用这个方法，否则会抛出CloneNotSupportedException。
+
+2. getClass：final方法，获得运行时类型对象名。包名+类名
+
+3. toString
+
+4. hashCode：得到对象的hashCode
+
+5. equals：比较，一般和hashCode一起用，都需要重写。
+
+6. finalize：对象经过可达性分析后，和GC Roots没有引用链，被标记一次，放入F-Queue，对象执行这个方法（被本类重写且第一次执行），如果方法内让被标记对象得到引用，则对象被移除被GC清理的集合，否则，对象被标记第二次，直接就被GC。
+
+7. wait：等待，抛出InterruptedException，释放锁。
+
+8. notify：唤醒调用这个方法的对象上的等待某个线程。 
+
+9. notifyAll：唤醒调用这个方法的对象上等待的所有线程。
+
+
+在Object方法中，hashCode()和equals()基本上就用来判断两个对象是否相等的。而wait、notify、notifyAll就是线程方法。
+
+而在JDK1.5中，出现了Condition，这个类就是用来替代Object的这三个方法，await、signal、signalAll，
+</code></pre><h1 id="for循环和switch的执行顺序"><a href="#for循环和switch的执行顺序" class="headerlink" title="for循环和switch的执行顺序"></a>for循环和switch的执行顺序</h1><h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p><strong>for(语句一；语句二；语句三)</strong></p>
+<p><strong>执行语句一，判断语句二的条件是不是满足，满足就执行for的循环体，不满足就不进入for，执行完循环体，语句三可以执行，执行完后又开始执行语句二判断条件。</strong></p>
+<p><strong>语句三的执行次数和循环体执行次数一样，但是语句二要多一次</strong></p>
+<h2 id="switch…case"><a href="#switch…case" class="headerlink" title="switch…case"></a>switch…case</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> x=<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">switch</span>(x)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">				System.out.println(<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">				System.out.println(<span class="number">5</span>);</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">				System.out.println(<span class="number">2</span>);</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				System.out.println(<span class="string">"00"</span>);</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">				System.out.println(<span class="number">3</span>);</span><br><span class="line">			<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">				System.out.println(<span class="number">4</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"end"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	2</span></span><br><span class="line"><span class="comment">	00</span></span><br><span class="line"><span class="comment">	3</span></span><br><span class="line"><span class="comment">	4</span></span><br><span class="line"><span class="comment">	end</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p><strong>switch(x)，x会从第一个往下找，一旦找到了就顺序执行了，一旦没有找到，而且有default，那么就从default开始顺序执行。</strong></p>
+<p><strong>一旦遇到了break，直接跳出。</strong></p>
+<p><strong>switch中的x支持int往后的基本数据类型（byte、char/short、int），boolean，枚举，String(JDK1.7以后)，一些包装类（Character、Integer、Byte、Short）</strong></p>
+<h1 id="Java中的关键字"><a href="#Java中的关键字" class="headerlink" title="Java中的关键字"></a>Java中的关键字</h1><p><strong>关键字都是小写，false，true是boolean常量，null是null常量也不是关键字</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/keys.png" alt="keys"></p>
+<h1 id="基本数据类型的默认值"><a href="#基本数据类型的默认值" class="headerlink" title="基本数据类型的默认值"></a>基本数据类型的默认值</h1><p><strong>只有long和double是64位，8个字节；int和float都是4个字节，32位，一个字节8个bits位</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/basicNums.png" alt="Basic"></p>
+<p><strong>八种基本数据类型被分为四类：</strong></p>
+<pre><code>1. 整数类型：byte、short、int、long
+2. 浮点类型：float、double
+3. 逻辑类型：boolean
+4. 字符类型：char
+</code></pre><h1 id="线程状态转换"><a href="#线程状态转换" class="headerlink" title="线程状态转换"></a>线程状态转换</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/thread.png" alt="Thread"></p>
+<h1 id="round-amp-ceil-amp-floor"><a href="#round-amp-ceil-amp-floor" class="headerlink" title="round() &amp; ceil() &amp; floor()"></a>round() &amp; ceil() &amp; floor()</h1><pre><code>**floor()返回不大于的最大整数（double），取小的**
+**ceil()返回不小于的最小整数（double），取大的**
+**round()四舍五入，入的时候是到大于它的整数！！！（int、long）**
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String arg[])</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	System.out.println(Math.round(-<span class="number">0.4</span>));</span><br><span class="line">    	System.out.println(Math.round(-<span class="number">1.4</span>));</span><br><span class="line">    	System.out.println(Math.round(-<span class="number">1.6</span>));</span><br><span class="line">    	System.out.println(Math.ceil(-<span class="number">0.4</span>));</span><br><span class="line">    	System.out.println(Math.ceil(-<span class="number">1.4</span>));</span><br><span class="line">    	System.out.println(Math.floor(-<span class="number">0.4</span>));</span><br><span class="line">    	System.out.println(Math.floor(-<span class="number">1.4</span>));</span><br><span class="line">    	</span><br><span class="line">    	System.out.println(<span class="string">"--------------"</span>);</span><br><span class="line">    	</span><br><span class="line">    	System.out.println(Math.round(<span class="number">0.4</span>));</span><br><span class="line">    	System.out.println(Math.round(<span class="number">1.4</span>));</span><br><span class="line">    	System.out.println(Math.round(-<span class="number">1.4</span>));</span><br><span class="line">    	System.out.println(Math.ceil(<span class="number">0.4</span>));</span><br><span class="line">    	System.out.println(Math.floor(<span class="number">0.4</span>));</span><br><span class="line">    	</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	Math.round(-1.4)：-1</span></span><br><span class="line"><span class="comment">	Math.round(-1.6)：-2</span></span><br><span class="line"><span class="comment">	Math.ceil(-0.4)：-0.0</span></span><br><span class="line"><span class="comment">	Math.ceil(-1.4)：-1.0</span></span><br><span class="line"><span class="comment">	Math.floor(-0.4)：-1.0</span></span><br><span class="line"><span class="comment">	Math.floor(-1.4)：-2.0</span></span><br><span class="line"><span class="comment">	--------------</span></span><br><span class="line"><span class="comment">	Math.round(0.4)：0</span></span><br><span class="line"><span class="comment">	Math.round(1.4)：1</span></span><br><span class="line"><span class="comment">	Math.round(-1.4)：-1</span></span><br><span class="line"><span class="comment">	Math.ceil(0.4)：1.0</span></span><br><span class="line"><span class="comment">	Math.floor(0.4)：0.0</span></span><br><span class="line"><span class="comment">	Math.floor(2.5)：2.0</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h1 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/operate.png" alt=""></p>
+<h1 id="Java修饰符"><a href="#Java修饰符" class="headerlink" title="Java修饰符"></a>Java修饰符</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>类中的成员变量或者类变量（成员变量加了static）</strong></p>
+<pre><code>public static final int N = 0;//abstract不能修饰变量
+成员变量都是默认值的，引用为null，基本数据类型为0，0.0f，0.0d，fasle，&apos;\u0000&apos;
+</code></pre><p><strong>类中的局部变量</strong></p>
+<pre><code>局部变量不能被访问修饰符、static修饰，只能被final修饰。
+局部变量没有默认值，必须在第一次运算前初始化。
+</code></pre><p><strong>接口中的变量</strong></p>
+<pre><code>接口中没有普通成员变量，只有静态常量，可以写成int n=0;但是默认会加上public static final
+</code></pre><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p><strong>方法可以被任何修饰符限定，唯一要注意的就是abstract和final or static or private不能一起修饰一个方法</strong></p>
+<p><strong>构造方法也可以被访问修饰符修饰，但是不能被除了这四种之外的修饰符修饰</strong></p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p><strong>外部类：只能被public修饰或者不写，被public修饰的类必须和.java的文件名一致</strong></p>
+<p><strong>内部类：静态、成员内部类可以被访问修饰符修饰，局部的不能被访问修饰符修饰，匿名的连名字都不会有</strong></p>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p><strong>代码块不能被任何修饰符修饰（除了静态代码块被static修饰和同步块synchronized）</strong></p>
+<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h2 id="成员内部类（一般意义上的内部类）"><a href="#成员内部类（一般意义上的内部类）" class="headerlink" title="成员内部类（一般意义上的内部类）"></a>成员内部类（一般意义上的内部类）</h2><p><strong>直接写在一个类中，可以访问它的外部类的所有成员变量和方法</strong></p>
+<p><strong>OutClass.InnerClass inner = new OutClass().new InnerClass()</strong></p>
+<h2 id="静态内部类（加了static的成员内部类）"><a href="#静态内部类（加了static的成员内部类）" class="headerlink" title="静态内部类（加了static的成员内部类）"></a>静态内部类（加了static的成员内部类）</h2><p><strong>只能访问外部类中的静态成员变量和静态方法（）也就是类变量和类方法</strong></p>
+<p><strong>OutClass.InnerClass inner = new OutClass.InnerClass()</strong></p>
+<h2 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h2><p><strong>局部内部类不能被修饰符修饰，除了final，被定义在方法内，但是可以访问外部类的所有成员变量和方法内部被final修饰的局部变量</strong></p>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p><strong>不能使用class、extends、implement，没有构造器，匿名内部类隐式的继承了一个父类或者实现了一个接口。</strong></p>
+<h1 id="重写的特殊性"><a href="#重写的特殊性" class="headerlink" title="重写的特殊性"></a>重写的特殊性</h1><p><strong>多态的表现形式在编译期是重载（本类或者子父类），运行期是重写（子父类）</strong></p>
+<p><strong>但是在重写的时候，我们调用的话就会有一个重写的区别</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> tt = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"----"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String arg[])</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	Parent p = <span class="keyword">new</span> Test();</span><br><span class="line">    	p.function();</span><br><span class="line">    	p.fun();</span><br><span class="line">    	System.out.println(num);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	System.out.println(<span class="string">"子类"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	System.out.println(tt);</span><br><span class="line">		System.out.println(<span class="keyword">super</span>.tt);</span><br><span class="line">		System.out.println(<span class="string">"++++"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	父类</span></span><br><span class="line"><span class="comment">	99.0</span></span><br><span class="line"><span class="comment">	99.0</span></span><br><span class="line"><span class="comment">	++++</span></span><br><span class="line"><span class="comment">	0.0</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">说明：我们子类对父类方法的重写，如果重写的是一个静态方法，那么调用的时候啊还是调用了父类中的方法，但是如果不是</span></span><br><span class="line"><span class="comment">静态方法，调用的就是子类中的方法。也就是说其实对静态方法而言，重写并不说把这个方法直接给不要了，而是隐藏，但是</span></span><br><span class="line"><span class="comment">一旦是父类的引用调用，那么还是要执行父类的方法的。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">还要说明的是，子类对于父类的数据域就是全继承，不过对于private修饰的成员，只有继承权没有使用权，这里要注意，</span></span><br><span class="line"><span class="comment">还有就是父类的静态到子类中直接用的时候还是静态，非静态还是非静态，不能在静态方法内用了父类非静态的成员，同时</span></span><br><span class="line"><span class="comment">静态方法内也不能出现this.super.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h1 id="事务属性的种类"><a href="#事务属性的种类" class="headerlink" title="事务属性的种类"></a>事务属性的种类</h1><h2 id="事务的传播"><a href="#事务的传播" class="headerlink" title="事务的传播"></a>事务的传播</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/Transcation_1.png" alt=""></p>
+<h2 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/Iso_1.png" alt=""></p>
+<h1 id="二进制码型的运算"><a href="#二进制码型的运算" class="headerlink" title="二进制码型的运算"></a>二进制码型的运算</h1><h1 id="字节流-amp-字符流"><a href="#字节流-amp-字符流" class="headerlink" title="字节流 &amp; 字符流"></a>字节流 &amp; 字符流</h1><p><strong>字节流都是用Stream结尾的。</strong></p>
+<h1 id="子父类静态块、Main方法、构造块、构造器的执行顺序"><a href="#子父类静态块、Main方法、构造块、构造器的执行顺序" class="headerlink" title="子父类静态块、Main方法、构造块、构造器的执行顺序"></a>子父类静态块、Main方法、构造块、构造器的执行顺序</h1><p><strong>执行顺序：父类静态块–&gt;子类静态块–&gt;Main方法–&gt;父类构造块–&gt;父类指定构造器–&gt;子类构造块–&gt;子类指定构造器</strong></p>
+<p><strong>注意：我们子类的构造器默认第一行就是一个super(),指定的就是父类的无参构造器，可是一旦父类中没有这个无参构造，那么在子类中必须显式的调用父类的指定构造器！！！</strong></p>
+<p><strong>注意：我们的构造块和构造方法，其实只有在创建对象的时候才会被调用，而静态块是在class加载进内存的时候就会被执行，所以肯定是先加载父类再加载子类！！！</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类静态块--1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类构造块--1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类静态块--2"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类构造块--2"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Parent</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类无参构造"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Parent</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类有参构造..."</span>+name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类静态块--1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类构造块--1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类无参构造"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line"><span class="comment">//		super();</span></span><br><span class="line"><span class="comment">//		this();</span></span><br><span class="line">		System.out.println(<span class="string">"子类有参构造..."</span>+name);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Main方法开始"</span>);</span><br><span class="line">		<span class="keyword">new</span> Son(<span class="string">"Jerry"</span>);</span><br><span class="line">		System.out.println(<span class="string">"Main方法结束"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类静态块--2"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类构造块--1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	父类静态块--1</span></span><br><span class="line"><span class="comment">	父类静态块--2</span></span><br><span class="line"><span class="comment">	子类静态块--1</span></span><br><span class="line"><span class="comment">	子类静态块--2</span></span><br><span class="line"><span class="comment">	Main方法开始</span></span><br><span class="line"><span class="comment">	父类构造块--1</span></span><br><span class="line"><span class="comment">	父类构造块--2</span></span><br><span class="line"><span class="comment">	父类无参构造</span></span><br><span class="line"><span class="comment">	子类构造块--1</span></span><br><span class="line"><span class="comment">	子类构造块--1</span></span><br><span class="line"><span class="comment">	子类有参构造...Jerry</span></span><br><span class="line"><span class="comment">	Main方法结束</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类静态块--1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类构造块--1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类静态块--2"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类构造块--2"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Parent</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类无参构造"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Parent</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类有参构造..."</span>+name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类静态块--1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类构造块--1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类无参构造"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line"><span class="comment">//		super();</span></span><br><span class="line"><span class="comment">//		this();</span></span><br><span class="line">		System.out.println(<span class="string">"子类有参构造..."</span>+name);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Main方法开始"</span>);</span><br><span class="line"><span class="comment">//		new Son("Jerry");</span></span><br><span class="line">		<span class="keyword">new</span> Parent();</span><br><span class="line">		System.out.println(<span class="string">"Main方法结束"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类静态块--2"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类构造块--1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	父类静态块--1</span></span><br><span class="line"><span class="comment">	父类静态块--2</span></span><br><span class="line"><span class="comment">	子类静态块--1</span></span><br><span class="line"><span class="comment">	子类静态块--2</span></span><br><span class="line"><span class="comment">	Main方法开始</span></span><br><span class="line"><span class="comment">	父类构造块--1</span></span><br><span class="line"><span class="comment">	父类构造块--2</span></span><br><span class="line"><span class="comment">	父类无参构造</span></span><br><span class="line"><span class="comment">	Main方法结束</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h1 id="静态和非静态的调用"><a href="#静态和非静态的调用" class="headerlink" title="静态和非静态的调用"></a>静态和非静态的调用</h1><p><strong>因为静态static修饰的东西属于类的东西，在class加载进JVM的时候就已经被初始化了，而其他的只有在用的时候才会初始化，所以静态修饰的东西可以在非静态中用，而非静态的东西却不能在静态方法里面用！！！</strong></p>
+<p><strong>注意：我们在静态方法重写的时候，一旦这个方法是一个类方法，那么子类并不能真正意义上的重写，虽然方法完全一样，但是在实例调用的时候，利用多态没有用，编译和运行看的都是左边的类名</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Parent</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类无参构造"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Parent--Function"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Parent p = <span class="keyword">new</span> Son();</span><br><span class="line">		Parent pp = <span class="keyword">new</span> Parent();</span><br><span class="line">		Son s = <span class="keyword">new</span> Son();</span><br><span class="line">		</span><br><span class="line">		p.function();</span><br><span class="line">		pp.function();</span><br><span class="line">		s.function();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Son--Function"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	Parent--Function</span></span><br><span class="line"><span class="comment">	Parent--Function</span></span><br><span class="line"><span class="comment">	Son--Function</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h1 id="杂"><a href="#杂" class="headerlink" title="杂"></a>杂</h1><pre><code>1. 方法之间不能称之为继承，最多是显式、隐式调用。
+
+2. 构造方法不需要同步。构造方法每次都是构造出新的对象，不存在多个线程同时读写同一个对象中的属性问题。
+
+3. 只要父类中的方法不是final修饰，其他修饰符修饰，子类都可以覆盖。
+
+4. ServletContext：Servlet容器在启动时会加载web应用，并为每一个web应用创建唯一的ServletContext对象，在
+ServletContext中存放共享数据，因为和这个对象是一个真正的全局对象，整个web应用只有唯一的一个ServletContext对象。
+
+5. ServletConfig：用于封装Servlet的配置信息。
+
+6. 构造方法的主要作用是完成对类的对象的初始化工作。
+
+7. 一般在创建（new）新的对象的时候，系统会自动调用构造方法。
+
+8. 两个基本数据类型进行二元操作时，基本数据类型之间会自动向上转型，而byte、short在运算的时候会自动直接成为int进行计算。
+
+9. 创建对象的时候只有在new和反射的过程才会调用构造方法。下面是四种创建对象的方式：
+    调用Java.io.ObjectInputStream的readObject方法（序列化对象，从文件中还原对象）
+    调用对象的clone()方法（克隆，拷贝对象）
+    java反射机制使用java.lang.Class或java.lang.reflect.Constructor的newInstance()方法
+    new语句创建对象
+
+10. 枚举类：所有的枚举值都是类静态常量，在初始化时会对所有的枚举值对象进行第一次初始化。
+
+11. Java中的所有方法都必须定义在类中。
+
+12. Servlet和CGI，调用一个CGI程序的时候，服务器就要启动一个进程。而Servlet时却不是；而CGI不具备平台无关性
+（CGI的不可移植性），系统环境一旦变化，CGI就瘫痪了，而Servlet却不是这样的。
+
+13. ServerSocket(int port)：服务器绑定port端口，调用accept()监听等待客户端调用，它返回的是一个连接队列中的一个
+socket。
+    Socket(inetAddress address，int port)是创建客户端连接主机的socket流，
+
+14. 在Java中，对于不再使用的内存资源是有GC进行自动回收，但是GC作用实在方法区和堆上的，像调用完一个方法这种只是在栈中，
+利用栈帧进行出入栈的操作，不要GC释放。
+
+15. 常用的Servlet包：javax.servlet、javx.servlet.http
+
+16. 不考虑反射机制，一个子类显式调用父类的构造器必须用super(x)/super()/...，如果子类的构造器中没有显式的调用父类的
+构造方法，那么默认是super()，但是一旦这个时候父类中没有无参的构造器，直接就报错了。
+
+17. 客户端通过new Socket()方法创建通信的Secket对象
+
+18. 服务端通过new ServerSocket()创建TCP链接对象 accept接受客户端请求。
+
+19. 一个Java源文件(.java)中定义几个类和接口，则编译后就会产生几个以类名.class为后缀名的字节码文件。
+如果是普通内部类：外部类名 + $ + 内部类名 [+ $ + 内部类名 + ...]+ .class，类名之间使用符号$隔开。
+ClassD$ClassDd$ClassDdd.class
+如果是匿名内部类： 外部类名 + $ + 数字 [+ $ + 数字 + ...]+ .class，ClassE$1$1.class
+
+20. 常用的ASCII码值：
+    空格：32；0-9：48-57；大写字母65-90；小写字母=大写字母+32
+
+21. Scoket中得到本地IP：getLocalAddress();连接IP：getInetAddress();
+
+22. Math.cos、sin的形参都是弧度值。
+
+23. 对于float和long而言，基本数据类型的时候后面可以不见f和l，但是如果是包装类，就一定要加。
+
+24. 基本数据类型中boolean不能和其他几种进行转换。
+
+25. long test=012这种格式是对的。
+
+26. 构造方法不能被static、final、synchronized、abstract、native修饰，但是可以被public、private protected修饰。
+
+27. 构造方式不是类的成员方法。
+
+28. 子类中调用父类构造函数不可以直接书写父类构造函数，而应该用super()。
+
+29. valueOf是把String或者基本数据类型转成对应的包装类！！这个方法有三个重载，其中一个可以对String的转换进制进行设置！！！
+这是一个静态方法。（装箱方法）
+
+30. intValue()这是拆箱的方法，intValue()可不是静态方法;
+
+31. parseInt是把String变成了Integer
+
+32. transient是反序列化
+
+33. 注意，在我们的接口中我们的变量可以写成是int i=0；会直接默认被public static final 修饰，
+但是不能改成private int i=0;这样就直接报错了。
+
+34. 编码格式由浏览器决定。
+
+35. 注意，不管是值传递还是引用传递，我们其实传的都是副本，对于值传递而言（基本数据类型），根本不会影响传之前的数据，
+但是对于引用类型，如果我们在方法内并没有的引用的实体，也就是这个对象的内部属性进行修改，而只是给这个copy的引用给了一个
+新的地址（也就是重新new或者直接把一个相同/相容的对象给它），那么对传之前的对象也不会有任何影响！！！
+
+36. java是强类型的语言，而JavaScript是弱类型的。
+
+37. SQL语言又被称为结构化查询语言。
+
+38. J2EE中，当把来自客户机的HTTP请求委托给servlet时，会调用HttpServlet的service方法。
+
+39. 子类可以访问父类的public、protected成员。
+
+40. java.lang.*中被final修饰的类
+    基本数据类型的包装类，Math，String，StringBuilder、StringBuffer，System
+    Compile、Void、Class&lt;T&gt;、ProcessBuilder、StrictMath
+
+41. System是java.lang中的类，out为System中的一个静态成员，out是java.io.PrintStream类的对象，而println()是
+java.io.PrintStream类的方法，所有可以调用类.静态方法.println()方法。
+
+42. 子类并不能访问父类中被private修饰了的变量和方法，不管是不是加了static的。
+
+43. 线程局部存储（TLS Thread Local Storage）解决了多线程中对同一个变量的访问冲突的一种技术，TLS会为每一个线程维护
+一个和该线程绑定的变量的副本，而ThreadLocal(lang包下)就是这个技术的实现。
+
+44. 事物隔离级别由数据库系统实现，是数据库系统本身的一个功能。
+
+45. 日志的级别之间的大小关系如右所示：ALL &lt; TRACE &lt; DEBUG &lt; INFO &lt; WARN &lt; ERROR &lt; FATAL &lt; OFF Log4j建议只使
+用四个级别，优先级从高到低分别是 ERROR &gt; WARN &gt; INFO &gt; DEBUG。 log4j在运行期间是不可以重新设置的。
+log4j支持设置时间间隔去打印
+
+46. 进程对管道进行读写都可能被阻塞，管道并不能实现双向数据传输，管道在内存中，可以有多个进程对管道进行读写，只不过不能是同步的。
+
+47. java是支持TCP/IP协议的。
+
+48. Java程序使用赋值运算符进行对象赋值时，只是改变了其中一个引用方向，并不是说得到了两个完全相同的对象。
+
+49. Java的屏幕坐标是以像素为单位，容器的左下角被确定为坐标的起点。
+
+50. 局部内部类可以看成是一个局部变量，所以它不能加任何访问修饰符，static，abstract，最多也就加的final，但是内部
+类可不是这样的，内部类（成员内部类）这可就是访问修饰符都可以加，但是外部类只能用public或者不写。
+
+51. 通过反射可以看出来子类可以继承父类的所有成员（成员变量和成员方法，包括private），只不过子类只有继承权没有使用权。
+
+52. static为成员变量或函数，在类初始化是加载完成，可以被成员函数调用或访问。
+
+53. 虚函数是C++中的，虚函数不可能是static的
+
+54. const和goto是保留关键字。true和false看起来像关键字，但严格来说，它们是boolean常量；null看起来也像关键字，但
+严格来说，它是null常量。
+    综上，true,false,null不是关键字。而是常量。同时关键字一定是小写的。
+
+55. 事件处理模型是一种人机交互模型：事件源、事件、事件监听器。
+
+56. 在函数代码小，频繁调用情况下适合采用内联函数。
+
+57. 8进制的第一个符号是字母O不是数字0
+
+58. 单例模式中，两个基本要点是构造函数私有化&amp;唯一实例和单子类自己提供单例。
+
+59. 注意，在继承和实现都有的时候，先继承后实现！！！
+    public class A extends B implements C,D
+
+60. 匿名内部类没有名字，而构造方法的方法名需要和类名一致，所以匿名内部类没有构造器。
+
+61. 使用匿名内部类的时候，必须继承一个类或者实现一个接口，而匿名内部类中不能含有静态成员变量和静态方法。
+
+62. 字节流都用Stream结尾，字符流都是reader或者writer。
+
+63. 0的ASCII是48，A的ASCII是65
+
+64. final和static一起用的时候不分前后
+
+65. java语言中成员方法是对象的成员，类方法才术语类的成员。
+
+66. Java中对于文本文件和二进制文件，都可以当做二进制文件进行操作。
+
+67. 不能定义 float = 1.0；这样的东西，因为浮点型默认就是double的，必须强转！！！
+
+68. 构造方法相互调用的时候，要么是this(a,b)，要么就要用new Base(a,b);
+
+69. 无法直接调用静态初始块，也就是说在程序中，用户并不能控制静态代码块的执行时间
+
+70. 在创建第一个实例前或引用任何静态成员之前，将自动调用静态初始化块来初始化。
+
+71. 静态初始化块既没有访问修饰符，也没有参数。
+
+72. 成员变量存放在堆中，而方法的局部变量都在栈中
+
+73. 对于final修饰的变量，必须初始化，不能有默认值的形式！！！
+
+74. LinkedBlockingQueue是一个可选有界队列（FIFO），不允许有null值，线程安全的！
+
+76. PriorityQueue是一个无界队列，不允许null值，入队和出队的时间复杂度都是O(log(n))，线程不安全。有blocking是线程安全。
+
+77. JDK提供的用于并发编程的同步器有Semaphore、CyclicBarrier、CountDownLatch。
+
+78. StringBuilder中sb.capacity()说的是内部动态数组的大小，而length说的是实际存储的字符串的长度。
+
+79. Swing是在AWT的基础上构建的一套新的图形界面系统，它提供了AWT能提供的所有功能,并且用纯粹的Java代码对AWT 的功能进行了大幅度的扩充.但是AWT是基于本地方法的C/C++程序，其运行速度比较快。
+同时SWT是基于Java的跨平台MVC框架。使用单线程模式，Swing是一个基于组件的框架，所有的组件都是从javax.swing.JComponent中来的。
+
+80. true false null是boolean常量和null常量，但是goto是关键字
+
+81.再说一个内部类，这个概念记错好几次，一般的内部类也就是成员内部类，这就是个成员变量；静态内部类，就是个类变量；这两个符合一切各自的性质；局部内部类，这就个局部变量，局部变量明白吗！！！局部变量不能用public、protected、private、static修饰！！！只能访问方法中final类型的局部变量！！！这个很重要；匿名内部类，这个类连个名字都没有，这个类基本撒都不能修饰，但是前面一定有个new，不然这个类咋来。
+
+83. 注意，我们一个类不管是继承抽象类还是实现接口，对抽象类和接口中方法就是重写，方法符合重写的两同两小一大就可以
+
+84. 构造方法不能被static、final、synchronized、abstract、native修饰，但可以被public、private、protected修饰
+
+85. 存根和动态链接有关
+
+86. 
+</code></pre>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2017/12/13/Java面试（杂-2）/" title="Java面试（杂-2）">http://abelchao.com/2017/12/13/Java面试（杂-2）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Interview/" rel="tag"><i class="fa fa-tag"></i> Interview</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/11/Java面试（垃圾回收与内存分配-基础）/" rel="next" title="Java面试（垃圾回收与内存分配 基础）">
+                <i class="fa fa-chevron-left"></i> Java面试（垃圾回收与内存分配 基础）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/14/Java面试（200-Questions）/" rel="prev" title="Java面试（200 Questions）">
+                Java面试（200 Questions） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java工具"><span class="nav-number">1.</span> <span class="nav-text">java工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDK-amp-JRE"><span class="nav-number">2.</span> <span class="nav-text">JDK &amp; JRE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Struts1-amp-Struts2"><span class="nav-number">3.</span> <span class="nav-text">Struts1 &amp; Struts2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#synchronized-amp-volatile"><span class="nav-number">4.</span> <span class="nav-text">synchronized &amp; volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDK1-8以上支持的锁"><span class="nav-number">5.</span> <span class="nav-text">JDK1.8以上支持的锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet生命周期"><span class="nav-number">6.</span> <span class="nav-text">Servlet生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现会话跟踪"><span class="nav-number">7.</span> <span class="nav-text">实现会话跟踪</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object类中的方法"><span class="nav-number">8.</span> <span class="nav-text">Object类中的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for循环和switch的执行顺序"><span class="nav-number">9.</span> <span class="nav-text">for循环和switch的执行顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for"><span class="nav-number">9.1.</span> <span class="nav-text">for</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#switch…case"><span class="nav-number">9.2.</span> <span class="nav-text">switch…case</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的关键字"><span class="nav-number">10.</span> <span class="nav-text">Java中的关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本数据类型的默认值"><span class="nav-number">11.</span> <span class="nav-text">基本数据类型的默认值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程状态转换"><span class="nav-number">12.</span> <span class="nav-text">线程状态转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#round-amp-ceil-amp-floor"><span class="nav-number">13.</span> <span class="nav-text">round() &amp; ceil() &amp; floor()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符优先级"><span class="nav-number">14.</span> <span class="nav-text">运算符优先级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java修饰符"><span class="nav-number">15.</span> <span class="nav-text">Java修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">15.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">15.2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-number">15.3.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码块"><span class="nav-number">15.4.</span> <span class="nav-text">代码块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">16.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#成员内部类（一般意义上的内部类）"><span class="nav-number">16.1.</span> <span class="nav-text">成员内部类（一般意义上的内部类）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态内部类（加了static的成员内部类）"><span class="nav-number">16.2.</span> <span class="nav-text">静态内部类（加了static的成员内部类）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部内部类"><span class="nav-number">16.3.</span> <span class="nav-text">局部内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">16.4.</span> <span class="nav-text">匿名内部类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重写的特殊性"><span class="nav-number">17.</span> <span class="nav-text">重写的特殊性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务属性的种类"><span class="nav-number">18.</span> <span class="nav-text">事务属性的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的传播"><span class="nav-number">18.1.</span> <span class="nav-text">事务的传播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的隔离级别"><span class="nav-number">18.2.</span> <span class="nav-text">事务的隔离级别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二进制码型的运算"><span class="nav-number">19.</span> <span class="nav-text">二进制码型的运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字节流-amp-字符流"><span class="nav-number">20.</span> <span class="nav-text">字节流 &amp; 字符流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子父类静态块、Main方法、构造块、构造器的执行顺序"><span class="nav-number">21.</span> <span class="nav-text">子父类静态块、Main方法、构造块、构造器的执行顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态和非静态的调用"><span class="nav-number">22.</span> <span class="nav-text">静态和非静态的调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#杂"><span class="nav-number">23.</span> <span class="nav-text">杂</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

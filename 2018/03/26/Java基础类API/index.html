@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaSE," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Java的基础类API">
+<meta name="keywords" content="JavaSE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础类API">
+<meta property="og:url" content="http://abelchao.com/2018/03/26/Java基础类API/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="Java的基础类API">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/617d6b3d0acd40039d8c4a159cfd3c24_r.jpg">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/iostream.png">
+<meta property="og:updated_time" content="2018-03-26T08:32:37.919Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础类API">
+<meta name="twitter:description" content="Java的基础类API">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/617d6b3d0acd40039d8c4a159cfd3c24_r.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2018/03/26/Java基础类API/"/>
+
+
+
+
+
+  <title>Java基础类API | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2018/03/26/Java基础类API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java基础类API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-26T09:00:00+08:00">
+                2018-03-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-03-26T16:32:37+08:00">
+                2018-03-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaSE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/617d6b3d0acd40039d8c4a159cfd3c24_r.jpg" alt=""><br><strong>Java的基础类API</strong></p>
+<a id="more"></a>
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><h3 id="字符串到数字"><a href="#字符串到数字" class="headerlink" title="字符串到数字"></a>字符串到数字</h3><p><strong>Int/Long</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//字符串到数字</span></span><br><span class="line">    	String s = <span class="string">"100"</span>;</span><br><span class="line">    	<span class="keyword">int</span> i1 = Integer.parseInt(s);</span><br><span class="line">    	<span class="keyword">int</span> i2 = Integer.parseInt(s, <span class="number">2</span>);</span><br><span class="line">    	</span><br><span class="line">    	System.out.println(i1+<span class="string">".."</span>+i2);</span><br><span class="line">		<span class="comment">//100...4</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	1. Integer.parseInt(String s)：把字符串转换成10进制的数字。</span></span><br><span class="line"><span class="comment">	2. Integer.parseInt(String s,String radix)：把字符串转换成10进制的数，注意，parseInt这个方法，返回的一定是10进制，后面的radix指的事把前面的字符串看成几进制。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p><strong>Double/Float</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//字符串到数字</span></span><br><span class="line">    	String s = <span class="string">"100.0"</span>;</span><br><span class="line">    	System.out.println(Double.parseDouble(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数字到字符串"><a href="#数字到字符串" class="headerlink" title="数字到字符串"></a>数字到字符串</h3><p><strong>Int/Long</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;        </span><br><span class="line">        System.out.println(Integer.toString(<span class="number">10</span>, <span class="number">16</span>));<span class="comment">//a</span></span><br><span class="line">        System.out.println(Integer.toBinaryString(<span class="number">4</span>));<span class="comment">//100</span></span><br><span class="line">        System.out.println(Integer.toOctalString(<span class="number">8</span>));<span class="comment">//10</span></span><br><span class="line">        System.out.println(Integer.toHexString(<span class="number">10</span>));<span class="comment">//a</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	1. Integer.toString(Integer i,String radix)：把10进制转成指定进制的字符串</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p><strong>Double/Float</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;        </span><br><span class="line">        System.out.println(Double.toHexString(<span class="number">10.7</span>));<span class="comment">//0x1.5666666666666p3</span></span><br><span class="line">        System.out.println(Double.toString(<span class="number">10.7</span>));<span class="comment">//10.7</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字符和字符串"><a href="#字符和字符串" class="headerlink" title="字符和字符串"></a>字符和字符串</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;        </span><br><span class="line">        String s = <span class="string">"s"</span>;</span><br><span class="line">        System.out.println(s.charAt(<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">char</span> c = <span class="string">'c'</span>;</span><br><span class="line">        System.out.println(String.valueOf(c));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="number">1</span>. <span class="keyword">char</span>[] chArr = s.toCharArray();</span><br></pre></td></tr></table></figure>
+<h2 id="Integer的自动拆装箱"><a href="#Integer的自动拆装箱" class="headerlink" title="Integer的自动拆装箱"></a>Integer的自动拆装箱</h2><pre><code>注意，Integer i = 127和Integer i = 128不一样的，对于Integer而言，在-128~127之间的时候，Integer i = 127是不会自动装箱的，会直接在Cache数组中拿到那个对象。
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;      </span><br><span class="line">        Integer i1 = <span class="number">127</span>;</span><br><span class="line">        Integer i2 = <span class="number">127</span>;</span><br><span class="line">        Integer i3 = <span class="number">128</span>;</span><br><span class="line">        Integer i4 = <span class="number">128</span>;</span><br><span class="line">        </span><br><span class="line">        System.out.println(i1==i2);<span class="comment">//true</span></span><br><span class="line">        System.out.println(i3==i4);<span class="comment">//false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h2><figure class="highlight plain"><figcaption><span>class Main&#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    public static void main(String[] args)&#123;      </span><br><span class="line">        System.out.println(Character.toUpperCase(&apos;c&apos;));</span><br><span class="line">        System.out.println(Character.toLowerCase(&apos;C&apos;));</span><br><span class="line">        </span><br><span class="line">        System.out.println(Character.isAlphabetic(55));//false,判断这个数字ASCII是不是一个字符</span><br><span class="line">        System.out.println(Character.isDigit(&apos; &apos;));//false</span><br><span class="line">        System.out.println(Character.isLetter(&apos; &apos;));//false</span><br><span class="line">        </span><br><span class="line">        System.out.println(Character.isLowerCase(&apos;c&apos;));//true</span><br><span class="line">        System.out.println(Character.isLowerCase(97));//65+32,a,true</span><br><span class="line">        </span><br><span class="line">        System.out.println(Character.isUpperCase(65));//A,true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>1. isAlphabetic(int codePoint)：传入的是ASCII
+2. isLetter，isDigit，is/to Upper/Lower Case都是传入char/codePoint。
+</code></pre><h1 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;      </span><br><span class="line">        System.out.println(Math.ceil(<span class="number">20.5</span>));<span class="comment">//21.0</span></span><br><span class="line">        System.out.println(Math.ceil(-<span class="number">20.5</span>));<span class="comment">//-20.0</span></span><br><span class="line">        </span><br><span class="line">        System.out.println(Math.floor(<span class="number">20.5</span>));<span class="comment">//20.0</span></span><br><span class="line">        System.out.println(Math.floor(-<span class="number">20.5</span>));<span class="comment">//-21.0</span></span><br><span class="line">        </span><br><span class="line">        System.out.println(Math.round(<span class="number">20.5</span>));<span class="comment">//21</span></span><br><span class="line">        System.out.println(Math.round(-<span class="number">20.5</span>));<span class="comment">//-20</span></span><br><span class="line">        </span><br><span class="line">        System.out.println(Math.pow(<span class="number">2</span>,<span class="number">3.0</span>));<span class="comment">//8.0</span></span><br><span class="line">        </span><br><span class="line">        System.out.println(Math.max(<span class="number">20.9</span>,<span class="number">20</span>));<span class="comment">//20.9</span></span><br><span class="line">        System.out.println(Math.min(<span class="number">20.9</span>, <span class="number">20</span>));<span class="comment">//20.0</span></span><br><span class="line">        </span><br><span class="line">        System.out.println(Math.PI);<span class="comment">//3.141592653589793</span></span><br><span class="line">        </span><br><span class="line">        System.out.println(Math.random());<span class="comment">//0.5785822387130423</span></span><br><span class="line">        </span><br><span class="line">        System.out.println(Math.abs(-<span class="number">20.9</span>));<span class="comment">//20.9</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>1. ceil向上（大于等于），floor向下（小于等于）
+2. round，+0.5向下取整
+3. ceil、floor返回的都是double、float，round返回的都是long和int
+</code></pre><h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><pre><code>1. char charAt(int index);
+2. boolean endsWith(String suffix);
+3. boolean startWith(String prefix);
+4. int hashCode();
+5. int indexOf(char ch/String str) --&gt;lastIndexOf
+6. int indexOf(char ch/String str,int fromIndex); --&gt;lastIndexOf
+7. String intern();
+8. int length();
+9. boolean matches(String regex);
+10. String raplace(char oldChar,char newChar);
+11. String replaceAll(String regex,String replacement);
+12. String[] split(String regex);
+13. String substring(int beginIndex);
+14. String substring(int beginIndex,int endIndex);
+15. String trim();
+16. String toCharArray();
+17. String toUpper/LowerCase();
+18. boolean equalsIngnoreCase(String str);
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;   </span><br><span class="line">       String s = <span class="string">"This is Java"</span>;</span><br><span class="line">       System.out.println(s.charAt(<span class="number">0</span>));<span class="comment">//T</span></span><br><span class="line">       System.out.println(Arrays.toString(s.toCharArray()));<span class="comment">//[T, h, i, s,  , i, s,  , J, a, v, a]</span></span><br><span class="line">    </span><br><span class="line">       System.out.println(s.endsWith(<span class="string">"va"</span>));<span class="comment">//true</span></span><br><span class="line">       System.out.println(s.startsWith(<span class="string">"t"</span>));<span class="comment">//false</span></span><br><span class="line">       </span><br><span class="line">       System.out.println(s.indexOf(<span class="string">"is"</span>));<span class="comment">//2</span></span><br><span class="line">       System.out.println(s.indexOf(<span class="string">"is"</span>,<span class="number">2</span>));<span class="comment">//2</span></span><br><span class="line">       </span><br><span class="line">       System.out.println(s.replace(<span class="string">"i"</span>,<span class="string">"t"</span>));<span class="comment">//Thts ts Java</span></span><br><span class="line">       System.out.println(s.replaceAll(<span class="string">"\\s+"</span>, <span class="string">" tt "</span>));<span class="comment">//This tt is tt Java</span></span><br><span class="line">       </span><br><span class="line">       System.out.println(s.substring(<span class="number">3</span>, <span class="number">6</span>));<span class="comment">//s i</span></span><br><span class="line">       System.out.println(s.substring(<span class="number">2</span>));<span class="comment">//is is Java</span></span><br><span class="line">       </span><br><span class="line">       System.out.println(Arrays.toString(s.split(<span class="string">"\\s+"</span>)));<span class="comment">//[This, is, Java]</span></span><br><span class="line">       </span><br><span class="line">       System.out.println(s.toUpperCase());<span class="comment">//THIS IS JAVA</span></span><br><span class="line">       System.out.println(s.toLowerCase());<span class="comment">//this is java</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="关于的String的唯一性和intern"><a href="#关于的String的唯一性和intern" class="headerlink" title="关于的String的唯一性和intern"></a>关于的String的唯一性和intern</h2><pre><code>我们知道我们的String在Java内存中是在字符串常量池中的，但是在JDK1.7之前这个常量池在方法区，
+对于HotSpot就是永久带。但是在JDK1.7以后独立出来。
+
+类似的String = &quot;ss&quot;；这种都只是在字符串常量池中生成一个ss，但是在堆中是没有的！！
+
+但是new出来的对象，是会现在堆上创建，然后判断常量池中是否还有存在，存在的话，没有后续，不存在的话，会在常量池中也创建一个。
+
+但是注意了存在的话，其实并不是什么都不做，而是把自己的物理地址复制一份给常量池，所以只要是new出来的东西，返回的其实都是堆上的地址。
+
+但是intern这个方法就是只从常量池中获取引用！！！
+
+String s = new String(&quot;ss&quot;);两个对象，常量池一个，堆里面一个.
+
+直接使用双引号声明出来的String对象会直接存储在常量池中。
+如果不是用双引号声明的String对象，可以使用String提供的intern方法。
+intern 方法会从字符串常量池中查询当前字符串是否存在，若不存在就会将当前字符串放入常量池中
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)&#123;   </span><br><span class="line">       String s1 = &quot;is&quot;;</span><br><span class="line">       String s2 = new String(&quot;is&quot;);</span><br><span class="line">       System.out.println(s1==s2);//false  常量池地址不等于堆中地址</span><br><span class="line">       System.out.println(s1==s2.intern());//true 常量池地址相同</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	String s2 = <span class="string">"is"</span>+<span class="string">"b"</span>;</span><br><span class="line">	String s1 = <span class="keyword">new</span> String(<span class="string">"isb"</span>);</span><br><span class="line">   </span><br><span class="line">	System.out.println(s1==s2);<span class="comment">//false  常量池地址不等于堆中地址</span></span><br><span class="line">	System.out.println(s1==s2.intern());<span class="comment">//false 堆中地址不等于常量池地址</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	String s1 = <span class="keyword">new</span> String(<span class="string">"isb"</span>);</span><br><span class="line">	</span><br><span class="line">	String s2 = <span class="keyword">new</span> String(<span class="string">"is"</span>)+<span class="keyword">new</span> String(<span class="string">"b"</span>);</span><br><span class="line">	</span><br><span class="line">	System.out.println(s1==s2);<span class="comment">//false  字符串在堆中的唯一性</span></span><br><span class="line">	System.out.println(s1==s2.intern());<span class="comment">//false 堆中地址和常量池地址</span></span><br><span class="line">	System.out.println(s1.intern()==s2.intern());<span class="comment">//true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	String s = <span class="keyword">new</span> String(<span class="string">"1"</span>);</span><br><span class="line">	s.intern();</span><br><span class="line">	String s2 = <span class="string">"1"</span>;</span><br><span class="line">	System.out.println(s==s2);<span class="comment">//false</span></span><br><span class="line">	</span><br><span class="line">	String s3 = <span class="keyword">new</span> String(<span class="string">"1"</span>)+<span class="keyword">new</span> String(<span class="string">"1"</span>);</span><br><span class="line">	s3.intern();</span><br><span class="line">	String s4 = <span class="string">"11"</span>;</span><br><span class="line">	System.out.println(s3==s4);<span class="comment">//true			</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	String s = <span class="keyword">new</span> String(<span class="string">"1"</span>);</span><br><span class="line">	String s2 = <span class="string">"1"</span>;</span><br><span class="line">	s.intern();</span><br><span class="line">	System.out.println(s==s2);<span class="comment">//false</span></span><br><span class="line">	</span><br><span class="line">	String s3 = <span class="keyword">new</span> String(<span class="string">"1"</span>)+<span class="keyword">new</span> String(<span class="string">"1"</span>);</span><br><span class="line">	String s4 = <span class="string">"11"</span>;</span><br><span class="line">	s3.intern();</span><br><span class="line">	System.out.println(s3==s4);<span class="comment">//false			</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>1. 将String常量池从Perm区移动到了Java Heap区
+2. String#intern 方法时，如果存在堆中的对象，会直接保存对象的引用，而不会重新创建对象。
+
+
+注意：其实就是intern方法，这个方法一旦执行，如果常量中有数据，无效，一旦没有数据，改变了原来对象的引用地址！！！
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="keyword">new</span> String(<span class="string">"aaa"</span>);</span><br><span class="line">String s2 = <span class="string">"aaa"</span>;</span><br><span class="line">System.out.println(s1 == s2);    <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">s1 = <span class="keyword">new</span> String(<span class="string">"bbb"</span>).intern();</span><br><span class="line">s2 = <span class="string">"bbb"</span>;</span><br><span class="line">System.out.println(s1 == s2);    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">s1 = <span class="string">"ccc"</span>;</span><br><span class="line">s2 = <span class="string">"ccc"</span>;</span><br><span class="line">System.out.println(s1 == s2);    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">s1 = <span class="keyword">new</span> String(<span class="string">"ddd"</span>).intern();</span><br><span class="line">s2 = <span class="keyword">new</span> String(<span class="string">"ddd"</span>).intern();</span><br><span class="line">System.out.println(s1 == s2);    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">s1 = <span class="string">"ab"</span> + <span class="string">"cd"</span>;</span><br><span class="line">s2 = <span class="string">"abcd"</span>;    </span><br><span class="line">System.out.println(s1 == s2);    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">String temp = <span class="string">"hh"</span>;</span><br><span class="line">s1 = <span class="string">"a"</span> + temp;</span><br><span class="line"><span class="comment">// 如果调用s1.intern 则最终返回true</span></span><br><span class="line">s2 = <span class="string">"ahh"</span>;</span><br><span class="line">System.out.println(s1 == s2);    <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">temp = <span class="string">"hh"</span>.intern();</span><br><span class="line">s1 = <span class="string">"a"</span> + temp;</span><br><span class="line">s2 = <span class="string">"ahh"</span>;</span><br><span class="line">System.out.println(s1 == s2);    <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">temp = <span class="string">"hh"</span>.intern();</span><br><span class="line">s1 = (<span class="string">"a"</span> + temp).intern();</span><br><span class="line">s2 = <span class="string">"ahh"</span>;</span><br><span class="line">System.out.println(s1 == s2);    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">s1 = <span class="keyword">new</span> String(<span class="string">"1"</span>);    <span class="comment">// 同时会生成堆中的对象 以及常量池中1的对象，但是此时s1是指向堆中的对象的</span></span><br><span class="line">s1.intern();            <span class="comment">// 常量池中的已经存在</span></span><br><span class="line">s2 = <span class="string">"1"</span>;</span><br><span class="line">System.out.println(s1 == s2);    <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">"1"</span>) + <span class="keyword">new</span> String(<span class="string">"1"</span>);    <span class="comment">// 此时生成了四个对象 常量池中的"1" + 2个堆中的"1" + s3指向的堆中的对象（注此时常量池不会生成"11"）</span></span><br><span class="line">s3.intern();    <span class="comment">// jdk1.7之后，常量池不仅仅可以存储对象，还可以存储对象的引用，会直接将s3的地址存储在常量池</span></span><br><span class="line">String s4 = <span class="string">"11"</span>;    <span class="comment">// jdk1.7之后，常量池中的地址其实就是s3的地址</span></span><br><span class="line">System.out.println(s3 == s4); <span class="comment">// jdk1.7之前false， jdk1.7之后true</span></span><br><span class="line"></span><br><span class="line">s3 = <span class="keyword">new</span> String(<span class="string">"2"</span>) + <span class="keyword">new</span> String(<span class="string">"2"</span>);</span><br><span class="line">s4 = <span class="string">"22"</span>;        <span class="comment">// 常量池中不存在22，所以会新开辟一个存储22对象的常量池地址</span></span><br><span class="line">s3.intern();    <span class="comment">// 常量池22的地址和s3的地址不同</span></span><br><span class="line">System.out.println(s3 == s4); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对于什么时候会在常量池存储字符串对象，我想我们可以基本得出结论: 1. 显示调用String的intern方法的时候; 2. 直接声明字符串字面常量的时候，例如: String a = "aaa";</span></span><br><span class="line"><span class="comment">// 3. 字符串直接常量相加的时候，例如: String c = "aa" + "bb";  其中的aa/bb只要有任何一个不是字符串字面常量形式，都不会在常量池生成"aabb". 且此时jvm做了优化，不//   会同时生成"aa"和"bb"在字符串常量池中</span></span><br></pre></td></tr></table></figure>
+<h2 id="intern总结"><a href="#intern总结" class="headerlink" title="intern总结"></a>intern总结</h2><pre><code>1. String s =  new String(&quot;100&quot;);//会在常量池和堆中都生成100，但是返回堆中地址。
+2. String s = new String(&quot;1&quot;)+new String(&quot;00&quot;);//会在常量池产生1，00，堆中产生1，00，100。
+3. s.intern只有在常量池中么有的时候，才会改变s的引用地址。
+4. 
+</code></pre><h1 id="StringBuilder和StringBuffer"><a href="#StringBuilder和StringBuffer" class="headerlink" title="StringBuilder和StringBuffer"></a>StringBuilder和StringBuffer</h1><pre><code>1. StringBuilder/StringBuffer append(String s);
+2. StringBuilder/StringBuffer reverse();
+3. insert(int offset int);
+4. capcacity();
+5. toString();
+6. setLength();
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    	StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    	sb.append(<span class="string">"java"</span>);</span><br><span class="line">    	System.out.println(sb.capacity());<span class="comment">//16</span></span><br><span class="line">    	System.out.println(sb.length());<span class="comment">//4</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	这两个类里面比较容易忘的就是capcaity这个方法，同时需要留心，如果我们要清空StringBuilder、Buffer，我们使用的就是setLength（0）这个方法。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h1 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h1><pre><code>作为输入流，构造器中需要传入一个输入流。
+Scanner sc = new Scanner(System.in);
+
+1. hasNext()、hasNextLine()、hasNextInt()
+2. next()、nextLine()、nextInt()
+3. close
+</code></pre><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><pre><code>1. [a-z]:a-z之间的任何小写字母
+2. [^a-z]:a-z之外的任何字符
+3. x|y：x或者y中的一个
+4. [xyz]:xyz中的任意一个
+5. \：将下一个字符标记成为特殊字符、文本、反向引用。比如：&quot;n&quot;是字母，&quot;\n&quot;表示换行符，需要匹配换行符&quot;\\n&quot;；&quot;\\&quot;匹配&quot;\\\\&quot;,第一个代表标记，第二个代表转义。
+6. ^：取反
+7. +：一次或者多次匹配前面的字符。
+8. *：零次或者多次匹配前面的字符。
+9. ？：零次或者一次匹配前面的字符。
+10. \d:数字字符匹配。等效于 [0-9]
+11. \w:匹配任何字类字符，包括下划线。与&quot;[A-Za-z0-9_]&quot;等效。
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	String s = <span class="string">" ,  bi "</span>;</span><br><span class="line">	System.out.println(s.replaceAll(<span class="string">"\\s*"</span>, <span class="string">""</span>));<span class="comment">//,bi</span></span><br><span class="line">	System.out.println(s.replaceAll(<span class="string">"[^a-zA-Z0-9+]"</span>, <span class="string">"1"</span>));<span class="comment">//1111bi1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="流"><a href="#流" class="headerlink" title="流"></a>流</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/iostream.png" alt=""></p>
+<pre><code>1. stream结尾的都是字节流，er结尾的都是字符流。
+</code></pre>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2018/03/26/Java基础类API/" title="Java基础类API">http://abelchao.com/2018/03/26/Java基础类API/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaSE/" rel="tag"><i class="fa fa-tag"></i> JavaSE</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/25/Java基本概念/" rel="next" title="Java基本概念">
+                <i class="fa fa-chevron-left"></i> Java基本概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/27/华为OJ（一）/" rel="prev" title="华为OJ（一）">
+                华为OJ（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进制转换"><span class="nav-number">1.1.</span> <span class="nav-text">进制转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串到数字"><span class="nav-number">1.1.1.</span> <span class="nav-text">字符串到数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字到字符串"><span class="nav-number">1.1.2.</span> <span class="nav-text">数字到字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符和字符串"><span class="nav-number">1.2.</span> <span class="nav-text">字符和字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer的自动拆装箱"><span class="nav-number">1.3.</span> <span class="nav-text">Integer的自动拆装箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Character"><span class="nav-number">1.4.</span> <span class="nav-text">Character</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Math"><span class="nav-number">2.</span> <span class="nav-text">Math</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String"><span class="nav-number">3.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于的String的唯一性和intern"><span class="nav-number">3.1.</span> <span class="nav-text">关于的String的唯一性和intern</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intern总结"><span class="nav-number">3.2.</span> <span class="nav-text">intern总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#StringBuilder和StringBuffer"><span class="nav-number">4.</span> <span class="nav-text">StringBuilder和StringBuffer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scanner"><span class="nav-number">5.</span> <span class="nav-text">Scanner</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">6.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流"><span class="nav-number">7.</span> <span class="nav-text">流</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Algorithm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="这一节复习了查找，从顺序表的顺序查找，到有序表的二分、插值、斐波那契查找，最后到我们的二叉排序树、AVL树的建立和查找。对于B树、B+树基本了解一点。">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm（排序）">
+<meta property="og:url" content="http://abelchao.com/2017/10/27/Algorithm（排序）/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="这一节复习了查找，从顺序表的顺序查找，到有序表的二分、插值、斐波那契查找，最后到我们的二叉排序树、AVL树的建立和查找。对于B树、B+树基本了解一点。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Search00.jpg">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/search01.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/search02.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/search03.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/search04.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/searchTree01.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/searchTree02.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL01.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL02.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL03.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL04.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL05.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL06.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL07.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL08.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL09.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL10.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL11.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL12.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL13.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL14.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL16.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL17.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL18.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL19.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL21.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL22.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL23.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL24.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/AVL25.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/BTree01.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/BTree02.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/BTree03.png">
+<meta property="og:updated_time" content="2017-11-03T10:08:07.378Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm（排序）">
+<meta name="twitter:description" content="这一节复习了查找，从顺序表的顺序查找，到有序表的二分、插值、斐波那契查找，最后到我们的二叉排序树、AVL树的建立和查找。对于B树、B+树基本了解一点。">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/Search00.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2017/10/27/Algorithm（排序）/"/>
+
+
+
+
+
+  <title>Algorithm（排序） | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2017/10/27/Algorithm（排序）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Algorithm（排序）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-27T10:58:55+08:00">
+                2017-10-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-11-03T18:08:07+08:00">
+                2017-11-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm-Sort/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm Sort</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/Search00.jpg" alt="Search"></p>
+<p><strong>这一节复习了查找，从顺序表的顺序查找，到有序表的二分、插值、斐波那契查找，最后到我们的二叉排序树、AVL树的建立和查找。对于B树、B+树基本了解一点。</strong></p>
+<a id="more"></a>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><h2 id="数组翻转"><a href="#数组翻转" class="headerlink" title="数组翻转"></a>数组翻转</h2><p>利用队列的特性，先进后出。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortDemo</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(T[] arr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> end = arr.length-<span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(start&lt;end)&#123;</span><br><span class="line">			T temp = arr[start];</span><br><span class="line">			arr[start] = arr[end];</span><br><span class="line">			arr[end] = temp;</span><br><span class="line">			</span><br><span class="line">			start++;</span><br><span class="line">			end--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		Integer[] arr = &#123;<span class="number">2</span>,<span class="number">43</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">31</span>,<span class="number">1</span>,<span class="number">54</span>,<span class="number">9</span>,<span class="number">0</span>&#125;;</span><br><span class="line">		reverse(arr);</span><br><span class="line">		System.out.println(Arrays.toString(arr));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="顺序表查找"><a href="#顺序表查找" class="headerlink" title="顺序表查找"></a>顺序表查找</h1><p><strong>顺序查找，又叫做线性查找，是最基本的查找技术，它的查找过程是:从表的第一个记录开始，逐个进行记录的说关键字和给定值比较，若某个记录的关键字和给定值相等，则查找成功，找到所查的记录；如果查找到最后一个记录，其关键字和给定值比较都不相等，则表中没有所查的记录，查找不成功。</strong></p>
+<p><strong>有重复的元素之后，返回的是第一次出现的下标</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FindDemo</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">int</span> <span class="title">orderFind</span><span class="params">(T arr[], T key)</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(key == arr[i])&#123;</span><br><span class="line">				<span class="keyword">return</span> i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Integer[] arr = &#123;<span class="number">61</span>,<span class="number">34</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">32</span>,<span class="number">4</span>,<span class="number">1</span>&#125;;</span><br><span class="line">		System.out.println(orderFind(arr,<span class="number">0</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="有序表查找"><a href="#有序表查找" class="headerlink" title="有序表查找"></a>有序表查找</h1><h2 id="二分查找-折半查找"><a href="#二分查找-折半查找" class="headerlink" title="二分查找(折半查找)"></a>二分查找(折半查找)</h2><p>折半查找。它的前提是线性表中的记录必须要是关键码有序，线性表必须采用顺序存储。</p>
+<p><strong>注意：折半查找的数组中最好不要有重复的元素</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	Arrays.sort(arr);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> min = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> max = arr.length-<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> mid;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(min&lt;=max)&#123;</span><br><span class="line">		mid = (min+max)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(key&lt;arr[mid])&#123;</span><br><span class="line">			max = mid-<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(key&gt;arr[mid])&#123;</span><br><span class="line">			min = mid+<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> mid; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插值查找（二分查找增强"><a href="#插值查找（二分查找增强" class="headerlink" title="插值查找（二分查找增强)"></a>插值查找（二分查找增强)</h2><p>现在我们的新问题是，为什么一定要折半，而不是折四分之一或者折更多呢?<br>打个比方，在英文词典里查”apple”，你下意识里翻开词典是翻前面的书页还是后面的书页呢?如果再让你查”zoo”，你又怎么查?很显然，这里你绝对不会是从中间开始查起，而是有一定目的的往前或往后翻。<br>同样的，比如要在取值范围0 - 10000之间100个元素从小到大均匀分布的数组中查找5，我们自然会考虑从数组下标较小的开始查找。<br>看来，我们的折半查找，还是有改进空间的。折半计算mid的公式，我们略微等式变换后得到:<br><strong>mid = (min+max)/2 = min + (max-min)/2</strong><br>也就是mid等于最低下标low加上最高下标high与low的差的一半。算法科学家们考虑的就是将这个 1/2 进行改进，通过类比，改进为下面的计算方案:<br><strong>mid = min + (max - min) * (key - arr[min]) / (arr[max] - arr[min]);</strong><br>这样就可以大大提高查找的效率。<br>插值查找(Interpolation Search)是根据要<strong>查找的关键字 key 与查找表中最大最小记录的关键字比较后的查找方法，其核心就在于插值的计算公式(key - arr[min]) / (arr[max] - arr[min])。</strong> 应该说，<strong>从时间复杂度来看，它也是O(logn)，</strong> 但对于表长较大，而关键字分布又比较均匀的查找表来说，插值查找算法的平均性能比折半查找要好得多 。反之， 数组中如果分布类似{0，1，2，2000，2001，…….,999998, 999999}这种极端不均匀的数据，用插值查找未必是很合适的选择。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">相比较二分查找，只是改变了循环中mid的查找方式，不再是简单的折半</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	Arrays.sort(arr);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> min = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> max = arr.length-<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> mid;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(min&lt;=max)&#123;</span><br><span class="line">		mid = min + (max - min) * (key - arr[min]) / (arr[max] - arr[min]);</span><br><span class="line">		<span class="keyword">if</span>(key&lt;arr[mid])&#123;</span><br><span class="line">			max = mid-<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(key&gt;arr[mid])&#123;</span><br><span class="line">			min = mid+<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> mid; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="斐波那契查找-有点难"><a href="#斐波那契查找-有点难" class="headerlink" title="斐波那契查找(有点难)"></a>斐波那契查找(有点难)</h2><p><strong>前半部分就是利用斐波那契额数列中的数值，重新做了个数组，而直接利用新的数组中的数据进行查找，这样就会出现新数组比我们原数组多元素的情况，所以将多余的都用最大角标（因为是顺序排序，角标最大就是最大）的元素值补全，补全后再进行查找</strong></p>
+<p>对这个算法的理解：</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/search01.png" alt="Search"></p>
+<p>从上面这个图我们可以直接看到我们复制原数组后形成的新数组arrFbi[]的长度是F[k]，但是角标却是0~F[k]-1，根据斐波那契数列的公式我们可以得到的是F[k]=F[k-1]+F[k-2]，所以我们的数组中前半段是F[K-1]-1,后半段是F[k-2]-1，和中间的mid元素，这样，就是说当我们key<arrfbi[mid]，high=mid-1，然后k=k-1；key>arrFbi[mid],low=mid+1,然后k=k-2。</arrfbi[mid]，high=mid-1，然后k=k-1；key></p>
+<pre><code>1 ) 当 key=a[mid]时，查找就成功。
+2 ) 当 key&lt;a[mid]时，新范围是第low个到第mid-l个，此时范围个数为f[k-1]-1个; 
+3 ) 当 key&gt;a[mid]时，新范围是第mid+l个到第high个，此时范围个数为f[k-2]-1个。
+</code></pre><p>也就是说，如果要查找的记录在右侧，则左侧的数据都不用再判断了，不断反复进行下去，对处于当中的大部分数据，其工作效率要高一些。所以尽管斐波那契查找的时间复杂也为O(logn)，但就平均性能来说，斐波那契查找要优于折半查找。可惜如果是最坏情况，比如这里key=l，那么始终都处于左侧长半区在查找，则查找效率要低于折半查找。</p>
+<p>还有比较关键的一点，折半查找是进行加法与除法运算mid=(low+ high)/2,插值查找进行复杂的四则运算mid = low + ((key - a[low])/(a[high] - a[low]))(high - low),而斐波那契查找只是最简单加减法运算mid=low+f[k-l]-1,在海量数据的查找过程中，这种细微的差别可能会影响最终的查找效率。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Fbi</span><span class="params">(<span class="keyword">int</span> fbiNum)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(fbiNum&lt;<span class="number">0</span>)&#123;</span><br><span class="line">		 <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"fbiNum must more zero !"</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(fbiNum == <span class="number">0</span> || fbiNum == <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> Fbi(fbiNum-<span class="number">1</span>)+Fbi(fbiNum-<span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">FbiSearch</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//保证是顺序查找</span></span><br><span class="line">	Arrays.sort(arr);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//构造斐波那契数列</span></span><br><span class="line">	List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">20</span>;i++)&#123;</span><br><span class="line">		list.add(Fbi(i));</span><br><span class="line">	&#125;</span><br><span class="line">	Integer[] arrFbi = list.toArray(<span class="keyword">new</span> Integer[<span class="number">0</span>]);</span><br><span class="line">	</span><br><span class="line">	System.out.println(Arrays.toString(arrFbi));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> low, mid, high, k;</span><br><span class="line">	</span><br><span class="line">	low = <span class="number">0</span>;</span><br><span class="line">	high = arr.length-<span class="number">1</span>;</span><br><span class="line">	k = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * //先重新构造新的数组</span></span><br><span class="line"><span class="comment">	 * 1. 确定原数组长度在arrFbi数列中的位置</span></span><br><span class="line"><span class="comment">	 * 2. 复制原数组</span></span><br><span class="line"><span class="comment">	 * 3. 补偿新数组</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">while</span>(high&gt;arrFbi[k]-<span class="number">1</span>)&#123;</span><br><span class="line">		k++;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	System.out.println(k);</span><br><span class="line">	</span><br><span class="line">	arr = Arrays.copyOf(arr, arrFbi[k]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=high+<span class="number">1</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">		arr[i] = arr[high];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 开始比较</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">		mid = low+arrFbi[k-<span class="number">1</span>]-<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(key&lt;arr[mid])&#123;</span><br><span class="line">			high = mid-<span class="number">1</span>;</span><br><span class="line">            <span class="comment">// (全部元素) = (前半部分)+(后半部分)  </span></span><br><span class="line">            <span class="comment">// f[k] = f[k-1] + f[k-2]  </span></span><br><span class="line">            <span class="comment">// 因为前半部分有f[k-1]个元素， 则继续拆分f[k-1] = f[k-2] + f[k-3]成立  </span></span><br><span class="line">            <span class="comment">// 即在f[k-1]个元素的前半部分f[k-2]中继续查找，所以k = k - 1,  </span></span><br><span class="line">            <span class="comment">// 则下次循环mid = low + f[k - 1 - 1] - 1; </span></span><br><span class="line">			k = k-<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(key&gt;arr[mid])&#123;</span><br><span class="line">			low = mid+<span class="number">1</span>;</span><br><span class="line">            <span class="comment">// (全部元素) = (前半部分)+(后半部分)  </span></span><br><span class="line">            <span class="comment">// f[k] = f[k-1] + f[k-2]  </span></span><br><span class="line">            <span class="comment">// 因为后半部分有f[k-2]个元素， 则继续拆分f[k-2] = f[k-3] + f[k-4]成立  </span></span><br><span class="line">            <span class="comment">// 即在f[k-2]个元素的前半部分f[k-3]继续查找，所以k = k - 2,  </span></span><br><span class="line">            <span class="comment">// 则下次循环mid = low + f[k - 2 - 1] - 1;  </span></span><br><span class="line">			k = k-<span class="number">2</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(mid&gt;high)&#123;</span><br><span class="line">				<span class="keyword">return</span> high;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> mid;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;<span class="comment">//没有找到</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	<span class="comment">//Integer[] arr = &#123;61,34,1,4,5,32,4,1&#125;;</span></span><br><span class="line">	<span class="keyword">int</span>[] arrInt = &#123;<span class="number">61</span>,<span class="number">34</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">32</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">34</span>&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> index = FbiSearch(arrInt,<span class="number">4</span>);</span><br><span class="line">	Arrays.sort(arrInt);</span><br><span class="line">	System.out.println(Arrays.toString(arrInt));</span><br><span class="line">	</span><br><span class="line">	System.out.println(<span class="string">"fbiSearch: "</span>+index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="线性索引查找"><a href="#线性索引查找" class="headerlink" title="线性索引查找"></a>线性索引查找</h1><p>我们前面讲的几种比较高效的查找方法都是基于有序的基础之上的，但事实上，很多数据集可能增长非常快，如果要保证记录全部是按照当中的某个关键字有序，其时间代价是非常高昂的，所以这种数据通常都是按先后顺序存储。</p>
+<p>那么对于这样的查找表，我们如何能够快速查找到需要的数据呢?办法就是–索引。</p>
+<p><strong>数据结构的最终目的是提高数据的处理速度，索引是为了加快查找速度而设计的一种数据结构。索引就是把一个关键字与它对应的记录相关联的过程，一个索引由若干个索引项构成，每个索引项至少应包含关键字和其对应的记录在存储器中的位置等信息。</strong> 索引技术是组织大型数据库以及磁盘文件的一种重要技术。</p>
+<p><strong>索引按照结构可以分为线性索引、树形索引和多级索引。</strong> 我们这里就只介绍线性索引技术。所谓线性索引就是将索引项集合组织为线性结构，也称为索引表。<strong>我们重点介绍三种线性索引：稠密索引、分块索引和倒排索引。</strong></p>
+<h2 id="稠密索引"><a href="#稠密索引" class="headerlink" title="稠密索引"></a>稠密索引</h2><p>稠密索引是指在线性索引中，将数据集中的每个记录对应一个索引项，如图下图所示。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/search02.png" alt="search"></p>
+<p><strong>对于稠密索引这个索引表来说，索引项一定是按照关键码有序的排列。 </strong></p>
+<p>索引项有序也就意味着，我们要查找关键字时，可以用到折半、插值、斐被那契等有序查找算法，大大提高了效率 ，比如上图中，我要查找关键字是18的记录，如果直接从右侧的数据表中查找，那只能顺序查找，需要查找6次才可以查到结果。而如果是从左侧的索引表中查找，只需两次折半查找就可以得到18对应的指针，最终查找到结果。</p>
+<p>这显然是稠密索引优点，但是如果数据集非常大，比如上亿，那也就意味着索引也得同样的数据集长度规模，对于内存有限的计算机来说，可能就需要反复去访问磁盘，查找性能反而大大下降了。</p>
+<h2 id="分块索引"><a href="#分块索引" class="headerlink" title="分块索引"></a>分块索引</h2><p>稠密索引因为索引项与数据集的记录个数相同，所以空间代价很大。为了减少索引项的个数，我们可以对数据集进行分块，使其分块有序，然后再对每一块建立一个索引项，从而减少索引项的个数。</p>
+<p>分块有序，是把数据集的记录分成了若干块，并且这些块需要满足两个条件:</p>
+<pre><code>• 块内无序，即每一块内的记录不要求有序。当然 ，你如果能够让块内有序对查找来说更理想，不过这就要付出大量时间和空间的代价，因此通常我们不要求块内有序 。
+
+• 块间有序，例如，要求第二块所有记录的关键字均要大于第一块中所有记录的关键字，第三块的所有记录的关键字均要大于第二块的所有记录关键字……因为只有块间有序，才有可能在查找时带来放率。
+</code></pre><p>对于分块有序的数据集，将每块对应一个索引项，这种索引方法叫做分块索引。</p>
+<p>如下图所示，我们定义的分块索引的索引项结构分三个数据项 :</p>
+<pre><code>• 最大关键码，它存储每一块中的最大关键字，这样的好处就是可以使得在它之后的下一块中的最小关键字也能比这一块最大的关键字要大;
+
+• 存储了块中的记录个数，以便于循环时使用;
+
+• 用于指向块首数据元素的指针，便于开始对这一块中记录进行遍历。
+</code></pre><p><img src="http://oxk1vrcj4.bkt.clouddn.com/search03.png" alt="search"></p>
+<h2 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h2><p>搜索引擎通常检索的场景是：给定几个关键词，找出包含关键词的记录。</p>
+<p>我们来看样例，现在有两篇极短的英文”文章”–其实只能算是句子，我们暂认为它是文章，编号分别是1和2。<br>1.Books and friends should be few but good.(读书如交友，应求少而精。)<br>2.A good book is a good friend.(好书如挚友。) </p>
+<p>假设我们忽略掉如”books” 、”friends” 中的复数”s”以及如”A”这样的大小写差异。我们可以整理出这样一张单词表，如下表所示，并将单词做了排序，也就是表格显示了每个不同的单词分别出现在哪篇文章中，比如”good”在两篇文章中都有出现，而”is”只是在文章2中才有。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/search04.png" alt="search"></p>
+<p>在这里这张单词表就是索引表，索引项的通用结构是:</p>
+<pre><code>• 次关键码，例如上面的&quot;英文单词&quot;;
+
+• 记录号表，例如上面的&quot;文章编号&quot;。
+</code></pre><p>其中<strong>记录号表存储具有相同次关键字的所有记录的记录号(可以是指向记录的指针或者是该记录的主关键字)。这样的索引方法就是倒排索引(inverted index)。</strong> 倒排索引源于实际应用中需要根据属性(或字段、次关键码)的值来查找记录。这种<strong>索引表中的每一项都包括一个属性值和具有该属性值的各记录的地址。</strong> </p>
+<p><strong>由于不是由记录来确定属性值，而是由属性值来确定记录的位置，因而称为倒排索引。</strong></p>
+<h1 id="又说二叉排序树-二叉查找树"><a href="#又说二叉排序树-二叉查找树" class="headerlink" title="又说二叉排序树(二叉查找树)"></a>又说二叉排序树(二叉查找树)</h1><p>二叉排序树(Binary Sort Tree)，又称二叉查找树，它或者是一颗空树，或者是具有下列性质的二叉树</p>
+<pre><code>* 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值。
+* 若它的右结点不空，则右子树上所有结点的值均大于它的根节点的值。
+* 它的左、右子树也分别为二叉排序树。
+</code></pre><p>从二叉树的定义也可以知道，它前提是二叉树，然后它采用了递归的定义方法，再者，它的结点间满足一定的次序关系，<strong>左子树结点一定比其双亲结点小，右子树结点一定比其双亲结点大。</strong></p>
+<h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> whbai_xd@163.com</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2017年10月30日 下午9:02:53</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Tree</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt;&gt; </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">height</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">preTraverse</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">midTraverse</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">endTraverse</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">levelTraverse</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(T data)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(T data)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">findMin</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">findMax</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> BinaryNode&lt;T&gt; <span class="title">findNode</span><span class="params">(T data)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(T data)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="BinaryNode"><a href="#BinaryNode" class="headerlink" title="BinaryNode"></a>BinaryNode</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> whbai_xd@163.com</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2017年10月30日 下午9:02:48</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryNode</span> &lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt;&gt; <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID =  -<span class="number">6477238039299912313L</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> BinaryNode&lt;T&gt; left;</span><br><span class="line">	<span class="keyword">public</span> BinaryNode&lt;T&gt; right;</span><br><span class="line">	<span class="keyword">public</span> T data;	</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BinaryNode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>(<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BinaryNode</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>(<span class="keyword">null</span>,<span class="keyword">null</span>,data);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BinaryNode</span><span class="params">(BinaryNode&lt;T&gt; left, BinaryNode&lt;T&gt; right, T data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.left = left;</span><br><span class="line">		<span class="keyword">this</span>.right = right;</span><br><span class="line">		<span class="keyword">this</span>.data = data;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> BinaryNode&lt;T&gt; <span class="title">getLeft</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> left;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLeft</span><span class="params">(BinaryNode&lt;T&gt; left)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.left = left;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> BinaryNode&lt;T&gt; <span class="title">getRight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> right;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRight</span><span class="params">(BinaryNode&lt;T&gt; right)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.right = right;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">getData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> data;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setData</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.data = data;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"BinaryNode [left="</span> + left + <span class="string">", right="</span> + right + <span class="string">", data="</span></span><br><span class="line">				+ data + <span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLeaf</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.left==<span class="keyword">null</span> &amp;&amp; <span class="keyword">this</span>.right==<span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="BST（Binary-Sort-Tree）"><a href="#BST（Binary-Sort-Tree）" class="headerlink" title="BST（Binary Sort Tree）"></a>BST（Binary Sort Tree）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> treeDemo;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> whbai_xd@163.com</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2017年10月30日 下午9:01:11</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinSearchTree</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt;&gt; <span class="keyword">implements</span> <span class="title">Tree</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">protected</span> BinaryNode&lt;T&gt; rootNode;<span class="comment">//相对根节点</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 创建一个空的二叉排序树</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BinSearchTree</span><span class="params">()</span></span>&#123;</span><br><span class="line">		rootNode = <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 判断二叉排序树是否为空树，只需要判断根结点是不是为null就可以</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> rootNode==<span class="keyword">null</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 计算二叉排序树的结点数</span></span><br><span class="line"><span class="comment">	 * 有点类似于汉诺塔的结构：H(n) = H(n-1) + 1 + H(n-1)</span></span><br><span class="line"><span class="comment">	 * 递归size(BinaryNode&lt;T&gt; node)，左子树+1+右子树</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> size(rootNode);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">(BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> size(node.left)+<span class="number">1</span>+size(node.right);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 计算二叉树深度</span></span><br><span class="line"><span class="comment">	 * 分别计算左子树和右子树的高度(遍历high(BinaryNode&lt;T&gt; node))</span></span><br><span class="line"><span class="comment">	 * 返回层数多的子树并加上当前层(也就是+1)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">height</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> high(rootNode);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">high</span><span class="params">(BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(node == <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">int</span> leftHigh = high(node.left);</span><br><span class="line">			<span class="keyword">int</span> rightHigh = high(node.right);</span><br><span class="line">			<span class="keyword">return</span> leftHigh&gt;rightHigh ? leftHigh+<span class="number">1</span> : rightHigh+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 前序遍历</span></span><br><span class="line"><span class="comment">	 * 1. 利用StringBuilder存储数据</span></span><br><span class="line"><span class="comment">	 * 2. node只要不为null，根--&gt;左子树--&gt;右子树，将node的data存入StringBuilder</span></span><br><span class="line"><span class="comment">	 * 3. StringBuilder转成字符串返回</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">preTraverse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String sb = preTraverse(rootNode);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(sb.length()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			sb = sb.substring(<span class="number">0</span>, sb.length()-<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> sb;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">preTraverse</span><span class="params">(BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">			sb.append(node.data+<span class="string">","</span>);</span><br><span class="line">			sb.append(preTraverse(node.left));</span><br><span class="line">			sb.append(preTraverse(node.right));</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 中序遍历</span></span><br><span class="line"><span class="comment">	 * 1. 利用StringBuilder存储数据</span></span><br><span class="line"><span class="comment">	 * 2. node只要不为null，左子树--&gt;根--&gt;右子树，将node的data存入StringBuilder</span></span><br><span class="line"><span class="comment">	 * 3. StringBuilder转成字符串返回</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">midTraverse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		String sb = midTraverse(rootNode);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(sb.length()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			sb = sb.substring(<span class="number">0</span>,sb.length()-<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> sb;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">midTraverse</span><span class="params">(BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">			sb.append(midTraverse(node.left));</span><br><span class="line">			sb.append(node.data+<span class="string">","</span>);</span><br><span class="line">			sb.append(midTraverse(node.right));</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 后序遍历</span></span><br><span class="line"><span class="comment">	 * 1. 利用StringBuilder存储数据</span></span><br><span class="line"><span class="comment">	 * 2. node只要不为null，左子树--&gt;右子树--&gt;根，将node的data存入StringBuilder</span></span><br><span class="line"><span class="comment">	 * 3. StringBuilder转成字符串返回</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">endTraverse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		String sb = endTraverse(rootNode);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(sb.length()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			sb = sb.substring(<span class="number">0</span>,sb.length()-<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> sb;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">endTraverse</span><span class="params">(BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">			sb.append(endTraverse(node.left));</span><br><span class="line">			sb.append(endTraverse(node.right));</span><br><span class="line">			sb.append(node.data+<span class="string">","</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 层序遍历，这里先不写</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">levelTraverse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 插入操作</span></span><br><span class="line"><span class="comment">	 * 只要数据为空，就抛出异常</span></span><br><span class="line"><span class="comment">	 * insert(T data,BinaryNode&lt;T&gt; node)中，如果根结点是null，就创建一个树，左右子树都是null</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * 之后插入数据：</span></span><br><span class="line"><span class="comment">	 * 		1. 建立比较数</span></span><br><span class="line"><span class="comment">	 * 		2. 插入的数据比当前结点的data大，查找右子树，右子树为null，直接插入，不为null就开始递归比较，一直到某一个结点是null，然后插入</span></span><br><span class="line"><span class="comment">	 * 		3. 插入的数据比当前结点的data小，查找左子树，左子树为null，直接插入，不为null就开始递归比较，一直到某一个结点是null，然后插入</span></span><br><span class="line"><span class="comment">	 * 		4. 插入后返回该结点（其实返回的直接就是插入后改变了的根结点）</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(data == <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"data that is inserted is not null !!"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		rootNode = insert(data,rootNode);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> BinaryNode&lt;T&gt; <span class="title">insert</span><span class="params">(T data,BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</span><br><span class="line">			node = <span class="keyword">new</span> BinaryNode&lt;T&gt;(<span class="keyword">null</span>,<span class="keyword">null</span>,data);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> compareNum = data.compareTo(node.data);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(compareNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(node.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				node.right = insert(data,node.right);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				node.right = <span class="keyword">new</span> BinaryNode&lt;T&gt;(<span class="keyword">null</span>,<span class="keyword">null</span>,data);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//node.right = insert(data,node.right);</span></span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(compareNum&lt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				node.left = insert(data,node.left);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				node.left = <span class="keyword">new</span> BinaryNode&lt;T&gt;(<span class="keyword">null</span>,<span class="keyword">null</span>,data);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//node.left = insert(data,node.left);</span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"this Node is existed!!"</span>);;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> node;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 删除操作</span></span><br><span class="line"><span class="comment">	 * 1. 如果删除的数据不存在或者为null，那么就抛出异常</span></span><br><span class="line"><span class="comment">	 * 2. remove(T data,BinaryNode&lt;T&gt; node)就有点类似于遍历</span></span><br><span class="line"><span class="comment">	 * 3. 一旦比较数一致，就说明我们的需要删除的结点找到了，剩下的就是一个置空和链接的操作</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * 这个有几句话不能很能理解！！！</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(data==<span class="keyword">null</span> || findNode(data)==<span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"data is null or unexisted"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		rootNode = remove(data,rootNode);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> BinaryNode&lt;T&gt; <span class="title">remove</span><span class="params">(T data,BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> node;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> compareNum = data.compareTo(node.data);</span><br><span class="line">		<span class="keyword">if</span>(compareNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			node.right = remove(data,node.right);</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(compareNum&lt;<span class="number">0</span>)&#123;</span><br><span class="line">			node.left = remove(data,node.left);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(node.left!=<span class="keyword">null</span> &amp;&amp; node.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				node.data = findMin(node.right).data;</span><br><span class="line">				node.right = remove(node.data,node.right);<span class="comment">//这句话实在想不来！！！</span></span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				node = node.left!=<span class="keyword">null</span> ? node.left : node.right;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> node;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">delete</span><span class="params">(T data)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> delete(data,rootNode);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">delete</span><span class="params">(T data,BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(data==<span class="keyword">null</span> || findNode(data)==<span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">int</span> compareNum = data.compareTo(node.data);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(compareNum==<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> delete(node);</span><br><span class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(compareNum&lt;<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> delete(data,node.left);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> delete(data,node.right);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">delete</span><span class="params">(BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		BinaryNode&lt;T&gt; q,s;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(node.left == <span class="keyword">null</span>)&#123;</span><br><span class="line">			node = node.right;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(node.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">			node = node.left;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			q = node;</span><br><span class="line">			s = node.left;</span><br><span class="line">			<span class="keyword">while</span>(s.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				q = s;<span class="comment">//q指向被删除的结点的左子树</span></span><br><span class="line">				s = s.right;<span class="comment">//s指向这个左子树中的最大值</span></span><br><span class="line">			&#125;</span><br><span class="line">			node.data = s.data;<span class="comment">//切换了被删除结点的值</span></span><br><span class="line">			<span class="keyword">if</span>(q!=node)&#123;</span><br><span class="line">				q.right = s.left;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				q.left = s.right;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 最小值：</span></span><br><span class="line"><span class="comment">	 * 只要传入结点的左结点不为null，就不停的去找左结点并返回给当前结点。最后返回结点。</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * 最大值：</span></span><br><span class="line"><span class="comment">	 * 只要传入结点的右结点不为null，就不停的去找右结点并返回给当前结点。最后返回结点。</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">findMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> findMin(rootNode).data;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> BinaryNode&lt;T&gt; <span class="title">findMin</span><span class="params">(BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">			node = node.left;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> node;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">findMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> findMax(rootNode).data;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> BinaryNode&lt;T&gt; <span class="title">findMax</span><span class="params">(BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(node.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">			node = node.right;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> node;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 先查找数据，数据是null就直接抛异常</span></span><br><span class="line"><span class="comment">	 * 查找结点是否存在</span></span><br><span class="line"><span class="comment">	 * 如果结点是null，直接返回一个null。</span></span><br><span class="line"><span class="comment">	 * 不为null则按照比较数的大小开始递归左、右子树，直到比较数为0</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">searchNode</span><span class="params">(T data)</span></span>&#123;</span><br><span class="line">		BinaryNode&lt;T&gt; node = findNode(data);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"[nodeData:"</span>+node.data+<span class="string">",leftSubNode:"</span>+node.left.data+<span class="string">",rightSubNode:"</span>+node.right.data+<span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> BinaryNode&lt;T&gt; <span class="title">findNode</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(data==<span class="keyword">null</span>)&#123;</span><br><span class="line">			 <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"data can't null!!!"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> findNode(data,rootNode);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> BinaryNode&lt;T&gt; <span class="title">findNode</span><span class="params">(T data,BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(node == <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> compareNum = data.compareTo(node.data);</span><br><span class="line">		<span class="keyword">if</span>(compareNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(node.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> node = findNode(data,node.right);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line"><span class="comment">//			node = findNode(data,node.right);</span></span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(compareNum&lt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> node = findNode(data,node.left);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//node = findNode(data,node.left);</span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> node;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 判断数据是否存在于结点中。</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> contains(data,rootNode);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(T data, BinaryNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(node== <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> compareNum = data.compareTo(node.data);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(compareNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(node.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> contains(data,node.right);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//contains(data,node.right);</span></span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(compareNum&lt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> contains(data,node.left);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line"><span class="comment">//			contains(data,node.left);</span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/searchTree01.png" alt="search"><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> treeDemo;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> whbai_xd@163.com</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2017年10月30日 下午9:02:41</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestTree</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		BinSearchTree&lt;Integer&gt; binSearchTree = <span class="keyword">new</span> BinSearchTree&lt;Integer&gt;();</span><br><span class="line">		</span><br><span class="line">		System.out.println(binSearchTree.isEmpty());</span><br><span class="line">		</span><br><span class="line">		System.out.println(binSearchTree.size());</span><br><span class="line">		System.out.println(binSearchTree.height());</span><br><span class="line">		</span><br><span class="line">		binSearchTree.insert(<span class="number">0</span>);</span><br><span class="line">		binSearchTree.insert(<span class="number">7</span>);</span><br><span class="line">		binSearchTree.insert(-<span class="number">7</span>);</span><br><span class="line">		</span><br><span class="line">		binSearchTree.insert(<span class="number">1</span>);</span><br><span class="line">		binSearchTree.insert(<span class="number">10</span>);</span><br><span class="line">		binSearchTree.insert(-<span class="number">10</span>);</span><br><span class="line">		binSearchTree.insert(-<span class="number">1</span>);</span><br><span class="line">		binSearchTree.insert(<span class="number">8</span>);</span><br><span class="line">		binSearchTree.insert(<span class="number">17</span>);</span><br><span class="line">		</span><br><span class="line">		System.out.println(binSearchTree.preTraverse());</span><br><span class="line">		System.out.println(binSearchTree.midTraverse());</span><br><span class="line">		System.out.println(binSearchTree.endTraverse());</span><br><span class="line">		</span><br><span class="line">		System.out.println(binSearchTree.isEmpty());</span><br><span class="line">	</span><br><span class="line">		System.out.println(binSearchTree.size());</span><br><span class="line">		System.out.println(binSearchTree.height());</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		System.out.println(binSearchTree.findNode(<span class="number">7</span>).toString());</span><br><span class="line">	</span><br><span class="line">		System.out.println(binSearchTree.searchNode(<span class="number">10</span>));</span><br><span class="line">		</span><br><span class="line">		System.out.println(binSearchTree.contains(<span class="number">0</span>));</span><br><span class="line">		</span><br><span class="line">		System.out.println(binSearchTree.findMin());</span><br><span class="line">		</span><br><span class="line">		System.out.println(binSearchTree.findMax());</span><br><span class="line">		</span><br><span class="line">		binSearchTree.remove(<span class="number">7</span>);</span><br><span class="line">		<span class="comment">//binSearchTree.delete(1);</span></span><br><span class="line">		</span><br><span class="line">		System.out.println(binSearchTree.preTraverse());	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">Output:</span></span><br><span class="line"><span class="comment">	true</span></span><br><span class="line"><span class="comment">	0</span></span><br><span class="line"><span class="comment">	0</span></span><br><span class="line"><span class="comment">	this Node is existed!!</span></span><br><span class="line"><span class="comment">	0,-7,-10,-1,7,1,10,8,17</span></span><br><span class="line"><span class="comment">	-10,-7,-1,0,1,7,8,10,17</span></span><br><span class="line"><span class="comment">	-10,-1,-7,1,8,17,10,7,0</span></span><br><span class="line"><span class="comment">	false</span></span><br><span class="line"><span class="comment">	9</span></span><br><span class="line"><span class="comment">	4</span></span><br><span class="line"><span class="comment">	BinaryNode [left=BinaryNode [left=null, right=null, data=1], right=BinaryNode [left=BinaryNode [left=null, right=null, data=8], right=BinaryNode [left=null, right=null, data=17], data=10], data=7]</span></span><br><span class="line"><span class="comment">	[nodeData:10,leftSubNode:8,rightSubNode:17]</span></span><br><span class="line"><span class="comment">	true</span></span><br><span class="line"><span class="comment">	-10</span></span><br><span class="line"><span class="comment">	17</span></span><br><span class="line"><span class="comment">	0,-7,-10,-1,8,1,10,17</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
+<p>总之， 二叉排序树是以<strong>链接的方式存储</strong>，保持了链接存储结构在执行插入或删除操作时不用移动元素的优点，<strong>只要找到合造的插入和删除位置后，仅需修改链接指针即可。</strong> 插入删除的时间性能比较好。<strong>而对于二叉排序树的查找，走的就是从根结点到要查找的结点的路径，其比较次数等于给定值的结点在二叉排序树的层数。</strong> 极端情况，最少为1次，即根结点就是要找的结点，最多也不会超过树的深度。<strong>也就是说，二叉排序树的查找性能取决于二叉排序树的形状。</strong> 可问题就在于，二叉排序树的形状是不确定的。</p>
+<p>例如{62，88，58，47，35，73，51，99，37，93}这样的数组，我们可以构建如下左图的二叉排序树。但如果数组元素的次序是从小到大有序，如 {35，37，47，51，58，62，73，88，93，99}，则二叉排序树就成了极端的右斜树，注意它依然是一棵二叉排序树，如下右图。此时，同样是查找结点99，左图只需要两次比较，而右图就需要10次比较才可以得到结果，二者差异很大。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/searchTree02.png" alt="search"></p>
+<p>也就是说，我们希望二叉排序树是比较平衡的，即其深度与完全二叉树相同，均为[log2n]+1，那么查找的时间复杂也就为O(logn)，近似于折半查找，事实上，上左图也不够平衡，明显的左重右轻。不平衡的最坏情况就是像上右图的斜树，查找时间复杂度为O(n)，这等同于顺序查找。<br>因此，如果我们希望对一个集合按二叉排序树查找，最好是把它构建成一棵平衡的二叉排序树。这样我们就引申出另一个问题，如何让二叉排序树平衡的问题。</p>
+<h1 id="平衡二叉树-AVL"><a href="#平衡二叉树-AVL" class="headerlink" title="平衡二叉树(AVL)"></a>平衡二叉树(AVL)</h1><p><strong>平衡二叉树（Self-Balancing Binary Search Tree），其实本身就是一个二叉排序树，其中每一个结点的左子树和右子树的高度差至多等于1.</strong></p>
+<p><strong>二叉树上结点的左子树深度减去右子树深度的值称为平衡因子BF(Balance Factor).</strong></p>
+<p><strong>距离插入结点最近的，且平衡因子的绝对值大于1的结点为根的子树，我们称为最小不平衡树</strong></p>
+<p>这里我们还需要明确一个概念，AVL树只是实现平衡二叉树的一种方法，它还有很多的其他实现方法如红黑树、替罪羊树、Treap、伸展树等，后面我们还会分析其他树的实现。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL01.png" alt="AVL"></p>
+<p>图(1)显然就是一棵平衡二叉树，它每个结点的左子树和右子树的高度最多相差1，同时也是一棵二叉查找树，而图二虽然也是一棵二叉查找树，但是它每个结点的左子树和右子树的高度相差却到达了2，因此不是平衡二叉树。理解了平衡二叉树的概念后，我们在思考一下，那些操作可能引起平衡发生变化呢？显然只有那些引起结点数量变化的操作才可能导致平衡被改变，也就是删除和插入操作了，如下图，我们把6插入到图a后，结构变成了图b，这时原本的平衡二叉树就失去平衡了。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL02.png" alt="AVL"></p>
+<p>显然图b已失去平衡，如果发生这样的情况，我们就必须考虑插入元素后恢复二叉树的平衡性质，实际上也总是可以通过对树进行简单的修复来让其重新恢复到平衡，而这样的简单操作我们就称之为旋转，当然旋转也有单旋转和双旋转之分，下面我们将会一一分析，这里有点需要明白的是，无论是插入还是删除，只有那些从插入或者删除点到根结点的路径上的结点的平衡才有可能被改变，因为只有这些结点的子树才可能发生变化，所以最终也只需针对这些点进行平衡修复操作即可。</p>
+<h2 id="右旋"><a href="#右旋" class="headerlink" title="右旋"></a>右旋</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL03.png" alt="AVL"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL04.png" alt="AVL"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//形参是失衡点,右旋</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> AVLNode&lt;T&gt; <span class="title">rightR</span><span class="params">(AVLNode&lt;T&gt; loseNode)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		AVLNode&lt;T&gt; tempNode;</span><br><span class="line">		tempNode = loseNode.left;</span><br><span class="line">		loseNode.left = tempNode.right;</span><br><span class="line">		tempNode.right = loseNode;</span><br><span class="line">		</span><br><span class="line">		loseNode = tempNode;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> loseNode;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">原理：</span></span><br><span class="line"><span class="comment">	首先建立一个临时结点，让这个结点指向失衡结点的左子树，然后让失衡结点的左子树等于临时结点的右子树，也就是一开始失衡结点的左子树的右子树。最后将临时结点的右子树等于失衡结点。</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">	最后把这个新的临时结点直接赋值给一开始的失衡结点。也就是改变了我们最初的失衡结点的构造。完成了右旋</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="左旋"><a href="#左旋" class="headerlink" title="左旋"></a>左旋</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL05.png" alt="AVL"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL06.png" alt="AVL"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">//左旋</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> AVLNode&lt;T&gt; <span class="title">leftR</span><span class="params">(AVLNode&lt;T&gt; loseNode)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		AVLNode&lt;T&gt; tempNode;</span><br><span class="line">		</span><br><span class="line">		tempNode = loseNode.right;</span><br><span class="line">		loseNode.right = tempNode.left;</span><br><span class="line">		tempNode.left = loseNode;</span><br><span class="line">		</span><br><span class="line">		loseNode = tempNode;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> loseNode;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">原理：</span></span><br><span class="line"><span class="comment">	loseNode是失衡结点，建立临时结点，使临时结点指向失衡结点的右子树，也就是打算左旋的子树的根结点。接着让失衡结点的右子树等于临时结点的左子树，最后让失衡结点称为临时结点的左子树。</span></span><br><span class="line"><span class="comment">	最后返回临时结点给我们的失衡结点，完成平衡。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="左平衡旋转-左–-gt-右旋转"><a href="#左平衡旋转-左–-gt-右旋转" class="headerlink" title="左平衡旋转(左–&gt;右旋转)"></a>左平衡旋转(左–&gt;右旋转)</h2><p><strong>其实就是失衡点的左子树先左旋，然后失衡点右旋</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL07.png" alt="AVL"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL08.png" alt="AVL"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//左平衡循环（先是失衡点的左子树开始右旋，然后是失衡点卡开始左旋）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> AVLNode&lt;T&gt; <span class="title">leftBalance</span><span class="params">(AVLNode&lt;T&gt; loseNode)</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	loseNode.left = leftR(loseNode.left);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> rightR(loseNode);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="右平衡旋转"><a href="#右平衡旋转" class="headerlink" title="右平衡旋转"></a>右平衡旋转</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL09.png" alt="AVL"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL10.png" alt="AVL"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//右平衡旋转</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> AVLNode&lt;T&gt; <span class="title">rightBalance</span><span class="params">(AVLNode&lt;T&gt; loseNode)</span></span>&#123;</span><br><span class="line">	loseNode.right = rightR(loseNode.right);</span><br><span class="line">	<span class="keyword">return</span> leftR(loseNode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="平衡二叉树插入操作的实现"><a href="#平衡二叉树插入操作的实现" class="headerlink" title="平衡二叉树插入操作的实现"></a>平衡二叉树插入操作的实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 重写插入，因为有一个保持平衡的东西</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(T data)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(data==<span class="keyword">null</span>)&#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"data that is inserted is not null !!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">this</span>.rootNode = insert(data,rootNode);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> AVLNode&lt;T&gt; <span class="title">insert</span><span class="params">(T data,AVLNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">///说明已没有孩子结点,可以创建新结点插入了.</span></span><br><span class="line">	<span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</span><br><span class="line">		node = <span class="keyword">new</span> AVLNode&lt;T&gt;(data);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(data.compareTo(node.data)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">		node.left = insert(data,node.left);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(high(node.left)-high(node.right)==<span class="number">2</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(data.compareTo(node.left.data)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">				node = rightR(node);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				node = leftBalance(node);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(data.compareTo(node.data)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		node.right = insert(data,node.right);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(high(node.right)-high(node.left)==<span class="number">2</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(data.compareTo(node.right.data)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				node = leftR(node);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				node = rightBalance(node);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		node.height = Math.max(high(node.left), high(node.right))+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 重写删除操作</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(T data)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(data==<span class="keyword">null</span>)&#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"data can\'t not be null "</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">this</span>.rootNode = remove(data,rootNode);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> AVLNode&lt;T&gt; <span class="title">remove</span><span class="params">(T data,AVLNode&lt;T&gt; node)</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(node == <span class="keyword">null</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> compareNum = data.compareTo(node.data);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(compareNum&lt;<span class="number">0</span>)&#123;</span><br><span class="line">		node.left = remove(data,node.left);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(high(node.right)-high(node.left)==<span class="number">2</span>)&#123;</span><br><span class="line">			AVLNode&lt;T&gt; currentNode = node.right;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(high(currentNode.left)&gt;high(currentNode.right))&#123;</span><br><span class="line">				node = rightR(node);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				node = leftBalance(node);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(compareNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		node.right = remove(data,node.right);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(high(node.left)-high(node.right)==<span class="number">2</span>)&#123;</span><br><span class="line">			AVLNode&lt;T&gt; currentNode = node.left;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(high(currentNode.right)&gt;high(currentNode.left))&#123;</span><br><span class="line">				node = leftR(node);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				node = rightBalance(node);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(node.right!=<span class="keyword">null</span> &amp;&amp; node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">		node.data = findMin(node.right).data;</span><br><span class="line">		</span><br><span class="line">		node.right = remove(node.data,node.right);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		node = (node.left!=<span class="keyword">null</span>)?node.left:node.right;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">		node.height = Math.max(high(node.left), high(node.right))+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h1><p><strong>多路查找树(muitl-way search tree)，其每一个结点的孩子数可以多于两个，且每一个结点处可以存储多个元素</strong></p>
+<h2 id="2-3树"><a href="#2-3树" class="headerlink" title="2-3树"></a>2-3树</h2><p><strong>2-3树是这样一颗多路查找树：其中的每一个结点都具有两个孩子（我们称它为2结点）或三个孩子（我们称它为3结点</strong></p>
+<p>一个2结点包含一个元素和两个孩子（或者没有孩子），且与二叉排序树类似，左子树包含的元素小于该元素，右子树包含的元素大于该元素。不过，与二叉排序树不同的是，这个2结点要么没有孩子，要有就有两个孩子，不能只有一个孩子。</p>
+<p>一个3结点包含一小一大两个元素和三个孩子（或没有孩子），一个3结点要么没有孩子，要么具有3个孩子。如果某个3结点有孩子的话，左子树包含小于较小元素的元素，右子树包含大于较大元素的元素，中间子树包含介于两元素之间的元素。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL11.png" alt="AVL"></p>
+<p><strong>2-3树插入</strong></p>
+<p>对于2-3树的插入来说，与二叉排序树相同，插入操作一定是发生在叶子结点上。可与二叉排序树不同的是，2-3树插入一个元素的过程有可能会对该树的其余结构产生连锁反应。<br>2-3树插入可分为三种情况。<br>1) 对于空树，插入一个2结点即可，这很容易理解。</p>
+<p>2) 插入结点到一个2结点的叶子上。应该说，由于其本身就只有一个元素，所以只需要将其升级为3结点即可。如图 所示，我们希望从左图的2-3树中插入元素3，根据遍历可知，3比8小、比4小，于是就只能考虑插入到叶子结点1所在的位置，因此很自然的想法就是将此结点变成一个3结点，即右图这样完成插入操作。当然，要视插入的元素与当前叶子结点的元素比较大小后，决定谁在左谁在右。例如，若插入的是0，则此结点就是”0”在左”1”在右了。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL12.png" alt="AVL"></p>
+<p>3)要往3结点中插入一个新元素。 因为3结点本身已经是2-3树的结点最大容量(已经有两个元素)，因此就需要将其拆分，且将树中两元素或插入元素的三者中选择其一向上移动一层。复杂的情况也正在于此。</p>
+<p>第一种情况，见下图，需要向左图中插入元素5。经过遍历可得到元素5比8小比4大，因此它应该是需要插入在拥有6、7元素的3结点位置。问题就在于，6和7结点已经是3结点，不能再加。此时发现它的双亲结点4是个2结点，因此考虑让它升级为3结点，这样它就得有三个孩子，于是就想到，将6、7结点拆分，让6与4结成3结点，将5成为它的中间孩子，将7成为它的右孩子，如下右图所示。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL13.png" alt="AVL"></p>
+<p>另一种情况，如下图所示，需要向左图中插入元素11。经过遍历可得到元素11比12、14比9、10大，因此它应该是需要插入在拥有9、10元素的3结点位置。同样道理，9和10结点不能再增加结点。 此时发现它的双亲结点12、14 也是一个3结点，也不能再插入元素了。再往上看，12、14结点的双亲，结点8是个2结点。于是就想到，将9、10拆分， 12、14也拆分，让根结点8升级为3结点，最终形成如下右图样子。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL14.png" alt="AVL"></p>
+<p>再来看个例子， 如下图所示，需要在左图中插入元素2。经过遍历可得到元素2比4小、6比1大，因此它应该是需要插入在拥有1、3元素的3结点位置。与上例一样，你会发现，1、3结点，4、6结点都是3结点，都不能再插入元素了，再往上看，8、12结点还是一个3结点，那就意味着，当前我们的树结构是三层已经不能满足当前结点增加的需要了。 于是将1、3拆分，4、6拆分，连根结点8、12 也拆分，最终形成如下右图样子。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL16.png" alt="AVL"></p>
+<p><strong>2-3树删除</strong></p>
+<p>对于2-3树的删除来说，如果对前面插入的理解足够到位的话，应该不是难事了。2-3树的删除也分为三种情况。与插入相反，我们从3结点开始说起。</p>
+<p>1)所删除元素位于一个 3 结点的叶子结点上，这非常简单，只需要在该结点处删除该元素即可，不会影响到整棵树的其他结点结构。如下图所示，删除元素9，只需要将此结点改成只有元素10的2结点即可。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL17.png" alt="AVL"></p>
+<p>2)所删除的元素位于一个2结点上，即要删除的是一个只有一个元素的结点。如果按照以前树的理解，删除即可， 可现在的2- 树的定义告诉我们这样做是不可以的 . 比如下图所示，如果我们删除了结点1，那么结点4本来是一个2结点(它拥有两个孩子 )，此时它就不满足定义了。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL18.png" alt="AVL"></p>
+<p>因此，对于删除叶子是2结点的情况，我们需要分四种情形来处理。<br>情形一，此结点的双亲也是2结点，且拥有一个3结点的右孩子。 如下图所示，删除结点1，那么只需要左旋，即6成为双亲，4成为6的左孩子，7是6的右孩子。 </p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL19.png" alt="AVL"></p>
+<p>情形二，此结点的双亲是2结点，它的右孩子也是2结点。如下图，此时删除结点1，如果直接左旋会造成没有右孩子，因此需要对整棵树变形，办法就是，我们目标是让结点7变成3结点，那就得让比7稍大的元素8下来，随即就得让<br>比元素8稍大的元素9补充结点8的位置，于是就有了下面中间图，于是再用左旋的方式，变成右图结果。<br><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL21.png" alt="AVL"></p>
+<p>情形三，此结点的双亲是一个3结点。如下图所示，此时删除结点10，意味着双亲12、14这个结点不能成为3结点了 ，于是将此结点拆分，并将12与13合并成为左孩子。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL22.png" alt="AVL"></p>
+<p>情形四，如果当前树是一个满二叉树的情况，此时删除任何一个叶子都会使得整棵树不能满足2-3树的定义。如下图所示，删除叶子结点8时(其实删除任何一个结点都一样)，就不得不考虑要将2-3的层数减少，办法是将8的双亲7和其在子树6合并为3结点，再将14与9合并为3结点 ，最后成为右图的样子。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL23.png" alt="AVL"></p>
+<p>3)所删除的元素位于非叶子的分支结点。此时我们通常是将树按中序遍历后得到此元素的前驱或后继元素，考虑让它们来补位即可。<br>如果我们要删除的分支结点是2结点。如下图所示我们要删除4结点，分析后得到它的前驱是1后继是6，显然，由于 6、7是3结点，只需要用6来补位即可，如下右图所示。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL24.png" alt="AVL"></p>
+<p>如果我们要删除的分支结点是3结点的某一元素，如下图所示我们要删除12、14 结点的12，此时，经过分析，显然应该是将是3结点的左孩子的10上升到删除位置合适。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/AVL25.png" alt="AVL"></p>
+<h2 id="2-3-4树"><a href="#2-3-4树" class="headerlink" title="2-3-4树"></a>2-3-4树</h2><p>有了2-3树的讲解，2-3-4树就很好理解了，它其实就是2-3树的概念扩展，包括了4结点的使用。一个4结点包含小中大三个元素和四个孩子(或没有孩子)，一个4结点要么没有孩子，要么具有4个孩子。如果某个4结点有孩子的话，左子树包含小于最小元素的元素;第二子树包含大于最小元素，小于第二元素的元素;第三子树包含大于第二元素，小于最大元素的元素;右子树包含大于最大元素的元素。</p>
+<h2 id="B树-1"><a href="#B树-1" class="headerlink" title="B树"></a>B树</h2><p><strong>B树是一种平衡的多路查找树，2-3树和2-3-4树都是B树的特例。结点最大的孩子数目称为B树的阶，因此，2-3树是3阶B树，2-3-4树是4阶B树。</strong></p>
+<p>一个m阶的B树具有如下属性:</p>
+<pre><code>• 如果根结点不是叶结点，则其至少有两棵子树。
+
+• 每一个非根的分支结点都有k-l个元素和k个孩子，其中[m/2]&lt;=k&lt;=m。
+每一个叶子结点n都有k-l个元素，其中[m/2]&lt;=k&lt;=m。
+
+• 所有叶子结点都位于同一层次。
+
+•所有分支结点包含下列信息数据(n，A0，K1，A1，K2，......KN，AN)，其中:Ki(i=1，2…,n)为关键字，且Ki(i =1，2…，n);
+为关键字，且Ki&lt;K(i+1)(i=0，2，…，n)为指向子树根结点的指针，且指针Ai所指子树中所有结点的关键字均小于Ki(i=1，2，…，n)，
+An所指子树中所有结点的关键字均大于Kn，n( [m/2]-1&lt;=n&lt;=m-l)为关键字的个数(或n+1为子树的个数)。
+</code></pre><p>例如，2-3-4树中插入9个数后的图转成 B 树示意就如下图的右图所示。左侧灰色方块表示当前结点的元素个数。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/BTree01.png" alt="B-Tree"></p>
+<p>在 B 树上查找的过程是一个指针查找结点和在结点中查找关键字的交叉过程。<br>比方说，我们要查找数字7，首先从外存(比如硬盘中)读取得到根结点3、5 、8三个元素，发现7不在当中，但在5和 8之间，因此就通过A2再读取外存的6、7结点，查找到所要的元素.<br>至于 B 树的插入和删除，方式是与2-3树和2-3-4树相类似的，只不过阶数会很大而已 。<br>我们在本节的开头提到，如果内存与外存交换数据次数频繁，会造成了时间效率<br>上的瓶颈，那么B树结构怎么就可以做到减少次数呢?<br>我们的外存，比如硬盘，是将所有的信息分割成相等大小的页面，每次硬盘读写的都是一个或多个完整的页面，对于一个硬盘来说， 一页的长度可能是211到214个字节。<br>在一个典型的B树应用中，要处理的硬盘数据量很大，因此无法一次全部装入内存。因此我们会对B树进行调整，使得 B树的阶数(或结点的元素)与硬盘存储的页面大小相匹配。比如说一棵B树的阶为1001(即1个结点包含1000个关键字) ，高度为2，它可以储存超过10亿个关键字，我们只要让根结点持久地保留在内存中，那么在这棵树上，寻找某一个关键字至多需要两次硬盘的读取即可。这就好比我们普通人数钱都是一张一张的数，而银行职员数钱则是五张、十张 ，甚至几十张一数，速度当然是比常人快了不少。<br>通过这种方式，在有限内存的情况下，每一次磁盘的访问我们都可以获得最大数量的数据。由于B树每结点可以具有比二叉树多得多的元素，所以与二叉树的操作不同，它们减少了必须访问结点和数据块的数量，从而提高了性能。<strong>可以说，B树的数据结构就是为内外存的数据交互准备的。</strong></p>
+<h2 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h2><p>尽管前面我们已经讲了 B 树的诸多好处，但其实它还是有缺陷的。对于树结构来说，我们都可以通过中序遍历来顺序查找树中的元素，这一切都是在内存中进行。<br>可是在B树结构中，我们往返于每个结点之间也就意味着，我们必须得在硬盘的页面之间进行多次访问，如下图所示，我们希望遍历这棵B树，假设每个结点都属于硬盘的不同页面，我们为了中序遍历所有的元素，页面2→页面1→页面 3→页面1→页面4→页面1→页面5。而且我们每次经过结点遍历时，都会对结点中的元素进行一次遍历，这就非常糟糕。有没有可能让遍历时每个元素只访问一次呢?</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/BTree02.png" alt="B-Tree"></p>
+<p>为了能够解决所有元素遍历等基本问题，我们在原有的B树结构基础上，加上了新的元素组织方式，这就是B+树。<br>B+树是应文件系统所需而出的一种B树的变形树，注意严格意义上讲，它其实已经不是第之前所定义的树了。在B树中 ，每一个元素在该树中只出现一次，有可能在叶子结点上，也有可能在分支结点上。而在B+树中，出现在分支结点中的元素会被当作它们在该分支结点位置的中序后继者(叶子结点)中再次列出。另外，每一个叶子结点都会保存一个指向后一叶子结点的指针。<br>例如下图所示，就是一棵B+树的示意，灰色关键字即是根结点中的关键字<br>在叶子结点再次列出，并且所有叶子结点都链接在一起。</p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/BTree03.png" alt="B-Tree"></p>
+<p>一棵m阶的B+树和m阶的B树的差异在于:</p>
+<pre><code>• 有n棵子树的结点中包含有n个关键字;
+
+• 所有的叶子结点包含全部关键字的信息，及指向含这些关键字记录的指针，叶子结点本身依关键字的大小自小而大顺序链接;
+
+• 所有分支结点可以看成是索引，结点中仅含有其子树中的最大(或最)关键字。
+</code></pre><p>这样的数据结构最大的好处就在子 ，如果是要随机查找，我们就从根结点出发，与B树的查找方式相同，只不过即使在分支结点找到了待查找的关键字，它也只是用来索引的，不能提供实际记录的访问，还是需要到达包含此关键字的终端结点。<br>如果我们是需要从最小关键字进行从小到大的顺序查找，我们就可以从最左侧的叶子结点出发，不经过分支结点，而是延着指向下一叶子的指针就可遍历所有的关键字。</p>
+
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2017/10/27/Algorithm（排序）/" title="Algorithm（排序）">http://abelchao.com/2017/10/27/Algorithm（排序）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/26/Data-Structure（递归）/" rel="next" title="Data Structure（递归）">
+                <i class="fa fa-chevron-left"></i> Data Structure（递归）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/05/Data-Structure（又说Hash表）/" rel="prev" title="Data Structure（又说Hash表）">
+                Data Structure（又说Hash表） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number">1.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组翻转"><span class="nav-number">1.1.</span> <span class="nav-text">数组翻转</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序表查找"><span class="nav-number">2.</span> <span class="nav-text">顺序表查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有序表查找"><span class="nav-number">3.</span> <span class="nav-text">有序表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找-折半查找"><span class="nav-number">3.1.</span> <span class="nav-text">二分查找(折半查找)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插值查找（二分查找增强"><span class="nav-number">3.2.</span> <span class="nav-text">插值查找（二分查找增强)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契查找-有点难"><span class="nav-number">3.3.</span> <span class="nav-text">斐波那契查找(有点难)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性索引查找"><span class="nav-number">4.</span> <span class="nav-text">线性索引查找</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#稠密索引"><span class="nav-number">4.1.</span> <span class="nav-text">稠密索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分块索引"><span class="nav-number">4.2.</span> <span class="nav-text">分块索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#倒排索引"><span class="nav-number">4.3.</span> <span class="nav-text">倒排索引</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#又说二叉排序树-二叉查找树"><span class="nav-number">5.</span> <span class="nav-text">又说二叉排序树(二叉查找树)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tree"><span class="nav-number">5.1.</span> <span class="nav-text">Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BinaryNode"><span class="nav-number">5.2.</span> <span class="nav-text">BinaryNode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BST（Binary-Sort-Tree）"><span class="nav-number">5.3.</span> <span class="nav-text">BST（Binary Sort Tree）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test"><span class="nav-number">5.4.</span> <span class="nav-text">Test</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#平衡二叉树-AVL"><span class="nav-number">6.</span> <span class="nav-text">平衡二叉树(AVL)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#右旋"><span class="nav-number">6.1.</span> <span class="nav-text">右旋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左旋"><span class="nav-number">6.2.</span> <span class="nav-text">左旋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左平衡旋转-左–-gt-右旋转"><span class="nav-number">6.3.</span> <span class="nav-text">左平衡旋转(左–&gt;右旋转)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#右平衡旋转"><span class="nav-number">6.4.</span> <span class="nav-text">右平衡旋转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉树插入操作的实现"><span class="nav-number">6.5.</span> <span class="nav-text">平衡二叉树插入操作的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除操作"><span class="nav-number">6.6.</span> <span class="nav-text">删除操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B树"><span class="nav-number">7.</span> <span class="nav-text">B树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3树"><span class="nav-number">7.1.</span> <span class="nav-text">2-3树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-4树"><span class="nav-number">7.2.</span> <span class="nav-text">2-3-4树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B树-1"><span class="nav-number">7.3.</span> <span class="nav-text">B树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-树"><span class="nav-number">7.4.</span> <span class="nav-text">B+树</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

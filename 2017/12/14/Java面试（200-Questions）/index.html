@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Interview," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1. Java的基本数据类型有哪些？String是不是基本数据类型？ Java的基本数据有八种四类，byte--&amp;gt;short/char--&amp;gt;int--&amp;gt;long--&amp;gt;float--&amp;gt;double还有boolean，其中byte、short、int、long是整数类型，char是字符型，boolean布尔型，float和double是浮点型。  整数类型的默认是int(">
+<meta name="keywords" content="Interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试（200 Questions）">
+<meta property="og:url" content="http://abelchao.com/2017/12/14/Java面试（200-Questions）/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="1. Java的基本数据类型有哪些？String是不是基本数据类型？ Java的基本数据有八种四类，byte--&amp;gt;short/char--&amp;gt;int--&amp;gt;long--&amp;gt;float--&amp;gt;double还有boolean，其中byte、short、int、long是整数类型，char是字符型，boolean布尔型，float和double是浮点型。  整数类型的默认是int(">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Thread0000.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/ConcurrentHashMap000.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/ConcurrentHashMap00.png">
+<meta property="og:updated_time" content="2017-12-21T04:12:43.758Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java面试（200 Questions）">
+<meta name="twitter:description" content="1. Java的基本数据类型有哪些？String是不是基本数据类型？ Java的基本数据有八种四类，byte--&amp;gt;short/char--&amp;gt;int--&amp;gt;long--&amp;gt;float--&amp;gt;double还有boolean，其中byte、short、int、long是整数类型，char是字符型，boolean布尔型，float和double是浮点型。  整数类型的默认是int(">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/Thread0000.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2017/12/14/Java面试（200-Questions）/"/>
+
+
+
+
+
+  <title>Java面试（200 Questions） | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2017/12/14/Java面试（200-Questions）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java面试（200 Questions）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-14T19:59:16+08:00">
+                2017-12-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-12-21T12:12:43+08:00">
+                2017-12-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>1. Java的基本数据类型有哪些？String是不是基本数据类型？</strong></p>
+<pre><code>Java的基本数据有八种四类，byte--&gt;short/char--&gt;int--&gt;long--&gt;float--&gt;double还有boolean，其中byte、short、int、long是整数类型，char是字符型，boolean布尔型，float和double是浮点型。
+
+整数类型的默认是int(0,0l)，小数是double(0.0f,0.0d)，boolean是false，char是&apos;\u0000&apos;；
+
+基本数据类型转换时会出现自动向上转型。
+
+String不是基本数据类型，是一个引用类，而且是final修饰的，不可继承。
+</code></pre><p><strong>2. 一个.java源文件中是否可以包含多个类，有什么限制？</strong></p>
+<pre><code>一个.java中可以包含多个类，但是和文件名一样的必须类必须用public修饰（public只能有一个），而内部类却分为四种：成员、静态、局部、匿名。
+</code></pre><p><strong>3. Java中有没有goto？</strong></p>
+<pre><code>有，goto本来是C++中的一个关键字，Java本来就是从C++来的，所以这里就保留了这个关键字。
+</code></pre><p><strong>4. 说说&amp;和&amp;&amp;，|和||</strong></p>
+<pre><code>&amp;和&amp;&amp; 两者都是遇假则假，但是&amp;两边都会去运算，而&amp;&amp;一旦左边是假，右边就不会在执行了。
+|和|| 两者都是遇真则真，但是|两边都会去运算，而||一旦左边是真，右边就不会在执行了。
+</code></pre><p><strong>5. 在Java中如何跳出多重嵌套循环？</strong></p>
+<pre><code>使用break；
+
+在Java中，要想跳出多重循环，可以在外面的循环语句前定义一个标号，然后在里层循环体的代码中使用带有标号的break 语句，即可跳出外层循环。例如，
+
+ok:
+ for(int i=0;i&lt;10;i++){
+
+           for(int j=0;j&lt;10;j++){
+
+                    System.out.println(“i=” + i + “,j=” + j);
+
+                    if(j == 5) break ok;
+
+           }
+
+ }
+</code></pre><p><strong>6. switch语句的作用域？</strong></p>
+<pre><code>short、byte、char、int、Enum、String（JDK1.7）、int以下的包装类。
+</code></pre><p><strong>7. short s1 = 1; s1 = s1 + 1;有什么错? short s1 = 1; s1 += 1;有什么错?</strong></p>
+<pre><code>s1+1会把数据类型自动转成int型，int型的值肯定就能直接赋值给byte；而s1+=1；直接就把s1变成了int型，所以没有错。
+</code></pre><p><strong>8. char可不可以存储汉子，为什么？</strong></p>
+<pre><code>Java中用的是Unicode编码，都是两个字节。
+</code></pre><p><strong>9. 最有效的方法算出2乘以8等于几？</strong></p>
+<pre><code>乘法运算最快的就是左移了，2&lt;&lt;3;(只有右移才有&gt;&gt;&gt;)
+</code></pre><p><strong>10. 请设计一个一百亿的计算器？</strong></p>
+<p><strong>11. 使用final关键字修饰一个变量时，是引用不能变，还是引用的对象不能变？</strong></p>
+<pre><code>引用不能变，但是引用的对象是可以变的。
+</code></pre><p><strong>12. “==”和equals方法有什么区别？</strong></p>
+<pre><code>对于基本数据类型而言参与的&quot;==&quot;比较，比较的都是数值，而对于引用类型而言，比较的是物理地址。
+基本数据类型之所以可以和其对应的包装类可以进行比较，是因为包装类在和基本数据类型比较的时候拆箱了，比如Integer用的就是intValue方法进行拆箱。
+
+而equals，基本数据类型没有这个方法，这个方法是Object类的，对于引用数据类型比较的时候，先比较的是对象的hashCode，一旦hashCode一致，利用equals方法比较值。
+也就是说两个对象相等，hashCode一定一样，而hashCode一样，两个对象却不一定一样。
+
+一般而言hashCode()方法和equals方法需要一起重写。
+</code></pre><p><strong>13. 静态变量和实例变量？</strong></p>
+<pre><code>静态变量就是类变量，被static修饰的成员变量，可以直接通过类名引用的，而实例变量就是我们的成员变量，实例变量也就是我们必须要通过对象调用的方法。
+
+对于类变量的个数和我们对象的个数没有关系，所有的对象都只对这个变量进行操作，而成员变量却不是，每个对象都有自己的变量。
+</code></pre><p><strong>14. 是否可从一个static方法内发出对非static方法的调用？</strong></p>
+<pre><code>不可以，静态方法不可以调用非静态方法，静态方法中不能使用非静态的成员变量。
+</code></pre><p><strong>15. Integer和int的区别？</strong></p>
+<pre><code>Integer是int的包装类，int是基本数据类型，Integer作为一个类，继承了Object，有自己的方法，但是int没有自己的方法，但是Integer和int可以利用Integer中的valueOf和intValue进行拆装箱转换。
+Integer的默认值是null，而int是0。
+</code></pre><p><strong>16. Math.round(11.5)等於多少? Math.round(-11.5)等於多少?</strong></p>
+<pre><code>Math.round(11.5)--&gt;12; Math.round(-11.5)--&gt;-11（这里一定要注意，我们round方法是负数的时候入的时候是从6入的，入完加负号）
+
+round是给内部的数字+0.5再向下取整。
+</code></pre><p><strong>17. 下面的代码有什么不妥之处?</strong></p>
+<p><strong>18. 访问修饰符的权限</strong></p>
+<pre><code>public无限大
+protected同包，子类
+default通包
+private本类
+</code></pre><p><strong>19. Overload和Override的区别。Overloaded的方法是否可以改变返回值的类型?</strong></p>
+<pre><code>Overload是在编译的时候体现多态，可以发生在子父类或者本类中，只和方法名还有参数列表有关。
+Overload是在运行的时候体现多态，只能发生在子父类中，需要满足两同，两小，一大
+两同：方法名和参数列表一致。
+两小：返回值和抛出的异常变小（是被重写方法的子类或者相同）
+一大：访问修饰符大于或等于被重写的方法，static也要加
+注意：对于子类重写父类的静态方法，那么在调用的时候：Parent p = new Son()，p调用的还是自己的静态方法。
+</code></pre><p><strong>20. 同学贡献的一些题？</strong></p>
+<p><strong>21. 线程如何同步和通讯？</strong>    </p>
+<pre><code>线程之间利用synchronized加锁进行同步
+</code></pre><p><strong>22. ClassLoader如何加载class？</strong></p>
+<p><strong>23. Servlet的生命周期？</strong></p>
+<pre><code>init--&gt;service--&gt;destory
+
+init：加载Servlet类对象，ServletConfig对象，配置信息。
+service：根据get/post创建HttpServlet对象
+destory：销毁
+</code></pre><p><strong>24. 抽象类的作用？</strong></p>
+<pre><code>抽象类就是一种概念的提取，而接口是一种行为的提取。
+</code></pre><p><strong>25. ArrayList扩容</strong></p>
+<pre><code>ArrayList使用的是一种动态数组的形式进行存储，默认数组长度为10，但是可以通过构造器进行设置，一旦存入的数据到了数组末尾，对数组长度进行*1.5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               倍的扩容。
+</code></pre><p><strong>26. 分层设计的好处？</strong></p>
+<p><strong>27. 序列化接口的id有什么用？</strong></p>
+<p><strong>28. StringBuilder和StringBuffer的区别？</strong></p>
+<pre><code>StringBuilder是线程不安全的所以效率高，而StringBuffer是线程安全了，方法加了synchronized关键字，所以效率低。
+</code></pre><p><strong>29. hashCode方法的作用？</strong></p>
+<pre><code>hashCode()方法就是为了得到对象的hash值，在集合框架中进行存储和比较的很多。
+</code></pre><p><strong>30. webservice问得很多？</strong></p>
+<p><strong>31. 什么是Java虚拟机？为什么Java被称作是”平台无关的编程语言？”</strong></p>
+<pre><code>Java虚拟机（Java Virtual Machine，JVM）是一个可以执行Java字节码的虚拟机进程（软件）。Java源文件（.java）能够被编译成被Java虚拟机执行的字节码文件。（.class）
+
+字节码文件（.class）可不是直接可以在硬件平台上执行的代码，不用的硬件平台安装不同的JVM，由JVM把字节码翻译成硬件平台可以用的机器码。
+
+所以Java源码是有平台无关性，但是JVM却和硬件平台有关。
+</code></pre><p><strong>32. JDK和JRE的区别？</strong></p>
+<pre><code>JDK（Java Development Kits）：Java开发包，里面就有JRE，编译器和其他工具（JavaDoc，JavaProf，Jbd）
+JRE（Java Runnning Environment）：Java运行时环境。包括了JVM，Java的核心类库，支持文件。
+</code></pre><p><strong>33. static关键字是什么意思？Java中是否可以重写一个被private和static修饰的方法？</strong></p>
+<pre><code>static表明一个成员变量或者成员方法可以在没有所属的类的实例变量的情况下可以被访问。
+    第一，为某特定数据类型或对象分配单一的存储空间，而与创建对象的个数无关。
+    第二，实现某个方法或属性是与类本身联系在一起，而不是与对象关联在一起。
+
+Java中被static修饰的方法，在子类中可以重写，但是重写后并是真正意义上的覆盖了，利用多态的时候，父类对象用的还是父类的方法。
+
+private修饰的方法也是一个道理，你重写只是代表你去new了一个新的方法，和之前父类的那个没什么关系。
+</code></pre><p><strong>34. 可以在static环境中访问非static成员吗？</strong></p>
+<pre><code>不可以，因为static环境是在类加载的时候就被初始化了，但是这个时候非static的成员还设有被创建（因为成员变量是属于对象，也不是类，对象没创建）。
+</code></pre><p><strong>35. Overload和Override的区别？</strong></p>
+<pre><code>Overload和Override都是多态的表现事项，Overload是编译时多态的体现，Override是运行时多态的体现。
+
+Overload只要求方法名一致和形参列表不同。其他的例如方法访问权限，返回值类型和抛出的异常都没有影响。
+Override要求两同，两小，一大。
+    两同：方法名、形参列表
+    两小：返回值和抛出异常是被重写方法的子类或者相同。（返回值是基本数据类型时，必须相同）
+    一大：访问修饰符大于等于被重写的方法。
+</code></pre><p><strong>36. Java中什么是Constructor？什么是构造方法重载？什么是复制构造方法？</strong></p>
+<pre><code>在Java中构造器是用来在对象实例化时初始化对象的成员变量。构造器有很多要求：
+    1. 构造器必须要和类名一致，并且没有返回值。（和void不是一个改变）。
+    2. 构造器可以重载。
+    3. 构造器只能被访问修饰符修饰。
+    4. 构造函数的调用总是伴随着new操作，必须由系统自动调用，程序的编写者不可直接调用。
+    5. 构造器就是为了完成对象初始化。
+    6. 一个父类中没有默认无参构造器，那么子类构造器中必须显示调用，并且一定要在第一行。
+    7. 构造器不能被继承，也就不存在重写。
+
+C++中支持复制构造方法，但是在Java中不支持。
+</code></pre><p><strong>37. Java支持多继承？</strong></p>
+<pre><code>不支持，只有单继承，接口可以多继承，但是一个类可以实现多个接口。写的时候先继承再实现。
+</code></pre><p><strong>38. 接口和抽象类的区别？</strong></p>
+<pre><code>相同点：接口和抽象类都不能直接实例化，接口的实现类和抽象类的子类都只有在实现了所有的抽象方法后才可以被实例化。
+
+不同点：
+    1. 接口中的所有方法都是public abstract的，而抽象类中可以没有抽象方法。
+    2. 接口中只有public static final修饰的静态常量，而抽象类中可以有自己的普通成员变量。
+    3. 抽象类中可以有main方法，接口中不可以。
+</code></pre><p><strong>39. 值传递和引用传递？</strong></p>
+<pre><code>值传递是对基本数据类型而言的，传递的是这个变量值的一个副本，（在栈中）改变副本不用影响我们原变量。
+引用传递是对于对象性变量而言的，传递的是该对象在堆中物理地址的一个副本，也就是把栈中的变量又copy了一份在栈中给另一个引用变量，让这个引用变量也指向了堆地址。
+注意：就算是引用传递传递的是也不是原对象本身。
+
+所以，我们在引用传递的过程中一旦只是改变了形参的指向地址，那么对形参后面的操作，都不会再影响到原来的变量。
+
+这个原理在异常处理中也是一样的，try中的变量在finally中修饰了，也是遵循上面这个原则。
+</code></pre><p><strong>40. 进程和线程的区别？为什么使用多线程？</strong></p>
+<pre><code>进程就是一个应用程序，而线程就是这个进程内部的一个执行序列。一个进程中有多个线程。
+
+进程是程序的一种动态形式，是CPU、内存等资源占用的基本单位，而线程是程序执行的最小单位，进程之间相互独立，不好通信，而线程直接共享一块内存区域，通信比较方便。
+
+1. 多线程可以减少程序的响应时间。
+2. 与进程相比，线程的创建和切换开销更小
+3. 多CPU本来就支持多线程，可以简化程序的结构。
+</code></pre><p><strong>41. 创建线程的几种方法？</strong></p>
+<pre><code>1. 继承Thread类，不重写run()方法，执行的就是Thread的run方法
+2. 实现Runnable接口，重写run()方法
+3. 应用程序可以使用Executor框架来创建线程池。
+4. 实现Callable接口，重写call()方法。这个方法会有一个返回值，且可以抛出异常。
+</code></pre><p><strong>42. 概括一下线程的几种可用状态。</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Thread0000.png" alt=""></p>
+<pre><code>1. 新建（New）：新建了一个线程对象。
+2. 可运行（Runnable）：线程对象创建后，其他线程（比如主线程）调用了该线程对象的start方法，该线程就将状态从
+new--&gt;runnable，线程本身进入可运行线程池，等待被线程调度选中，获取CPU资源。
+3. 运行（Running）：Runnable的线程被线程调度选中，线程得到CPU时间片（timeslice），执行程序代码。
+4. 阻塞（Block）：阻塞态是Running的线程因为某种原因放弃了CPU的使用权（让出了CPU timeslice），暂时停止运行。
+直到线程从Block--&gt;Runnable，才有机会再次被线程调度选中，得到CPU timeslice。阻塞态有三种：
+    一、等待阻塞：Running线程调用了Object中的wait方法
+    二、同步线程：Running线程获取对象锁时，该锁被别的线程占用，JVM就会把线程放入锁池（Lock Pool）
+    三、其他阻塞：Running线程执行了Thread.sleep(long ms)或join()方法或者发出了I/O请求。当sleep状态超时，
+    join等待线程终止或超时，或者I/O处理完毕，线程有进入Runnable
+5. 死亡（Dead）：线程run()、main()方法执行结束或出现了异常退出了run()方法，则该线程结束生命周期。
+死亡的线程不可再生。
+</code></pre><p><strong>43. 同步代码块和同步方法有什么区别？</strong></p>
+<pre><code>同步方法默认用this或者当前类class对象作为锁。
+同步代码块可以选择用什么来加锁，比同步方法要更细颗粒度，也就是可一选择只同步会有同步问题的部分代码，而不是整个方法。
+
+同步方法使用synchronized，而同步代码块用的是synchronized(object){代码}
+</code></pre><p><strong>44. 在监视器内部，如何做到线程同步？</strong></p>
+<pre><code>监视器和锁在JVM中一块使用，监视器监视一块同步代码块，确保一次只有一个线程执行同步代码块。每一个监视器都和一个对象引用相关联。线程在获取锁之前不允许执行同步代码。
+</code></pre><p><strong>45. 什么是死锁？</strong></p>
+<pre><code>多个线程要获取同一个锁而陷入相互等待的情况。这种情况下，如果没有外力，线程就无法向前推进。
+</code></pre><p><strong>46. 如何确保N个线程可以访问N个资源同时又不导致死锁？</strong></p>
+<pre><code>指定获取锁的顺序，并强制线程按照指定的顺序获取锁。
+</code></pre><p><strong>47. Java集合类框架的基本接口有哪些？</strong></p>
+<pre><code>基接口Collection，下面两个小的List和Set。Map不是Collection的子接口，三个大的接口下面都有一个Abstract的类。
+</code></pre><p><strong>48. 为什么集合类没有实现Cloneable和Serializable接口？</strong></p>
+<pre><code>克隆(cloning)或者是序列化(serialization)的语义和含义是跟具体的实现相关的。因此，应该由集合类的具体实现来决定如何被克隆或者是序列化。
+</code></pre><p><strong>49. 什么是迭代器？</strong></p>
+<pre><code>Iterator接口提供了很多对集合元素进行迭代的方法。容器中的iterator()就是得到一个Iterator对象，而hasNext就判断容器中是不是还有元素，如果有用next方法可以得到下一个元素，同步remove方法进行删除。
+
+注意，利用Iterator遍历的时候，我们可以用iterator的remove，但是不能用集合的remove，add，因为由于集合框架里面的Iterator都是fast-fail的，所以会抛出异常，同时删除的时候从前往后删，直接利用角标的话，会报角标溢出。
+</code></pre><p><strong>50. Iterator和ListIterator的区别？</strong></p>
+<pre><code>Iterator对集合只能正向遍历，但是ListIterator继承自Iterator，只针对与List，既可以前向又可以后向。Iterator适合删除元素，而ListIterator有别的功能，增加，替换，前后索引的获取。
+</code></pre><p><strong>51. fail-fast和fail-safe有什么区别？</strong></p>
+<pre><code>在集合框架中所有集合的Iterator都是fail-fast的，而JUC包下的集合都是fail-safe的。fail-fast的Iterator都会抛出一个ConcurrentModificationException异常（在迭代过程中改变了集合的个数就会抛出），而fail-safe就不会抛出这种异常。
+</code></pre><p><strong>52. Java中HashMap的工作原理</strong></p>
+<pre><code>HashMap使用K-V键值对来存储元素的。默认容量是16，loadfactor是0.75。内部使用数据+链表+红黑二叉树的结构在存储，在进行put操作的时候，会先对对象的K进行一个计算，得到K的hashCode，但是它不像Hashtable那样，直接用K的hashCode作为hash值，而是使用K的hashCode高8位&amp;低8位后作为hash值。一旦hash值在hash表中不存在，直接插入，如果存在再计算K的equals方法，如果不相同，形成链表，当链表长度到达8的时候，链表变成红黑二叉树。如果相同，直接进行覆盖。
+</code></pre><p><strong>53. hashCode和equals方法的重要性体现在哪？</strong></p>
+<pre><code>这两个方法都是Object中的方法，在Object中分为功能是计算对象的hash值（int）和比较对象之间的物理地址。在使用hash算法的集合框架中，通过重写这两个方法可以有利于更好的存储和获取元素。
+</code></pre><p><strong>54. HashMap和Hashtable有什么区别？</strong></p>
+<pre><code>1. HashMap是直接父类是AbstractMap，实现接口是Map，而Hashtable的父类是Dictionary，也实现了Map接口。
+2. HashMap中允许出现K-V同时或者单个为null的情况，Hashtable中不允许。
+3. HashMap是线程不安全的，但是效率高，而Hashtable是线程安全的，因为很多方法都使用了synchronized修饰。
+4. HashMap的初始容量是16，而Hashtable是11，但是两者的load Factor都是0.75，扩容时，HashMap每次扩大2倍，而Hashtable确是*2+1倍。
+5. HashMap中计算hahs值，是把K的hashCode算出来，高8位和低8位进行&amp;运算，而Hashtable却不是，是直接把K的hashCode作为hash值。
+6. HashMap使用Iterator迭代，而Hashtable使用Enum迭代。
+7. HashMap中没有contains方法，但是添加了containsKey和containsValue方法。
+</code></pre><p><strong>55. ArrayList和Array有什么区别？</strong></p>
+<pre><code>1. ArrayList有序列表，底层使用动态数组（Object[]），默认长度是10，扩容是1.5倍。但是集合框架中只能放对象，不能放基本数据类型，但是Array可以放基本数据类型。
+2. Array是定长的，但是ArrayList不是。
+</code></pre><p><strong>56. ArrayList和LinkedList的区别？</strong></p>
+<pre><code>1. ArrayList是动态数组，LinkedList是双向链表
+2. ArrayList适合随机访问，LinkedList适合增删。
+</code></pre><p><strong>57. Enumeration和Iterator接口有什么区别？</strong></p>
+<pre><code>1. Enumeration的速度是Iterator的2倍。
+2. Iterator比Enumeration安全，Iterator可以删除元素，Enumeration做不到。
+</code></pre><p><strong>58. HashSet和TreeSet有什么区别？</strong></p>
+<pre><code>1. HashSet的底层是HashMap，只是把Map中的所有V都变成一个对象，那么就肯定不可以重复了，因为就只有K。HashSet是无序的，add()、remove()、contains()方法的时间复杂度都是O(1)。
+2. TreeSet的底层是TreeMap，会对K进行升序排序。所以add()、remove()、contains()方法的时间复杂度是O(logn)。
+</code></pre><p><strong>59. Java中的GC是什么？什么时候进行GC？</strong></p>
+<pre><code>Java中不想C++需要程序员人工的去回收内存，而是提供了一个自动回收的机制，又JVM本身来进行内存回收，而这个内存回收的时间，是由JVM自身决定的，外部无法指定JVM去回收什么，什么时候回收。
+
+而在JVM进行回收的对象，基本都是在堆和方法区上的，主要是在堆，因为对象都在这里。一个对象在经过可达性分析后，发现对象并没有和GC Roots链接的引用链，那么我们的对象会被第一次标记，这个标记后，对象会被放入一个F-QUeue的队列中，在GC前，系统会自动调用这个对象的finalize方法，这个方法是Object中的方法，要调用这个方法，对象本类中必须进行重写，同时这个方法JVM一个对象的一生只会调用一次，一旦JVM调用了对象的finalize方法，并在方法中和引用链相连接，那么就会不会被清除，一旦没有调用，或者调用后没有链接，那么对象被标记第二次，直接被GC清除。
+</code></pre><p><strong>60. System.gc()和Runtime.gc()的功能？</strong></p>
+<pre><code>这两个方法可以通知JVM进行GC，但是，到底是立即开始还是延迟进行这个是由JVM自身决定的。
+</code></pre><p><strong>61. finalize()方法什么时候被调用？析构函数(finalization)的目的是什么？</strong></p>
+<pre><code>垃圾回收器(garbage colector)决定回收某对象时，就会运行该对象的finalize()方法 但是在Java中很不幸，如果内存总是充足的，那么垃圾回收可能永远不会进行，也就是说filalize()可能永远不被执行，显然指望它做收尾工作是靠不住的。 那么finalize()究竟是做什么的呢？它最主要的用途是回收特殊渠道申请的内存。Java程序有垃圾回收器，所以一般情况下内存问题不用程序员操心。但有一种JNI(Java Native Interface)调用non-Java程序（C或C++），finalize()的工作就是回收这部分的内存。
+
+Java中没有析构函数，只有构造函数，析构函数的功能和构造函数相反。
+</code></pre><p><strong>62. 如果对象的引用被置为null，垃圾收集器是否会立即释放对象占用的内存？</strong></p>
+<pre><code>不会，在下一个垃圾回收周期中，这个对象将是可被回收的。
+</code></pre><p><strong>63. Java堆的结构是什么样子的？什么是堆中的永久代(Perm Gen space)?</strong></p>
+<pre><code>在HotSpot中，堆可以分为新生代和老年代，而新生代又可以细分为一个Eden和两个Survivor。对象被new出来基本都是在Eden中，除非这个时候Eden中没有足够的连续内存空间，才会被直接new到老年代。
+
+而永久代其实就是方法区。方法区里面有运行时常量池，本来字符串常池也在里面，JDK1.7以后就被移除了。永久代里面放的都是静态文件。
+</code></pre><p><strong>64. 串行(serial)收集器和吞吐量(throughput)收集器的区别是什么？</strong></p>
+<pre><code>两个都是新生代的GCor，Serial是一个单线程的收集器，在它进行GC时，所有的线程必须停止（STW），直到收集结束。虽然GC停顿，一直都会发生。
+Parallel Scavenge就和ParNew很像，ParNew就是Serial的多线程版本，而Parallel Scanvenge更偏向于达到一个可控制的吞吐量，而其他的GCor关注点在于尽可能缩短GC时GC停顿的时间。
+
+吞吐量=运行用户代码时间/（运行用户代码时间+GC时间）
+
+新生代的GCor都是用复制算法，而老年代的Gcor只有CMS是标记-清除，其他两个是标记-整理。G1就比较厉害了。新老通吃。
+</code></pre><p><strong>65. Java中的两种异常类型是什么？他们有什么区别？</strong></p>
+<pre><code>受检异常和非受检异常。
+所有的异常都是Throwable子类，分为Error，Exception。如果只从Exception中分的话，RuntimeException和其子类都是非受检异常，其他的都是受检异常。
+受检异常需要被throws在方法或者构造器上抛出，在语句中与throw抛出异常对象。而非受检异常不用。
+</code></pre><p><strong>64. throw和throws的区别？</strong></p>
+<pre><code>throw在方法体中使用用于明确的抛出一个异常对象，而throws在方法声明上使用，用来表明这个异常本方法处理不了。
+</code></pre><p><strong>65. 异常处理完成以后，Exception对象会发生什么变化？</strong>    </p>
+<pre><code>Exception对象会在下一个垃圾回收过程中被回收掉。
+</code></pre><p><strong>66. finally代码块和finalize()方法有什么区别？</strong></p>
+<pre><code>finally代码块是异常中的语句，try不能单独使用，必须要有catch或者finally代码块，fianlly代码块一定会被执行，除非在进入try块前就出现了异常，或者try/catch执行中遇到了System.exit()方法，同时，finally中return会覆盖try/catch中的return。但是！！finally中的代码块对基本数据类型和对象的传递遵从值传递和引用传递的规则。
+
+finalize()是Objcet类的一个protected方法，它会在对象被标记第一次被放入F-Queue后被JVM自己调用（第一执行和本类重写），这个方法是对象重生的最后一次机会。
+</code></pre><p><strong>67. 什么是Applet？</strong></p>
+<pre><code>java applet是能够被包含在HTML页面中并且能被启用了java的客户端浏览器执行的程序。Applet主要用来创建动态交互的web应用程序。
+</code></pre><p><strong>68. 解释一下Applet的生命周期？</strong></p>
+<pre><code>applet可以经历下面的状态：
+    Init：每次被载入的时候都会被初始化。
+    Start：开始执行applet。
+    Paint：绘制。
+    Stop：结束执行applet。
+    Destroy：卸载applet之前，做最后的清理工作。
+</code></pre><p><strong>69. 当applet被载入的时候会发生什么？</strong></p>
+<pre><code>首先，创建applet控制类的实例，然后初始化applet，最后开始运行。
+</code></pre><p><strong>70. Applet和普通的Java应用程序有什么区别？</strong></p>
+<pre><code>ava应用程序需要一个有特定方法签名的main函数来开始执行。Java applet不需要这样的函数来开始执行。
+</code></pre><p><strong>71. 什么是JDBC？</strong></p>
+<pre><code>Java DataBase Connection，Java数据库连接池。
+</code></pre><p><strong>72. 解释下驱动(Driver)在JDBC中的角色？</strong></p>
+<pre><code>JDBC驱动提供了特定厂商对JDBC API接口类的实现，驱动必须要提供java.sql包下面这些类的实现：Connection, Statement, PreparedStatement,CallableStatement, ResultSet和Driver。
+</code></pre><p><strong>73. Class.forName()方法有什么作用？</strong></p>
+<pre><code>初始化参数指定的类，并且返回此类对应的Class对象。返回一个与带有给定字符串名的类或接口相关的Class对象，其实就是把这个Class类加载到JVM中。
+Test t = (Test)Class.forName(&quot;Test&quot;).newInstance();
+Test t = new Test();
+</code></pre><p><strong>74. PreparedStatement/Statement/CallableStatement？</strong></p>
+<pre><code>Statement是PreparedStatement的父类，PreparedStatement是CallableStatement的父类。
+Statement:执行不带参数的SQL语句，没执行，SQL都需要数据库自己编译。
+PreparedStatement：预编译，同时执行带参数的SQL语句。
+CallableStatement：提供了用来调用数据库中存储过程的接口，预编译，带参查询。用来执行存储过程。存储过程是由数据库存储和提供的。存储过程可以接受输入参数，也可以有返回结果。非常鼓励使用存储过程，因为它提供了安全性和模块化。准备一个CallableStatement的方法是：
+    CallableStatement Connection.prepareCall();
+</code></pre><p><strong>75. 什么是序列化？</strong></p>
+<pre><code>就是把一个对象变成一连串的字节，里面包含了对象的数据，类型信息，对象内部的数据类型信息等等。因此，序列化可以看成是为了把对象存储在磁盘上或者从磁盘上读取并创建对象而把对象扁平化的一种方式。
+
+要实现序列化的类都必须实现Serialization接口，这个接口在java.lang.*下，没有任何方法。
+
+使用一个输出流来构造ObjectOutputStream对象，接着，使用这个对象的writeObject方法将我们要写出的对象的写出，需要恢复的时候再使用对应的输入流。
+
+序列化有两个特点：
+    1. 如果一个类可以被序列化，那么这个类的子类也可以。
+    2. 一个类中被static和transient修饰的成员不能被序列化。但是这个成员变量还在，只是值就是默认值了。
+</code></pre><p><strong>76. 多态的定义？</strong></p>
+<pre><code>多态是编程语言给不同的底层数据类型做相同的接口展示的一种能力。一个多态类型上的操作可以应用到其他类型的值上面。
+</code></pre><p><strong>77. 继承的定义？</strong></p>
+<pre><code>继承给对象提供了从基类获取字段和方法的能力。继承提供了代码的重用行，也可以在不修改类的情况下给现存的类添加新特性。
+</code></pre><p><strong>78. 抽象的定义？抽象和封装的不同点？</strong></p>
+<pre><code>抽象是把想法从具体的实例中分离出来的步骤，因此，要根据他们的功能而不是实现细节来创建类。Java支持创建只暴漏接口而不包含方法实现的抽象的类。这种抽象技术的主要目的是把类的行为和实现细节分离开。
+抽象和封装是互补的概念。一方面，抽象关注对象的行为。另一方面，封装关注对象行为的细节。一般是通过隐藏对象内部状态信息做到封装，因此，封装可以看成是用来提供抽象的一种策略。
+</code></pre><p><strong>79. Math中的round、floor、ceil有什么区别？</strong></p>
+<pre><code>round:加0.5向下取整，注意，这个返回的是int/long。0
+floor:向下取整，小于原来的数。返回double。-0.0
+ceil:向上取整，大于原来的数。返回double。
+</code></pre><p><strong>80. synchronized和volatile？</strong></p>
+<pre><code>synchronized：实现了可见性和原子性。
+volatile：只实现了可见性。就是每次得到值的时候，让从内存中取，而不是在缓存区获取。
+</code></pre><p><strong>81. 标识符命名规则？</strong></p>
+<pre><code>1. 字母，数字，符号（_和$，没有*，没有空格，没有&amp;，只有两个）
+2. 数字不能开头。
+3. 不能用关键字，false，null，true都不是关键字，是常量，但是也不能用！！！
+</code></pre><p><strong>82. 面向对象开发的六个基本原则</strong></p>
+<pre><code>单一职责：一个类只做它该做的事情（高内聚）。
+开放封闭：软件实体应当对扩展开放，对修改关闭。
+里氏替换：任何时候都可以使用子类把父类替换掉。
+依赖倒置：面向接口编程。
+合成聚和复用：优先使用聚合或合成关系复用代码。
+接口隔离：接口要小而专，决不能大而全。
+</code></pre><p><strong>83. Java序列化，如何实现序列化和反序列化，常见的序列化协议有哪些？</strong></p>
+<pre><code>实现了Serializable接口的对象转换成一个字节序列，并能够在以后将这个字节序列完全恢复为原来的对象，序列化可以弥补不同操作系统之间的差异。
+
+序列化时，对象的类名、属性都会被序列化（除了static和transient修饰的属性），方法不会被序列化
+</code></pre><p><strong>84. HashMap&amp;Hashtable&amp;ConcurrentHashMap的区别？</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/ConcurrentHashMap000.png" alt=""></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/ConcurrentHashMap00.png" alt=""></p>
+<pre><code>在HashMap的基础上，ConcurrentHashMap将数据分为了多个segment，默认是16个，每次操作对一个segment加锁，避免多线程锁
+的概率，提高并发效率。
+
+在多线程环境下，使用HashMap进行put操作会造成死循环，而Hashtable中几乎所有方法都使用了synchronized来保证线程安全，但
+是这样做效率很低。因为当一个线程需要访问Hashtable的时候，可能会进入阻塞，比如，线程一使用put时，线程二不但不能
+使用put方法，而且不能使用get方法。
+
+Hashtable这么慢就是因为所有的访问都必须要竞争同一把锁，那么如果我们的容器中有多把锁，每把锁只用于锁其中的一部分数据，
+那么当多线程访问容器里不同数据段的数据时，线程之间就不会存在锁的竞争，这也就是ConcurrentHashMap中使用的锁分段技术，
+首先将数据分为一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据时，其他段的数据也能被其他
+线程访问。但是有的方法是需要跨段的，比如size和containsValue（），它们的话可能就需要锁定整个表而不是某一个段，
+这需要按顺序锁定所有段，操作完之后，又按顺序释放所有段的锁。在ConcurrentHashMap中，段数组是final的。
+
+ConcurrentHashMap中是有Segment数组结构和HashEntry数组结构组成的。Segment是一种可重入锁ReentrantLock，
+在ConcurrentHashMap中扮演着锁的角色，HashEntry则使用数据+链表的形式进行存储键值对（1.8之后也是Node&lt;K,V&gt;,红黑二叉树）。
+
+Hashtable的任何操作都会把整个表锁住，是阻塞的。好处是总能获取最实时的更新，比如说线程A调用putAll写入大量数据，
+期间线程B调用get，线程B就会被阻塞，直到线程A完成putAll，因此线程B肯定能获取到线程A写入的完整数据。坏处是所有调
+用都要排队，效率较低。
+
+ConcurrentHashMap 是设计为非阻塞的。在更新时会局部锁住某部分数据，但不会把整个表都锁住。同步读取操作则是完全非阻塞的。
+好处是在保证合理的同步前提下，效率很高。坏处 是严格来说读取操作不能保证反映最近的更新。例如线程A调用putAll写入大量数据，
+期间线程B调用get，则只能get到目前为止已经顺利插入的部分 数据。此外，使用默认构造器创建的ConcurrentHashMap
+比较占内存，如果程序需要创建巨量ConcurrentHashMap，应该在构造 时指定concurrencyLevel。
+
+concurrencyLevel的作用就是用来计算segments数组的容量大小。
+</code></pre><p><strong>85. ThreadLocal的设计原理和作用</strong></p>
+<p><strong>86. ThreadPool用法和优势</strong></p>
+<p><strong>87. foreach和正常for的区别</strong></p>
+<p><strong>88. Java IO和NIO</strong></p>
+<p><strong>89. 反射的作用与原理</strong></p>
+<p><strong>90. 泛型擦除机制，List<string>是否可以转为List<object></object></string></strong></p>
+<p><strong>91. Minor GC和Minor GC发生在什么时候？</strong></p>
+<p><strong>92. Collections和Arays中的排序有什么区别？</strong></p>
+
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2017/12/14/Java面试（200-Questions）/" title="Java面试（200 Questions）">http://abelchao.com/2017/12/14/Java面试（200-Questions）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Interview/" rel="tag"><i class="fa fa-tag"></i> Interview</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/13/Java面试（杂-2）/" rel="next" title="Java面试（杂-2）">
+                <i class="fa fa-chevron-left"></i> Java面试（杂-2）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/25/Java刷题（排序问题）/" rel="prev" title="Java刷题（排序问题）">
+                Java刷题（排序问题） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

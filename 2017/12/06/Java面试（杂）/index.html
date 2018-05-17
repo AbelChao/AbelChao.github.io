@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Interview," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="做选择题的时候发现的一些个问题">
+<meta name="keywords" content="Interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试（杂）">
+<meta property="og:url" content="http://abelchao.com/2017/12/06/Java面试（杂）/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="做选择题的时候发现的一些个问题">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/JSE02.jpg">
+<meta property="og:updated_time" content="2017-12-11T03:47:22.477Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java面试（杂）">
+<meta name="twitter:description" content="做选择题的时候发现的一些个问题">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/JSE02.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2017/12/06/Java面试（杂）/"/>
+
+
+
+
+
+  <title>Java面试（杂） | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2017/12/06/Java面试（杂）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java面试（杂）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-06T19:46:37+08:00">
+                2017-12-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-12-11T11:47:22+08:00">
+                2017-12-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/JSE02.jpg" alt="za"></p>
+<p><strong>做选择题的时候发现的一些个问题</strong></p>
+<a id="more"></a>
+<h1 id="Java中的三种变量"><a href="#Java中的三种变量" class="headerlink" title="Java中的三种变量"></a>Java中的三种变量</h1><h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><pre><code>在方法、构造器或是块中使用，在方法、构造器或块进入时被创建，一旦退出该变量就会被销毁。
+
+局部变量没有默认时，因此变量必须在声明和在第一次使用的前初始化，也就是赋值。
+</code></pre><h2 id="实例变量（成员变量）"><a href="#实例变量（成员变量）" class="headerlink" title="实例变量（成员变量）"></a>实例变量（成员变量）</h2><pre><code>也就是一定意义上的全局变量，在类中声明，但是它不在块、构造器或是方法内声明，也就是一旦new的时候，堆中的对象就被分配了一个空间，每个实例变量的位置也就改变了。
+
+实例变量有默认值，数字默认为0，boolean默认为false，对象引用默认为NULL。
+</code></pre><h2 id="类变量（静态变量）"><a href="#类变量（静态变量）" class="headerlink" title="类变量（静态变量）"></a>类变量（静态变量）</h2><pre><code>类变量也是就被static修饰的成员变量。
+</code></pre><h1 id="HttpServletResponse-amp-HttpServletRequest"><a href="#HttpServletResponse-amp-HttpServletRequest" class="headerlink" title="HttpServletResponse &amp; HttpServletRequest"></a>HttpServletResponse &amp; HttpServletRequest</h1><h2 id="HttpServletResponse"><a href="#HttpServletResponse" class="headerlink" title="HttpServletResponse"></a>HttpServletResponse</h2><pre><code>1. 设置Http头标：response.setHeader(&quot;Refresh&quot;,&quot;3&quot;);
+2. 设置cookie
+    Cookie c1 = new Cookie(&quot;username&quot;，&quot;only&quot;);
+    response.addCookie(c1);
+3. 输出返回数据
+    HttpServletResponse.getOutputStream().write();
+4. 设置返回数据类型
+</code></pre><h2 id="HttpServletRequest"><a href="#HttpServletRequest" class="headerlink" title="HttpServletRequest"></a>HttpServletRequest</h2><pre><code>1. 读取cookie
+2. 读取Http头
+3. 读取路径信息
+4. 标识Http会话
+</code></pre><h1 id="堆、栈、静态域、常量池、非RAM存储"><a href="#堆、栈、静态域、常量池、非RAM存储" class="headerlink" title="堆、栈、静态域、常量池、非RAM存储"></a>堆、栈、静态域、常量池、非RAM存储</h1><pre><code>栈：存放基本数据类型的数据和对象的引用，旦对象本身是在堆中的。
+
+堆：存在new出来的东西和数组。
+
+静态域：存放在对象中用static定义的静态成员，也就是类变量
+
+常量池：存放常量
+
+非RAM存储：硬盘等永久存储空间
+</code></pre><h1 id="forward-amp-redirect"><a href="#forward-amp-redirect" class="headerlink" title="forward &amp; redirect"></a>forward &amp; redirect</h1><pre><code>1. forward是转发，不会改变地址栏，redirect是重定向，会改变地址栏
+
+2. 转发的页面之前可以共享request内的数据，但是redirect不可以。
+
+3. forward效率高、redirect效率低
+
+4. redirct默认是302码，包含两次请求和两次响应。
+</code></pre><h1 id="java类的加载过程"><a href="#java类的加载过程" class="headerlink" title="java类的加载过程"></a>java类的加载过程</h1><pre><code>jvm加载类机制，前提是java源文件被javac编译成class字节码文件。javac编译时不进行内存分配的工作，而是在jvm运行时才动态加载和动态链接。
+
+Loading--&gt;Verification--&gt;Preparation--&gt;Resolution--&gt;Initialization--&gt;Using--&gt;Unloading
+
+加载--&gt;验证--&gt;准备--&gt;初始化--&gt;卸载。而解析不一定就是在初始化之前。
+
+1. Loading：
+
+    这个阶段jvm通过类的全路径读取到类的二进制字节流，然后将字节流代表的类结构转化到运行时数据区的方法区中，最后jvm堆中生成这个类的java.lang.Class实例。
+
+2. Verification：
+
+    Loading和验证是交叉进行的，验证二进制字节流代表的字节码是否合格。
+
+3. Preparation：
+
+    在方法区中给类的类变量分配内存，然后初始化值，如果这个类变量是public static final修饰的，也就是常量，直接就给这个内存区域赋值这个常量。
+
+4. Resolution：
+
+    将常量池内的符号引用替换成直接引用过程。
+
+5. Initialzation：
+
+    执行java代码。
+</code></pre><h1 id="ThreadLocal类"><a href="#ThreadLocal类" class="headerlink" title="ThreadLocal类"></a>ThreadLocal类</h1><pre><code>这个类就是一个线程本地变量，为变量在每个线程都中创建了一个副本，那么这个线程可以访问自己内部的副本变量。
+</code></pre><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h1 id="i-和-i"><a href="#i-和-i" class="headerlink" title="i++和++i"></a>i++和++i</h1><pre><code>对于Java而言，因为有一个中间缓存机制，也就是说我们i++或者是++i之后，是把i的值先放到了一个temp变量中，最后返回的其实是这个temp的值！！！
+</code></pre><h1 id="volatile和synchronized的区别："><a href="#volatile和synchronized的区别：" class="headerlink" title="volatile和synchronized的区别："></a>volatile和synchronized的区别：</h1><pre><code>1. volatile本质是在jvm当前变量在寄存器中的值是不确定的，需要从主存中读取，而synchronized则是锁定当前变量，只有在当前线程可以访问该变量，其他线程被阻塞。
+
+2. volatile仅能使用在变量级别，但是synchronized则可以使用在变量和方法中。
+
+3. volatile仅能实现变量的修改可见性，不具备原子性，但是synchronized则保证了变量的修改可见性和原子性。
+
+4. volatile不会造成线程的阻塞，而synchronized可能会造成线程的阻塞。
+
+5. volatile标记的变量不会被编译器优化，而synchronized标记的变量可以被编译器优化。
+</code></pre><h1 id="杂"><a href="#杂" class="headerlink" title="杂"></a>杂</h1><pre><code>1. 导包的时候，要导入到最底层，比如说：导入java/awt/event下面所有的类，import java awt.event.*
+
+2. this、super都不能在static的方法和块内使用，注意，Main方法是静态的。
+
+3. ArrayList的空间浪费主要体现在list列表的结尾预留一定的容量空间，而LinkedList的空间浪费体现在它的每一个元素都需要消耗相当的空间。
+
+4. 重写的两同、两小、一大。
+    两同：方法名、参数列表
+    两小：子类中方法的返回值小于等于父类中方法的返回值，抛出的异常。
+    一大：修饰符大于等于父类中被重写的方法。
+
+5. abstract修饰的方法不能有{}.
+
+6. 类中不能有变量运算。
+
+7. abstract和static、final都不能一起用
+
+8. switch()括号内的只能是基本数据类型中short、char、int、long、枚举、JDK1.7后支持String
+
+9. this和super只能放在第一行，并且不能同时出现在一个构造方法中。
+
+10. 声明数组：String a[]、String[] a、Object a[]，声明的时候不能指定数组长度。
+
+11. 父类静态块--&gt;子类静态块--&gt;父类构造块--&gt;父类构造方法--&gt;子类构造块--&gt;子类构造方法
+
+12. Java中判断一个类一样：
+    类的全称相同 &amp; 使用的类加载器一致
+
+Java中三个类加载器：
+    Bootstrap ClassLoader：主要加载JVM自身工作需要的类
+    Extension ClassLoader：主要加载%JAVA_HOME%\lib\ext目录下的库类。
+    Application ClassLoader：主要加载Classpath指定的库类，一般情况下这是程序中的默认类加载器，也是ClassLoader.getSystemClassLoader() 的返回值。
+
+13. List&lt;? extends A&gt;小于等于A的范围，List&lt;? super A&gt;表示大于等于A的范围，&lt;?&gt;表示所有范围。
+
+14. List&lt;A&gt;表示一个点，而不是一个范围，所以B extends A，但是List&lt;A&gt;和List&lt;B&gt;不能相互赋值（=）。    
+
+15. servlet在多线程下其本身并不是线程安全的。
+
+16. getParameter()是获取POST/GET传递的参数值；
+    getInitParameter获取Tomcat的server.xml中设置Context的初始化参数
+    getAttribute()是获取对象容器中的数据值；
+    getRequestDispatcher是请求转发。
+
+17. 一个类中，可以有多个main方法，这是重载，但是public static void main(String[] args)的方法只能有一个。 
+
+18. 所有类的实例和数组都是在堆上分配内存的。
+
+19. 对象所占的堆内存是由自动内存管理系统回收的。
+
+20. throws用来声明一个方法可能抛出的异常，throw才会真正抛出了异常对象。
+
+21. 对于Integer而言，如果赋予的int数值在-128 - 127之间，直接从cache数组中取值，这些cache引用对Integer对象地址是不变的，但是一旦赋予的int值数据，不再这个范围呢，就会new Integer(i)，这个地址就是新的了。
+
+也就是说让我们Integer i = 200；这个时候就会执行Integer内部的一个静态方法，Integer i = Integer.ValueOf(200);下面是这个方法的源码：
+
+    public static Integer valueOf(int i) {   
+        if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
+            return IntegerCache.cache[i + (-IntegerCache.low)];
+        return new Integer(i);
+    }
+
+22. 析构函数(destructor) 与  构造函数 相反，当对象结束其 生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数。
+
+23. 对于Integer如果装箱，会调用valueOf方法，如果拆箱，会调用intValue方法。
+
+24. 对于引用传递而言，只有在对引用对象的内部做出了修改，才会影响到原对象，如果直接把引用修改的，则原对象不受影响：这个被修改的引用，现在不是原来对象的引用，而是新对象的引用。
+
+25. 字符常量使用&apos;&apos;包起来的东西。
+
+26. javac一次可同时编译数个Java源文件
+
+27. 环境变量可在编译source code时指定。
+
+28. javac.exe能指定编译结果置于哪个目录。
+
+29. 非RuntimeException一般是外部错误（不考虑Error），其必须被try{}catch语句所捕获。
+
+30. Error类体系描述了Java运行系统中的内部错误以及资源消耗的情形，Error不需要捕获。
+
+31. RuntimeException体系包括错误的类型转换、数组越界、空指针等，但这是在运行时才会被发现的异常，所以不要被try{}catch显示捕获。
+
+32. volatile并不能保证线程安全。
+
+33. 二维数组的定义中第一个长度一定要指定：
+    float f[][] = new float[7][7]
+    float []f[] = new float[7][7]
+    float [][]f = new float[7][7]
+    float [][]f = new float[7][]
+
+34. java.exe负责运行，javac.exe负责编译，能被java.exe成功运行的java class文件必须有main()方法。
+
+35. J2SDK是一个编译工具，不是API。
+
+36. 子类的构造方法总是先调用父类的构造方法，如果子类的构造方法没有明显地指明使用父类的哪个构造方法，
+    子类就调用父类不带参数的构造方法。
+    而父类没有无参的构造函数，所以子类需要在自己的构造函数中显示的调用父类的构造函数。
+
+37. if()，()内必须是一个boolean的值，如果是x=y这种赋值操作，编译就通不过。
+
+38. 一个类中，一个构造方法调用另一个构造方法时，直接用this(x)这种形式。
+
+39. 能够对对象进行传输的貌似只有ObjectOutputStream和ObjectInputStream这些以Object开头的流对象。
+
+40. public Method[] getDeclaredMethods()返回类或接口声明的所有方法，但是不包括继承的方法，但是包括实现接口的方法。
+    public Method[] getMethods()返回类的所有public方法，包括继承类的公有方法，当然也包括实现类的方法。
+
+41. 内部类：InsideOne ei=eo.new InsideOne();
+          EnclosingOne.InsideOne ei=eo.new InsideOne();
+
+42. 方法区，又叫静态区，跟堆一样，被所有的线程共享。方法区包含所有的class和static变量。同时，方法区包含的都是整个程序中永远唯一的元素。
+
+43. 方法区和堆内存是线程共享的，程序计数器和虚拟机栈都是线程隔离的。
+
+44. JDK1.8以前，抽象类的方法默认是protected，1.8默认是default。
+    JDK1.8以前，接口中的方法都是public abstract的，JDK1.8，接口中的方法可以是public和default，JDK1.9时，接口中的方法可以是private的了。
+
+45. Statement、PreparedStatement和CallableStatement都是接口，Statement继承自Wrapper、PreparedStatement继承自Statement、CallableStatment继承自PreparedStatement。
+
+46. Statement普通不带参数的查询SQL，支持批量更新，删除
+    PreparedStatement可变参数的SQL，编译一次，执行多次，效率高，安全性高，有效防止SQL注入等问题。
+    CallableStatement继承自PreparedStatement，支持调用存储过程，提供了对输出和输入参数的支持。
+
+47. ？在Statement类和子类中代表占位符，但是一个占位符只能对应一个值。
+
+48. json对象要求属性必须加双引号，使用{}就是json对象了，而json对象必须由一组有序的键值对组成。
+    {&quot;company&quot;:{&quot;name&quot;:[4399,4399,4399]}}
+
+49. ./表示当前项目的路径，../表示当前路径的父路径，
+    盘符：\\name\\file 或者 盘符：/name/file表示物理地址。
+
+50. 方法调用时，会创建栈帧在栈中，调用完是程序自动出栈，而不是gc来释放。
+
+51. 面向对象的五大基本原则：
+
+    单一职责原则（SSP，Single-Responsibility Principle）：一个类应该仅有一个引起它变化的原因。
+    开放封闭原则（OCP，Open-Closed Principle）：对扩展开放，对修改封闭。
+    里式替换原则（LSP，Liskov-Substituion Principle）：子类可以替换父类并且出现在父类能够出现的任何地方。
+    接口隔离原则（ISP，Interface-Segregation Principle）：使用多个专门的接口比使用单个接口会好得多。
+    依赖倒置原则（DIP，Dependency-Inversion Principle）：高层模块不再依赖底层模块，二者都依赖于抽象；抽象不依赖于具体，具体依赖于抽象。
+
+52. 接口中不能有构造器，但是抽象类中需要有构造器。同时接口这东西就和static无缘。
+</code></pre>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2017/12/06/Java面试（杂）/" title="Java面试（杂）">http://abelchao.com/2017/12/06/Java面试（杂）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Interview/" rel="tag"><i class="fa fa-tag"></i> Interview</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/04/Java面试（异常框架）/" rel="next" title="Java面试（异常框架）">
+                <i class="fa fa-chevron-left"></i> Java面试（异常框架）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/11/Java面试（垃圾回收与内存分配-基础）/" rel="prev" title="Java面试（垃圾回收与内存分配 基础）">
+                Java面试（垃圾回收与内存分配 基础） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的三种变量"><span class="nav-number">1.</span> <span class="nav-text">Java中的三种变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#局部变量"><span class="nav-number">1.1.</span> <span class="nav-text">局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例变量（成员变量）"><span class="nav-number">1.2.</span> <span class="nav-text">实例变量（成员变量）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类变量（静态变量）"><span class="nav-number">1.3.</span> <span class="nav-text">类变量（静态变量）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HttpServletResponse-amp-HttpServletRequest"><span class="nav-number">2.</span> <span class="nav-text">HttpServletResponse &amp; HttpServletRequest</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HttpServletResponse"><span class="nav-number">2.1.</span> <span class="nav-text">HttpServletResponse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HttpServletRequest"><span class="nav-number">2.2.</span> <span class="nav-text">HttpServletRequest</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆、栈、静态域、常量池、非RAM存储"><span class="nav-number">3.</span> <span class="nav-text">堆、栈、静态域、常量池、非RAM存储</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forward-amp-redirect"><span class="nav-number">4.</span> <span class="nav-text">forward &amp; redirect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java类的加载过程"><span class="nav-number">5.</span> <span class="nav-text">java类的加载过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadLocal类"><span class="nav-number">6.</span> <span class="nav-text">ThreadLocal类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">7.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i-和-i"><span class="nav-number">8.</span> <span class="nav-text">i++和++i</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile和synchronized的区别："><span class="nav-number">9.</span> <span class="nav-text">volatile和synchronized的区别：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#杂"><span class="nav-number">10.</span> <span class="nav-text">杂</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

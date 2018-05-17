@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="WebService," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="WebService学习">
+<meta name="keywords" content="WebService">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebService">
+<meta property="og:url" content="http://abelchao.com/2018/01/26/WebService/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="WebService学习">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/182671207361238975.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/WebService.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/server.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180202160646.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180202201428.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180202162500.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/WebService000.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/WSDL.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/WSDL3.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/SOAP.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/SOAP2.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/SOAP2.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/SOAP4.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/SOAP5.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/SOAP7.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/SOAP6.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/CXF00.png">
+<meta property="og:updated_time" content="2018-02-08T03:44:10.444Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebService">
+<meta name="twitter:description" content="WebService学习">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/182671207361238975.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2018/01/26/WebService/"/>
+
+
+
+
+
+  <title>WebService | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2018/01/26/WebService/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">WebService</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-26T18:10:23+08:00">
+                2018-01-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-02-08T11:44:10+08:00">
+                2018-02-08
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WebService/" itemprop="url" rel="index">
+                    <span itemprop="name">WebService</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/182671207361238975.png" alt=""></p>
+<p><strong> WebService学习 </strong></p>
+<a id="more"></a>
+<h1 id="WebService"><a href="#WebService" class="headerlink" title="WebService"></a>WebService</h1><pre><code>什么是WebService
+WebService入门程序
+WebService的应用场景
+WebService的三要素
+    WSDL：web服务描述语言
+    SOAP：简单对象访问协议
+    UDDI：目录服务
+WebService的四种客户端调用方式
+    生成客户端调用方式
+    客户端编程调用方法
+    HttpURLConnection调用方式
+    Ajax调用方法
+深入开发：使用注解修改WSDL内容
+</code></pre><h2 id="什么是WebService（远程调用技术）"><a href="#什么是WebService（远程调用技术）" class="headerlink" title="什么是WebService（远程调用技术）"></a>什么是WebService（远程调用技术）</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/WebService.png" alt=""></p>
+<h2 id="入门程序"><a href="#入门程序" class="headerlink" title="入门程序"></a>入门程序</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><pre><code>服务端：发布一个天气查询服务，接收客户端城市名，返回天气数据给客户端
+客户端：发送城市名称给服务端，接收服务端的返回天气数据，打印
+</code></pre><h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/server.png" alt=""></p>
+<pre><code>开发步骤：
+    1. 创建SEI（Service Endpoint Interface）接口，本质上就是Java接口
+    2. 创建SEI实现类
+    3. 发布服务
+    4. 测试
+</code></pre><h4 id="Weather"><a href="#Weather" class="headerlink" title="Weather"></a>Weather</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: Weather </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: Weather接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: 天热就吃哈密瓜</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年2月2日 下午3:47:30</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Weather</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">queryWeather</span><span class="params">(String cityName)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="WeatherImpl"><a href="#WeatherImpl" class="headerlink" title="WeatherImpl"></a>WeatherImpl</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: WeatherImpl </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: Weather实现类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: 天热就吃哈密瓜</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年2月2日 下午3:50:42</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebService</span> <span class="comment">//@WebService表示该类是一个服务类，需要发布其中的public方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherImpl</span> <span class="keyword">implements</span> <span class="title">Weather</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">queryWeather</span><span class="params">(String cityName)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"from client..."</span>+cityName);</span><br><span class="line">		String weather = <span class="string">"晴"</span>;</span><br><span class="line">		<span class="keyword">return</span> weather;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="WeatherService"><a href="#WeatherService" class="headerlink" title="WeatherService"></a>WeatherService</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: WeatherService </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: Server发布</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: 天热就吃哈密瓜</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年2月2日 下午4:05:48</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherService</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//address：服务地址</span></span><br><span class="line">		<span class="comment">//implementor：实现类</span></span><br><span class="line">		Endpoint.publish(<span class="string">"http://127.0.0.1:12345/weather"</span>, <span class="keyword">new</span> WeatherImpl());</span><br><span class="line">		System.out.println(<span class="string">"...."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><pre><code>http://127.0.0.1:12345/weather?wsdl
+注意，这个xml是从下往上看的！！！
+</code></pre><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180202160646.png" alt=""></p>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><pre><code>第一步：wsimport命令生成客户端代码
+    wsimport -s . http://127.0.0.1:12345/weather?wsdl
+第二步：根据使用说明书，使用客户端代码调用服务端
+    1. 创建服务视图，视图是从service标签的name属性获取
+    2. 获取服务实现类，实现类从portType的name属性获取
+    3. 获取查询方法，从portType的operation标签获取
+</code></pre><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180202201428.png" alt=""></p>
+<h4 id="生成客户端代码"><a href="#生成客户端代码" class="headerlink" title="生成客户端代码"></a>生成客户端代码</h4><p><img src="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180202162500.png" alt=""></p>
+<h4 id="根据使用说明书，使用客户端代码调用服务端"><a href="#根据使用说明书，使用客户端代码调用服务端" class="headerlink" title="根据使用说明书，使用客户端代码调用服务端"></a>根据使用说明书，使用客户端代码调用服务端</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: WeatherClient </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 客户端</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: 天热就吃哈密瓜</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年2月2日 下午8:06:25</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherClient</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//根据使用说明书创建使用视图</span></span><br><span class="line">		WeatherImplService service = <span class="keyword">new</span> WeatherImplService();</span><br><span class="line">		<span class="comment">//获取服务实现类</span></span><br><span class="line">		WeatherImpl weatherImpl = service.getPort(WeatherImpl.class);</span><br><span class="line">		<span class="comment">//调用查询方法，打印</span></span><br><span class="line">		String weather = weatherImpl.queryWeather(<span class="string">"北京"</span>);</span><br><span class="line">		System.out.println(weather);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="WebService的优缺点"><a href="#WebService的优缺点" class="headerlink" title="WebService的优缺点"></a>WebService的优缺点</h2><pre><code>优点：
+1. 发送方式采用http的post发送，http的默认端口是80，防火墙默认不拦截80，所以跨防火墙
+2. 采用XML格式封装数据，XML跨平台的，所以WebService也可以跨平台
+3. WebService支持面向对象
+
+缺点：
+1. 采用XML格式封装数据，所以在传输过程中，要传输额外的标签，随着SOAP协议的不断完善，标签越来越大，导致WebService性能下降。
+</code></pre><h3 id="WebService应用场景"><a href="#WebService应用场景" class="headerlink" title="WebService应用场景"></a>WebService应用场景</h3><h4 id="软件集成和复用"><a href="#软件集成和复用" class="headerlink" title="软件集成和复用"></a>软件集成和复用</h4><p><img src="http://oxk1vrcj4.bkt.clouddn.com/WebService000.png" alt=""></p>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><pre><code>发布一个服务（对内/对外），不考虑客户端类型，不考虑性能，建议使用webservice
+服务端已经确定使用webservice，客户端不能选择，必须使用webservice
+</code></pre><h4 id="不适用场景"><a href="#不适用场景" class="headerlink" title="不适用场景"></a>不适用场景</h4><pre><code>考虑性能时不建议使用webservice
+同构程序下不建议使用webservice，比如java 用RMI，不需要翻译成XML的数据
+</code></pre><h2 id="WSDL"><a href="#WSDL" class="headerlink" title="WSDL"></a>WSDL</h2><pre><code>WSDL指网络服务描述语言（Web Services Description Language）。是一种使用XML编写的文档，这种文档可以描述某个Web Service。它可规定服务的位置，以及此服务提供的操作。
+
+WSDL是一种XML文档，WSDL用于描述网络服务，也可用于定位网络服务
+</code></pre><h3 id="WSDL说明书结构"><a href="#WSDL说明书结构" class="headerlink" title="WSDL说明书结构"></a>WSDL说明书结构</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/WSDL.png" alt=""></p>
+<pre><code>这里面标签的name属性值就是我们在客户端生成服务器端代码时创建的类名。
+
+&lt;service&gt;    服务视图，webservice的服务结点，它包括了服务端点
+&lt;binding&gt;    为每个服务端点定义消息格式和协议细节
+&lt;portType&gt;   服务端点，描述 web service可被执行的操作方法，以及相关的消息，通过binding指向portType
+&lt;message&gt;    定义一个操作（方法）的数据参数(可有多个参数)
+&lt;types&gt;      定义 web service 使用的全部数据类型
+</code></pre><h3 id="WSDL的阅读方式"><a href="#WSDL的阅读方式" class="headerlink" title="WSDL的阅读方式"></a>WSDL的阅读方式</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/WSDL3.png" alt=""></p>
+<h2 id="SOAP"><a href="#SOAP" class="headerlink" title="SOAP"></a>SOAP</h2><pre><code>SOAP即简单对象访问协议，他是使用http发送的XML格式的数据，它可以跨平台，跨防火墙，SOAP不是webservice的专有协议。
+SOAP=http+xml
+SOAP是一种网络通信协议
+
+SOAP开始的时候是为了解决传输方式和数据解析（变成了Http和XML），用于解决跨平台应用程序之间的通信。SOAP其实就是通过Http协议发送XML。
+
+所有HTML标签写的东西都可以使用SOAP解析数据
+</code></pre><h3 id="HTTP和SOAP"><a href="#HTTP和SOAP" class="headerlink" title="HTTP和SOAP"></a>HTTP和SOAP</h3><p><img src="http://oxk1vrcj4.bkt.clouddn.com/SOAP.png" alt=""></p>
+<h3 id="SOAP协议格式"><a href="#SOAP协议格式" class="headerlink" title="SOAP协议格式"></a>SOAP协议格式</h3><pre><code>1. 必须有Envelope元素，此元素将整个XML文档标识为一条SOAP消息
+2. 可选的Header元素，包含头部信息
+3. 必须Body元素，包含所有的调用和响应信息
+4. 可选的Fault元素，提供有关在处理此消息所发生错误的信息。
+</code></pre><h3 id="TCP-IP-Monitor监视Soap协议"><a href="#TCP-IP-Monitor监视Soap协议" class="headerlink" title="TCP/IP Monitor监视Soap协议"></a>TCP/IP Monitor监视Soap协议</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p><img src="http://oxk1vrcj4.bkt.clouddn.com/SOAP2.png" alt=""></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/SOAP2.png" alt="">    </p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/SOAP4.png" alt=""></p>
+<pre><code>访问http://127.0.0.1:54321/weather?wsdl，能够访问到，说明代理成功。
+</code></pre><p><img src="http://oxk1vrcj4.bkt.clouddn.com/SOAP5.png" alt=""></p>
+<h4 id="SOAP1-1"><a href="#SOAP1-1" class="headerlink" title="SOAP1.1"></a>SOAP1.1</h4><p><img src="http://oxk1vrcj4.bkt.clouddn.com/SOAP7.png" alt=""></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/SOAP6.png" alt=""></p>
+<p><strong>request</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">GET /weather?wsdl HTTP/<span class="number">1.1</span></span><br><span class="line">User-Agent: Java/<span class="number">1.8</span>.0_161</span><br><span class="line">Host: <span class="number">127.0</span>.0.1:<span class="number">54321</span></span><br><span class="line">Accept: text/html, image/gif, image/jpeg, *; q=.<span class="number">2</span>, *<span class="comment">/*; q=.2</span></span><br><span class="line"><span class="comment">Connection: keep-alive</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">POST /weather HTTP/1.1</span></span><br><span class="line"><span class="comment">Accept: text/xml, multipart/related</span></span><br><span class="line"><span class="comment">Content-Type: text/xml; charset=utf-8</span></span><br><span class="line"><span class="comment">SOAPAction: "http://service.xd/WeatherImpl/queryWeatherRequest"</span></span><br><span class="line"><span class="comment">User-Agent: JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e</span></span><br><span class="line"><span class="comment">Host: 127.0.0.1:54321</span></span><br><span class="line"><span class="comment">Connection: keep-alive</span></span><br><span class="line"><span class="comment">Content-Length: 203</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">&lt;?xml version="1.0" ?&gt;</span></span><br><span class="line"><span class="comment">&lt;S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"&gt;</span></span><br><span class="line"><span class="comment">	&lt;S:Body&gt;</span></span><br><span class="line"><span class="comment">		&lt;ns2:queryWeather xmlns:ns2="http://service.xd/"&gt;</span></span><br><span class="line"><span class="comment">			&lt;arg0&gt;北京&lt;/arg0&gt;</span></span><br><span class="line"><span class="comment">		&lt;/ns2:queryWeather&gt;</span></span><br><span class="line"><span class="comment">	&lt;/S:Body&gt;</span></span><br><span class="line"><span class="comment">&lt;/S:Envelope&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>response</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line">Date: Fri, <span class="number">02</span> Feb <span class="number">2018</span> <span class="number">13</span>:<span class="number">58</span>:<span class="number">01</span> GMT</span><br><span class="line">Transfer-encoding: chunked</span><br><span class="line">Content-type: text/xml;charset=utf-<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="number">848</span></span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!-- Published by JAX-<span class="function">WS <span class="title">RI</span> <span class="params">(http://jax-ws.java.net)</span>. RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --&gt;</span></span><br><span class="line"><span class="function">&lt;!-- Generated by JAX-WS <span class="title">RI</span> <span class="params">(http://jax-ws.java.net)</span>. RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --&gt;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">&lt;definitions xmlns:wsu</span>=<span class="string">"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"</span> xmlns:wsp=<span class="string">"http://www.w3.org/ns/ws-policy"</span> xmlns:wsp1_2=<span class="string">"http://schemas.xmlsoap.org/ws/2004/09/policy"</span> xmlns:wsam=<span class="string">"http://www.w3.org/2007/05/addressing/metadata"</span> xmlns:soap=<span class="string">"http://schemas.xmlsoap.org/wsdl/soap/"</span> xmlns:tns=<span class="string">"http://service.xd/"</span> xmlns:xsd=<span class="string">"http://www.w3.org/2001/XMLSchema"</span> xmlns=<span class="string">"http://schemas.xmlsoap.org/wsdl/"</span> targetNamespace=<span class="string">"http://service.xd/"</span> name=<span class="string">"WeatherImplService"</span>&gt;</span><br><span class="line">	&lt;types&gt;</span><br><span class="line">		&lt;xsd:schema&gt;</span><br><span class="line">			&lt;xsd:<span class="keyword">import</span> namespace=<span class="string">"http://service.xd/"</span> schemaLocation=<span class="string">"http://127.0.0.1:54321/weather?xsd=1"</span>/&gt;</span><br><span class="line">		&lt;/xsd:schema&gt;</span><br><span class="line">	&lt;/types&gt;</span><br><span class="line">	&lt;message name=<span class="string">"queryWeather"</span>&gt;</span><br><span class="line">		&lt;part name="parameters" element="tns:queryWeather"&gt;&lt;/part&gt;</span><br><span class="line">	&lt;/message&gt;</span><br><span class="line">	&lt;message name=<span class="string">"queryWeatherResponse"</span>&gt;</span><br><span class="line">		&lt;part name="parameters" element="tns:queryWeatherResponse"&gt;&lt;/part&gt;</span><br><span class="line">	&lt;/message&gt;</span><br><span class="line">	&lt;portType name=<span class="string">"WeatherImpl"</span>&gt;</span><br><span class="line">		&lt;operation name=<span class="string">"queryWeather"</span>&gt;</span><br><span class="line">			&lt;input wsam:Action=<span class="string">"http://service.xd/WeatherImpl/queryWeatherRequest"</span> message=<span class="string">"tns:queryWeather"</span>/&gt;</span><br><span class="line">			&lt;output wsam:Action=<span class="string">"http://service.xd/WeatherImpl/queryWeatherResponse"</span> message=<span class="string">"tns:queryWeatherResponse"</span>/&gt;</span><br><span class="line">		&lt;/operation&gt;</span><br><span class="line">	&lt;/portType&gt;</span><br><span class="line">	&lt;binding name=<span class="string">"WeatherImplPortBinding"</span> type=<span class="string">"tns:WeatherImpl"</span>&gt;</span><br><span class="line">		&lt;soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"&gt;&lt;/soap:binding&gt;</span><br><span class="line">		&lt;operation name=<span class="string">"queryWeather"</span>&gt;</span><br><span class="line">			&lt;soap:operation soapAction=""&gt;&lt;/soap:operation&gt;</span><br><span class="line">			&lt;input&gt;</span><br><span class="line">				&lt;soap:body use="literal"&gt;&lt;/soap:body&gt;</span><br><span class="line">			&lt;/input&gt;</span><br><span class="line">			&lt;output&gt;</span><br><span class="line">				&lt;soap:body use="literal"&gt;&lt;/soap:body&gt;</span><br><span class="line">			&lt;/output&gt;</span><br><span class="line">		&lt;/operation&gt;</span><br><span class="line">	&lt;/binding&gt;</span><br><span class="line">	&lt;service name=<span class="string">"WeatherImplService"</span>&gt;</span><br><span class="line">		&lt;port name=<span class="string">"WeatherImplPort"</span> binding=<span class="string">"tns:WeatherImplPortBinding"</span>&gt;</span><br><span class="line">			&lt;soap:address location="http://127.0.0.1:54321/weather"&gt;&lt;/soap:address&gt;</span><br><span class="line">		&lt;/port&gt;</span><br><span class="line">	&lt;/service&gt;</span><br><span class="line">&lt;/definitions&gt;</span><br><span class="line"><span class="number">0</span></span><br><span class="line"></span><br><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line">Date: Fri, <span class="number">02</span> Feb <span class="number">2018</span> <span class="number">13</span>:<span class="number">58</span>:<span class="number">01</span> GMT</span><br><span class="line">Transfer-encoding: chunked</span><br><span class="line">Content-type: text/xml; charset=utf-<span class="number">8</span></span><br><span class="line"></span><br><span class="line">dc</span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> ?&gt;</span><br><span class="line">&lt;S:Envelope xmlns:S=<span class="string">"http://schemas.xmlsoap.org/soap/envelope/"</span>&gt;</span><br><span class="line">	&lt;S:Body&gt;</span><br><span class="line">		&lt;ns2:queryWeatherResponse xmlns:ns2=<span class="string">"http://service.xd/"</span>&gt;</span><br><span class="line">			&lt;return&gt;晴&lt;/return&gt;</span><br><span class="line">		&lt;/ns2:queryWeatherResponse&gt;</span><br><span class="line">	&lt;/S:Body&gt;</span><br><span class="line">&lt;/S:Envelope&gt;</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h4 id="SOAP1-2"><a href="#SOAP1-2" class="headerlink" title="SOAP1.2"></a>SOAP1.2</h4><pre><code>1. 如何发布SOAP1.2服务端
+2. Jaxws不支持SOAP1.2服务端发布，直接发布会报如下异常
+    如果想发布SOAP1.2服务端，需要在服务端引入第三方JAR（jaxws-ri-2.2.8）
+    在实现类上加入注解:@BindingType(SOAPBinding.SOAP12HTTP_BINDING)
+</code></pre><p><strong>request</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">POST /weather HTTP/<span class="number">1.1</span></span><br><span class="line">Accept: application/soap+xml, multipart/related</span><br><span class="line">Content-Type: application/soap+xml; charset=utf-<span class="number">8</span>;</span><br><span class="line">action=<span class="string">"http://ws.jaxws.ws.itcast.cn/WeatherInterfaceImpl/queryWeatherRequest"</span></span><br><span class="line">User-Agent: JAX-WS RI <span class="number">2.2</span>.4-b01</span><br><span class="line">Host: <span class="number">127.0</span>.0.1:<span class="number">54321</span></span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Length: <span class="number">212</span></span><br><span class="line"></span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> ?&gt;</span><br><span class="line">&lt;S:Envelope xmlns:S=<span class="string">"http://www.w3.org/2003/05/soap-envelope"</span>&gt;</span><br><span class="line">	&lt;S:Body&gt;</span><br><span class="line">		&lt;ns2:queryWeather xmlns:ns2=<span class="string">"http://ws.jaxws.ws.itcast.cn/"</span>&gt;</span><br><span class="line">			&lt;arg0&gt;北京&lt;/arg0&gt;</span><br><span class="line">		&lt;/ns2:queryWeather&gt;</span><br><span class="line">	&lt;/S:Body&gt;</span><br><span class="line">&lt;/S:Envelope&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>response</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line">Transfer-encoding: chunked</span><br><span class="line">Content-type: application/soap+xml; charset=utf-<span class="number">8</span></span><br><span class="line">Date: Thu, <span class="number">26</span> Nov <span class="number">2015</span> <span class="number">03</span>:<span class="number">25</span>:<span class="number">24</span> GMT</span><br><span class="line"></span><br><span class="line">&lt;?xml version=<span class="string">'1.0'</span> encoding=<span class="string">'UTF-8'</span>?&gt;</span><br><span class="line">&lt;S:Envelope xmlns:S=<span class="string">"http://www.w3.org/2003/05/soap-envelope"</span>&gt;</span><br><span class="line">	&lt;S:Body&gt;</span><br><span class="line">		&lt;ns2:queryWeatherResponse xmlns:ns2=<span class="string">"http://ws.jaxws.ws.itcast.cn/"</span>&gt;</span><br><span class="line">			&lt;return&gt;晴&lt;/return&gt;</span><br><span class="line">		&lt;/ns2:queryWeatherResponse&gt;</span><br><span class="line">	&lt;/S:Body&gt;</span><br><span class="line">&lt;/S:Envelope&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="SOAP1-1和1-2的区别"><a href="#SOAP1-1和1-2的区别" class="headerlink" title="SOAP1.1和1.2的区别"></a>SOAP1.1和1.2的区别</h4><pre><code>相同点：
+1. 请求发送方式相同：都是使用POST
+2. 协议内容相同：都有Envelope和Body标签
+
+不同点：
+1. 数据格式不同：content-type不同
+    SOAP1.1：text/xml;charset=utf-8
+    SOAP1.2：application/soap+xml;charset=utf-8
+2. 命名空间不同：
+    SOAP1.1：http://schemas.xmlsoap.org/soap/envelope/
+    SOAP1.2：http://www.w3.org/2003/05/soap-envelope
+</code></pre><h2 id="UDDI"><a href="#UDDI" class="headerlink" title="UDDI"></a>UDDI</h2><pre><code>UDDI 是一种目录服务，企业可以使用它对 Web services 进行注册和搜索。UDDI，英文为 &quot;Universal Description, Discovery and Integration&quot;，可译为“通用描述、发现与集成服务”。
+
+UDDI 并不像 WSDL 和 SOAP 一样深入人心，因为很多时候，使用者知道 Web 服务的位置（通常位于公司的企业内部网中）。
+</code></pre><h1 id="Webservice的四种客户端调用方式"><a href="#Webservice的四种客户端调用方式" class="headerlink" title="Webservice的四种客户端调用方式"></a>Webservice的四种客户端调用方式</h1><pre><code>公网地址：http://www.webxml.com.cn/zh_cn/index.aspx
+</code></pre><h2 id="第一种生成客户端调用方式（DOS命令）"><a href="#第一种生成客户端调用方式（DOS命令）" class="headerlink" title="第一种生成客户端调用方式（DOS命令）"></a>第一种生成客户端调用方式（DOS命令）</h2><h3 id="Wsimport命令介绍"><a href="#Wsimport命令介绍" class="headerlink" title="Wsimport命令介绍"></a>Wsimport命令介绍</h3><pre><code>Wsimport就是jdk提供的一个工具，他就是根据WSDL地址生成客户端代码
+Wsimport在JAVA_HOME/bin
+Wsimport常用参数：
+    -s：生成java文件
+    -d：生成class文件的，默认的参数
+    -p：指定包名，如果不加该参数，默认包名就是WSDL文档中的命名空间的倒序。
+
+Winimport仅支持SOAP1.1客户端的生成。
+</code></pre><h3 id="调用公网手机号归属地查询服务"><a href="#调用公网手机号归属地查询服务" class="headerlink" title="调用公网手机号归属地查询服务"></a>调用公网手机号归属地查询服务</h3><pre><code>1. Wsimport生成客户端代码
+2. 阅读使用说明书，使用生成客户端代码调用服务端 
+</code></pre><h4 id="Wsimport生成客户端代码"><a href="#Wsimport生成客户端代码" class="headerlink" title="Wsimport生成客户端代码"></a>Wsimport生成客户端代码</h4><pre><code>http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx?wsdl
+</code></pre><h4 id="客户端代码调用服务端"><a href="#客户端代码调用服务端" class="headerlink" title="客户端代码调用服务端"></a>客户端代码调用服务端</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MobileClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建服务视图</span></span><br><span class="line">		MobileCodeWS mobileCodeWS = <span class="keyword">new</span> MobileCodeWS();</span><br><span class="line">		<span class="comment">//获取服务实现类</span></span><br><span class="line">		MobileCodeWSSoap mobileCodeWSSoap = mobileCodeWS.getPort(MobileCodeWSSoap.class);</span><br><span class="line">		<span class="comment">//调用查询方法</span></span><br><span class="line">		String reuslt = mobileCodeWSSoap.getMobileCodeInfo(<span class="string">"13888888"</span>, <span class="keyword">null</span>);</span><br><span class="line">		System.out.println(reuslt);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>该种方式使用简单，但一些关键的元素在代码生成时写死到生成代码中，不方便维护，所以仅用于测试。
+</code></pre><h2 id="第二种：service编程调用方式"><a href="#第二种：service编程调用方式" class="headerlink" title="第二种：service编程调用方式"></a>第二种：service编程调用方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="comment">//创建WSDL的URL，注意不是服务地址</span></span><br><span class="line">		URL url = <span class="keyword">new</span> URL(<span class="string">"http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx?wsdl"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//创建服务名称</span></span><br><span class="line">		<span class="comment">//1.namespaceURI - 命名空间地址</span></span><br><span class="line">		<span class="comment">//2.localPart - 服务视图名</span></span><br><span class="line">		QName qname = <span class="keyword">new</span> QName(<span class="string">"http://WebXml.com.cn/"</span>, <span class="string">"MobileCodeWS"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//创建服务视图</span></span><br><span class="line">		<span class="comment">//参数解释：</span></span><br><span class="line">		<span class="comment">//1.wsdlDocumentLocation - wsdl地址</span></span><br><span class="line">		<span class="comment">//2.serviceName - 服务名称</span></span><br><span class="line">		Service service = Service.create(url, qname);</span><br><span class="line">		<span class="comment">//获取服务实现类</span></span><br><span class="line">		MobileCodeWSSoap mobileCodeWSSoap = service.getPort(MobileCodeWSSoap.class);</span><br><span class="line">		<span class="comment">//调用查询方法</span></span><br><span class="line">		String result = mobileCodeWSSoap.getMobileCodeInfo(<span class="string">"1866666666"</span>, <span class="string">""</span>);</span><br><span class="line">		System.out.println(result);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第三种：HttpURLConnection调用方式"><a href="#第三种：HttpURLConnection调用方式" class="headerlink" title="第三种：HttpURLConnection调用方式"></a>第三种：HttpURLConnection调用方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="comment">//第一步：创建服务地址，不是WSDL地址</span></span><br><span class="line">		URL url = <span class="keyword">new</span> URL(<span class="string">"http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx"</span>);</span><br><span class="line">		<span class="comment">//第二步：打开一个通向服务地址的连接</span></span><br><span class="line">		HttpURLConnection connection = (HttpURLConnection) url.openConnection();</span><br><span class="line">		<span class="comment">//第三步：设置参数</span></span><br><span class="line">		<span class="comment">//3.1发送方式设置：POST必须大写</span></span><br><span class="line">		connection.setRequestMethod(<span class="string">"POST"</span>);</span><br><span class="line">		<span class="comment">//3.2设置数据格式：content-type</span></span><br><span class="line">		connection.setRequestProperty(<span class="string">"content-type"</span>, <span class="string">"text/xml;charset=utf-8"</span>);</span><br><span class="line">		<span class="comment">//3.3设置输入输出，因为默认新创建的connection没有读写权限，</span></span><br><span class="line">		connection.setDoInput(<span class="keyword">true</span>);</span><br><span class="line">		connection.setDoOutput(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//第四步：组织SOAP数据，发送请求</span></span><br><span class="line">		String soapXML = getXML(<span class="string">"15226466316"</span>);</span><br><span class="line">		OutputStream os = connection.getOutputStream();</span><br><span class="line">		os.write(soapXML.getBytes());</span><br><span class="line">		<span class="comment">//第五步：接收服务端响应，打印</span></span><br><span class="line">		<span class="keyword">int</span> responseCode = connection.getResponseCode();</span><br><span class="line">		<span class="keyword">if</span>(<span class="number">200</span> == responseCode)&#123;<span class="comment">//表示服务端响应成功</span></span><br><span class="line">			InputStream is = connection.getInputStream();</span><br><span class="line">			InputStreamReader isr = <span class="keyword">new</span> InputStreamReader(is);</span><br><span class="line">			BufferedReader br = <span class="keyword">new</span> BufferedReader(isr);</span><br><span class="line">			</span><br><span class="line">			StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">			String temp = <span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">while</span>(<span class="keyword">null</span> != (temp = br.readLine()))&#123;</span><br><span class="line">				sb.append(temp);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(sb.toString());</span><br><span class="line">			</span><br><span class="line">			is.close();</span><br><span class="line">			isr.close();</span><br><span class="line">			br.close();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		os.close();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Ajax调用方式"><a href="#Ajax调用方式" class="headerlink" title="Ajax调用方式"></a>Ajax调用方式</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line">  &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	<span class="function">function <span class="title">queryMobile</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="comment">//创建XMLHttpRequest对象</span></span><br><span class="line">		var xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">		<span class="comment">//打开连接</span></span><br><span class="line">		xhr.open(<span class="string">"post"</span>,<span class="string">"http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx"</span>,<span class="keyword">true</span>);</span><br><span class="line">		<span class="comment">//设置数据类型</span></span><br><span class="line">		xhr.setRequestHeader(<span class="string">"content-type"</span>,<span class="string">"text/xml;charset=utf-8"</span>);</span><br><span class="line">		<span class="comment">//设置回调函数</span></span><br><span class="line">		xhr.onreadystatechange=function()&#123;</span><br><span class="line">			<span class="comment">//判断是否发送成功和判断服务端是否响应成功</span></span><br><span class="line">			<span class="keyword">if</span>(<span class="number">4</span> == xhr.readyState &amp;&amp; <span class="number">200</span> == xhr.status)&#123;</span><br><span class="line">				alert(xhr.responseText);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//组织SOAP协议数据</span></span><br><span class="line">		var soapXML = <span class="string">"&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;"</span></span><br><span class="line">		+<span class="string">"&lt;soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"&gt;"</span></span><br><span class="line">			+<span class="string">"&lt;soap:Body&gt;"</span></span><br><span class="line">		    +<span class="string">"&lt;getMobileCodeInfo xmlns=\"http://WebXml.com.cn/\"&gt;"</span></span><br><span class="line">		    	+<span class="string">"&lt;mobileCode&gt;"</span>+document.getElementById(<span class="string">"phoneNum"</span>).value+<span class="string">"&lt;/mobileCode&gt;"</span></span><br><span class="line">		      +<span class="string">"&lt;userID&gt;&lt;/userID&gt;"</span></span><br><span class="line">		    +<span class="string">"&lt;/getMobileCodeInfo&gt;"</span></span><br><span class="line">		  +<span class="string">"&lt;/soap:Body&gt;"</span></span><br><span class="line">		+<span class="string">"&lt;/soap:Envelope&gt;"</span>;</span><br><span class="line">		alert(soapXML);</span><br><span class="line">		<span class="comment">//发送数据</span></span><br><span class="line">		xhr.send(soapXML);</span><br><span class="line">	&#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line"> &lt;/head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line">  手机号查询：&lt;input type=<span class="string">"text"</span> id=<span class="string">"phoneNum"</span>/&gt; &lt;input type=<span class="string">"button"</span> value=<span class="string">"查询"</span> onclick=<span class="string">"javascript:queryMobile();"</span>/&gt;</span><br><span class="line"> &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="深入开发：用注解修改WSDL内容"><a href="#深入开发：用注解修改WSDL内容" class="headerlink" title="深入开发：用注解修改WSDL内容"></a>深入开发：用注解修改WSDL内容</h1><pre><code>WebService的注解都位于javax.jws包下:
+@WebService-定义服务，在public class上边
+targetNamespace：指定命名空间
+name：portType的名称
+portName：port的名称
+serviceName：服务名称
+endpointInterface：SEI接口地址，如果一个服务类实现了多个接口，只需要发布一个接口的方法，可通过此注解指定要发布服务的接口。
+@WebMethod-定义方法，在公开方法上边
+    operationName：方法名
+    exclude：设置为true表示此方法不是webservice方法，反之则表示webservice方法，默认是false
+@WebResult-定义返回值，在方法返回值前边
+    name：返回结果值的名称
+@WebParam-定义参数，在方法参数前边
+    name：指定参数的名称
+作用：
+通过注解，可以更加形像的描述Web服务。对自动生成的wsdl文档进行修改，为使用者提供一个更加清晰的wsdl文档。
+当修改了WebService注解之后，会影响客户端生成的代码。调用的方法名和参数名也发生了变化
+</code></pre><h1 id="CXF介绍-安装配置"><a href="#CXF介绍-安装配置" class="headerlink" title="CXF介绍 安装配置"></a>CXF介绍 安装配置</h1><pre><code>CXF是一个开源的webservice框架，提供很多完善功能，可以实现快速开发
+CXF支持的协议：SOAP1.1/1.2，REST
+CXF支持数据格式：XML，JSON（仅在REST方式下支持）
+</code></pre><h2 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h2><pre><code>第一步：安装JDK，建议1.7
+第二步：解压apache-cxf-2.7.11.zip到指定目录，创建CXF_HOME
+第三步：把CXF_HOME加入到Path路径下
+第四步：测试，在cmd下加入wsdl2java –h
+</code></pre><h1 id="CXF发布SOAP协议的服务"><a href="#CXF发布SOAP协议的服务" class="headerlink" title="CXF发布SOAP协议的服务"></a>CXF发布SOAP协议的服务</h1><pre><code>服务端：发布服务，接收客户端的城市名，返回天气数据给客户端
+客户端：发送城市名给服务端，接收服务端的响应信息，打印
+</code></pre><h2 id="服务端-1"><a href="#服务端-1" class="headerlink" title="服务端"></a>服务端</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/CXF00.png" alt=""></p>
+<pre><code>1. 导入Jar包
+2. 创建SEI接口
+3. 创建SEI实现类
+4. 发布服务
+5. 测试服务是否发布成功
+</code></pre><h3 id="SEI接口和实现类"><a href="#SEI接口和实现类" class="headerlink" title="SEI接口和实现类"></a>SEI接口和实现类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: WeatherInterface </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: CXF实现发布接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: 天热就吃哈密瓜</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年2月3日 下午2:49:59</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebService</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WeatherInterface</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">queryWeather</span><span class="params">(String cityName)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: WeatherInterfaceImpl </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: CXF实现发布</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: 天热就吃哈密瓜</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年2月3日 下午3:11:49</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherInterfaceImpl</span> <span class="keyword">implements</span> <span class="title">WeatherInterface</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">queryWeather</span><span class="params">(String cityName)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"from"</span>+cityName+<span class="string">":"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Sunny"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="发布服务"><a href="#发布服务" class="headerlink" title="发布服务"></a>发布服务</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: WeatherServer </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 发布服务</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: 天热就吃哈密瓜</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年2月3日 下午3:49:54</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherServer</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//JaxWsServerFactoryBean发布服务</span></span><br><span class="line">		JaxWsServerFactoryBean jaxWsServerFactoryBean = <span class="keyword">new</span> JaxWsServerFactoryBean();</span><br><span class="line">		<span class="comment">//设置服务端口</span></span><br><span class="line">		jaxWsServerFactoryBean.setServiceClass(WeatherInterface.class);</span><br><span class="line">		<span class="comment">//设置服务实现类</span></span><br><span class="line">		jaxWsServerFactoryBean.setServiceBean(WeatherInterfaceImpl.class);</span><br><span class="line">		<span class="comment">//设置服务地址</span></span><br><span class="line">		jaxWsServerFactoryBean.setAddress(<span class="string">"http://127.0.0.1:12345/weather"</span>);</span><br><span class="line">		<span class="comment">//发布</span></span><br><span class="line">		jaxWsServerFactoryBean.create();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试发布"><a href="#测试发布" class="headerlink" title="测试发布"></a>测试发布</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1:12345/weather</span></span><br><span class="line"></span><br><span class="line">&lt;soap:Envelope xmlns:soap=<span class="string">"http://schemas.xmlsoap.org/soap/envelope/"</span>&gt;</span><br><span class="line">	&lt;soap:Body&gt;</span><br><span class="line">		&lt;soap:Fault&gt;</span><br><span class="line">			&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;</span><br><span class="line">			&lt;faultstring&gt;</span><br><span class="line">			No binding operation info <span class="keyword">while</span> invoking unknown method with params unknown.</span><br><span class="line">			&lt;/faultstring&gt;</span><br><span class="line">		&lt;/soap:Fault&gt;</span><br><span class="line">	&lt;/soap:Body&gt;</span><br><span class="line">&lt;/soap:Envelope&gt;</span><br><span class="line"></span><br><span class="line">此时直接访问WSDL说明书</span><br><span class="line">http:<span class="comment">//127.0.0.1:12345/weather?wsdl</span></span><br></pre></td></tr></table></figure>
+<h3 id="SOAP1-2-1"><a href="#SOAP1-2-1" class="headerlink" title="SOAP1.2"></a>SOAP1.2</h3><pre><code>1. 在接口上加入如下注解：@BindingType(SOAPBinding.SOAP12HTTP_BINDING)
+2. 重新发布服务端
+</code></pre><h2 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h2><pre><code>第一步：生成客户端代码
+    1. Wsdl2java命令是CXF提供的生成客户端的工具，他和Wsimport类似，可以根据WSDL生成客户端代码
+    2. Wsdl2java常用参数：
+        -d：指定输出目录
+        -p：指定包名，如果不指定该参数，默认包名是WSDL的命名空间倒序，Wsdl2java支持SOAP1.1和SOAP1.2
+
+第二步：使用说明书，使用生成代码调用服务器
+</code></pre><h3 id="调用代码"><a href="#调用代码" class="headerlink" title="调用代码"></a>调用代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cxf.client;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.cxf.jaxws.JaxWsProxyFactoryBean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.itcast.cxf.weather.WeatherInterface;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//JaxWsProxyFactoryBean调用服务端</span></span><br><span class="line">		JaxWsProxyFactoryBean jaxWsProxyFactoryBean = <span class="keyword">new</span> JaxWsProxyFactoryBean();</span><br><span class="line">		<span class="comment">//设置服务接口</span></span><br><span class="line">		jaxWsProxyFactoryBean.setServiceClass(WeatherInterface.class);</span><br><span class="line">		<span class="comment">//设置服务地址</span></span><br><span class="line">		jaxWsProxyFactoryBean.setAddress(<span class="string">"http://127.0.0.1:12345/weather"</span>);</span><br><span class="line">		<span class="comment">//获取服务接口实例</span></span><br><span class="line">		WeatherInterface weatherInterface = jaxWsProxyFactoryBean.create(WeatherInterface.class);</span><br><span class="line">		<span class="comment">//调用查询方法</span></span><br><span class="line">		String weather = weatherInterface.queryWeather(<span class="string">"保定"</span>);</span><br><span class="line">		System.out.println(weather);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="CXF和Spring整合"><a href="#CXF和Spring整合" class="headerlink" title="CXF和Spring整合"></a>CXF和Spring整合</h1><pre><code>CXF和Spring整合发布SOAP协议的服务
+</code></pre><h2 id="服务端-2"><a href="#服务端-2" class="headerlink" title="服务端"></a>服务端</h2><pre><code>第一步：创建Web项目
+第二步：创建SEI接口
+第三步：创建SEI实现类
+第四步：spring配置文件，applicationContext.xml
+第五步：配置Web.xml
+第六步：部署到Tomcat下，启动Tomcat
+第七步：测试服务
+</code></pre><h2 id="客户端-2"><a href="#客户端-2" class="headerlink" title="客户端"></a>客户端</h2>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2018/01/26/WebService/" title="WebService">http://abelchao.com/2018/01/26/WebService/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/WebService/" rel="tag"><i class="fa fa-tag"></i> WebService</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/25/COP（Spring-IoC-DI-AOP）/" rel="next" title="COP（Spring中和核心思想）">
+                <i class="fa fa-chevron-left"></i> COP（Spring中和核心思想）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/27/Computer Network（概述）/" rel="prev" title="Computer Network（概述）">
+                Computer Network（概述） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebService"><span class="nav-number">1.</span> <span class="nav-text">WebService</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是WebService（远程调用技术）"><span class="nav-number">1.1.</span> <span class="nav-text">什么是WebService（远程调用技术）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入门程序"><span class="nav-number">1.2.</span> <span class="nav-text">入门程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">1.2.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端"><span class="nav-number">1.2.2.</span> <span class="nav-text">服务端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Weather"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Weather</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WeatherImpl"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">WeatherImpl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WeatherService"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">WeatherService</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端"><span class="nav-number">1.2.3.</span> <span class="nav-text">客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成客户端代码"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">生成客户端代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据使用说明书，使用客户端代码调用服务端"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">根据使用说明书，使用客户端代码调用服务端</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebService的优缺点"><span class="nav-number">1.3.</span> <span class="nav-text">WebService的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WebService应用场景"><span class="nav-number">1.3.1.</span> <span class="nav-text">WebService应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#软件集成和复用"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">软件集成和复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适用场景"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不适用场景"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">不适用场景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WSDL"><span class="nav-number">1.4.</span> <span class="nav-text">WSDL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WSDL说明书结构"><span class="nav-number">1.4.1.</span> <span class="nav-text">WSDL说明书结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WSDL的阅读方式"><span class="nav-number">1.4.2.</span> <span class="nav-text">WSDL的阅读方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SOAP"><span class="nav-number">1.5.</span> <span class="nav-text">SOAP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP和SOAP"><span class="nav-number">1.5.1.</span> <span class="nav-text">HTTP和SOAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SOAP协议格式"><span class="nav-number">1.5.2.</span> <span class="nav-text">SOAP协议格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP-Monitor监视Soap协议"><span class="nav-number">1.5.3.</span> <span class="nav-text">TCP/IP Monitor监视Soap协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SOAP1-1"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">SOAP1.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SOAP1-2"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">SOAP1.2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SOAP1-1和1-2的区别"><span class="nav-number">1.5.3.4.</span> <span class="nav-text">SOAP1.1和1.2的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDDI"><span class="nav-number">1.6.</span> <span class="nav-text">UDDI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Webservice的四种客户端调用方式"><span class="nav-number">2.</span> <span class="nav-text">Webservice的四种客户端调用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一种生成客户端调用方式（DOS命令）"><span class="nav-number">2.1.</span> <span class="nav-text">第一种生成客户端调用方式（DOS命令）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Wsimport命令介绍"><span class="nav-number">2.1.1.</span> <span class="nav-text">Wsimport命令介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用公网手机号归属地查询服务"><span class="nav-number">2.1.2.</span> <span class="nav-text">调用公网手机号归属地查询服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Wsimport生成客户端代码"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Wsimport生成客户端代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端代码调用服务端"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">客户端代码调用服务端</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二种：service编程调用方式"><span class="nav-number">2.2.</span> <span class="nav-text">第二种：service编程调用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三种：HttpURLConnection调用方式"><span class="nav-number">2.3.</span> <span class="nav-text">第三种：HttpURLConnection调用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax调用方式"><span class="nav-number">2.4.</span> <span class="nav-text">Ajax调用方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深入开发：用注解修改WSDL内容"><span class="nav-number">3.</span> <span class="nav-text">深入开发：用注解修改WSDL内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CXF介绍-安装配置"><span class="nav-number">4.</span> <span class="nav-text">CXF介绍 安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装和配置"><span class="nav-number">4.1.</span> <span class="nav-text">安装和配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CXF发布SOAP协议的服务"><span class="nav-number">5.</span> <span class="nav-text">CXF发布SOAP协议的服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端-1"><span class="nav-number">5.1.</span> <span class="nav-text">服务端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SEI接口和实现类"><span class="nav-number">5.1.1.</span> <span class="nav-text">SEI接口和实现类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布服务"><span class="nav-number">5.1.2.</span> <span class="nav-text">发布服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试发布"><span class="nav-number">5.1.3.</span> <span class="nav-text">测试发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SOAP1-2-1"><span class="nav-number">5.1.4.</span> <span class="nav-text">SOAP1.2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端-1"><span class="nav-number">5.2.</span> <span class="nav-text">客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调用代码"><span class="nav-number">5.2.1.</span> <span class="nav-text">调用代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CXF和Spring整合"><span class="nav-number">6.</span> <span class="nav-text">CXF和Spring整合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端-2"><span class="nav-number">6.1.</span> <span class="nav-text">服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端-2"><span class="nav-number">6.2.</span> <span class="nav-text">客户端</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

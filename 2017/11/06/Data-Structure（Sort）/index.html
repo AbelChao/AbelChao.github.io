@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Algorithm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="这一节复习了七种排序">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Structure（Sort）">
+<meta property="og:url" content="http://abelchao.com/2017/11/06/Data-Structure（Sort）/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="这一节复习了七种排序">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort00.jpg">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort01.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort02.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort03.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort04.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort05.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort06.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort07.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort08.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort09.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort14.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort16.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort17.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort10.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort11.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort12.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort13.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort18.png">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort19.png">
+<meta property="og:updated_time" content="2017-11-07T13:14:54.738Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Structure（Sort）">
+<meta name="twitter:description" content="这一节复习了七种排序">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/Sort00.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2017/11/06/Data-Structure（Sort）/"/>
+
+
+
+
+
+  <title>Data Structure（Sort） | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2017/11/06/Data-Structure（Sort）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Data Structure（Sort）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-06T20:08:44+08:00">
+                2017-11-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-11-07T21:14:54+08:00">
+                2017-11-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm-Sort/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm Sort</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort00.jpg" alt="Sort"></p>
+<p><strong>这一节复习了七种排序</strong></p>
+<a id="more"></a>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort01.png" alt="Sort"></p>
+<h1 id="三种简单的排序"><a href="#三种简单的排序" class="headerlink" title="三种简单的排序"></a>三种简单的排序</h1><h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p><strong>原理：第一个数和它后面的所有的数进行比较，如果后面的数有比第一个数小的，就交换。没有就接着下一个比较。第一次遍历完之后，确定了所有数中最小的那一个。</strong><br><strong>接着就是从第二个数开始依次再比较所有后面的数，直到最后。</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort02.png" alt="Sort"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 第一个和后面的所有的数据进行一个比较，第一遍比较完确定了最一个最后的数据，</span></span><br><span class="line"><span class="comment"> * 其实也就是比较多少次，就确定了多少个最小值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">	Integer temp;<span class="comment">//用来存放交换数据时候的</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;array.length;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(array[i]&gt;array[j])&#123;</span><br><span class="line">				temp = array[j];</span><br><span class="line">				array[j] = array[i];</span><br><span class="line">				array[i] = temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p><strong>原理：冒泡排序跟选择排序一样的简单，好理解，整个过程就想气泡一样往上升，假设从小到大排序，对于给定的n个记录，从第一个记录开始依次对相邻的两个记录进行比较，当前面的记录大于后面的记录时，交换位置，进行一轮比较后，第n位上就是整个记录中最大的数，然后在对前n-1个记录进行第二轮比较，重复该过程直到进行比较的记录只剩下一个为止。</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort03.png" alt="Sort"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 冒泡排序</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 第一层循环是长度为length的数组，需要比较length-1次。</span></span><br><span class="line"><span class="comment"> * 第二层循环是相邻的两个数据之间进行比较</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">	Integer temp;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=array.length-<span class="number">1</span>;i&lt;j;j--)&#123;</span><br><span class="line">			<span class="keyword">if</span>(array[j]&lt;array[j-<span class="number">1</span>])&#123;</span><br><span class="line">				temp = array[j];</span><br><span class="line">				array[j] = array[j-<span class="number">1</span>];</span><br><span class="line">				array[j-<span class="number">1</span>] = temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h2><p><strong>原理: 简单，给定的一组记录，将其分为两个序列组，一个为有序序列(按照顺序从小到大或者从大到小)，一个为无序序列，初始时，将记录中的第一个数当成有序序列组中的一个数据，剩下其他所有数都当做是无序序列组中的数据。然后从无序序列组中的数据中(也就是从记录中的第二个数据开始)依次与有序序列中的记录进行比较，然后插入到有序序列组中合适的位置，直到无序序列组中的最后一个数据插入到有序序列组中为止。</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort04.png" alt="Sort"></p>
+<p>算法说明：就用上面的那个图片</p>
+<pre><code>1. 一开始有序数组只有38，而无序数组中的第一个元素是65，65&gt;38,那么temp等于65，但是65&gt;38,所以不能进行内层循环，不过
+还是执行了j=i-1，这个时候j变成了0，所以在后面才会有array[j+1] = arr[1] = 65.
+
+第一层循环完之后，我们的有序数组变成了[38 65]
+
+2. 外层循环的i++了，i=2，那么就是97，但是97还是比它前面的j=i-1=2-1=1，arr[1]大，所以arr[2] = 97
+
+这层循环完以后，有序数组成了[38 65 97]
+
+3. 有开始外层循环，i++，i=3，发现这个时候前面的数据arr[3-1] = 97,大于了76，所以arr[2+1] = arr[2]=97,这个时候我
+们的arr[2]=arr[3]都是97，因为arr[2]&gt;temp，所以再往前走，arr[1]&lt;temp=76,这个时候j=1了，但是跳出了循环，所以我们
+arr[j+1] = temp ---&gt; arr[2] = 76
+
+这层循环完之后，有序数组成了[38 65 76 97]
+
+4.依次往下走，直到我们无序数据中只有一个数据。
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 把整个大的数组分成两个小的数组，左侧有序，右侧无序。默认右侧的第一个元素是无序的第一个元素，如果第一个元素均大于之前有序的元素，直接插入</span></span><br><span class="line"><span class="comment"> * 否则，在有序数组中从后往前比较，进行插入，这样就会涉及到我们的数组的移位。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j,temp;<span class="comment">//temp临时存放无序数组中的第一个元素</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;array.length;i++)&#123;<span class="comment">//一开始的时候第一个元素，也就是下标为0的数组元素单独是一个有序数组，后面的所有元素是一个无序数组</span></span><br><span class="line">		temp = array[i];<span class="comment">//无序数组中的第一个元素</span></span><br><span class="line">		<span class="keyword">for</span>(j=i-<span class="number">1</span>;j&gt;=<span class="number">0</span>&amp;&amp;temp&lt;array[j];j--)&#123;</span><br><span class="line">			<span class="comment">//拿到无序数组前的那个数据，一旦前面的数据比我们的无序数组的第一个元素大，就开始插入这个无序数组中的第一个元素，</span></span><br><span class="line">			<span class="comment">//既然是插入，就要涉及到插入位置后面所有角标的移位。</span></span><br><span class="line">			<span class="comment">//这个循环是比较了把所有第一个无序元素和前面的有序元素的所有数据都进行了一次比较.一旦发现比它大的数据，直接就在前面插入。</span></span><br><span class="line">			array[j+<span class="number">1</span>] = array[j];</span><br><span class="line">		&#125;</span><br><span class="line">		array[j+<span class="number">1</span>] = temp;<span class="comment">//因为for循环最后一次--后比较了和temp的大小，但是小于temp，跳出了循环，但是--还是执行了，所以需要往后走一位，赋值。</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三种简单排序的升级"><a href="#三种简单排序的升级" class="headerlink" title="三种简单排序的升级"></a>三种简单排序的升级</h1><h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p><strong>原理：</strong></p>
+<p><strong>希尔排序其实是插入排序的升级版本，本质上进行的也是插入排序的操作，但是希尔排序并不是把一组记录看成一个整体，而将整个记录分为了若干组记录，然后在对每组记录进行插入排序，</strong></p>
+<p><strong>分组规则为如下图所示：假设有 1 2 3 4 5  6 7 8 9 10 十个位置(每个位置上都会放数，这里忽略数，只讨论位置)。(省略了插入排序操作，只对如何分组进行讲解，而完整的希尔排序就是在每次分组完之后进行插入排序操作即可)</strong></p>
+<p><strong>步长为：5、3、1</strong></p>
+<p><strong>第一次分为5组记录(组数跟步长是一样的)：1,6 、2,7、3,8、 4,9、 5,10 这五组记录，分别对这五组记录进行插入排序。</strong></p>
+<p><strong>第二次分为3组记录：1,4,7,10、2,5,8、3,6,9 这三组记录，分别对这三组记录进行插入排序</strong></p>
+<p><strong>第三次分为1组记录：1 2 3 4 5 6  7 8 9 10， 为这组记录进行插入排序</strong></p>
+<p><strong>而步长只要满足最后一次为1，并且是从大到小即可。一般使用(数组长度/2) 或者 (数组长度/3 +1) 来代表步长。</strong></p>
+<p><strong>这样做的好处是：</strong></p>
+<p><strong>将待排序的数组元素分成多组，每组中记录数相对较少</strong></p>
+<p><strong>经过前几次的排序后，整个序列变为了“基本有序序列”，最后在对所有元素进行一次直接插入排序。</strong></p>
+<p><strong>直接插入排序对基本有序和记录数少的序列的效率是非常高的，而希尔排序就是利用了这两点。</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort05.png" alt="Sort"></p>
+<p>解释：第一次分组，49,13、38,27、65,49、97,55、76,04  五组，对这五组分别进行插入排序，在49找到13时，就会进行插入排序，位置会进行互换，而并非先全部分组，后排序。</p>
+<p>按照步长一直重复执行，直到步长为1后，执行完最后一次直接插入排序，整个希尔排序就完成了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 希尔排序其实就是直接插值排序的升级版，在插值中我们每次都是一位一位的前进比较，但是在希尔排序中我们利用gap直接把数组分段，</span></span><br><span class="line"><span class="comment"> * 也就是说先小范围的比较，最后直接进行一次整合</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,temp;</span><br><span class="line">	<span class="keyword">int</span> gap = array.length;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">do</span>&#123;</span><br><span class="line">		gap = gap/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">for</span>(i=gap;i&lt;array.length;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(array[i]&lt;array[i-gap])&#123;</span><br><span class="line">				temp = array[i];</span><br><span class="line">				<span class="keyword">for</span>(j=i-gap;j&gt;=<span class="number">0</span> &amp;&amp; array[j]&gt;temp;j-=gap)&#123;</span><br><span class="line">					array[j+gap] = array[j];</span><br><span class="line">				&#125;</span><br><span class="line">				array[j+gap] = temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">while</span>(gap&gt;<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p><strong>原理：</strong></p>
+<p><strong>快速排序是对冒泡排序的增强，增强得点在于：冒泡排序中，记录的比较和移动是在相邻两个位置进行的，记录每次交换只能后移一个位置，因而总的比较次数和移动次数较多，而快排记录的比较和移动是从两端向中间进行的，较大的记录一次就能从前面移动到后面，较小的记录一次就能从后面移动到前面，这样就减少了比较次数和移动次数。</strong></p>
+<p><strong>选取一个轴值(比较的基准)，将待排序记录分为独立的两个部分，左侧记录都是小于或等于轴值，右侧记录都是大于或等于轴值，然后分别对左侧部分和右侧部分重复前面的过程，也就是左侧部分又选择一个轴值，又分为两个独立的部分，这就使用了递归了。到最后，整个序列就变得有序了。</strong></p>
+<p><strong>问题：如何选择轴值？如何将序列变成左右两部分？</strong></p>
+<p><strong>轴值的选择有三种：</strong></p>
+<pre><code>1、选取序列的第一个位置上的记录
+
+2、选择序列的中间位置上的记录
+
+3、将序列第一个位置 和 中间位置 和 末尾位置上的记录进行比较，选择大小居中的记录，
+</code></pre><p><strong>如何将序列划分成左右两部分？</strong>　　　</p>
+<p><strong>看图的执行流程，当一趟比较下来，轴值的左侧和右侧就被排好了，其中利用了first和end两个参数，一个从起点开始，一个从末尾开始，当两个相等时，就将序列中所有记录都遍历了一遍，第一次的比较次数是和选择排序第一次比较次数是一样的，但是之后就开始不一样了，因为在轴值的左侧的元素就不用跟轴值右侧的元素进行比较了，而选择排序还是跟所有的比。</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort06.png" alt="Sort"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort07.png" alt="Sort"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort08.png" alt="Sort"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort09.png" alt="Sort"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 快速排序中计算每次轴值的位置</span></span><br><span class="line"><span class="comment"> * 以第一次为例子，数组中的第一个元素为first也就是默认的轴值，在i&lt;j的情况下，从右往左走，右侧找小的，一旦找到了比轴值小的数据，轴值和</span></span><br><span class="line"><span class="comment"> * 其位置交换，同时一开始指向轴值的指针加一，也就是左移，但是这个时候j是不变的，还是指向了轴值。左侧找大的，一旦找打了比轴值大的数据，</span></span><br><span class="line"><span class="comment"> * 进行位置交换，j又开始左移，不断循环，一直到i==j，跳出循环，返回轴值的位置</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> first</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> end</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Partition</span><span class="params">(Integer[] array,<span class="keyword">int</span> first,<span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=first;</span><br><span class="line">	<span class="keyword">int</span> j=end;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;j &amp;&amp; array[i]&lt;array[j])&#123;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;j)&#123;</span><br><span class="line">			<span class="keyword">int</span> temp = array[i];</span><br><span class="line">			array[i] = array[j];</span><br><span class="line">			array[j] = temp;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;j &amp;&amp; array[i]&lt;array[j])&#123;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;j &amp;&amp; array[i]&gt;array[j])&#123;</span><br><span class="line">			<span class="keyword">int</span> temp = array[i];</span><br><span class="line">			array[i] = array[j];</span><br><span class="line">			array[j] = temp;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> j;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 快速排序中利用递归对数据进行循环。一旦找到了轴值，又以轴值为中心，两侧分为两个新的数组，开始其对应的新的轴值。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> first</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> end</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSortByScope</span><span class="params">(Integer[] array,<span class="keyword">int</span> first,<span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(first&lt;end)&#123;</span><br><span class="line">		<span class="keyword">int</span> pivot = Partition(array, first, end);</span><br><span class="line">		quickSortByScope(array,first,pivot-<span class="number">1</span>);</span><br><span class="line">		quickSortByScope(array, pivot+<span class="number">1</span>, end);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 快速排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">	quickSortByScope(array, <span class="number">0</span>, array.length-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p><strong>作为选择排序的改进版，堆排序可以把每一趟元素的比较结果保存下来，以便我们在选择最小/大元素时对已经比较过的元素做出相应的调整。</strong></p>
+<p><strong>堆排序是一种树形选择排序，在排序过程中可以把元素看成是一颗完全二叉树，每个节点都大（小）于它的两个子节点，当每个节点都大于等于它的两个子节点时，就称为大顶堆，也叫堆有序； 当每个节点都小于等于它的两个子节点时，就称为小顶堆。</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort14.png" alt="Sort"></p>
+<p><strong>原理(以大顶堆为例)：</strong></p>
+<pre><code>1.将长度为n的待排序的数组进行堆有序化构造成一个大顶堆
+
+2.将根节点与尾节点交换并输出此时的尾节点    
+
+3.将剩余的n -1个节点重新进行堆有序化
+
+4.重复步骤2，步骤3直至构造成一个有序序列
+</code></pre><p><strong>在构造有序堆时，我们开始只需要扫描一半的元素（n/2-1 ~ 0）即可，为什么?<br>因为(n/2-1)~0的节点才有子节点，如n=8,(n/2-1) = 3  即3 2 1 0这个四个节点才有子节点</strong></p>
+<p><strong>第一次构建</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort16.png" alt="Sort"></p>
+<p><strong>构建后输出调整</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort17.png" alt="Sort"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 堆排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> length = array.length;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//第一步构建，将数组构建成一个大堆顶</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=length/<span class="number">2</span>-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">		<span class="comment">//从完全二叉树的最后一个父节点的位置length/2处开始构建，二叉树上是length/2，在数组中就是length/2-1</span></span><br><span class="line">		<span class="comment">//这里的i就是父节点的元素角标</span></span><br><span class="line">		<span class="comment">//构建，这个函数的作用就是从下往上，把子结点中大于父节点的数据和父节点的数据交换。同时把父节点指向这个较大的子节点。</span></span><br><span class="line">		adjustMaxHeap(array,i,length);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//第一遍构建完成后，开始调整，把堆顶的第一个数和最后一个数交换，并重新构建</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = length-<span class="number">1</span>;i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = array[<span class="number">0</span>];</span><br><span class="line">		array[<span class="number">0</span>] = array[i];</span><br><span class="line">		array[i] = temp;</span><br><span class="line">		</span><br><span class="line">		adjustMaxHeap(array,<span class="number">0</span>,i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 大堆顶的构建</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> i</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> length</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">adjustMaxHeap</span><span class="params">(Integer[] array,<span class="keyword">int</span> i,<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> temp = array[i];<span class="comment">//获取父节点</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> child;<span class="comment">//父节点的子节点中较大的那个元素在数组中的角标</span></span><br><span class="line">	<span class="keyword">for</span>(child = <span class="number">2</span>*i+<span class="number">1</span>;child&lt;=length-<span class="number">1</span>;child = child*<span class="number">2</span>+<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(child&lt;length-<span class="number">1</span> &amp;&amp; array[child]&lt;array[child+<span class="number">1</span>])&#123;</span><br><span class="line">			<span class="comment">//当前父节点是i，对应的左子结点是2(i+1),但是是数组就成了2(i+1)-1=2i+1</span></span><br><span class="line">			<span class="comment">//child&lt;length-1,说明肯定i有右子结点，如果是child=length-1，说明只有左结点。</span></span><br><span class="line">			<span class="comment">//左子结点小于右子结点，把子结点的指针指向右子结点</span></span><br><span class="line">			child++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(array[child]&gt;temp)&#123;</span><br><span class="line">			<span class="comment">//如果当前父结点的右子结点大于父节点，交换位置</span></span><br><span class="line">			array[i] = array[child];</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		array[child] = temp;</span><br><span class="line">		i = child;<span class="comment">//交换位置后，把父节点变成当前的这个大的子节点</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="其他排序"><a href="#其他排序" class="headerlink" title="其他排序"></a>其他排序</h1><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort10.png" alt="Sort"></p>
+<p><strong>拆分：其实就是不断的递归的过程</strong></p>
+<p><strong>合并</strong></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort11.png" alt="Sort"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort12.png" alt="Sort"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort13.png" alt="Sort"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 归并排序</span></span><br><span class="line"><span class="comment"> * 这个方法完成了合并的功能，把一个数组变成两个。第一个指针指向第一个元素，第二个元素指向中间元素的第一个元素。</span></span><br><span class="line"><span class="comment"> * 循环比较大小，那个小就往临时数组中存那个。</span></span><br><span class="line"><span class="comment"> * 一旦跳出了循环，就证明这个时候比较完成了，但是左数组或者是有数组中还存在一部分没有存入的元素，所以先存左数组，后存右数组。</span></span><br><span class="line"><span class="comment"> * 存完之后把数组进行一个复制</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> first</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> mid</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> end</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> temp</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(Integer[] array,<span class="keyword">int</span> first,<span class="keyword">int</span> mid,<span class="keyword">int</span> end,Integer[] temp)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = first;</span><br><span class="line">	<span class="keyword">int</span> j = mid+<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=end)&#123;</span><br><span class="line">		<span class="keyword">if</span>(array[i]&lt;array[j])&#123;</span><br><span class="line">			temp[t++] = array[i++];</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			temp[t++] = array[j++];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=mid)&#123;</span><br><span class="line">		temp[t++] = array[i++];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(j&lt;=end)&#123;</span><br><span class="line">		temp[t++] = array[j++];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	t=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(first&lt;=end)&#123;</span><br><span class="line">		array[first++] = temp[t++];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这个方法完成了分的功能，利用了递归</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> first</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> end</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> temp</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSortBySort</span><span class="params">(Integer[] array,<span class="keyword">int</span> first,<span class="keyword">int</span> end,Integer[] temp)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(first&lt;end)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (first+end)/<span class="number">2</span>;</span><br><span class="line">		</span><br><span class="line">		mergeSortBySort(array,first,mid,temp);</span><br><span class="line">		mergeSortBySort(array,mid+<span class="number">1</span>,end,temp);</span><br><span class="line">		merge(array,first,mid,end,temp);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 归并排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">	Integer[] temp = <span class="keyword">new</span> Integer[array.length];</span><br><span class="line">	</span><br><span class="line">	mergeSortBySort(array, <span class="number">0</span>, array.length-<span class="number">1</span>, temp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort18.png" alt="Sort"></p>
+<p><img src="http://oxk1vrcj4.bkt.clouddn.com/Sort19.png" alt="Sort"></p>
+<h1 id="整合"><a href="#整合" class="headerlink" title="整合"></a>整合</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> algorithm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sort类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> whbai_xd@163.com</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2017年11月7日 下午8:36:47</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortDemo</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//顺序排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> temp;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;array.length;j++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(array[i]&gt;array[j])&#123;</span><br><span class="line">					temp = array[i];</span><br><span class="line">					array[i] = array[j];</span><br><span class="line">					array[j] = temp;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//冒泡排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> temp;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = array.length-<span class="number">1</span>; j&gt;i;j--)&#123;</span><br><span class="line">				<span class="keyword">if</span>(array[j]&lt;array[j-<span class="number">1</span>])&#123;</span><br><span class="line">					temp = array[j-<span class="number">1</span>];</span><br><span class="line">					array[j-<span class="number">1</span>] = array[j];</span><br><span class="line">					array[j] = temp;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//直接插入排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> j,temp;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(array[i]&lt;array[i-<span class="number">1</span>])&#123;</span><br><span class="line">				temp = array[i];</span><br><span class="line">				<span class="keyword">for</span>(j = i-<span class="number">1</span>;j&gt;=<span class="number">0</span> &amp;&amp; array[j]&gt;temp;j--)&#123;</span><br><span class="line">					array[j+<span class="number">1</span>] = array[j];</span><br><span class="line">				&#125;</span><br><span class="line">				array[j+<span class="number">1</span>] = temp;		</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//希尔排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i,j,temp;</span><br><span class="line">		<span class="keyword">int</span> gap = array.length;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">do</span>&#123;</span><br><span class="line">			gap = gap/<span class="number">2</span>;</span><br><span class="line">			<span class="keyword">for</span>(i = gap;i&lt;array.length;i++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(array[i]&lt;array[i-gap])&#123;</span><br><span class="line">					temp = array[i];</span><br><span class="line">					<span class="keyword">for</span>(j = i-gap;j&gt;=<span class="number">0</span> &amp;&amp; array[j]&gt;temp;j-=gap)&#123;</span><br><span class="line">						array[j+gap] = array[j];</span><br><span class="line">					&#125;</span><br><span class="line">					array[j+gap] = temp;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">while</span>(gap&gt;<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//快速排序</span></span><br><span class="line">	<span class="comment">//1. 查找轴值</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Partition</span><span class="params">(Integer[] array,<span class="keyword">int</span> first,<span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> i = first;</span><br><span class="line">		<span class="keyword">int</span> j = end;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">			<span class="keyword">while</span>(i&lt;j &amp;&amp; array[i]&lt;array[j])&#123;</span><br><span class="line">				j--;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;j)&#123;</span><br><span class="line">				swap(array,i,j);</span><br><span class="line">				i++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">while</span>(i&lt;j &amp;&amp; array[i]&lt;array[j])&#123;</span><br><span class="line">				i++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;j)&#123;</span><br><span class="line">				swap(array,i,j);</span><br><span class="line">				j--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> j;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//2.递归</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSortByAxis</span><span class="params">(Integer[] array,<span class="keyword">int</span> first,<span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(first&lt;end)&#123;</span><br><span class="line">			<span class="keyword">int</span> axis = Partition(array, first, end);</span><br><span class="line">			quickSortByAxis(array, first, axis-<span class="number">1</span>);</span><br><span class="line">			quickSortByAxis(array, axis+<span class="number">1</span>, end);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//进入</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">		quickSortByAxis(array, <span class="number">0</span>, array.length-<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//归并排序</span></span><br><span class="line">	<span class="comment">//1.归并</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(Integer[] array,<span class="keyword">int</span> first,<span class="keyword">int</span> mid,<span class="keyword">int</span> end,Integer[] temp)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i = first;</span><br><span class="line">		<span class="keyword">int</span> j = mid+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=end)&#123;</span><br><span class="line">			<span class="keyword">if</span>(array[i]&lt;array[j])&#123;</span><br><span class="line">				temp[t++] = array[i++];</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				temp[t++] = array[j++];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;=mid)&#123;</span><br><span class="line">			temp[t++] = array[i++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(j&lt;=end)&#123;</span><br><span class="line">			temp[t++] = array[j++];</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		t = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(first&lt;=end)&#123;</span><br><span class="line">			array[first++] = temp[t++];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//2.拆分---&gt;递归</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSortByBin</span><span class="params">(Integer[] array,<span class="keyword">int</span> first,<span class="keyword">int</span> end,Integer[] temp)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(first&lt;end)&#123;</span><br><span class="line">			<span class="keyword">int</span> mid = (first+end)/<span class="number">2</span>;</span><br><span class="line">			</span><br><span class="line">			mergeSortByBin(array,first,mid,temp);</span><br><span class="line">			mergeSortByBin(array, mid+<span class="number">1</span>, end, temp);</span><br><span class="line">		</span><br><span class="line">			merge(array, first, mid, end, temp);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//归并</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">		Integer[] temp = <span class="keyword">new</span> Integer[array.length];</span><br><span class="line">		mergeSortByBin(array, <span class="number">0</span>, array.length-<span class="number">1</span>, temp);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//堆排序</span></span><br><span class="line">	<span class="comment">//1.构建</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">adjustMaxHeap</span><span class="params">(Integer[] array,<span class="keyword">int</span> i,<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = array[i];</span><br><span class="line">		<span class="keyword">int</span> child;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(child = <span class="number">2</span>*i+<span class="number">1</span>;child&lt;=length-<span class="number">1</span>;child = <span class="number">2</span>*child+<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(child&lt;length-<span class="number">1</span> &amp;&amp; array[child]&lt;array[child+<span class="number">1</span>])&#123;</span><br><span class="line">				child++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(array[child]&gt;temp)&#123;</span><br><span class="line">				array[i] = array[child];</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			array[child] = temp;</span><br><span class="line">			i = child;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//2.堆排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(Integer[] array)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> length = array.length;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=length/<span class="number">2</span>-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">			adjustMaxHeap(array, i, length);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=length-<span class="number">1</span>;j&gt;<span class="number">0</span>;j--)&#123;</span><br><span class="line">			swap(array, <span class="number">0</span>, j);</span><br><span class="line">			adjustMaxHeap(array, <span class="number">0</span>, j);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Integer[] array = <span class="keyword">new</span> Integer[]&#123;<span class="number">93</span>,<span class="number">10</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">76</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">61</span>,<span class="number">29</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">123</span>,<span class="number">87</span>&#125;;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//selectSort(array);</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//bubbleSort(array);</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//insertSort(array);</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//shellSort(array);</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//quickSort(array);</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//mergeSort(array);</span></span><br><span class="line">		</span><br><span class="line">		heapSort(array);</span><br><span class="line">		</span><br><span class="line">		System.out.println(Arrays.toString(array));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(Integer[] array,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = array[j];</span><br><span class="line">		array[j] = array[i];</span><br><span class="line">		array[i] = temp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2017/11/06/Data-Structure（Sort）/" title="Data Structure（Sort）">http://abelchao.com/2017/11/06/Data-Structure（Sort）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/05/Data-Structure（又说Hash表）/" rel="next" title="Data Structure（又说Hash表）">
+                <i class="fa fa-chevron-left"></i> Data Structure（又说Hash表）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/07/Concurrent（一）/" rel="prev" title="Concurrent（一）">
+                Concurrent（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三种简单的排序"><span class="nav-number">2.</span> <span class="nav-text">三种简单的排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">2.1.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">2.2.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接插入排序"><span class="nav-number">2.3.</span> <span class="nav-text">直接插入排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三种简单排序的升级"><span class="nav-number">3.</span> <span class="nav-text">三种简单排序的升级</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#希尔排序"><span class="nav-number">3.1.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">3.2.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆排序"><span class="nav-number">3.3.</span> <span class="nav-text">堆排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他排序"><span class="nav-number">4.</span> <span class="nav-text">其他排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序"><span class="nav-number">4.1.</span> <span class="nav-text">归并排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#比较"><span class="nav-number">5.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整合"><span class="nav-number">6.</span> <span class="nav-text">整合</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

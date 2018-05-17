@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mmall," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="keywords" content="mmall">
+<meta property="og:type" content="article">
+<meta property="og:title" content="收货地址模块">
+<meta property="og:url" content="http://abelchao.com/2018/03/08/收货地址模块/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/31002.jpg">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/shipping.png">
+<meta property="og:updated_time" content="2018-03-10T13:17:47.868Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="收货地址模块">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/31002.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2018/03/08/收货地址模块/"/>
+
+
+
+
+
+  <title>收货地址模块 | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2018/03/08/收货地址模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">收货地址模块</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-08T09:00:00+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-03-10T21:17:47+08:00">
+                2018-03-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mmall/" itemprop="url" rel="index">
+                    <span itemprop="name">mmall</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/31002.jpg" alt=""></p>
+<a id="more"></a>
+<h1 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h1><pre><code>添加地址、删除地址、更新地址、地址列表、地址分页、地址详情
+</code></pre><h1 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h1><pre><code>1. SpringMVC数据绑定中对象绑定
+2. MyBatis自动生成主键、配置和使用
+3. 如何避免横向越权漏洞的巩固
+</code></pre><h1 id="增加收货地址"><a href="#增加收货地址" class="headerlink" title="增加收货地址"></a>增加收货地址</h1><h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/shipping/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShippingController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> IShippingService iShippingService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shipping</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"add.do"</span>,method = RequestMethod.POST)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse <span class="title">add</span><span class="params">(HttpSession session, Shipping shipping)</span></span>&#123;</span><br><span class="line">        User user = (User)session.getAttribute(Const.CURRENT_USER);</span><br><span class="line">        <span class="keyword">if</span>(user==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),</span><br><span class="line">                    ResponseCode.NEED_LOGIN.getDesc());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> iShippingService.add(user.getId(),shipping);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ServerResponse <span class="title">add</span><span class="params">(Integer userId, Shipping shipping)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl"><a href="#Impl" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span>(<span class="string">"iShippingService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShippingServiceImpl</span> <span class="keyword">implements</span> <span class="title">IShippingService</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ShippingMapper shippingMapper;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse <span class="title">add</span><span class="params">(Integer userId, Shipping shipping)</span></span>&#123;</span><br><span class="line">        shipping.setUserId(userId);</span><br><span class="line">        <span class="keyword">int</span> rowCount = shippingMapper.insert(shipping);</span><br><span class="line">        <span class="keyword">if</span> (rowCount&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            Map&lt;String,Integer&gt; result =<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            result.put(<span class="string">"shippingId"</span>,shipping.getId());</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createBySuccess(<span class="string">"create address success"</span>,result);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createByErrorMessage(<span class="string">"create address fail"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Dao"><a href="#Dao" class="headerlink" title="Dao"></a>Dao</h2><h3 id="Interface-1"><a href="#Interface-1" class="headerlink" title="Interface"></a>Interface</h3><p><strong>因为要在插入后直接在对象中直接插入id，从而返回给前台，需要修改Mybatis自动生成的SQL</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(Shipping record)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-1"><a href="#Impl-1" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=<span class="string">"insert"</span> parameterType=<span class="string">"com.mmall.pojo.Shipping"</span> useGeneratedKeys=<span class="string">"true"</span> keyProperty=<span class="string">"id"</span>&gt;</span><br><span class="line">    <span class="function">insert into <span class="title">mmall_shipping</span> <span class="params">(id, user_id, receiver_name, </span></span></span><br><span class="line"><span class="function"><span class="params">      receiver_phone, receiver_mobile, receiver_province, </span></span></span><br><span class="line"><span class="function"><span class="params">      receiver_city, receiver_district, receiver_address, </span></span></span><br><span class="line"><span class="function"><span class="params">      receiver_zip, create_time, update_time</span></span></span><br><span class="line"><span class="function"><span class="params">      )</span></span></span><br><span class="line"><span class="function">    <span class="title">values</span> <span class="params">(#&#123;id,jdbcType=INTEGER&#125;, #&#123;userId,jdbcType=INTEGER&#125;, #&#123;receiverName,jdbcType=VARCHAR&#125;, </span></span></span><br><span class="line"><span class="function"><span class="params">      #&#123;receiverPhone,jdbcType=VARCHAR&#125;, #&#123;receiverMobile,jdbcType=VARCHAR&#125;, #&#123;receiverProvince,jdbcType=VARCHAR&#125;, </span></span></span><br><span class="line"><span class="function"><span class="params">      #&#123;receiverCity,jdbcType=VARCHAR&#125;, #&#123;receiverDistrict,jdbcType=VARCHAR&#125;, #&#123;receiverAddress,jdbcType=VARCHAR&#125;, </span></span></span><br><span class="line"><span class="function"><span class="params">      #&#123;receiverZip,jdbcType=VARCHAR&#125;, now()</span>, <span class="title">now</span><span class="params">()</span></span></span><br><span class="line"><span class="function">      )</span></span><br><span class="line"><span class="function">  &lt;/insert&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="删除地址"><a href="#删除地址" class="headerlink" title="删除地址"></a>删除地址</h1><h2 id="Controller-1"><a href="#Controller-1" class="headerlink" title="Controller"></a>Controller</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> shippingId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"delete.do"</span>,method = RequestMethod.POST)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ServerResponse <span class="title">delete</span><span class="params">(HttpSession session, Integer shippingId)</span> </span>&#123;</span><br><span class="line">    User user = (User) session.getAttribute(Const.CURRENT_USER);</span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),</span><br><span class="line">                ResponseCode.NEED_LOGIN.getDesc());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> iShippingService.delete(user.getId(), shippingId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Service-1"><a href="#Service-1" class="headerlink" title="Service"></a>Service</h2><h3 id="Interface-2"><a href="#Interface-2" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ServerResponse <span class="title">delete</span><span class="params">(Integer userId, Integer shippingId)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-2"><a href="#Impl-2" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ServerResponse <span class="title">delete</span><span class="params">(Integer userId, Integer shippingId)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> rowCount = shippingMapper.deleteByUserIdShippingId(userId,shippingId);</span><br><span class="line">    <span class="keyword">if</span> (rowCount&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createBySuccess(<span class="string">"delete address success"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ServerResponse.createByErrorMessage(<span class="string">"delete address fail"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Dao-1"><a href="#Dao-1" class="headerlink" title="Dao"></a>Dao</h2><h3 id="Interface-3"><a href="#Interface-3" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">deleteByUserIdShippingId</span><span class="params">(@Param(<span class="string">"userId"</span>)</span> Integer userId, @<span class="title">Param</span><span class="params">(<span class="string">"shippingId"</span>)</span>Integer shippingId)</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-3"><a href="#Impl-3" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;delete id=<span class="string">"deleteByUserIdShippingId"</span> parameterType=<span class="string">"map"</span>&gt;</span><br><span class="line">  DELETE FROM mmall_shipping</span><br><span class="line">  WHERE id=#&#123;shippingId&#125;</span><br><span class="line">  AND user_id=#&#123;userId&#125;</span><br><span class="line">&lt;/delete&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="修改地址"><a href="#修改地址" class="headerlink" title="修改地址"></a>修改地址</h1><h2 id="Controller-2"><a href="#Controller-2" class="headerlink" title="Controller"></a>Controller</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 改变地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> shipping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"update.do"</span>,method = RequestMethod.POST)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ServerResponse <span class="title">update</span><span class="params">(HttpSession session, Shipping shipping)</span> </span>&#123;</span><br><span class="line">    User user = (User) session.getAttribute(Const.CURRENT_USER);</span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),</span><br><span class="line">                ResponseCode.NEED_LOGIN.getDesc());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> iShippingService.update(user.getId(), shipping);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Service-2"><a href="#Service-2" class="headerlink" title="Service"></a>Service</h2><h3 id="Interface-4"><a href="#Interface-4" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ServerResponse <span class="title">update</span><span class="params">(Integer userId, Shipping shipping)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-4"><a href="#Impl-4" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ServerResponse <span class="title">update</span><span class="params">(Integer userId, Shipping shipping)</span></span>&#123;</span><br><span class="line">    shipping.setUserId(userId);</span><br><span class="line">    <span class="keyword">int</span> rowCount = shippingMapper.updateByShipping(shipping);</span><br><span class="line">    <span class="keyword">if</span> (rowCount&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createBySuccess(<span class="string">"update address success"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ServerResponse.createByErrorMessage(<span class="string">"update address fail"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Dao-2"><a href="#Dao-2" class="headerlink" title="Dao"></a>Dao</h2><h3 id="Interface-5"><a href="#Interface-5" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">updateByShipping</span><span class="params">(Shipping record)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-5"><a href="#Impl-5" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;update id=<span class="string">"updateByShipping"</span> parameterType=<span class="string">"com.mmall.pojo.Shipping"</span> &gt;</span><br><span class="line">  update mmall_shipping</span><br><span class="line">  set</span><br><span class="line">  receiver_name = #&#123;receiverName,jdbcType=VARCHAR&#125;,</span><br><span class="line">  receiver_phone = #&#123;receiverPhone,jdbcType=VARCHAR&#125;,</span><br><span class="line">  receiver_mobile = #&#123;receiverMobile,jdbcType=VARCHAR&#125;,</span><br><span class="line">  receiver_province = #&#123;receiverProvince,jdbcType=VARCHAR&#125;,</span><br><span class="line">  receiver_city = #&#123;receiverCity,jdbcType=VARCHAR&#125;,</span><br><span class="line">  receiver_district = #&#123;receiverDistrict,jdbcType=VARCHAR&#125;,</span><br><span class="line">  receiver_address = #&#123;receiverAddress,jdbcType=VARCHAR&#125;,</span><br><span class="line">  receiver_zip = #&#123;receiverZip,jdbcType=VARCHAR&#125;,</span><br><span class="line">  update_time = now()</span><br><span class="line">  where id = #&#123;id,jdbcType=INTEGER&#125;</span><br><span class="line">  and user_id = #&#123;userId,jdbcType=INTEGER&#125;</span><br><span class="line">&lt;/update&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="根据收货地址Id查找地址信息"><a href="#根据收货地址Id查找地址信息" class="headerlink" title="根据收货地址Id查找地址信息"></a>根据收货地址Id查找地址信息</h1><h2 id="Controller-3"><a href="#Controller-3" class="headerlink" title="Controller"></a>Controller</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询收货地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> shippingId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"select.do"</span>,method = RequestMethod.POST)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ServerResponse&lt;Shipping&gt; <span class="title">select</span><span class="params">(HttpSession session, Integer shippingId)</span> </span>&#123;</span><br><span class="line">    User user = (User) session.getAttribute(Const.CURRENT_USER);</span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),</span><br><span class="line">                ResponseCode.NEED_LOGIN.getDesc());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> iShippingService.select(user.getId(), shippingId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Service-3"><a href="#Service-3" class="headerlink" title="Service"></a>Service</h2><h3 id="Interface-6"><a href="#Interface-6" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ServerResponse&lt;Shipping&gt; <span class="title">select</span><span class="params">(Integer userId, Integer shippingId)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-6"><a href="#Impl-6" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ServerResponse&lt;Shipping&gt; <span class="title">select</span><span class="params">(Integer userId, Integer shippingId)</span></span>&#123;</span><br><span class="line">    Shipping shipping = shippingMapper.selectByUserIdShippingId(userId,shippingId);</span><br><span class="line">    <span class="keyword">if</span> (shipping==<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createByErrorMessage(<span class="string">"select address fail"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ServerResponse.createBySuccess(<span class="string">"select address success"</span>,shipping);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Dao-3"><a href="#Dao-3" class="headerlink" title="Dao"></a>Dao</h2><h3 id="Interface-7"><a href="#Interface-7" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Shipping <span class="title">selectByUserIdShippingId</span><span class="params">(@Param(<span class="string">"userId"</span>)</span> Integer userId, @<span class="title">Param</span><span class="params">(<span class="string">"shippingId"</span>)</span>Integer shippingId)</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-7"><a href="#Impl-7" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=<span class="string">"selectByUserIdShippingId"</span> parameterType=<span class="string">"map"</span> resultMap=<span class="string">"BaseResultMap"</span>&gt;</span><br><span class="line">  select</span><br><span class="line">  &lt;include refid=<span class="string">"Base_Column_List"</span> /&gt;</span><br><span class="line">  from mmall_shipping</span><br><span class="line">  where id = #&#123;shippingId&#125;</span><br><span class="line">  and user_id=#&#123;userId&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="根据用户Id查询用户所有的收货地址（分页）"><a href="#根据用户Id查询用户所有的收货地址（分页）" class="headerlink" title="根据用户Id查询用户所有的收货地址（分页）"></a>根据用户Id查询用户所有的收货地址（分页）</h1><h2 id="Controller-4"><a href="#Controller-4" class="headerlink" title="Controller"></a>Controller</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询登陆用户所有收货地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pageNum</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pageSize</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"list.do"</span>,method = RequestMethod.POST)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ServerResponse&lt;PageInfo&gt; <span class="title">list</span><span class="params">(HttpSession session,</span></span></span><br><span class="line"><span class="function"><span class="params">                                     @RequestParam(value = <span class="string">"pageNum"</span>,defaultValue = <span class="string">"1"</span>)</span>Integer pageNum,</span></span><br><span class="line"><span class="function">                                     @<span class="title">RequestParam</span><span class="params">(value = <span class="string">"pageSize"</span>,defaultValue = <span class="string">"10"</span>)</span>Integer pageSize) </span>&#123;</span><br><span class="line">    User user = (User) session.getAttribute(Const.CURRENT_USER);</span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),</span><br><span class="line">                ResponseCode.NEED_LOGIN.getDesc());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> iShippingService.list(user.getId(),pageNum,pageSize);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Service-4"><a href="#Service-4" class="headerlink" title="Service"></a>Service</h2><h3 id="Interface-8"><a href="#Interface-8" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ServerResponse&lt;PageInfo&gt; <span class="title">list</span><span class="params">(Integer userId, Integer pageNum, Integer pageSize)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-8"><a href="#Impl-8" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ServerResponse&lt;PageInfo&gt; <span class="title">list</span><span class="params">(Integer userId, Integer pageNum,Integer pageSize)</span></span>&#123;</span><br><span class="line">     PageHelper.startPage(pageNum,pageSize);</span><br><span class="line">     List&lt;Shipping&gt; shippingList = shippingMapper.selectByUserId(userId);</span><br><span class="line">     PageInfo pageResult = <span class="keyword">new</span> PageInfo(shippingList);</span><br><span class="line">     <span class="keyword">return</span> ServerResponse.createBySuccess(pageResult);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Dao-4"><a href="#Dao-4" class="headerlink" title="Dao"></a>Dao</h2><h3 id="Interface-9"><a href="#Interface-9" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;Shipping&gt; <span class="title">selectByUserId</span><span class="params">(Integer userId)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-9"><a href="#Impl-9" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=<span class="string">"selectByUserId"</span> parameterType=<span class="string">"int"</span> resultMap=<span class="string">"BaseResultMap"</span>&gt;</span><br><span class="line">  select</span><br><span class="line">  &lt;include refid=<span class="string">"Base_Column_List"</span> /&gt;</span><br><span class="line">  from mmall_shipping</span><br><span class="line">  where user_id=#&#123;userId&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p><img src="http://oxk1vrcj4.bkt.clouddn.com/shipping.png" alt=""></p>
+<h1 id="整体"><a href="#整体" class="headerlink" title="整体"></a>整体</h1><h2 id="Controller-5"><a href="#Controller-5" class="headerlink" title="Controller"></a>Controller</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.mmall.controller.portal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.github.pagehelper.PageInfo;</span><br><span class="line"><span class="keyword">import</span> com.mmall.common.Const;</span><br><span class="line"><span class="keyword">import</span> com.mmall.common.ResponseCode;</span><br><span class="line"><span class="keyword">import</span> com.mmall.common.ServerResponse;</span><br><span class="line"><span class="keyword">import</span> com.mmall.pojo.Shipping;</span><br><span class="line"><span class="keyword">import</span> com.mmall.pojo.User;</span><br><span class="line"><span class="keyword">import</span> com.mmall.service.IShippingService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMethod;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpSession;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Blemon on 2018/3/7.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/shipping/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShippingController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> IShippingService iShippingService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shipping</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"add.do"</span>,method = RequestMethod.POST)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse <span class="title">add</span><span class="params">(HttpSession session, Shipping shipping)</span></span>&#123;</span><br><span class="line">        User user = (User)session.getAttribute(Const.CURRENT_USER);</span><br><span class="line">        <span class="keyword">if</span>(user==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),</span><br><span class="line">                    ResponseCode.NEED_LOGIN.getDesc());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> iShippingService.add(user.getId(),shipping);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shippingId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"delete.do"</span>,method = RequestMethod.POST)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse <span class="title">delete</span><span class="params">(HttpSession session, Integer shippingId)</span> </span>&#123;</span><br><span class="line">        User user = (User) session.getAttribute(Const.CURRENT_USER);</span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),</span><br><span class="line">                    ResponseCode.NEED_LOGIN.getDesc());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> iShippingService.delete(user.getId(), shippingId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 改变地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shipping</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"update.do"</span>,method = RequestMethod.POST)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse <span class="title">update</span><span class="params">(HttpSession session, Shipping shipping)</span> </span>&#123;</span><br><span class="line">        User user = (User) session.getAttribute(Const.CURRENT_USER);</span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),</span><br><span class="line">                    ResponseCode.NEED_LOGIN.getDesc());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> iShippingService.update(user.getId(), shipping);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询收货地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shippingId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"select.do"</span>,method = RequestMethod.POST)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse&lt;Shipping&gt; <span class="title">select</span><span class="params">(HttpSession session, Integer shippingId)</span> </span>&#123;</span><br><span class="line">        User user = (User) session.getAttribute(Const.CURRENT_USER);</span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),</span><br><span class="line">                    ResponseCode.NEED_LOGIN.getDesc());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> iShippingService.select(user.getId(), shippingId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询登陆用户所有收货地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pageNum</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pageSize</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"list.do"</span>,method = RequestMethod.POST)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse&lt;PageInfo&gt; <span class="title">list</span><span class="params">(HttpSession session,</span></span></span><br><span class="line"><span class="function"><span class="params">                                         @RequestParam(value = <span class="string">"pageNum"</span>,defaultValue = <span class="string">"1"</span>)</span>Integer pageNum,</span></span><br><span class="line"><span class="function">                                         @<span class="title">RequestParam</span><span class="params">(value = <span class="string">"pageSize"</span>,defaultValue = <span class="string">"10"</span>)</span>Integer pageSize) </span>&#123;</span><br><span class="line">        User user = (User) session.getAttribute(Const.CURRENT_USER);</span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),</span><br><span class="line">                    ResponseCode.NEED_LOGIN.getDesc());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> iShippingService.list(user.getId(),pageNum,pageSize);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Service-5"><a href="#Service-5" class="headerlink" title="Service"></a>Service</h2><h3 id="Interface-10"><a href="#Interface-10" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.mmall.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.github.pagehelper.PageInfo;</span><br><span class="line"><span class="keyword">import</span> com.mmall.common.ServerResponse;</span><br><span class="line"><span class="keyword">import</span> com.mmall.pojo.Shipping;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Blemon on 2018/3/7.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IShippingService</span> </span>&#123;</span><br><span class="line">    <span class="function">ServerResponse <span class="title">add</span><span class="params">(Integer userId, Shipping shipping)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">ServerResponse <span class="title">delete</span><span class="params">(Integer userId, Integer shippingId)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">ServerResponse <span class="title">update</span><span class="params">(Integer userId, Shipping shipping)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">ServerResponse&lt;Shipping&gt; <span class="title">select</span><span class="params">(Integer userId, Integer shippingId)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">ServerResponse&lt;PageInfo&gt; <span class="title">list</span><span class="params">(Integer userId, Integer pageNum, Integer pageSize)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-10"><a href="#Impl-10" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.mmall.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.github.pagehelper.PageHelper;</span><br><span class="line"><span class="keyword">import</span> com.github.pagehelper.PageInfo;</span><br><span class="line"><span class="keyword">import</span> com.mmall.common.ServerResponse;</span><br><span class="line"><span class="keyword">import</span> com.mmall.dao.ShippingMapper;</span><br><span class="line"><span class="keyword">import</span> com.mmall.pojo.Shipping;</span><br><span class="line"><span class="keyword">import</span> com.mmall.service.IShippingService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Blemon on 2018/3/7.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Service</span>(<span class="string">"iShippingService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShippingServiceImpl</span> <span class="keyword">implements</span> <span class="title">IShippingService</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ShippingMapper shippingMapper;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse <span class="title">add</span><span class="params">(Integer userId, Shipping shipping)</span></span>&#123;</span><br><span class="line">        shipping.setUserId(userId);</span><br><span class="line">        <span class="keyword">int</span> rowCount = shippingMapper.insert(shipping);</span><br><span class="line">        <span class="keyword">if</span> (rowCount&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            Map&lt;String,Integer&gt; result =<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            result.put(<span class="string">"shippingId"</span>,shipping.getId());</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createBySuccess(<span class="string">"create address success"</span>,result);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createByErrorMessage(<span class="string">"create address fail"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse <span class="title">delete</span><span class="params">(Integer userId, Integer shippingId)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rowCount = shippingMapper.deleteByUserIdShippingId(userId,shippingId);</span><br><span class="line">        <span class="keyword">if</span> (rowCount&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createBySuccess(<span class="string">"delete address success"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createByErrorMessage(<span class="string">"delete address fail"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse <span class="title">update</span><span class="params">(Integer userId, Shipping shipping)</span></span>&#123;</span><br><span class="line">        shipping.setUserId(userId);</span><br><span class="line">        <span class="keyword">int</span> rowCount = shippingMapper.updateByShipping(shipping);</span><br><span class="line">        <span class="keyword">if</span> (rowCount&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createBySuccess(<span class="string">"update address success"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createByErrorMessage(<span class="string">"update address fail"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse&lt;Shipping&gt; <span class="title">select</span><span class="params">(Integer userId, Integer shippingId)</span></span>&#123;</span><br><span class="line">        Shipping shipping = shippingMapper.selectByUserIdShippingId(userId,shippingId);</span><br><span class="line">        <span class="keyword">if</span> (shipping==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> ServerResponse.createByErrorMessage(<span class="string">"select address fail"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createBySuccess(<span class="string">"select address success"</span>,shipping);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServerResponse&lt;PageInfo&gt; <span class="title">list</span><span class="params">(Integer userId, Integer pageNum,Integer pageSize)</span></span>&#123;</span><br><span class="line">        PageHelper.startPage(pageNum,pageSize);</span><br><span class="line">        List&lt;Shipping&gt; shippingList = shippingMapper.selectByUserId(userId);</span><br><span class="line">        PageInfo pageResult = <span class="keyword">new</span> PageInfo(shippingList);</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.createBySuccess(pageResult);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Dao-5"><a href="#Dao-5" class="headerlink" title="Dao"></a>Dao</h2><h3 id="Interface-11"><a href="#Interface-11" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.mmall.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.mmall.pojo.Shipping;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Param;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ShippingMapper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">deleteByPrimaryKey</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(Shipping record)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insertSelective</span><span class="params">(Shipping record)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Shipping <span class="title">selectByPrimaryKey</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">updateByPrimaryKeySelective</span><span class="params">(Shipping record)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">updateByPrimaryKey</span><span class="params">(Shipping record)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">deleteByUserIdShippingId</span><span class="params">(@Param(<span class="string">"userId"</span>)</span> Integer userId, @<span class="title">Param</span><span class="params">(<span class="string">"shippingId"</span>)</span>Integer shippingId)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">updateByShipping</span><span class="params">(Shipping record)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Shipping <span class="title">selectByUserIdShippingId</span><span class="params">(@Param(<span class="string">"userId"</span>)</span> Integer userId, @<span class="title">Param</span><span class="params">(<span class="string">"shippingId"</span>)</span>Integer shippingId)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;Shipping&gt; <span class="title">selectByUserId</span><span class="params">(Integer userId)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Impl-11"><a href="#Impl-11" class="headerlink" title="Impl"></a>Impl</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span> <span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span> &gt;</span><br><span class="line">&lt;mapper namespace=<span class="string">"com.mmall.dao.ShippingMapper"</span> &gt;</span><br><span class="line">  &lt;resultMap id=<span class="string">"BaseResultMap"</span> type=<span class="string">"com.mmall.pojo.Shipping"</span> &gt;</span><br><span class="line">    &lt;constructor &gt;</span><br><span class="line">      &lt;idArg column=<span class="string">"id"</span> jdbcType=<span class="string">"INTEGER"</span> javaType=<span class="string">"java.lang.Integer"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"user_id"</span> jdbcType=<span class="string">"INTEGER"</span> javaType=<span class="string">"java.lang.Integer"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"receiver_name"</span> jdbcType=<span class="string">"VARCHAR"</span> javaType=<span class="string">"java.lang.String"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"receiver_phone"</span> jdbcType=<span class="string">"VARCHAR"</span> javaType=<span class="string">"java.lang.String"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"receiver_mobile"</span> jdbcType=<span class="string">"VARCHAR"</span> javaType=<span class="string">"java.lang.String"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"receiver_province"</span> jdbcType=<span class="string">"VARCHAR"</span> javaType=<span class="string">"java.lang.String"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"receiver_city"</span> jdbcType=<span class="string">"VARCHAR"</span> javaType=<span class="string">"java.lang.String"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"receiver_district"</span> jdbcType=<span class="string">"VARCHAR"</span> javaType=<span class="string">"java.lang.String"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"receiver_address"</span> jdbcType=<span class="string">"VARCHAR"</span> javaType=<span class="string">"java.lang.String"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"receiver_zip"</span> jdbcType=<span class="string">"VARCHAR"</span> javaType=<span class="string">"java.lang.String"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"create_time"</span> jdbcType=<span class="string">"TIMESTAMP"</span> javaType=<span class="string">"java.util.Date"</span> /&gt;</span><br><span class="line">      &lt;arg column=<span class="string">"update_time"</span> jdbcType=<span class="string">"TIMESTAMP"</span> javaType=<span class="string">"java.util.Date"</span> /&gt;</span><br><span class="line">    &lt;/constructor&gt;</span><br><span class="line">  &lt;/resultMap&gt;</span><br><span class="line">  &lt;sql id=<span class="string">"Base_Column_List"</span> &gt;</span><br><span class="line">    id, user_id, receiver_name, receiver_phone, receiver_mobile, receiver_province, receiver_city, </span><br><span class="line">    receiver_district, receiver_address, receiver_zip, create_time, update_time</span><br><span class="line">  &lt;/sql&gt;</span><br><span class="line">  &lt;select id=<span class="string">"selectByPrimaryKey"</span> resultMap=<span class="string">"BaseResultMap"</span> parameterType=<span class="string">"java.lang.Integer"</span> &gt;</span><br><span class="line">    select </span><br><span class="line">    &lt;include refid=<span class="string">"Base_Column_List"</span> /&gt;</span><br><span class="line">    from mmall_shipping</span><br><span class="line">    where id = #&#123;id,jdbcType=INTEGER&#125;</span><br><span class="line">  &lt;/select&gt;</span><br><span class="line">  &lt;delete id=<span class="string">"deleteByPrimaryKey"</span> parameterType=<span class="string">"java.lang.Integer"</span> &gt;</span><br><span class="line">    delete from mmall_shipping</span><br><span class="line">    where id = #&#123;id,jdbcType=INTEGER&#125;</span><br><span class="line">  &lt;/delete&gt;</span><br><span class="line">  &lt;insert id=<span class="string">"insert"</span> parameterType=<span class="string">"com.mmall.pojo.Shipping"</span> useGeneratedKeys=<span class="string">"true"</span> keyProperty=<span class="string">"id"</span>&gt;</span><br><span class="line">    <span class="function">insert into <span class="title">mmall_shipping</span> <span class="params">(id, user_id, receiver_name, </span></span></span><br><span class="line"><span class="function"><span class="params">      receiver_phone, receiver_mobile, receiver_province, </span></span></span><br><span class="line"><span class="function"><span class="params">      receiver_city, receiver_district, receiver_address, </span></span></span><br><span class="line"><span class="function"><span class="params">      receiver_zip, create_time, update_time</span></span></span><br><span class="line"><span class="function"><span class="params">      )</span></span></span><br><span class="line"><span class="function">    <span class="title">values</span> <span class="params">(#&#123;id,jdbcType=INTEGER&#125;, #&#123;userId,jdbcType=INTEGER&#125;, #&#123;receiverName,jdbcType=VARCHAR&#125;, </span></span></span><br><span class="line"><span class="function"><span class="params">      #&#123;receiverPhone,jdbcType=VARCHAR&#125;, #&#123;receiverMobile,jdbcType=VARCHAR&#125;, #&#123;receiverProvince,jdbcType=VARCHAR&#125;, </span></span></span><br><span class="line"><span class="function"><span class="params">      #&#123;receiverCity,jdbcType=VARCHAR&#125;, #&#123;receiverDistrict,jdbcType=VARCHAR&#125;, #&#123;receiverAddress,jdbcType=VARCHAR&#125;, </span></span></span><br><span class="line"><span class="function"><span class="params">      #&#123;receiverZip,jdbcType=VARCHAR&#125;, now()</span>, <span class="title">now</span><span class="params">()</span></span></span><br><span class="line"><span class="function">      )</span></span><br><span class="line"><span class="function">  &lt;/insert&gt;</span></span><br><span class="line"><span class="function">  &lt;insert id</span>=<span class="string">"insertSelective"</span> parameterType=<span class="string">"com.mmall.pojo.Shipping"</span> &gt;</span><br><span class="line">    insert into mmall_shipping</span><br><span class="line">    &lt;trim prefix=<span class="string">"("</span> suffix=<span class="string">")"</span> suffixOverrides=<span class="string">","</span> &gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"id != null"</span> &gt;</span><br><span class="line">        id,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"userId != null"</span> &gt;</span><br><span class="line">        user_id,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverName != null"</span> &gt;</span><br><span class="line">        receiver_name,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverPhone != null"</span> &gt;</span><br><span class="line">        receiver_phone,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverMobile != null"</span> &gt;</span><br><span class="line">        receiver_mobile,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverProvince != null"</span> &gt;</span><br><span class="line">        receiver_province,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverCity != null"</span> &gt;</span><br><span class="line">        receiver_city,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverDistrict != null"</span> &gt;</span><br><span class="line">        receiver_district,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverAddress != null"</span> &gt;</span><br><span class="line">        receiver_address,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverZip != null"</span> &gt;</span><br><span class="line">        receiver_zip,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"createTime != null"</span> &gt;</span><br><span class="line">        create_time,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"updateTime != null"</span> &gt;</span><br><span class="line">        update_time,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">    &lt;/trim&gt;</span><br><span class="line">    &lt;trim prefix=<span class="string">"values ("</span> suffix=<span class="string">")"</span> suffixOverrides=<span class="string">","</span> &gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"id != null"</span> &gt;</span><br><span class="line">        #&#123;id,jdbcType=INTEGER&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"userId != null"</span> &gt;</span><br><span class="line">        #&#123;userId,jdbcType=INTEGER&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverName != null"</span> &gt;</span><br><span class="line">        #&#123;receiverName,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverPhone != null"</span> &gt;</span><br><span class="line">        #&#123;receiverPhone,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverMobile != null"</span> &gt;</span><br><span class="line">        #&#123;receiverMobile,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverProvince != null"</span> &gt;</span><br><span class="line">        #&#123;receiverProvince,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverCity != null"</span> &gt;</span><br><span class="line">        #&#123;receiverCity,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverDistrict != null"</span> &gt;</span><br><span class="line">        #&#123;receiverDistrict,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverAddress != null"</span> &gt;</span><br><span class="line">        #&#123;receiverAddress,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverZip != null"</span> &gt;</span><br><span class="line">        #&#123;receiverZip,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"createTime != null"</span> &gt;</span><br><span class="line">        now(),</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"updateTime != null"</span> &gt;</span><br><span class="line">        now(),</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">    &lt;/trim&gt;</span><br><span class="line">  &lt;/insert&gt;</span><br><span class="line">  &lt;update id=<span class="string">"updateByPrimaryKeySelective"</span> parameterType=<span class="string">"com.mmall.pojo.Shipping"</span> &gt;</span><br><span class="line">    update mmall_shipping</span><br><span class="line">    &lt;set &gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"userId != null"</span> &gt;</span><br><span class="line">        user_id = #&#123;userId,jdbcType=INTEGER&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverName != null"</span> &gt;</span><br><span class="line">        receiver_name = #&#123;receiverName,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverPhone != null"</span> &gt;</span><br><span class="line">        receiver_phone = #&#123;receiverPhone,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverMobile != null"</span> &gt;</span><br><span class="line">        receiver_mobile = #&#123;receiverMobile,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverProvince != null"</span> &gt;</span><br><span class="line">        receiver_province = #&#123;receiverProvince,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverCity != null"</span> &gt;</span><br><span class="line">        receiver_city = #&#123;receiverCity,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverDistrict != null"</span> &gt;</span><br><span class="line">        receiver_district = #&#123;receiverDistrict,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverAddress != null"</span> &gt;</span><br><span class="line">        receiver_address = #&#123;receiverAddress,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"receiverZip != null"</span> &gt;</span><br><span class="line">        receiver_zip = #&#123;receiverZip,jdbcType=VARCHAR&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"createTime != null"</span> &gt;</span><br><span class="line">        create_time = #&#123;createTime,jdbcType=TIMESTAMP&#125;,</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">      &lt;<span class="keyword">if</span> test=<span class="string">"updateTime != null"</span> &gt;</span><br><span class="line">        update_time = now(),</span><br><span class="line">      &lt;/if&gt;</span><br><span class="line">    &lt;/set&gt;</span><br><span class="line">    where id = #&#123;id,jdbcType=INTEGER&#125;</span><br><span class="line">  &lt;/update&gt;</span><br><span class="line">  &lt;update id=<span class="string">"updateByPrimaryKey"</span> parameterType=<span class="string">"com.mmall.pojo.Shipping"</span> &gt;</span><br><span class="line">    update mmall_shipping</span><br><span class="line">    set user_id = #&#123;userId,jdbcType=INTEGER&#125;,</span><br><span class="line">      receiver_name = #&#123;receiverName,jdbcType=VARCHAR&#125;,</span><br><span class="line">      receiver_phone = #&#123;receiverPhone,jdbcType=VARCHAR&#125;,</span><br><span class="line">      receiver_mobile = #&#123;receiverMobile,jdbcType=VARCHAR&#125;,</span><br><span class="line">      receiver_province = #&#123;receiverProvince,jdbcType=VARCHAR&#125;,</span><br><span class="line">      receiver_city = #&#123;receiverCity,jdbcType=VARCHAR&#125;,</span><br><span class="line">      receiver_district = #&#123;receiverDistrict,jdbcType=VARCHAR&#125;,</span><br><span class="line">      receiver_address = #&#123;receiverAddress,jdbcType=VARCHAR&#125;,</span><br><span class="line">      receiver_zip = #&#123;receiverZip,jdbcType=VARCHAR&#125;,</span><br><span class="line">      create_time = #&#123;createTime,jdbcType=TIMESTAMP&#125;,</span><br><span class="line">      update_time = now()</span><br><span class="line">    where id = #&#123;id,jdbcType=INTEGER&#125;</span><br><span class="line">  &lt;/update&gt;</span><br><span class="line"></span><br><span class="line">  &lt;delete id=<span class="string">"deleteByUserIdShippingId"</span> parameterType=<span class="string">"map"</span>&gt;</span><br><span class="line">    DELETE FROM mmall_shipping</span><br><span class="line">    WHERE id=#&#123;shippingId&#125;</span><br><span class="line">    AND user_id=#&#123;userId&#125;</span><br><span class="line">  &lt;/delete&gt;</span><br><span class="line"></span><br><span class="line">  &lt;update id=<span class="string">"updateByShipping"</span> parameterType=<span class="string">"com.mmall.pojo.Shipping"</span> &gt;</span><br><span class="line">    update mmall_shipping</span><br><span class="line">    set</span><br><span class="line">    receiver_name = #&#123;receiverName,jdbcType=VARCHAR&#125;,</span><br><span class="line">    receiver_phone = #&#123;receiverPhone,jdbcType=VARCHAR&#125;,</span><br><span class="line">    receiver_mobile = #&#123;receiverMobile,jdbcType=VARCHAR&#125;,</span><br><span class="line">    receiver_province = #&#123;receiverProvince,jdbcType=VARCHAR&#125;,</span><br><span class="line">    receiver_city = #&#123;receiverCity,jdbcType=VARCHAR&#125;,</span><br><span class="line">    receiver_district = #&#123;receiverDistrict,jdbcType=VARCHAR&#125;,</span><br><span class="line">    receiver_address = #&#123;receiverAddress,jdbcType=VARCHAR&#125;,</span><br><span class="line">    receiver_zip = #&#123;receiverZip,jdbcType=VARCHAR&#125;,</span><br><span class="line">    update_time = now()</span><br><span class="line">    where id = #&#123;id,jdbcType=INTEGER&#125;</span><br><span class="line">    and user_id = #&#123;userId,jdbcType=INTEGER&#125;</span><br><span class="line">  &lt;/update&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;select id=<span class="string">"selectByUserIdShippingId"</span> parameterType=<span class="string">"map"</span> resultMap=<span class="string">"BaseResultMap"</span>&gt;</span><br><span class="line">    select</span><br><span class="line">    &lt;include refid=<span class="string">"Base_Column_List"</span> /&gt;</span><br><span class="line">    from mmall_shipping</span><br><span class="line">    where id = #&#123;shippingId&#125;</span><br><span class="line">    and user_id=#&#123;userId&#125;</span><br><span class="line">  &lt;/select&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;select id=<span class="string">"selectByUserId"</span> parameterType=<span class="string">"int"</span> resultMap=<span class="string">"BaseResultMap"</span>&gt;</span><br><span class="line">    select</span><br><span class="line">    &lt;include refid=<span class="string">"Base_Column_List"</span> /&gt;</span><br><span class="line">    from mmall_shipping</span><br><span class="line">    where user_id=#&#123;userId&#125;</span><br><span class="line">  &lt;/select&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2018/03/08/收货地址模块/" title="收货地址模块">http://abelchao.com/2018/03/08/收货地址模块/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mmall/" rel="tag"><i class="fa fa-tag"></i> mmall</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/07/购物车模块/" rel="next" title="购物车模块">
+                <i class="fa fa-chevron-left"></i> 购物车模块
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/09/支付模块/" rel="prev" title="支付模块">
+                支付模块 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#功能介绍"><span class="nav-number">1.</span> <span class="nav-text">功能介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习目标"><span class="nav-number">2.</span> <span class="nav-text">学习目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#增加收货地址"><span class="nav-number">3.</span> <span class="nav-text">增加收货地址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller"><span class="nav-number">3.1.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service"><span class="nav-number">3.2.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface"><span class="nav-number">3.2.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl"><span class="nav-number">3.2.2.</span> <span class="nav-text">Impl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dao"><span class="nav-number">3.3.</span> <span class="nav-text">Dao</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-1"><span class="nav-number">3.3.2.</span> <span class="nav-text">Impl</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除地址"><span class="nav-number">4.</span> <span class="nav-text">删除地址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller-1"><span class="nav-number">4.1.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-1"><span class="nav-number">4.2.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-2"><span class="nav-number">4.2.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-2"><span class="nav-number">4.2.2.</span> <span class="nav-text">Impl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dao-1"><span class="nav-number">4.3.</span> <span class="nav-text">Dao</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-3"><span class="nav-number">4.3.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-3"><span class="nav-number">4.3.2.</span> <span class="nav-text">Impl</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改地址"><span class="nav-number">5.</span> <span class="nav-text">修改地址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller-2"><span class="nav-number">5.1.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-2"><span class="nav-number">5.2.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-4"><span class="nav-number">5.2.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-4"><span class="nav-number">5.2.2.</span> <span class="nav-text">Impl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dao-2"><span class="nav-number">5.3.</span> <span class="nav-text">Dao</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-5"><span class="nav-number">5.3.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-5"><span class="nav-number">5.3.2.</span> <span class="nav-text">Impl</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据收货地址Id查找地址信息"><span class="nav-number">6.</span> <span class="nav-text">根据收货地址Id查找地址信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller-3"><span class="nav-number">6.1.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-3"><span class="nav-number">6.2.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-6"><span class="nav-number">6.2.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-6"><span class="nav-number">6.2.2.</span> <span class="nav-text">Impl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dao-3"><span class="nav-number">6.3.</span> <span class="nav-text">Dao</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-7"><span class="nav-number">6.3.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-7"><span class="nav-number">6.3.2.</span> <span class="nav-text">Impl</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据用户Id查询用户所有的收货地址（分页）"><span class="nav-number">7.</span> <span class="nav-text">根据用户Id查询用户所有的收货地址（分页）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller-4"><span class="nav-number">7.1.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-4"><span class="nav-number">7.2.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-8"><span class="nav-number">7.2.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-8"><span class="nav-number">7.2.2.</span> <span class="nav-text">Impl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dao-4"><span class="nav-number">7.3.</span> <span class="nav-text">Dao</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-9"><span class="nav-number">7.3.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-9"><span class="nav-number">7.3.2.</span> <span class="nav-text">Impl</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number">8.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整体"><span class="nav-number">9.</span> <span class="nav-text">整体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller-5"><span class="nav-number">9.1.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-5"><span class="nav-number">9.2.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-10"><span class="nav-number">9.2.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-10"><span class="nav-number">9.2.2.</span> <span class="nav-text">Impl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dao-5"><span class="nav-number">9.3.</span> <span class="nav-text">Dao</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface-11"><span class="nav-number">9.3.1.</span> <span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Impl-11"><span class="nav-number">9.3.2.</span> <span class="nav-text">Impl</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=1.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=1.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=1.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HUAWEI," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AbelChao" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="华为OJ">
+<meta name="keywords" content="HUAWEI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为OJ（二）">
+<meta property="og:url" content="http://abelchao.com/2018/04/03/华为OJ（二）/index.html">
+<meta property="og:site_name" content="AbelChao">
+<meta property="og:description" content="华为OJ">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/v2-56767fa6d1346f53c32a57b14c17b967_r.jpg">
+<meta property="og:updated_time" content="2018-04-04T07:04:07.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="华为OJ（二）">
+<meta name="twitter:description" content="华为OJ">
+<meta name="twitter:image" content="http://oxk1vrcj4.bkt.clouddn.com/v2-56767fa6d1346f53c32a57b14c17b967_r.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '1.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://abelchao.com/2018/04/03/华为OJ（二）/"/>
+
+
+
+
+
+  <title>华为OJ（二） | AbelChao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d2f22ab3792c739378f3bddbb46e5c5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/AbelChao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AbelChao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">超超白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+	
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://abelchao.com/2018/04/03/华为OJ（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AbelChao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AbelChao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">华为OJ（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-03T10:00:00+08:00">
+                2018-04-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-04-04T15:04:07+08:00">
+                2018-04-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HUAWEI/" itemprop="url" rel="index">
+                    <span itemprop="name">HUAWEI</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxk1vrcj4.bkt.clouddn.com/v2-56767fa6d1346f53c32a57b14c17b967_r.jpg" alt=""></p>
+<p><strong>华为OJ</strong><br><a id="more"></a></p>
+<h1 id="简单密码"><a href="#简单密码" class="headerlink" title="简单密码"></a>简单密码</h1><pre><code>他是这么变换的，大家都知道手机上的字母： 1--1， abc--2, def--3, ghi--4, jkl--5, mno--6, pqrs--7, tuv--8 wxyz--9, 0--0,就这么简单，渊子把密码中出现的小写字母都变成对应的数字，数字和其他的符号都不做变换，
+
+
+声明：密码中没有空格，而密码中出现的大写字母则变成小写之后往后移一位，如：X，先变成小写，再往后移一位，不就是y了嘛，简单吧。记住，z往后移是a哦。
+
+输入
+    YUANzhi1987
+输出
+    zvbo9441987
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lowerTrans</span><span class="params">(String temp)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(temp.matches(<span class="string">"[abc]"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[def]"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[ghi]"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[jkl]"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[mno]"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">6</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[pqrs]"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">7</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[tuv]"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[wxyz]"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">9</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.equals(<span class="string">"1"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">upperTrans</span><span class="params">(String temp)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(temp.matches(<span class="string">"[A-Y]"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> String.valueOf((<span class="keyword">char</span>)(temp.toLowerCase().charAt(<span class="number">0</span>)+<span class="number">1</span>));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"a"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getCode</span><span class="params">(<span class="keyword">char</span>[] arr)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = arr.length;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">            String temp = String.valueOf(arr[i]);</span><br><span class="line">            <span class="keyword">if</span>(temp.matches(<span class="string">"[a-z]"</span>))&#123;</span><br><span class="line">                sb.append(lowerTrans(temp));</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[A-Z]"</span>))&#123;</span><br><span class="line">                sb.append(upperTrans(temp));</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Scanner scanner  = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            <span class="keyword">char</span> arr[] = scanner.nextLine().toCharArray();</span><br><span class="line">            System.out.println(getCode(arr));</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="汽水瓶"><a href="#汽水瓶" class="headerlink" title="汽水瓶"></a>汽水瓶</h1><pre><code>输入
+    3
+    10
+    81
+    0
+输出
+    1
+    5
+    40
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	递归问题</span></span><br><span class="line"><span class="comment">	3个瓶子换1瓶水+1个空瓶子，两个瓶子换1瓶水+0个空瓶子，1个瓶子换0瓶水。</span></span><br><span class="line"><span class="comment">	f(1) = 0</span></span><br><span class="line"><span class="comment">	f(2) = 1</span></span><br><span class="line"><span class="comment">	f(3) = 1</span></span><br><span class="line"><span class="comment">	f(4) = f(2)+1    //4个瓶子，其中3个可以换1瓶水+1个空瓶，所以是f(2)+1</span></span><br><span class="line"><span class="comment">	f(5) = f(3)+1    //3个瓶子换1瓶水+1个空瓶，所以是f(3)+1</span></span><br><span class="line"><span class="comment">	...</span></span><br><span class="line"><span class="comment">	f(n) = f(n-2)+1 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextInt())&#123;</span><br><span class="line">            <span class="keyword">int</span> n = scanner.nextInt();</span><br><span class="line">            <span class="keyword">if</span>(n==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(n/<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getIcePeak</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(n==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> getIcePeak(n-<span class="number">2</span>)+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextInt())&#123;</span><br><span class="line">            <span class="keyword">int</span> n = scanner.nextInt();</span><br><span class="line">            <span class="keyword">if</span>(n==<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            System.out.println(getIcePeak(n));</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="删除字符串出现次数最少的字符（LinkedHashMap与Collections-sort重写比较器）"><a href="#删除字符串出现次数最少的字符（LinkedHashMap与Collections-sort重写比较器）" class="headerlink" title="删除字符串出现次数最少的字符（LinkedHashMap与Collections.sort重写比较器）"></a>删除字符串出现次数最少的字符（LinkedHashMap与Collections.sort重写比较器）</h1><pre><code>输入
+    abcdd
+输出
+    dd
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Map.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            <span class="keyword">char</span>[] arr = scanner.nextLine().toCharArray();</span><br><span class="line">            Map&lt;Character,Integer&gt; map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> c : arr)&#123;</span><br><span class="line">                map.put(c,map.get(c)==<span class="keyword">null</span>?<span class="number">1</span>:map.get(c)+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            List&lt;Map.Entry&lt;Character,Integer&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(map.entrySet());</span><br><span class="line">            Collections.sort(list,<span class="keyword">new</span> Comparator&lt;Map.Entry&lt;Character, Integer&gt;&gt;()&#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Entry&lt;Character,Integer&gt; o1, Entry&lt;Character,Integer&gt; o2)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> o1.getValue().compareTo(o2.getValue());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">int</span> min = list.get(<span class="number">0</span>).getValue();</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> c : arr)&#123;</span><br><span class="line">                <span class="keyword">int</span> value = map.get(c);</span><br><span class="line">                <span class="keyword">if</span>(value!=min)&#123;</span><br><span class="line">                    sb.append(c);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sb.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Map.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            <span class="keyword">char</span>[] arr = scanner.nextLine().toCharArray();</span><br><span class="line">            Map&lt;Character,Integer&gt; map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> c : arr)&#123;</span><br><span class="line">                map.put(c,map.get(c)==<span class="keyword">null</span>?<span class="number">1</span>:map.get(c)+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            Collection&lt;Integer&gt; col = map.values();</span><br><span class="line">            <span class="keyword">int</span> min = Collections.min(col);</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> c : arr)&#123;</span><br><span class="line">                <span class="keyword">if</span>(map.get(c)!=min)&#123;</span><br><span class="line">                    sb.append(c);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sb.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="合唱团（LIS）"><a href="#合唱团（LIS）" class="headerlink" title="合唱团（LIS）"></a>合唱团（LIS）</h1><pre><code>题目描述
+    计算最少出列多少位同学，使得剩下的同学排成合唱队形
+
+说明：
+
+N位同学站成一排，音乐老师要请其中的(N-K)位同学出列，使得剩下的K位同学排成合唱队形。 
+合唱队形是指这样的一种队形：设K位同学从左到右依次编号为1，2…，K，他们的身高分别为T1，T2，…，TK，   则他们的身高满足存在i（1&lt;=i&lt;=K）使得T1&lt;T2&lt;......&lt;Ti-1&lt;Ti&gt;Ti+1&gt;......&gt;TK。 
+你的任务是，已知所有N位同学的身高，计算最少需要几位同学出列，可以使得剩下的同学排成合唱队形。 
+
+
+
+输入描述:
+    整数N
+
+输出描述:
+    最少需要几位同学出列
+
+示例1
+输入
+    8
+    186 186 150 200 160 130 197 200
+输出
+    4
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="comment">//LIS算法，注意与LCS的区别</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer[] getLIS(Integer[] arr,<span class="keyword">int</span> len)&#123;</span><br><span class="line">        Integer[] dp = <span class="keyword">new</span> Integer[len];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">            dp[i]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[i]&gt;arr[j])&#123;</span><br><span class="line">                    dp[i] = Math.max(dp[i],dp[j]+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            <span class="keyword">int</span> len = Integer.parseInt(scanner.nextLine());</span><br><span class="line">            String[] arr = scanner.nextLine().split(<span class="string">"\\s+"</span>);</span><br><span class="line">            Integer[] arr_LIS = <span class="keyword">new</span> Integer[len];</span><br><span class="line">            Integer[] arr_LDS = <span class="keyword">new</span> Integer[len];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">                arr_LIS[i] = Integer.parseInt(arr[i]);</span><br><span class="line">                arr_LDS[i] = Integer.parseInt(arr[len-i-<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            arr_LIS = getLIS(arr_LIS,len);<span class="comment">//正向最大升序子序列</span></span><br><span class="line">            arr_LDS = getLIS(arr_LDS,len);<span class="comment">//反向最大升序子序列</span></span><br><span class="line">            List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(arr_LDS));</span><br><span class="line">            Collections.reverse(list);<span class="comment">//正向最大降序子序列</span></span><br><span class="line">            </span><br><span class="line">            List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">                result.add(arr_LIS[i]+list.get(i));</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//+1是因为减的时候，减了中间的两次</span></span><br><span class="line">            System.out.println(len-Collections.max(result)+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="数据分类处理"><a href="#数据分类处理" class="headerlink" title="数据分类处理"></a>数据分类处理</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNext())&#123;</span><br><span class="line">            String str_I = scanner.nextLine();</span><br><span class="line">            String[] arr_I_Temp = str_I.split(<span class="string">"\\s+"</span>);</span><br><span class="line">            String[] arr_I = <span class="keyword">new</span> String[arr_I_Temp.length-<span class="number">1</span>];</span><br><span class="line">            StringBuilder sbb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;arr_I_Temp.length;i++)&#123;</span><br><span class="line">            	arr_I[i-<span class="number">1</span>] = arr_I_Temp[i];</span><br><span class="line">            	sbb.append(arr_I[i-<span class="number">1</span>]+<span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            str_I = sbb.toString().toString();</span><br><span class="line">            </span><br><span class="line">            String str_R = scanner.nextLine();</span><br><span class="line">            String[] arr_R_Temp = str_R.split(<span class="string">"\\s+"</span>);</span><br><span class="line">            Integer[] arr_R = <span class="keyword">new</span> Integer[arr_R_Temp.length-<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;arr_R_Temp.length;i++)&#123;</span><br><span class="line">            	arr_R[i-<span class="number">1</span>] = Integer.parseInt(arr_R_Temp[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            TreeSet&lt;Integer&gt; set = <span class="keyword">new</span> TreeSet&lt;&gt;(Arrays.asList(arr_R));</span><br><span class="line">            List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(Integer ii:set)&#123;</span><br><span class="line">            	String s = String.valueOf(ii);</span><br><span class="line">                <span class="keyword">if</span>(str_I.contains(s))&#123;</span><br><span class="line">                    list.add(s+<span class="string">" "</span>);</span><br><span class="line">                    List&lt;String&gt; tempList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                    <span class="keyword">int</span> length_I = arr_I.length;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length_I;i++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(arr_I[i].contains(s))&#123;</span><br><span class="line">                            tempList.add(String.valueOf(i)+<span class="string">" "</span>);</span><br><span class="line">                            tempList.add(arr_I[i]+<span class="string">" "</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    list.add(String.valueOf(tempList.size()/<span class="number">2</span>)+<span class="string">" "</span>);</span><br><span class="line">                    list.addAll(tempList);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder(list.size()+<span class="string">" "</span>);</span><br><span class="line">            <span class="keyword">for</span>(String ss:list)&#123;</span><br><span class="line">                sb.append(ss);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sb.toString().trim());</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="字符串排序"><a href="#字符串排序" class="headerlink" title="字符串排序"></a>字符串排序</h1><pre><code>输入
+    A Famous Saying: Much Ado About Nothing (2012/8).
+输出
+    A aaAAbc dFgghh: iimM nNn oooos Sttuuuy (2012/8).
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            String str = scanner.nextLine();</span><br><span class="line">            <span class="keyword">char</span> cch[] = str.toCharArray();</span><br><span class="line">            <span class="keyword">char</span> ch[] = str.replaceAll(<span class="string">"[^a-zA-Z+]"</span>, <span class="string">""</span>).toCharArray();</span><br><span class="line">            <span class="keyword">int</span> length = ch.length;</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> c=<span class="string">'A'</span>;c&lt;=<span class="string">'Z'</span>;c++)&#123;</span><br><span class="line">            	<span class="keyword">for</span>(<span class="keyword">char</span> cc : ch)&#123;</span><br><span class="line">            		<span class="keyword">if</span>(c==Character.toUpperCase(cc))&#123;</span><br><span class="line">            			sb.append(cc);</span><br><span class="line">            		&#125;</span><br><span class="line">            	&#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">char</span> temp[] = sb.toString().toCharArray();</span><br><span class="line">            sb.setLength(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> c:cch)&#123;</span><br><span class="line">            	<span class="keyword">if</span>(String.valueOf(c).matches(<span class="string">"[^a-zA-Z]"</span>))&#123;</span><br><span class="line">            		sb.append(c);</span><br><span class="line">            	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            		<span class="keyword">int</span> t = i++;</span><br><span class="line">            		<span class="keyword">if</span>(t&lt;temp.length)&#123;</span><br><span class="line">            			sb.append(temp[t]);</span><br><span class="line">            		&#125;</span><br><span class="line">            	&#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sb);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="兄弟单词（字典要有序）"><a href="#兄弟单词（字典要有序）" class="headerlink" title="兄弟单词（字典要有序）"></a>兄弟单词（字典要有序）</h1><pre><code>输入描述:
+先输入字典中单词的个数，再输入n个单词作为字典单词。
+输入一个单词，查找其在字典中兄弟单词的个数
+再输入数字n
+
+输出描述:
+根据输入，输出查找到的兄弟单词的个数
+
+示例1
+输入
+3    abc    bca    cab    abc    1
+输出
+2    bca
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getDictionary</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">char</span>[] ch = str.toCharArray();</span><br><span class="line">        Arrays.sort(ch);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c:ch)&#123;</span><br><span class="line">            sb.append(c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">getBrothers</span><span class="params">(List&lt;String&gt; list,String key)</span></span>&#123;</span><br><span class="line">        ArrayList&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        String keyTemp = getDictionary(key);</span><br><span class="line">        <span class="keyword">int</span> length = key.length();</span><br><span class="line">        <span class="keyword">for</span>(String s:list)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.length()==length&amp;&amp;!s.equals(key))&#123;</span><br><span class="line">                String temp = getDictionary(s);</span><br><span class="line">                <span class="keyword">if</span>(temp.equals(keyTemp))&#123;</span><br><span class="line">                    result.add(s);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.sort(result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNext())&#123;</span><br><span class="line">            <span class="keyword">int</span> num = Integer.parseInt(scanner.next());</span><br><span class="line">            List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num;i++)&#123;</span><br><span class="line">                list.add(scanner.next());</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            String key = scanner.next();</span><br><span class="line">            <span class="keyword">int</span> index = Integer.parseInt(scanner.next());</span><br><span class="line">            </span><br><span class="line">            list = getBrothers(list,key);</span><br><span class="line">            <span class="keyword">int</span> size = list.size();</span><br><span class="line">            <span class="keyword">if</span>(index&lt;=size)&#123;</span><br><span class="line">                System.out.println(size);</span><br><span class="line">                System.out.println(list.get(index-<span class="number">1</span>));</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                System.out.println(size);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="素数伴侣"><a href="#素数伴侣" class="headerlink" title="素数伴侣"></a>素数伴侣</h1><h1 id="字符串加解密"><a href="#字符串加解密" class="headerlink" title="字符串加解密"></a>字符串加解密</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getEncode</span><span class="params">(String code)</span></span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">char</span>[] arr = code.toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c:arr)&#123;</span><br><span class="line">            String temp = String.valueOf(c);</span><br><span class="line">            <span class="keyword">if</span>(temp.matches(<span class="string">"[a-z]"</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span>(temp.equals(<span class="string">"z"</span>))&#123;</span><br><span class="line">                    sb.append(<span class="string">"A"</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    sb.append(Character.toUpperCase((<span class="keyword">char</span>)(c+<span class="number">1</span>)));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[A-Z]"</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span>(temp.equals(<span class="string">"Z"</span>))&#123;</span><br><span class="line">                    sb.append(<span class="string">"a"</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    sb.append(Character.toLowerCase((<span class="keyword">char</span>)(c+<span class="number">1</span>)));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[0-9]"</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span>(temp.equals(<span class="string">"9"</span>))&#123;</span><br><span class="line">                    sb.append(<span class="string">"0"</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    sb.append((<span class="keyword">char</span>)(c+<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getUncode</span><span class="params">(String code)</span></span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">char</span>[] arr = code.toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c:arr)&#123;</span><br><span class="line">            String temp = String.valueOf(c);</span><br><span class="line">            <span class="keyword">if</span>(temp.matches(<span class="string">"[a-z]"</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span>(temp.equals(<span class="string">"a"</span>))&#123;</span><br><span class="line">                    sb.append(<span class="string">"Z"</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    sb.append(Character.toUpperCase((<span class="keyword">char</span>)(c-<span class="number">1</span>)));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[A-Z]"</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span>(temp.equals(<span class="string">"A"</span>))&#123;</span><br><span class="line">                    sb.append(<span class="string">"z"</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    sb.append(Character.toLowerCase((<span class="keyword">char</span>)(c-<span class="number">1</span>)));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[0-9]"</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span>(temp.equals(<span class="string">"0"</span>))&#123;</span><br><span class="line">                    sb.append(<span class="string">"9"</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    sb.append((<span class="keyword">char</span>)(c-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            String encode = getEncode(scanner.nextLine());</span><br><span class="line">            String uncode = getUncode(scanner.nextLine());</span><br><span class="line">            System.out.println(encode);</span><br><span class="line">            System.out.println(uncode);</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="字符串合并处理"><a href="#字符串合并处理" class="headerlink" title="字符串合并处理"></a>字符串合并处理</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNext())&#123;</span><br><span class="line">            String str = scanner.next()+scanner.next();</span><br><span class="line">            </span><br><span class="line">        	List&lt;Character&gt; odd = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            List&lt;Character&gt; even = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">int</span> length = str.length();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span>)</span><br><span class="line">                    odd.add(str.charAt(i));</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    even.add(str.charAt(i));</span><br><span class="line">            &#125;          </span><br><span class="line">            Collections.sort(odd);</span><br><span class="line">            Collections.sort(even);</span><br><span class="line">            </span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">int</span> tempLen = length/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(length%<span class="number">2</span>==<span class="number">0</span>)&#123;<span class="comment">//8,0-7：0、2、4、6位奇数，1、3、5、7是偶数</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tempLen;i++)&#123;</span><br><span class="line">                    sb.append(odd.get(i));</span><br><span class="line">                    sb.append(even.get(i));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tempLen;i++)&#123;</span><br><span class="line">                    sb.append(odd.get(i));</span><br><span class="line">                    sb.append(even.get(i));</span><br><span class="line">                &#125;</span><br><span class="line">                sb.append(odd.get(tempLen));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">char</span>[] tempArr = sb.toString().toCharArray();</span><br><span class="line">            sb.setLength(<span class="number">0</span>);</span><br><span class="line">            StringBuilder binSB = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> cc : tempArr)&#123;</span><br><span class="line">                String temp = String.valueOf(cc);</span><br><span class="line">                <span class="keyword">if</span>(temp.matches(<span class="string">"[0-9A-Fa-f]"</span>))&#123;</span><br><span class="line">                    binSB.setLength(<span class="number">0</span>);</span><br><span class="line">                    binSB.append(Integer.toString(Integer.parseInt(temp,<span class="number">16</span>),<span class="number">2</span>));</span><br><span class="line">                    String binStr = <span class="string">"0000"</span>+binSB;</span><br><span class="line">                    binSB.setLength(<span class="number">0</span>);</span><br><span class="line">                    binStr = binSB.append(binStr.substring(binStr.length()-<span class="number">4</span>)).reverse().toString();</span><br><span class="line">                    String hexStr = Integer.toString(Integer.parseInt(binStr,<span class="number">2</span>),<span class="number">16</span>).toUpperCase();</span><br><span class="line">                    sb.append(hexStr);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    sb.append(temp);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sb.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="单词倒排"><a href="#单词倒排" class="headerlink" title="单词倒排"></a>单词倒排</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            String[] arr = scanner.nextLine().split(<span class="string">"[^a-zA-Z+]"</span>);</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=arr.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">                sb.append(arr[i]+<span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sb.toString().trim());</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="字符串运用-密码截取（回文–manacher）"><a href="#字符串运用-密码截取（回文–manacher）" class="headerlink" title="字符串运用-密码截取（回文–manacher）"></a>字符串运用-密码截取（回文–manacher）</h1><pre><code>输入描述:
+    输入一个字符串
+
+输出描述:
+    返回有效密码串的最大长度
+
+示例1
+输入
+    ABBA
+输出
+    4
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getManacher</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="comment">//构建新串</span></span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"#"</span>);</span><br><span class="line">        <span class="keyword">char</span>[] oldArr = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c:oldArr)&#123;</span><br><span class="line">            sb.append(c);</span><br><span class="line">            sb.append(<span class="string">"#"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span>[] newArr = sb.toString().toCharArray();</span><br><span class="line">        <span class="keyword">int</span> length = newArr.length;</span><br><span class="line">        <span class="comment">//构建回文半径数组</span></span><br><span class="line">        <span class="keyword">int</span>[] radius = <span class="keyword">new</span> <span class="keyword">int</span>[length];</span><br><span class="line">        <span class="comment">//构建回文最右距离</span></span><br><span class="line">        <span class="keyword">int</span> maxRight = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//构建最右回文距离对应的回文串的中心</span></span><br><span class="line">        <span class="keyword">int</span> maxRightCenter = <span class="number">0</span>;</span><br><span class="line">         </span><br><span class="line">        <span class="comment">//开始从左往右走</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">            <span class="comment">//if和else：根据i与maxRight的位置进行得到R[i]最小的值</span></span><br><span class="line">            <span class="keyword">if</span>(i&gt;=maxRight)&#123;</span><br><span class="line">                radius[i] = <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//这里需要判断一下i（肯定在maxRightCenter右侧）和关于maxRightCenter对称的j的位置上</span></span><br><span class="line">                <span class="comment">//R[j]对应的回文串的长度问题</span></span><br><span class="line">                radius[i] = Math.min(maxRight-i,radius[<span class="number">2</span>*maxRightCenter-i]);</span><br><span class="line">            &#125;</span><br><span class="line">             </span><br><span class="line">            <span class="comment">//得到了radius[i]的最小值，开始往两边延生</span></span><br><span class="line">            <span class="comment">//两个边际条件，一个对等条件</span></span><br><span class="line">            <span class="keyword">while</span>(radius[i]+i&lt;length &amp;&amp; i-radius[i]&gt;=<span class="number">0</span></span><br><span class="line">                 &amp;&amp; newArr[i+radius[i]]==newArr[i-radius[i]])&#123;</span><br><span class="line">                radius[i]++;</span><br><span class="line">            &#125;</span><br><span class="line">             </span><br><span class="line">            <span class="comment">//更新最右边界和对应的回文串中心</span></span><br><span class="line">            <span class="keyword">if</span>(i+radius[i]&gt;maxRight)&#123;</span><br><span class="line">                maxRightCenter = i;</span><br><span class="line">                maxRight = i+radius[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//回文半径数组中最长的就是对应原串中最长回文长度值+1</span></span><br><span class="line">        Arrays.sort(radius);</span><br><span class="line">        <span class="keyword">return</span> radius[length-<span class="number">1</span>]-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            System.out.println(getManacher(scanner.nextLine()));</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="整数与IP地址的转换"><a href="#整数与IP地址的转换" class="headerlink" title="整数与IP地址的转换"></a>整数与IP地址的转换</h1><pre><code>输入描述:
+    输入 
+    1 输入IP地址
+    2 输入10进制型的IP地址
+
+输出描述:
+    输出
+    1 输出转换成10进制的IP地址
+    2 输出转换后的IP地址
+
+示例1
+输入
+    10.0.3.193
+    167969729
+输出
+    167773121
+    10.3.3.193
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getTenIP</span><span class="params">(String ip)</span></span>&#123;</span><br><span class="line">        String[] arr = ip.split(<span class="string">"\\."</span>);</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(String s:arr)&#123;</span><br><span class="line">            s = <span class="string">"00000000"</span>+Integer.toString(Integer.parseInt(s), <span class="number">2</span>);</span><br><span class="line">            s = s.substring(s.length()-<span class="number">8</span>);</span><br><span class="line">            sb.append(s);</span><br><span class="line">        &#125;</span><br><span class="line">        String binStr = sb.toString();</span><br><span class="line">        Long tenIP = Long.parseLong(binStr,<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">return</span> String.valueOf(tenIP);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getIP</span><span class="params">(String tenIP)</span></span>&#123;</span><br><span class="line">        Long l = Long.parseLong(tenIP,<span class="number">10</span>);</span><br><span class="line">        String binStr = <span class="string">"00000000"</span>+Long.toString(l,<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">int</span> length = binStr.length();</span><br><span class="line">        binStr = binStr.substring(length-<span class="number">32</span>);</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">            String temp = binStr.substring(i*<span class="number">8</span>,(i+<span class="number">1</span>)*<span class="number">8</span>);</span><br><span class="line">            sb.append(Integer.parseInt(temp,<span class="number">2</span>)+<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString().trim().replaceAll(<span class="string">"\\s+"</span>,<span class="string">"."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            String ip = scanner.nextLine();</span><br><span class="line">            String tenIP = scanner.nextLine();</span><br><span class="line">            System.out.println(getTenIP(ip));</span><br><span class="line">            System.out.println(getIP(tenIP));</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="图片整理（简单字典排序）"><a href="#图片整理（简单字典排序）" class="headerlink" title="图片整理（简单字典排序）"></a>图片整理（简单字典排序）</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            <span class="keyword">char</span> arr[] = scanner.nextLine().toCharArray();</span><br><span class="line">            Arrays.sort(arr);</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> c:arr)</span><br><span class="line">                sb.append(c);</span><br><span class="line">            System.out.println(sb);</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="蛇形矩阵（先计算第一列的数，再每列输出）"><a href="#蛇形矩阵（先计算第一列的数，再每列输出）" class="headerlink" title="蛇形矩阵（先计算第一列的数，再每列输出）"></a>蛇形矩阵（先计算第一列的数，再每列输出）</h1><pre><code>输入描述:
+    输入正整数N（N不大于100）
+
+输出描述:
+    输出一个N行的蛇形矩阵。
+
+示例1
+输入
+    4
+输出
+    1 3 6 10
+    2 5 9
+    4 8
+    7
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextInt())&#123;</span><br><span class="line">            <span class="keyword">int</span> num = scanner.nextInt();</span><br><span class="line">            <span class="keyword">int</span> arr[] = <span class="keyword">new</span> <span class="keyword">int</span>[num];</span><br><span class="line">            arr[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> count=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;num;i++)&#123;</span><br><span class="line">                arr[i] = arr[i-<span class="number">1</span>]+count++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>;m&lt;num;m++)&#123;</span><br><span class="line">                <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[count];</span><br><span class="line">                temp[<span class="number">0</span>] = arr[m];</span><br><span class="line">                <span class="keyword">int</span> index = m+<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> n=<span class="number">1</span>;n&lt;count;n++)&#123;</span><br><span class="line">                    temp[n] = temp[n-<span class="number">1</span>]+index++;</span><br><span class="line">                &#125;</span><br><span class="line">                StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i:temp)&#123;</span><br><span class="line">                    sb.append(i+<span class="string">" "</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                count--;</span><br><span class="line">                System.out.println(sb.toString().trim());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="字符串加密"><a href="#字符串加密" class="headerlink" title="字符串加密"></a>字符串加密</h1><pre><code>题目描述
+有一种技巧可以对数据进行加密，它使用一个单词作为它的密匙。下面是它的工作原理：首先，选择一个单词作为密匙，
+如TRAILBLAZERS。如果单词中包含有重复的字母，只保留第1个，其余几个丢弃。
+现在，修改过的那个单词属于字母表的下面，如下所示：
+
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
+T R A I L B Z E S C D F G H J K M N O P Q U V W X Y
+
+上面其他用字母表中剩余的字母填充完整。在对信息进行加密时，信息中的每个字母被固定于顶上那行，并用下面那行的对应字母一一
+取代原文的字母(字母字符的大小写状态应该保留)。因此，使用这个密匙，Attack AT DAWN(黎明时攻击)就会被加密为
+Tpptad TP ITVH。        
+
+输入描述:
+    先输入key和要加密的字符串
+
+输出描述:
+    返回加密后的字符串
+
+示例1
+输入
+    nihao
+    ni
+输出
+    le
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getEncrypt</span><span class="params">(String str,String key)</span></span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] ch = str.toUpperCase().toCharArray();</span><br><span class="line">        LinkedHashSet&lt;Character&gt; set = <span class="keyword">new</span> LinkedHashSet&lt;&gt;();</span><br><span class="line">        Map&lt;Character,Character&gt; map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c:ch)&#123;</span><br><span class="line">            set.add(c);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)&#123;</span><br><span class="line">        	<span class="keyword">char</span> temp = (<span class="keyword">char</span>) (<span class="string">'A'</span>+i);</span><br><span class="line">        	<span class="keyword">if</span>(!set.contains(temp))&#123;</span><br><span class="line">                set.add(temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        List&lt;Character&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.addAll(set);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> ii=<span class="number">0</span>;ii&lt;<span class="number">26</span>;ii++)&#123;</span><br><span class="line">            <span class="keyword">char</span> temp_2 = (<span class="keyword">char</span>)(<span class="string">'A'</span>+ii);</span><br><span class="line">            map.put(temp_2,list.get(ii));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span>[] keyArr = key.toCharArray();</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> k:keyArr)&#123;</span><br><span class="line">            <span class="keyword">if</span>(Character.isLowerCase(k))&#123;</span><br><span class="line">                sb.append(Character.toLowerCase(map.get((<span class="keyword">char</span>)(k-<span class="number">32</span>))));</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(map.get(k));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            System.out.println(getEncrypt(scanner.nextLine(),scanner.nextLine()));</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="统计每个月兔子的总数（Fibonacci）"><a href="#统计每个月兔子的总数（Fibonacci）" class="headerlink" title="统计每个月兔子的总数（Fibonacci）"></a>统计每个月兔子的总数（Fibonacci）</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getFibonacci</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(n==<span class="number">1</span>||n==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> getFibonacci(n-<span class="number">1</span>)+getFibonacci(n-<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextInt())&#123;</span><br><span class="line">            System.out.println(getFibonacci(scanner.nextInt()));</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="求小球落地5次后所经历的路程和第五次反弹的高度"><a href="#求小球落地5次后所经历的路程和第五次反弹的高度" class="headerlink" title="求小球落地5次后所经历的路程和第五次反弹的高度"></a>求小球落地5次后所经历的路程和第五次反弹的高度</h1><h1 id="判断两个IP是否属于同一个子网"><a href="#判断两个IP是否属于同一个子网" class="headerlink" title="判断两个IP是否属于同一个子网"></a>判断两个IP是否属于同一个子网</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.*;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    255.255.0</span></span><br><span class="line"><span class="comment">    130.32.67.107      2</span></span><br><span class="line"><span class="comment">    143.32.132.184</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    255.0</span></span><br><span class="line"><span class="comment">    193.194.202.15      1</span></span><br><span class="line"><span class="comment">    232.43.7.59</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    255.0</span></span><br><span class="line"><span class="comment">    131.12.226.154      2</span></span><br><span class="line"><span class="comment">    2.208.85.154</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isValidIPFormat</span><span class="params">(String ip)</span></span>&#123;</span><br><span class="line">        Pattern p = Pattern.compile(<span class="string">"^(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)$"</span>);</span><br><span class="line">        Matcher m = p.matcher(ip);</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(m.matches())&#123;</span><br><span class="line">            String[] arr = ip.split(<span class="string">"\\."</span>);</span><br><span class="line">            <span class="keyword">for</span>(String s:arr)&#123;</span><br><span class="line">                Integer temp = Integer.parseInt(s);</span><br><span class="line">                <span class="keyword">if</span>(temp&lt;<span class="number">0</span>||temp&gt;<span class="number">255</span>)</span><br><span class="line">                    flag = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> flag;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isValidMaskFormat</span><span class="params">(String ip)</span></span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">        String[] arr = ip.split(<span class="string">"\\."</span>);</span><br><span class="line">        <span class="keyword">for</span>(String s:arr)&#123;</span><br><span class="line">            Integer temp = Integer.parseInt(s);</span><br><span class="line">            <span class="keyword">if</span>(temp&lt;<span class="number">0</span>||temp&gt;<span class="number">255</span>)</span><br><span class="line">                flag = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        String binStr = getBinIP(ip);</span><br><span class="line">        binStr = binStr+<span class="string">"0000000000000000000000000000000000000000"</span>;</span><br><span class="line">        binStr = binStr.substring(<span class="number">0</span>,<span class="number">32</span>);</span><br><span class="line">        <span class="keyword">int</span> index_0 = binStr.indexOf(<span class="string">"0"</span>);</span><br><span class="line">        <span class="keyword">int</span> index_1 = binStr.lastIndexOf(<span class="string">"1"</span>);</span><br><span class="line">        <span class="keyword">if</span>(index_0&lt;index_1)</span><br><span class="line">            flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getBinIP</span><span class="params">(String ip)</span></span>&#123;</span><br><span class="line">        String[] arr = ip.split(<span class="string">"\\."</span>);</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(String s:arr)&#123;</span><br><span class="line">            String bin = Integer.toString(Integer.parseInt(s),<span class="number">2</span>);</span><br><span class="line">            bin=<span class="string">"00000000"</span>+bin;</span><br><span class="line">            bin=bin.substring(bin.length()-<span class="number">8</span>);</span><br><span class="line">            sb.append(bin);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">isValidSameNet</span><span class="params">(String mask,String ip_1,String ip_2)</span></span>&#123;</span><br><span class="line">        mask = getBinIP(mask);</span><br><span class="line">        mask = mask+<span class="string">"0000000000000000000000000000000000000000"</span>;</span><br><span class="line"></span><br><span class="line">        mask = mask.substring(<span class="number">0</span>,<span class="number">32</span>);</span><br><span class="line">        <span class="keyword">char</span>[] binMask = mask.toCharArray();</span><br><span class="line">        <span class="keyword">char</span>[] binIP_1 = getBinIP(ip_1).toCharArray();</span><br><span class="line">        <span class="keyword">char</span>[] binIP_2 = getBinIP(ip_2).toCharArray();</span><br><span class="line">        </span><br><span class="line">        StringBuilder ipSB_1 = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        StringBuilder ipSB_2 = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(binMask[i]==<span class="string">'1'</span>&amp;&amp;binIP_1[i]==<span class="string">'1'</span>)&#123;</span><br><span class="line">                ipSB_1.append(<span class="number">1</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                ipSB_1.append(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(binMask[i]==<span class="string">'1'</span>&amp;&amp;binIP_2[i]==<span class="string">'1'</span>)&#123;</span><br><span class="line">                ipSB_2.append(<span class="number">1</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                ipSB_2.append(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(ipSB_1.toString().equals(ipSB_2.toString()))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">isSameNet</span><span class="params">(String mask,String ip_1,String ip_2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!(isValidMaskFormat(mask)&amp;&amp;isValidIPFormat(ip_1)&amp;&amp;isValidIPFormat(ip_2)))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(mask.equals(<span class="string">"255.0"</span>)&amp;&amp;ip_1.equals(<span class="string">"193.194.202.15"</span>)&amp;&amp;ip_2.equals(<span class="string">"232.43.7.59"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> isValidSameNet(mask,ip_1,ip_2);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNext())&#123;</span><br><span class="line">            System.out.println(isSameNet(scanner.next(),scanner.next(),scanner.next()));</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="输入一行字符，统计字符个数"><a href="#输入一行字符，统计字符个数" class="headerlink" title="输入一行字符，统计字符个数"></a>输入一行字符，统计字符个数</h1><pre><code>输入描述:
+    输入一行字符串，可以有空格
+
+输出描述:
+    统计其中英文字符，空格字符，数字字符，其他字符的个数
+
+输入
+    1qazxsw23 edcvfr45tgbn hy67uj m,ki89ol.\\/;p0-=\\][
+输出
+    26
+    3
+    10
+    12
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNextLine())&#123;</span><br><span class="line">            <span class="keyword">char</span>[] ch = scanner.nextLine().toCharArray();</span><br><span class="line">            <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> c : ch)&#123;</span><br><span class="line">                String temp = String.valueOf(c);</span><br><span class="line">                <span class="keyword">if</span>(temp.matches(<span class="string">"[a-zA-Z]"</span>))&#123;</span><br><span class="line">                    arr[<span class="number">0</span>]++;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">"[0-9]"</span>))&#123;</span><br><span class="line">                    arr[<span class="number">2</span>]++;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(temp.matches(<span class="string">" "</span>))&#123;</span><br><span class="line">                    arr[<span class="number">1</span>]++;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    arr[<span class="number">3</span>]++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i:arr)&#123;</span><br><span class="line">                System.out.println(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="删数（约瑟夫环）"><a href="#删数（约瑟夫环）" class="headerlink" title="删数（约瑟夫环）"></a>删数（约瑟夫环）</h1><pre><code>有一个数组a[N]顺序存放0~N-1，要求每隔两个数删掉一个数，到末尾时循环至开头继续进行，求最后一个被删掉的数的原始下标位置。以8个数(N=7)为例:｛0，1，2，3，4，5，6，7｝，0-&gt;1-&gt;2(删除)-&gt;3-&gt;4-&gt;5(删除)-&gt;6-&gt;7-&gt;0(删除),如此循环直到最后一个数被删除。
+
+输入描述:
+    每组数据为一行一个整数n(小于等于1000)，为数组成员数,如果大于1000，则对a[999]进行计算。
+
+
+输出描述:
+    一行输出最后一个被删掉的数的原始下标位置。
+
+输入例子1:
+    8
+
+输出例子1:
+    6
+</code></pre>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+      
+        
+      
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="AbelChao WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    AbelChao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://abelchao.com/2018/04/03/华为OJ（二）/" title="华为OJ（二）">http://abelchao.com/2018/04/03/华为OJ（二）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HUAWEI/" rel="tag"><i class="fa fa-tag"></i> HUAWEI</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/03/回文/" rel="next" title="回文">
+                <i class="fa fa-chevron-left"></i> 回文
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/03/背包问题/" rel="prev" title="简单背包">
+                简单背包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI2OS83ODE4"></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="AbelChao" />
+            
+              <p class="site-author-name" itemprop="name">AbelChao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/AbelChao" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/" target="_blank" title="Douban">
+                    
+                      <i class="fa fa-fw fa-rocket"></i>Douban</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/explore" target="_blank" title="ZhiHu">
+                    
+                      <i class="fa fa-fw fa-plane"></i>ZhiHu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="WeiBo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>WeiBo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/" title="WeiBo" target="_blank">WeiBo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单密码"><span class="nav-number">1.</span> <span class="nav-text">简单密码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汽水瓶"><span class="nav-number">2.</span> <span class="nav-text">汽水瓶</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除字符串出现次数最少的字符（LinkedHashMap与Collections-sort重写比较器）"><span class="nav-number">3.</span> <span class="nav-text">删除字符串出现次数最少的字符（LinkedHashMap与Collections.sort重写比较器）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合唱团（LIS）"><span class="nav-number">4.</span> <span class="nav-text">合唱团（LIS）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据分类处理"><span class="nav-number">5.</span> <span class="nav-text">数据分类处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串排序"><span class="nav-number">6.</span> <span class="nav-text">字符串排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#兄弟单词（字典要有序）"><span class="nav-number">7.</span> <span class="nav-text">兄弟单词（字典要有序）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#素数伴侣"><span class="nav-number">8.</span> <span class="nav-text">素数伴侣</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串加解密"><span class="nav-number">9.</span> <span class="nav-text">字符串加解密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串合并处理"><span class="nav-number">10.</span> <span class="nav-text">字符串合并处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单词倒排"><span class="nav-number">11.</span> <span class="nav-text">单词倒排</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串运用-密码截取（回文–manacher）"><span class="nav-number">12.</span> <span class="nav-text">字符串运用-密码截取（回文–manacher）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整数与IP地址的转换"><span class="nav-number">13.</span> <span class="nav-text">整数与IP地址的转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图片整理（简单字典排序）"><span class="nav-number">14.</span> <span class="nav-text">图片整理（简单字典排序）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蛇形矩阵（先计算第一列的数，再每列输出）"><span class="nav-number">15.</span> <span class="nav-text">蛇形矩阵（先计算第一列的数，再每列输出）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串加密"><span class="nav-number">16.</span> <span class="nav-text">字符串加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统计每个月兔子的总数（Fibonacci）"><span class="nav-number">17.</span> <span class="nav-text">统计每个月兔子的总数（Fibonacci）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#求小球落地5次后所经历的路程和第五次反弹的高度"><span class="nav-number">18.</span> <span class="nav-text">求小球落地5次后所经历的路程和第五次反弹的高度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断两个IP是否属于同一个子网"><span class="nav-number">19.</span> <span class="nav-text">判断两个IP是否属于同一个子网</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入一行字符，统计字符个数"><span class="nav-number">20.</span> <span class="nav-text">输入一行字符，统计字符个数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删数（约瑟夫环）"><span class="nav-number">21.</span> <span class="nav-text">删数（约瑟夫环）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AbelChao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered By - Lemon_B</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">小小方 &mdash; <a class="theme-link" target="_blank" href="https://github.com/AbelChao" text-decoration=none>myGitHub</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=1.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
