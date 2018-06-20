@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180426153800.png">
 <meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180426154306.png">
 <meta property="og:image" content="http://oxk1vrcj4.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180426154607.png">
-<meta property="og:updated_time" content="2018-04-27T04:00:15.604Z">
+<meta property="og:updated_time" content="2018-05-20T04:03:22.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基本总结">
 <meta name="twitter:description" content="数据库基本总结">
@@ -361,8 +361,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-04-27T12:00:15+08:00">
-                2018-04-27
+              <time title="Post modified" itemprop="dateModified" datetime="2018-05-20T12:03:22+08:00">
+                2018-05-20
               </time>
             
           </span>
@@ -623,6 +623,7 @@ SELECT * FROM Employee WHERE Employee_Name = &apos;Jesus&apos;
     2. B树/B+树
         https://www.nowcoder.com/discuss/5772
         https://blog.csdn.net/random__walker/article/details/52051556
+        https://blog.csdn.net/feynman1999/article/details/72667919
     一个M阶的B树：
         1. 每个结点至多有m个子树
         2. 根结点至少有两个子树
@@ -693,7 +694,10 @@ select * from Table2
 
 7. 当where，内聚函数，group by，having都有怎么做
     执行where子句查询，使用group by对查询结果分组，对分组运行内聚函数计算每一组的值，用having子句去掉不符合条件的组。
-</code></pre><h1 id="DISTINCT-与-ORDER-BY"><a href="#DISTINCT-与-ORDER-BY" class="headerlink" title="DISTINCT 与 ORDER BY"></a>DISTINCT 与 ORDER BY</h1><h1 id="DELETE-与-TRUNCATE"><a href="#DELETE-与-TRUNCATE" class="headerlink" title="DELETE 与 TRUNCATE"></a>DELETE 与 TRUNCATE</h1><pre><code>1. 两个都是删除记录的
+</code></pre><h1 id="DISTINCT-与-ORDER-BY"><a href="#DISTINCT-与-ORDER-BY" class="headerlink" title="DISTINCT 与 ORDER BY"></a>DISTINCT 与 ORDER BY</h1><pre><code>https://blog.csdn.net/ammmd/article/details/3339950
+
+https://blog.csdn.net/ljl890705/article/details/70602442
+</code></pre><h1 id="DELETE-与-TRUNCATE"><a href="#DELETE-与-TRUNCATE" class="headerlink" title="DELETE 与 TRUNCATE"></a>DELETE 与 TRUNCATE</h1><pre><code>1. 两个都是删除记录的
 2. DELETE删除的操作以日志的形式保存，以便将来进行回滚，TRUNCATE一旦执行不能回滚。
 3. DELETE操作后，删除数据占用的内存空间还在，还可以恢复。但是TRUNCATE就不可以了，存储空间直接就被释放了。
 4. TRUNCATE执行速度块。
@@ -826,8 +830,8 @@ select * from Table2
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/23/深入了解JVM/" rel="next" title="深入了解JVM">
-                <i class="fa fa-chevron-left"></i> 深入了解JVM
+              <a href="/2018/04/25/设计模式总结/" rel="next" title="设计模式">
+                <i class="fa fa-chevron-left"></i> 设计模式
               </a>
             
           </div>
@@ -836,8 +840,8 @@ select * from Table2
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/25/设计模式总结/" rel="prev" title="设计模式">
-                设计模式 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/25/建造者模式/" rel="prev" title="建造者模式">
+                建造者模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -927,7 +931,7 @@ select * from Table2
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -938,7 +942,7 @@ select * from Table2
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
